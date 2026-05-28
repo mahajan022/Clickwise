@@ -42,11 +42,11 @@ export function Nav() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
         .nav-link {
           position: relative;
-          font-family: 'Syne', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 15px;
           font-weight: 600;
           color: #111111;
@@ -80,7 +80,7 @@ export function Nav() {
         }
 
         .nav-cta {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 13px;
           font-weight: 700;
           color: #fff;
@@ -133,7 +133,7 @@ export function Nav() {
           gap: 8px;
         }
         .mobile-nav-link {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 18px;
           font-weight: 700;
           color: #111;
