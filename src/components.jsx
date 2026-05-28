@@ -21,7 +21,14 @@ export function useInView(threshold = 0.1) {
 /* ── NAV ── */
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const loc = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (path) => loc.pathname === path;
 
@@ -30,70 +37,217 @@ export function Nav() {
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Work", href: "/work" },
-    { label: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav style={{
-      position: "sticky",
-      top: 0,
-      borderBottom: "1px solid #E4E3DD",
-      zIndex: 100,
-      backdropFilter: "blur(8px)",
-      background: "rgba(255,255,255,.95)",
-    }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "16px clamp(20px,5vw,80px)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <img src="/logo.png" alt="Clickwise" style={{ height: 32, width: "auto", objectFit: "contain" }} />
-        </Link>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap');
 
-        <div style={{ display: "none", cursor: "pointer" }} onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? "✕" : "☰"}
-        </div>
+        .nav-link {
+          position: relative;
+          font-family: 'Syne', sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          color: #111111;
+          text-decoration: none;
+          letter-spacing: 0.01em;
+          padding: 6px 0;
+          transition: color 0.25s ease;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: #E8471A;
+          border-radius: 2px;
+          transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover {
+          color: #E8471A;
+        }
+        .nav-link:hover::after {
+          width: 100%;
+        }
+        .nav-link.active {
+          color: #E8471A;
+        }
+        .nav-link.active::after {
+          width: 100%;
+        }
 
-        <div style={{ display: "flex", gap: 40, alignItems: "center" }}>
-          {navItems.filter(item => item.href !== "/contact").map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              style={{
-                fontSize: 13,
-                fontWeight: isActive(item.href) ? 700 : 400,
-                color: isActive(item.href) ? "#E8471A" : "#111111",
-                textDecoration: "none",
-                transition: "all .2s",
-                borderBottom: isActive(item.href) ? "2px solid #E8471A" : "2px solid transparent",
-                paddingBottom: 4,
-              }}
-              onMouseEnter={(e) => { if (!isActive(item.href)) e.target.style.color = "#E8471A"; }}
-              onMouseLeave={(e) => { if (!isActive(item.href)) e.target.style.color = "#111111"; }}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            to="/contact"
-            style={{
-              fontSize: 12,
-              fontWeight: 700,
-              color: "#fff",
-              textDecoration: "none",
-              background: "#E8471A",
-              padding: "10px 22px",
-              borderRadius: 6,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              transition: "all .25s",
-              boxShadow: "0 4px 16px rgba(232,71,26,.3)",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#d03d16"; e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(232,71,26,.4)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(232,71,26,.3)"; }}
-          >
-            Contact
+        .nav-cta {
+          font-family: 'Syne', sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          color: #fff;
+          text-decoration: none;
+          background: #E8471A;
+          padding: 11px 26px;
+          border-radius: 8px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 4px 20px rgba(232,71,26,.35);
+          position: relative;
+          overflow: hidden;
+        }
+        .nav-cta::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(255,255,255,0.12);
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+        .nav-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 32px rgba(232,71,26,.5);
+        }
+        .nav-cta:hover::before {
+          opacity: 1;
+        }
+        .nav-cta:active {
+          transform: translateY(0px);
+        }
+
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          top: 73px;
+          left: 0;
+          right: 0;
+          background: rgba(255,255,255,0.98);
+          backdrop-filter: blur(16px);
+          border-bottom: 1px solid #E4E3DD;
+          padding: 24px clamp(20px,5vw,80px) 32px;
+          z-index: 99;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+        .mobile-menu.open {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .mobile-nav-link {
+          font-family: 'Syne', sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          color: #111;
+          text-decoration: none;
+          padding: 12px 0;
+          border-bottom: 1px solid #F0EFEA;
+          transition: color 0.2s, padding-left 0.2s;
+          display: block;
+        }
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+          color: #E8471A;
+          padding-left: 8px;
+        }
+
+        @media (max-width: 768px) {
+          .nav-desktop-links { display: none !important; }
+          .nav-hamburger { display: flex !important; }
+        }
+      `}</style>
+
+      <nav style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        backdropFilter: "blur(12px)",
+        background: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.95)",
+        borderBottom: scrolled ? "1px solid #E4E3DD" : "1px solid rgba(228,227,221,0.6)",
+        boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
+        transition: "all 0.3s ease",
+      }}>
+        <div style={{
+          maxWidth: 1320,
+          margin: "0 auto",
+          padding: "0 clamp(20px,5vw,80px)",
+          height: 72,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}>
+          {/* Logo */}
+          <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+            <img
+              src="/logo.png"
+              alt="Clickwise"
+              style={{ height: 36, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
+            />
           </Link>
+
+          {/* Desktop Links */}
+          <div className="nav-desktop-links" style={{ display: "flex", gap: 36, alignItems: "center" }}>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className={`nav-link${isActive(item.href) ? " active" : ""}`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link to="/contact" className="nav-cta">
+              Contact
+            </Link>
+          </div>
+
+          {/* Hamburger */}
+          <button
+            className="nav-hamburger"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            style={{
+              display: "none",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 8,
+              flexDirection: "column",
+              gap: 5,
+            }}
+          >
+            {[0, 1, 2].map((i) => (
+              <span key={i} style={{
+                display: "block",
+                width: 24,
+                height: 2,
+                background: "#111",
+                borderRadius: 2,
+                transition: "all 0.3s ease",
+                transform: mobileOpen
+                  ? i === 0 ? "translateY(7px) rotate(45deg)"
+                  : i === 2 ? "translateY(-7px) rotate(-45deg)"
+                  : "scaleX(0)"
+                  : "none",
+                opacity: mobileOpen && i === 1 ? 0 : 1,
+              }} />
+            ))}
+          </button>
         </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu${mobileOpen ? " open" : ""}`}>
+        {[...navItems, { label: "Contact", href: "/contact" }].map((item) => (
+          <Link
+            key={item.href}
+            to={item.href}
+            className={`mobile-nav-link${isActive(item.href) ? " active" : ""}`}
+            onClick={() => setMobileOpen(false)}
+          >
+            {item.label}
+          </Link>
+        ))}
       </div>
-    </nav>
+    </>
   );
 }
 
@@ -117,7 +271,6 @@ export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle", bg
       padding: "80px clamp(20px,5vw,80px)",
       position: "relative",
     }}>
-      {/* Dark overlay when bg image is present */}
       {bg && (
         <div style={{
           position: "absolute",
@@ -278,7 +431,6 @@ export function Footer() {
             <p style={{ fontSize: 13, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
               Mumbai's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
             </p>
-            {/* Social Icons */}
             <div style={{ display: "flex", gap: 12 }}>
               {socialLinks.map(({ label, url, color, svg }) => (
                 <a key={label} href={url} target="_blank" rel="noopener noreferrer" title={label}
