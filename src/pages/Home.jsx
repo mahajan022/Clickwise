@@ -10,7 +10,7 @@ function Hero() {
   return (
     <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
       <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}>
-        <source src="/download.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
       </video>
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "50%", background: "linear-gradient(to top, rgba(0,0,0,.6), transparent)", pointerEvents: "none" }} />
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 clamp(20px,5vw,80px)", paddingTop: 80 }}>
