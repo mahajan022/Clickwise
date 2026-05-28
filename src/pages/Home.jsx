@@ -153,8 +153,8 @@ function WhyUs() {
               onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 20px 60px rgba(17,17,17,.1)"; e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.borderColor = "transparent"; }}
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; e.currentTarget.style.borderColor = "#E4E3DD"; }}
             >
-              <div style={{ width: 56, height: 56, borderRadius: 14, background: card.bg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
-                <img src={card.icon} alt={card.title} style={{ width: 32, height: 32, objectFit: "contain" }} />
+              <div style={{ width: 56, height: 56, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                <img src={card.icon} alt={card.title} style={{ width: 42, height: 42, objectFit: "contain" }} />
               </div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: "#111111", marginBottom: 10 }}>{card.title}</h3>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.8 }}>{card.desc}</p>
