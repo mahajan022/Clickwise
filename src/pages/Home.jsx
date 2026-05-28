@@ -30,7 +30,7 @@ function Hero() {
             >
               Start a Project
               <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(255,255,255,.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </div>
             </Link>
             <Link to="/work" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.12)", color: "#fff", padding: "15px 32px", borderRadius: 50, textDecoration: "none", fontSize: 13, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", transition: "all .25s", border: "1px solid rgba(255,255,255,.25)", backdropFilter: "blur(8px)" }}
@@ -129,13 +129,13 @@ function ProcessSection() {
 function WhyUs() {
   const [ref, v] = useInView();
   const cards = [
-    { icon: "🎨", bg: "#FFF0EB", color: "#E8471A", title: "Premium Design", desc: "Hand-crafted, pixel-perfect designs that convert visitors into paying customers every time." },
-    { icon: "⚡", bg: "#FFFBEB", color: "#F59E0B", title: "Fast Delivery", desc: "Most projects delivered in 7–21 days. Fast without ever compromising on quality." },
-    { icon: "💻", bg: "#EFF6FF", color: "#3B82F6", title: "Clean Code", desc: "No page builders. Pure hand-coded React — fast, scalable, and SEO-ready from day one." },
-    { icon: "🚀", bg: "#F0FDF4", color: "#22C55E", title: "Full Service", desc: "Design, dev, branding, SEO, social — everything under one roof, one vision, zero chaos." },
-    { icon: "🎯", bg: "#FDF4FF", color: "#A855F7", title: "Results Driven", desc: "Every decision tied to business growth. We measure success in leads, sales, and revenue." },
-    { icon: "🤝", bg: "#FFF1F2", color: "#F43F5E", title: "True Partner", desc: "Available on WhatsApp, proactive, invested in your success long after launch day." },
-  ];
+    { icon: "/icons/paint palette.png", bg: "#FFF0EB", color: "#E8471A", title: "Premium Design", desc: "Hand-crafted, pixel-perfect designs that convert visitors into paying customers every time." },
+    { icon: "/icons/rocket speed.png", bg: "#FFFBEB", color: "#F59E0B", title: "Fast Delivery", desc: "Most projects delivered in 7–21 days. Fast without ever compromising on quality." },
+    { icon: "/icons/code brackets.png", bg: "#EFF6FF", color: "#3B82F6", title: "Clean Code", desc: "No page builders. Pure hand-coded React — fast, scalable, and SEO-ready from day one." },
+    { icon: "/icons/layers stack.png", bg: "#F0FDF4", color: "#22C55E", title: "Full Service", desc: "Design, dev, branding, SEO, social — everything under one roof, one vision, zero chaos." },
+    { icon: "/icons/target goal.png", bg: "#FDF4FF", color: "#A855F7", title: "Results Driven", desc: "Every decision tied to business growth. We measure success in leads, sales, and revenue." },
+    { icon: "/icons/handshake.png", bg: "#FFF1F2", color: "#F43F5E", title: "True Partner", desc: "Available on WhatsApp, proactive, invested in your success long after launch day." },
+  ]
   return (
     <section style={{ background: "#fff", padding: "110px clamp(20px,5vw,80px)" }}>
       <div style={{ maxWidth: 1320, margin: "0 auto" }}>
@@ -153,7 +153,9 @@ function WhyUs() {
               onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 20px 60px rgba(17,17,17,.1)"; e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.borderColor = "transparent"; }}
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; e.currentTarget.style.borderColor = "#E4E3DD"; }}
             >
-              <div style={{ width: 56, height: 56, borderRadius: 14, background: card.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, marginBottom: 20 }}>{card.icon}</div>
+              <div style={{ width: 56, height: 56, borderRadius: 14, background: card.bg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                <img src={card.icon} alt={card.title} style={{ width: 32, height: 32, objectFit: "contain" }} />
+              </div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: "#111111", marginBottom: 10 }}>{card.title}</h3>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.8 }}>{card.desc}</p>
             </div>
