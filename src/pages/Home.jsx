@@ -9,8 +9,8 @@ function Hero() {
   useEffect(() => { setTimeout(() => setV(true), 150); }, []);
   return (
     <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
-      <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
-        <source src="/hero-bg.mp4" type="video/mp4" />
+      <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}>
+        <source src="/download.mp4" type="video/mp4" />
       </video>
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "50%", background: "linear-gradient(to top, rgba(0,0,0,.6), transparent)", pointerEvents: "none" }} />
       <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 clamp(20px,5vw,80px)", paddingTop: 80 }}>
@@ -39,14 +39,6 @@ function Hero() {
             >View Our Work</Link>
           </div>
         </div>
-      </div>
-      <div style={{ position: "absolute", bottom: 48, left: 0, right: 0, padding: "0 clamp(20px,5vw,80px)", display: "flex", gap: 48, opacity: v ? 1 : 0, transition: "opacity .7s ease 1s" }}>
-        {STATS.map((s, i) => (
-          <div key={i} style={{ borderLeft: "2px solid rgba(232,71,26,.6)", paddingLeft: 16 }}>
-            <div style={{ fontSize: "clamp(22px,2.5vw,32px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1 }}>{s.v}</div>
-            <div style={{ fontSize: 10, color: "rgba(255,255,255,.5)", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 600, marginTop: 4 }}>{s.l}</div>
-          </div>
-        ))}
       </div>
     </section>
   );

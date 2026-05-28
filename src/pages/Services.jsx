@@ -19,7 +19,7 @@ function ServiceIcon({ type }) {
   return icons[type] || null;
 }
 
-function AccordionItem({ service, index, isOpen, onToggle }) {
+function AccordionItem({ service, isOpen, onToggle }) {
   const contentRef = useRef(null);
   const [height, setHeight] = useState(0);
 
@@ -30,192 +30,215 @@ function AccordionItem({ service, index, isOpen, onToggle }) {
   }, [isOpen]);
 
   return (
-    <div style={{
-      borderBottom: "1px solid #E4E3DD",
-      overflow: "hidden",
-    }}>
-      {/* ── HEADER ROW ── */}
+    <div style={{ borderBottom: "1px solid #EBEBEB" }}>
+
+      {/* Header Row */}
       <div
         onClick={onToggle}
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 24,
-          padding: "28px 0",
+          gap: 20,
+          padding: "24px 0",
           cursor: "pointer",
-          transition: "all .3s",
           userSelect: "none",
         }}
-        onMouseEnter={(e) => { e.currentTarget.querySelector(".svc-title").style.color = "#E8471A"; }}
-        onMouseLeave={(e) => { e.currentTarget.querySelector(".svc-title").style.color = isOpen ? "#E8471A" : "#111111"; }}
+        onMouseEnter={(e) => {
+          e.currentTarget.querySelector(".svc-title").style.color = "#E8471A";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.querySelector(".svc-title").style.color = isOpen ? "#E8471A" : "#111111";
+        }}
       >
-        {/* Number */}
-        <span style={{
-          fontSize: 11,
-          fontWeight: 700,
-          color: isOpen ? "#E8471A" : "#C4C4C4",
-          letterSpacing: "0.12em",
-          width: 28,
-          flexShrink: 0,
-          transition: "color .3s",
-        }}>
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
         {/* Icon */}
         <div style={{
-          width: 40,
-          height: 40,
-          borderRadius: 10,
-          background: isOpen ? "rgba(232,71,26,.1)" : "#F7F7F5",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: isOpen ? "#E8471A" : "#6B7280",
-          flexShrink: 0,
-          transition: "all .35s cubic-bezier(.16,1,.3,1)",
-          transform: isOpen ? "scale(1.1)" : "scale(1)",
+          width: 42, height: 42, borderRadius: 10, flexShrink: 0,
+          background: isOpen ? "rgba(232,71,26,.08)" : "#F5F5F5",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          color: isOpen ? "#E8471A" : "#888",
+          transition: "all .3s ease",
         }}>
-          <div style={{ width: 20, height: 20 }}><ServiceIcon type={service.icon} /></div>
+          <div style={{ width: 18, height: 18 }}><ServiceIcon type={service.icon} /></div>
         </div>
 
-        {/* Title */}
+        {/* Title + subtitle */}
         <div style={{ flex: 1 }}>
           <h3
             className="svc-title"
             style={{
-              fontSize: "clamp(16px,1.4vw,20px)",
-              fontWeight: 700,
+              fontSize: "clamp(15px,1.3vw,18px)",
+              fontWeight: 600,
               color: isOpen ? "#E8471A" : "#111111",
-              letterSpacing: "-0.3px",
-              transition: "color .3s",
+              letterSpacing: "-0.2px",
+              transition: "color .25s",
               margin: 0,
             }}
           >
             {service.title}
           </h3>
           {!isOpen && (
-            <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 2, margin: 0 }}>
+            <p style={{ fontSize: 13, color: "#AAAAAA", marginTop: 3 }}>
               {service.desc}
             </p>
           )}
         </div>
 
-        {/* Plus / Minus toggle */}
+        {/* Toggle button */}
         <div style={{
-          width: 36,
-          height: 36,
-          borderRadius: "50%",
-          border: `1.5px solid ${isOpen ? "#E8471A" : "#E4E3DD"}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-          transition: "all .35s cubic-bezier(.16,1,.3,1)",
+          width: 34, height: 34, borderRadius: "50%", flexShrink: 0,
+          border: `1.5px solid ${isOpen ? "#E8471A" : "#DEDEDE"}`,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          color: isOpen ? "#E8471A" : "#AAAAAA",
+          fontSize: 20, fontWeight: 300,
+          transition: "all .3s ease",
           transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-          color: isOpen ? "#E8471A" : "#9CA3AF",
-          fontSize: 20,
-          fontWeight: 300,
-        }}>
-          +
-        </div>
+        }}>+</div>
       </div>
 
-      {/* ── EXPANDED CONTENT ── */}
-      <div
-        style={{
-          height: height,
-          overflow: "hidden",
-          transition: "height .5s cubic-bezier(.16,1,.3,1)",
-        }}
-      >
+      {/* Expanded Content */}
+      <div style={{ height, overflow: "hidden", transition: "height .45s cubic-bezier(.16,1,.3,1)" }}>
         <div ref={contentRef}>
           <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 40,
-            paddingBottom: 48,
-            paddingLeft: 28 + 40 + 24,
+            borderRadius: 14,
+            overflow: "hidden",
+            marginBottom: 28,
+            position: "relative",
+            border: "1px solid #EBEBEB",
           }}>
-            {/* Left — text */}
-            <div>
-              <p style={{
-                fontSize: 14,
-                color: "#4B5563",
-                lineHeight: 1.9,
-                marginBottom: 28,
-                opacity: isOpen ? 1 : 0,
-                transform: isOpen ? "translateY(0)" : "translateY(8px)",
-                transition: "all .4s cubic-bezier(.16,1,.3,1) .15s",
-              }}>
-                {service.about}
-              </p>
 
-              {/* Features */}
-              <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", color: "#9CA3AF", textTransform: "uppercase", marginBottom: 16 }}>
-                What's Included
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {service.features.map((f, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
+            {/* Background image — full color, visible */}
+            {service.image && (
+              <img
+                src={service.image}
+                alt=""
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  opacity: 0.5,
+                  pointerEvents: "none",
+                }}
+              />
+            )}
+
+            {/* Light white overlay — just enough to keep text readable */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "rgba(255,255,255,0.72)",
+              pointerEvents: "none",
+            }} />
+
+            {/* Content grid */}
+            <div style={{
+              position: "relative",
+              zIndex: 1,
+              display: "grid",
+              gridTemplateColumns: "1.2fr 0.8fr",
+              gap: 48,
+              padding: "44px 48px 48px",
+            }}>
+
+              {/* Left — description, features, CTA */}
+              <div>
+                <p style={{
+                  fontSize: 14.5,
+                  color: "#111111",
+                  lineHeight: 1.85,
+                  marginBottom: 28,
+                  opacity: isOpen ? 1 : 0,
+                  transform: isOpen ? "none" : "translateY(8px)",
+                  transition: "all .4s ease .05s",
+                  fontWeight: 500,
+                }}>
+                  {service.about}
+                </p>
+
+                <p style={{
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  color: "#555555",
+                  textTransform: "uppercase",
+                  marginBottom: 14,
+                }}>
+                  What's Included
+                </p>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 32 }}>
+                  {service.features.map((f, i) => (
+                    <div key={i} style={{
+                      display: "flex", alignItems: "center", gap: 10,
                       opacity: isOpen ? 1 : 0,
-                      transform: isOpen ? "translateX(0)" : "translateX(-10px)",
-                      transition: `all .4s cubic-bezier(.16,1,.3,1) ${0.2 + i * 0.05}s`,
-                    }}
-                  >
-                    <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#E8471A", flexShrink: 0 }} />
-                    <span style={{ fontSize: 13, color: "#4B5563" }}>{f}</span>
-                  </div>
+                      transform: isOpen ? "none" : "translateX(-8px)",
+                      transition: `all .35s ease ${0.1 + i * 0.04}s`,
+                    }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E8471A" strokeWidth="2.5" strokeLinecap="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                      <span style={{ fontSize: 13.5, color: "#111111", fontWeight: 600 }}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <a
+                  href="/contact"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: 8,
+                    background: "#E8471A", color: "#fff",
+                    padding: "12px 24px", borderRadius: 8,
+                    textDecoration: "none", fontSize: 12, fontWeight: 700,
+                    letterSpacing: "0.08em", textTransform: "uppercase",
+                    transition: "all .2s ease",
+                    opacity: isOpen ? 1 : 0,
+                    transform: isOpen ? "none" : "translateY(6px)",
+                    transitionDelay: "0.35s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#111";
+                    e.currentTarget.style.transform = "translateY(-1px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "#E8471A";
+                    e.currentTarget.style.transform = "none";
+                  }}
+                >
+                  Get a Quote
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+
+              {/* Right — tags */}
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                gap: 8,
+                opacity: isOpen ? 1 : 0,
+                transform: isOpen ? "none" : "translateY(10px)",
+                transition: "all .45s ease .15s",
+              }}>
+                {(service.tags || []).map((tag, i) => (
+                  <span key={i} style={{
+                    display: "inline-block",
+                    width: "fit-content",
+                    fontSize: 11,
+                    fontWeight: 600,
+                    color: "#111111",
+                    background: "rgba(255,255,255,0.85)",
+                    border: "1px solid rgba(0,0,0,0.12)",
+                    padding: "5px 14px",
+                    borderRadius: 100,
+                    letterSpacing: "0.03em",
+                  }}>{tag}</span>
                 ))}
               </div>
 
-              <a
-                href="/contact"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginTop: 32,
-                  background: "#111111",
-                  color: "#fff",
-                  padding: "13px 26px",
-                  borderRadius: 8,
-                  textDecoration: "none",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  letterSpacing: "-0.1px",
-                  transition: "all .25s",
-                  opacity: isOpen ? 1 : 0,
-                  transform: isOpen ? "translateY(0)" : "translateY(8px)",
-                  transitionDelay: "0.35s",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = "#111111"; e.currentTarget.style.transform = "none"; }}
-              >
-                Get a Quote
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-
-            {/* Right — image */}
-            <div style={{
-              borderRadius: 14,
-              overflow: "hidden",
-              height: 280,
-              opacity: isOpen ? 1 : 0,
-              transform: isOpen ? "scale(1) translateY(0)" : "scale(0.96) translateY(12px)",
-              transition: "all .5s cubic-bezier(.16,1,.3,1) .1s",
-            }}>
-              <img
-                src={service.image}
-                alt={service.title}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
             </div>
           </div>
         </div>
@@ -236,20 +259,21 @@ export default function Services() {
       <PageBanner
         tag="SERVICES"
         title="Full-Service Creative & Digital Agency."
-        sub="From brand identity to web apps — we do it all, and we do it well."
+        sub="From brand identity to websites, photo shoots, social media, ads, and everything in between — we do it all, and we do it brilliantly."
+        bg="/servicesBanner.png"
       />
 
       {/* ── SERVICES ACCORDION ── */}
-      <section style={{ background: "#fff", padding: "80px clamp(20px,5vw,80px)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section style={{ background: "#ffffff", padding: "72px clamp(20px,5vw,80px)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div ref={ref}>
             {SERVICES.map((s, i) => (
               <div
                 key={i}
                 style={{
                   opacity: v ? 1 : 0,
-                  transform: v ? "none" : "translateY(20px)",
-                  transition: `opacity .5s cubic-bezier(.16,1,.3,1) ${i * 0.04}s, transform .5s cubic-bezier(.16,1,.3,1) ${i * 0.04}s`,
+                  transform: v ? "none" : "translateY(16px)",
+                  transition: `opacity .45s ease ${i * 0.035}s, transform .45s ease ${i * 0.035}s`,
                 }}
               >
                 <AccordionItem
@@ -265,102 +289,125 @@ export default function Services() {
       </section>
 
       {/* ── STATS ── */}
-      <section style={{ background: "#111111", padding: "80px clamp(20px,5vw,80px)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1 }}>
+      <section style={{ background: "#111111", padding: "72px clamp(20px,5vw,80px)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
           {[
-            { num: "11+", label: "Services", desc: "Everything under one roof — no agency hopping." },
+            { num: "11+",  label: "Services",       desc: "Everything under one roof — no agency hopping." },
             { num: "7–21", label: "Days to Deliver", desc: "Fast without ever sacrificing quality." },
-            { num: "100%", label: "Satisfaction", desc: "We don't stop until you're genuinely happy." },
+            { num: "100%", label: "Satisfaction",    desc: "We don't stop until you're genuinely happy." },
           ].map((s, i) => (
-            <div key={i} style={{ padding: "52px 40px", borderRight: i < 2 ? "1px solid #1F2937" : "none" }}>
-              <div style={{ fontSize: "clamp(36px,3.5vw,54px)", fontWeight: 800, color: "#E8471A", letterSpacing: "-2px", lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#fff", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 10 }}>{s.label}</div>
-              <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.75 }}>{s.desc}</p>
+            <div key={i} style={{
+              padding: "48px 36px",
+              borderRight: i < 2 ? "1px solid #222222" : "none",
+            }}>
+              <div style={{
+                fontSize: "clamp(34px,3.2vw,50px)",
+                fontWeight: 800,
+                color: "#E8471A",
+                letterSpacing: "-2px",
+                lineHeight: 1,
+                marginBottom: 10,
+              }}>{s.num}</div>
+              <div style={{
+                fontSize: 11, fontWeight: 700, color: "#ffffff",
+                textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 10,
+              }}>{s.label}</div>
+              <p style={{ fontSize: 13, color: "#555555", lineHeight: 1.75 }}>{s.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ background: "#fafaf9", padding: "100px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#F9F9F9", padding: "96px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#111111", letterSpacing: "-0.8px", marginBottom: 60, textAlign: "center" }}>
+
+          <h2 style={{
+            fontSize: "clamp(26px,2.8vw,40px)",
+            fontWeight: 800, color: "#111111",
+            letterSpacing: "-0.6px", marginBottom: 56,
+            textAlign: "center",
+          }}>
             Frequently Asked Questions
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
 
-            {/* Left — question list */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, alignItems: "start" }}>
+
+            {/* Question list */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {FAQS.map((f, i) => (
                 <div
                   key={i}
                   onClick={() => setFaqOpen(i)}
                   style={{
-                    padding: "18px 24px",
-                    borderRadius: 10,
-                    cursor: "pointer",
-                    transition: "all .25s cubic-bezier(.16,1,.3,1)",
-                    background: faqOpen === i ? "#E8471A" : "#fff",
-                    border: `1px solid ${faqOpen === i ? "#E8471A" : "#E4E3DD"}`,
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: 16,
+                    padding: "16px 20px", borderRadius: 10, cursor: "pointer",
+                    transition: "all .2s ease",
+                    background: faqOpen === i ? "#E8471A" : "#ffffff",
+                    border: `1px solid ${faqOpen === i ? "#E8471A" : "#E8E8E8"}`,
+                    display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14,
                   }}
-                  onMouseEnter={(e) => { if (faqOpen !== i) { e.currentTarget.style.borderColor = "rgba(232,71,26,.4)"; e.currentTarget.style.background = "#fff5f3"; } }}
-                  onMouseLeave={(e) => { if (faqOpen !== i) { e.currentTarget.style.borderColor = "#E4E3DD"; e.currentTarget.style.background = "#fff"; } }}
+                  onMouseEnter={(e) => {
+                    if (faqOpen !== i) {
+                      e.currentTarget.style.borderColor = "rgba(232,71,26,.35)";
+                      e.currentTarget.style.background = "#FFF6F4";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (faqOpen !== i) {
+                      e.currentTarget.style.borderColor = "#E8E8E8";
+                      e.currentTarget.style.background = "#ffffff";
+                    }
+                  }}
                 >
-                  <span style={{ fontSize: 14, fontWeight: 600, color: faqOpen === i ? "#fff" : "#111111", transition: "color .25s" }}>
-                    {f.q}
-                  </span>
                   <span style={{
-                    fontSize: 18,
-                    color: faqOpen === i ? "#fff" : "#E8471A",
+                    fontSize: 13.5, fontWeight: 600,
+                    color: faqOpen === i ? "#fff" : "#111111",
+                    transition: "color .2s",
+                  }}>{f.q}</span>
+                  <span style={{
+                    fontSize: 18, color: faqOpen === i ? "#fff" : "#E8471A",
                     flexShrink: 0,
-                    transition: "transform .3s cubic-bezier(.16,1,.3,1)",
+                    transition: "transform .25s ease",
                     transform: faqOpen === i ? "rotate(45deg)" : "rotate(0deg)",
                     fontWeight: 300,
+                    display: "inline-block",
                   }}>+</span>
                 </div>
               ))}
             </div>
 
-            {/* Right — answer panel */}
+            {/* Answer panel */}
             <div style={{ position: "sticky", top: 100 }}>
-              {faqOpen !== null ? (
+              {faqOpen !== null && (
                 <div style={{
-                  background: "#fff",
-                  borderRadius: 16,
-                  padding: "36px 32px",
-                  border: "1.5px solid #E8471A",
-                  boxShadow: "0 12px 48px rgba(232,71,26,.08)",
-                  animation: "faqSlide .3s cubic-bezier(.16,1,.3,1)",
+                  background: "#ffffff",
+                  borderRadius: 14,
+                  padding: "32px 28px",
+                  border: "1px solid #EBEBEB",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+                  animation: "faqSlide .3s ease",
                 }}>
-                  <div style={{ width: 36, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 20 }} />
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 16, lineHeight: 1.4 }}>
+                  <div style={{ width: 32, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 18 }} />
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>
                     {FAQS[faqOpen].q}
                   </h3>
-                  <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>
+                  <p style={{ fontSize: 13.5, color: "#444444", lineHeight: 1.85 }}>
                     {FAQS[faqOpen].a}
                   </p>
-                  <p style={{ fontSize: 11, color: "#C4C4C4", marginTop: 32, letterSpacing: "0.08em" }}>
+                  <p style={{ fontSize: 11, color: "#CCCCCC", marginTop: 28, letterSpacing: "0.08em" }}>
                     {faqOpen + 1} / {FAQS.length}
                   </p>
                 </div>
-              ) : null}
-
+              )}
             </div>
+
           </div>
         </div>
       </section>
 
       <style>{`
-        @keyframes slideDown {
-          from { opacity: 0; transform: translateY(-10px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
         @keyframes faqSlide {
-          from { opacity: 0; transform: translateY(10px); }
+          from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
       `}</style>

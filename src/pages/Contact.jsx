@@ -12,10 +12,10 @@ const FAQS = [
 
 /* ── IMAGE PATHS ── drop files in /public/ */
 const CONTACT_IMAGES = {
-  hero:    "/contact-hero.jpg",     // Big hero image top right
-  mid1:    "/contact-mid1.jpg",     // Middle section image 1
-  mid2:    "/contact-mid2.jpg",     // Middle section image 2
-  bottom:  "/contact-bottom.jpg",   // Bottom CTA image
+  hero:    "/contact-banner.png",     // Big hero image top right
+  mid1:    "/contact1.png",     // Middle section image 1
+  mid2:    "/contact2.png",     // Middle section image 2
+  bottom:  "/contact-wp.png",   // Bottom CTA image
 };
 
 function ImgBox({ src, ratio = "1/1", radius = 16 }) {
@@ -286,11 +286,20 @@ export default function Contact() {
       </section>
 
       {/* ── BOTTOM CTA WITH IMAGE ── */}
-      <section style={{ position: "relative", overflow: "hidden", minHeight: 480, display: "flex", alignItems: "center" }}>
+      <section style={{ position: "relative", overflow: "hidden", minHeight: 580, display: "flex", alignItems: "center" }}>
         {/* Background image */}
         <div style={{ position: "absolute", inset: 0 }}>
-          <ImgBox src={CONTACT_IMAGES.bottom} ratio="auto" radius={0} />
-          <div style={{ position: "absolute", inset: 0, background: "rgba(17,17,17,.75)" }} />
+          <img
+            src={CONTACT_IMAGES.bottom}
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center 25%",  // pushes down to show the phone screen
+            }}
+          />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(17,17,17,.45)" }} />
         </div>
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto", padding: "100px clamp(20px,5vw,80px)", textAlign: "center", width: "100%" }}>
           <h2 style={{ fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, color: "#fff", marginBottom: 20, letterSpacing: "-1.5px", lineHeight: 1.1 }}>

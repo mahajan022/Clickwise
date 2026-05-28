@@ -32,7 +32,7 @@ export const SERVICES = [
     desc: "Distinctive brand systems that tell your story powerfully.",
     about: "A brand is more than a logo—it's a feeling. We create comprehensive visual identities that resonate with your audience and stand out in the market.",
     detail: "Logo, typography, color palette, brand guidelines, social assets—everything you need to maintain consistency and make an impact.",
-    image: "/service4.png",
+    image: "/servicesLogo.png",
     features: ["Logo Design (Multiple Concepts)", "Brand Guidelines", "Color Palette & Typography", "Social Media Templates", "Print Collateral", "Brand Story Development"]
   },
   { 
@@ -41,7 +41,7 @@ export const SERVICES = [
     desc: "Professional visuals that stop the scroll and convert.",
     about: "Studio-quality product photography, lifestyle shoots, and content creation tailored to your brand voice and audience preferences.",
     detail: "Visuals sell. We produce professional photography, video content, and reels optimized for every platform to maximize engagement and conversions.",
-    image: "/service5.png",
+    image: "/photographyServices.png",
     features: ["Product Photography", "Lifestyle Shoots", "Video Production", "Social Media Reels", "Content Editing", "Photo Retouching"]
   },
   { 
@@ -50,7 +50,7 @@ export const SERVICES = [
     desc: "Strategic content and community growth across all platforms.",
     about: "We manage your entire social presence—from content creation to community engagement. Data-driven strategies that grow your following and drive sales.",
     detail: "Content calendars, copywriting, design, scheduling, community management, and monthly analytics reporting. Everything you need to dominate social.",
-    image: "/service6.png",
+    image: "/socialMediaServices.png",
     features: ["Content Calendar Planning", "Graphic Design", "Copywriting", "Community Management", "Paid Ads (Meta/LinkedIn)", "Analytics & Reporting"]
   },
   { 
@@ -59,7 +59,7 @@ export const SERVICES = [
     desc: "Data-driven strategies to acquire and retain customers.",
     about: "We combine paid ads, email marketing, and conversion optimization into a cohesive growth engine that consistently delivers results.",
     detail: "Paid ads, email funnels, landing page optimization, funnel strategy—tailored to your market and audience for maximum ROI.",
-    image: "/service7.png",
+    image: "/strategyServices.png",
     features: ["Paid Ads Strategy (Google, Meta)", "Email Marketing Funnels", "Landing Page Optimization", "Conversion Rate Optimization", "Analytics Setup", "Monthly Reporting"]
   },
   { 
@@ -68,7 +68,7 @@ export const SERVICES = [
     desc: "Scalable web apps and SaaS platforms built to grow.",
     about: "Robust, production-ready applications built with MongoDB, Express, React, and Node.js. From MVP to enterprise-scale SaaS.",
     detail: "We deliver complex web applications with clean architecture, scalability, and security from the ground up. Full-stack excellence.",
-    image: "/service8.png",
+    image: "/mernServices.png",
     features: ["Full-Stack Development", "Database Design (MongoDB)", "API Development & Integration", "User Authentication", "Payment Integration", "Cloud Deployment"]
   },
   { 
@@ -77,7 +77,7 @@ export const SERVICES = [
     desc: "AI chatbots and automation workflows that save time.",
     about: "We implement AI-powered solutions—chatbots, automation workflows, smart integrations—to streamline your operations and reduce manual work.",
     detail: "ChatGPT integration, automation with Make/Zapier, custom AI solutions. Save hours every week on repetitive tasks.",
-    image: "/service9.png",
+    image: "/analyticsServices.png",
     features: ["AI Chatbot Implementation", "Workflow Automation (Make/Zapier)", "ChatGPT Integration", "Custom AI Solutions", "Database Integration", "Monitoring & Maintenance"]
   },
   { 
@@ -86,7 +86,7 @@ export const SERVICES = [
     desc: "Rank on Google and get discovered on ChatGPT.",
     about: "Modern SEO goes beyond Google. We optimize for search, AI assistants, voice search, and emerging platforms to maximize visibility.",
     detail: "Technical SEO, content strategy, AI search optimization. Get discovered where your customers are actually searching.",
-    image: "/service10.png",
+    image: "/seoServices.png",
     features: ["Technical SEO Audit", "Content Strategy", "Keyword Research", "Link Building", "Core Web Vitals Optimization", "AI Search Optimization"]
   },
   { 
@@ -95,7 +95,7 @@ export const SERVICES = [
     desc: "Ongoing care and optimization for your digital assets.",
     about: "Regular updates, security patches, performance monitoring, and dedicated support. Your website gets the care it deserves.",
     detail: "Monthly maintenance plans with backups, security monitoring, performance optimization, and 24/7 support.",
-    image: "/service11.png",
+    image: "/supportServices.png",
     features: ["Regular Updates", "Security Monitoring", "Backup & Recovery", "Performance Optimization", "Dedicated Support", "Analytics Review"]
   },
 ];

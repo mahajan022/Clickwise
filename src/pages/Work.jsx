@@ -78,6 +78,7 @@ export default function Work() {
         tag="WORK"
         title="Projects That Made Impact."
         sub="A selection of brands we've helped grow. Every project tells a story of strategy, design, and results."
+        bg="/work-banner.png"
       />
 
       {/* ── FEATURED PROJECTS ── */}
@@ -178,8 +179,27 @@ export default function Work() {
       </section>
 
       {/* ── TOOLS WE USE ── */}
-      <section style={{ background: "#F7F7F5", padding: "200px clamp(40px,8vw,180px)" }}>
-        <div ref={ref2} style={{ maxWidth: 1320, margin: "0 auto" }}>
+      <section
+        style={{
+          position: "relative",
+          backgroundImage: "url('/tools-bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+          padding: "200px clamp(40px,8vw,180px)",
+        }}
+      >
+        {/* Overlay — keeps logo cards crisp, tones down the photo */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(247, 247, 245, 0.88)",
+          }}
+        />
+
+        {/* Content sits above the overlay */}
+        <div ref={ref2} style={{ position: "relative", zIndex: 1, maxWidth: 1320, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 72, opacity: v2 ? 1 : 0, transform: v2 ? "none" : "translateY(20px)", transition: "all .7s cubic-bezier(.16,1,.3,1)" }}>
             <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", marginBottom: 12 }}>
               Tools We Use To Deliver Results
@@ -195,10 +215,10 @@ export default function Work() {
               <ToolCard key={i} tool={tool} i={i} v2={v2} toolHovered={toolHovered} setToolHovered={setToolHovered} />
             ))}
           </div>
-          {/* Row 2 — 5 icons centered */}
+          {/* Row 2 — 8 icons centered */}
           <div style={{ display: "flex", justifyContent: "center", gap: 32, flexWrap: "wrap" }}>
             {TOOLS.slice(7).map((tool, i) => (
-              <ToolCard key={i+7} tool={tool} i={i+7} v2={v2} toolHovered={toolHovered} setToolHovered={setToolHovered} />
+              <ToolCard key={i + 7} tool={tool} i={i + 7} v2={v2} toolHovered={toolHovered} setToolHovered={setToolHovered} />
             ))}
           </div>
         </div>

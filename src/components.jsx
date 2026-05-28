@@ -108,20 +108,40 @@ export function Placeholder({ emoji = "📸", label = "Placeholder" }) {
 }
 
 /* ── PAGE BANNER ── */
-export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle" }) {
+export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle", bg }) {
   const [ref, v] = useInView();
   return (
-    <section style={{ background: "#fff", borderBottom: "1px solid #E4E3DD", padding: "80px clamp(20px,5vw,80px)" }}>
-      <div ref={ref} style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
+    <section style={{
+      background: bg ? `url(${bg}) center/cover no-repeat` : "#fff",
+      borderBottom: "1px solid #E4E3DD",
+      padding: "80px clamp(20px,5vw,80px)",
+      position: "relative",
+    }}>
+      {/* Dark overlay when bg image is present */}
+      {bg && (
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.55)",
+          pointerEvents: "none",
+        }} />
+      )}
+      <div ref={ref} style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
         <h1 style={{
-          fontSize: "clamp(40px,5vw,64px)", fontWeight: 800, color: "#111111", lineHeight: 1.1, marginBottom: 20, letterSpacing: "-1px",
-          opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .1s"
+          fontSize: "clamp(40px,5vw,64px)", fontWeight: 800,
+          color: bg ? "#fff" : "#111111",
+          lineHeight: 1.1, marginBottom: 20, letterSpacing: "-1px",
+          opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)",
+          transition: "all .7s cubic-bezier(.16,1,.3,1) .1s"
         }}>
           {title}
         </h1>
         <p style={{
-          fontSize: 16, color: "#6B7280", lineHeight: 1.8, maxWidth: 700, margin: "0 auto",
-          opacity: v ? 1 : 0, transform: v ? "none" : "translateY(12px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .2s"
+          fontSize: 16,
+          color: bg ? "rgba(255,255,255,.8)" : "#6B7280",
+          lineHeight: 1.8, maxWidth: 700, margin: "0 auto",
+          opacity: v ? 1 : 0, transform: v ? "none" : "translateY(12px)",
+          transition: "all .7s cubic-bezier(.16,1,.3,1) .2s"
         }}>
           {sub}
         </p>
