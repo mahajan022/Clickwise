@@ -83,13 +83,13 @@ export default function Work() {
 
       {/* ── FEATURED PROJECTS ── */}
       <section style={{ background: "#fff", padding: "100px clamp(20px,5vw,80px)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+        {/* ✅ FIX: ref moved here to the parent div, NOT inside the map */}
+        <div ref={ref} style={{ maxWidth: 1320, margin: "0 auto" }}>
           {WORKS.map((w, i) => {
             const isEven = i % 2 === 0;
             return (
               <div
                 key={i}
-                ref={ref}
                 style={{
                   display: "grid",
                   gridTemplateColumns: isEven ? "1.1fr 1fr" : "1fr 1.1fr",
@@ -189,16 +189,7 @@ export default function Work() {
           padding: "200px clamp(40px,8vw,180px)",
         }}
       >
-        {/* Overlay — keeps logo cards crisp, tones down the photo */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(247, 247, 245, 0.88)",
-          }}
-        />
-
-        {/* Content sits above the overlay */}
+        <div style={{ position: "absolute", inset: 0, background: "rgba(247, 247, 245, 0.88)" }} />
         <div ref={ref2} style={{ position: "relative", zIndex: 1, maxWidth: 1320, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 72, opacity: v2 ? 1 : 0, transform: v2 ? "none" : "translateY(20px)", transition: "all .7s cubic-bezier(.16,1,.3,1)" }}>
             <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", marginBottom: 12 }}>
