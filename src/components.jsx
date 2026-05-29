@@ -427,7 +427,7 @@ export function Footer() {
         {/* Middle grid */}
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr repeat(3, 1fr)", gap: 80, marginBottom: 80 }}>
           <div>
-            <img src="/logo-white.png" alt="Clickwise" style={{ height: 60, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
+            <img src="/logo-white.png" alt="Clickwise" style={{ height: 120, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
             <p style={{ fontSize: 13, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
               Mumbai's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
             </p>
