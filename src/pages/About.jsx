@@ -116,7 +116,14 @@ function FloatCard({ card, origin, delay, fired, settled, span = 1 }) {
     >
       <div style={{ width: "100%", height: span === 2 ? 200 : 140, overflow: "hidden", borderRadius: "18px 18px 0 0" }}>
         {card.img
-          ? <img src={card.img} alt={card.label} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          ? <img
+              src={card.img}
+              alt={card.label}
+              loading="lazy"
+              decoding="async"
+              onLoad={(e) => { e.currentTarget.style.opacity = 1; }}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0, transition: "opacity 0.4s ease" }}
+            />
           : <div style={{ width: "100%", height: "100%", background: `${card.accent}18`, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <i className={`ti ${card.icon}`} style={{ fontSize: 22, color: card.accent }} />
             </div>
@@ -223,6 +230,53 @@ function ProcessHero({ ref4, v4 }) {
         </p>
       </div>
     </section>
+  );
+}
+
+/* ═══════════════════════════════════════════
+   FOUNDER VISUAL — branded monogram + quote panel
+   (replaces the portrait image — no face needed)
+═══════════════════════════════════════════ */
+function FounderPanel() {
+  return (
+    <div style={{
+      borderRadius: 20,
+      overflow: "hidden",
+      aspectRatio: "3/4",
+      background: "linear-gradient(145deg, #1a1a1a 0%, #2a2018 100%)",
+      border: "1px solid rgba(255,255,255,0.08)",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      padding: "44px 40px",
+      position: "relative",
+    }}>
+      {/* Subtle radial glow */}
+      <div style={{ position: "absolute", top: -80, right: -80, width: 260, height: 260, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,71,26,0.18) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+      {/* Monogram top */}
+      <div style={{
+        width: 64, height: 64, borderRadius: 16,
+        background: "#E8471A",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: 30, fontWeight: 900, color: "#fff",
+        boxShadow: "0 16px 40px rgba(232,71,26,0.4)",
+        position: "relative", zIndex: 1,
+      }}>C</div>
+
+      {/* Big quote */}
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ fontSize: 52, color: "#E8471A", lineHeight: 0.6, fontWeight: 900, marginBottom: 16 }}>"</div>
+        <p style={{ fontSize: "clamp(20px,2vw,28px)", fontWeight: 700, color: "#fff", lineHeight: 1.3, letterSpacing: "-0.5px", margin: 0 }}>
+          We don't ship templates.<br />We build things that last.
+        </p>
+      </div>
+
+      {/* Footer line */}
+      <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", position: "relative", zIndex: 1 }}>
+        Clickwise Studio · Est. 2021
+      </div>
+    </div>
   );
 }
 
@@ -389,7 +443,7 @@ export default function About() {
       <section style={{ background: "#111111", padding: "120px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
           <div ref={ref6} style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
-            <TiltImageCard src="" ratio="3/4" label="Your founder 3D portrait" />
+            <FounderPanel />
           </div>
           <div style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(32px)", transition: "all 1s cubic-bezier(.16,1,.3,1) 0.15s" }}>
             <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
