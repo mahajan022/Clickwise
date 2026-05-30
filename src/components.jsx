@@ -85,30 +85,30 @@ export function Nav() {
           font-weight: 700;
           color: #fff;
           text-decoration: none;
-          background: #E8471A;
-          padding: 11px 26px;
-          border-radius: 8px;
-          letter-spacing: 0.08em;
+          background: linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%);
+          padding: 12px 28px;
+          border-radius: 10px;
+          letter-spacing: 0.05em;
           text-transform: uppercase;
-          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 4px 20px rgba(232,71,26,.35);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 6px 22px rgba(232,71,26,.38), inset 0 1px 0 rgba(255,255,255,.18);
           position: relative;
           overflow: hidden;
         }
         .nav-cta::before {
           content: '';
           position: absolute;
-          inset: 0;
-          background: rgba(255,255,255,0.12);
-          opacity: 0;
-          transition: opacity 0.2s;
+          top: 0; left: -120%;
+          width: 60%; height: 100%;
+          background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+          transition: left 0.6s cubic-bezier(0.16,1,0.3,1);
         }
         .nav-cta:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 32px rgba(232,71,26,.5);
+          box-shadow: 0 12px 34px rgba(232,71,26,.5), inset 0 1px 0 rgba(255,255,255,.25);
         }
         .nav-cta:hover::before {
-          opacity: 1;
+          left: 130%;
         }
         .nav-cta:active {
           transform: translateY(0px);
@@ -290,8 +290,8 @@ export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle", bg
           {title}
         </h1>
         <p style={{
-          fontSize: 16,
-          color: bg ? "rgba(255,255,255,.8)" : "#6B7280",
+          fontSize: 17,
+          color: bg ? "rgba(255,255,255,.85)" : "#5A6270",
           lineHeight: 1.8, maxWidth: 700, margin: "0 auto",
           opacity: v ? 1 : 0, transform: v ? "none" : "translateY(12px)",
           transition: "all .7s cubic-bezier(.16,1,.3,1) .2s"
@@ -409,17 +409,17 @@ export function Footer() {
             <h3 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
               Let's Create Something <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary</span>
             </h3>
-            <p style={{ fontSize: 15, color: "#9CA3AF", lineHeight: 1.8, maxWidth: 480 }}>
+            <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.8, maxWidth: 480 }}>
               Ready to transform your brand? Let's build something that stands out and drives results.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "flex-start", whiteSpace: "nowrap" }}>
             <a href="mailto:anuragg7051@gmail.com"
-              style={{ background: "#E8471A", color: "#fff", padding: "14px 32px", borderRadius: 8, textDecoration: "none", fontWeight: 600, fontSize: 13, transition: "all .3s", boxShadow: "0 8px 24px rgba(232,71,26,.3)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(232,71,26,.4)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(232,71,26,.3)"; }}
+              style={{ background: "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)", color: "#fff", padding: "16px 38px", borderRadius: 10, textDecoration: "none", fontWeight: 700, fontSize: 14, letterSpacing: "0.04em", textTransform: "uppercase", transition: "all .3s cubic-bezier(.16,1,.3,1)", boxShadow: "0 10px 30px rgba(232,71,26,.35), inset 0 1px 0 rgba(255,255,255,.18)" }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 44px rgba(232,71,26,.5), inset 0 1px 0 rgba(255,255,255,.25)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(232,71,26,.35), inset 0 1px 0 rgba(255,255,255,.18)"; }}
             >
-              Start Your Project
+              Start Your Project →
             </a>
           </div>
         </div>
@@ -428,7 +428,7 @@ export function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr repeat(3, 1fr)", gap: 80, marginBottom: 80 }}>
           <div>
             <img src="/logo-white.png" alt="Clickwise" style={{ height: 120, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
-            <p style={{ fontSize: 13, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
+            <p style={{ fontSize: 15, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
               Mumbai's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
             </p>
             <div style={{ display: "flex", gap: 12 }}>
@@ -520,16 +520,42 @@ export function Loader({ onDone }) {
   return (
     <div style={{
       position: "fixed", inset: 0, background: "#fff",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      zIndex: 9999
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      gap: 28, zIndex: 9999
     }}>
-      <div style={{
-        width: 40, height: 40, borderRadius: "50%",
-        border: "3px solid #E4E3DD",
-        borderTop: "3px solid #E8471A",
-        animation: "spin 0.8s linear infinite"
-      }} />
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      {/* Logo pulse */}
+      <img
+        src="/logo.png"
+        alt="Clickwise"
+        style={{ height: 40, width: "auto", objectFit: "contain", animation: "ldPulse 1.4s ease-in-out infinite" }}
+        onError={(e) => { e.currentTarget.style.display = "none"; }}
+      />
+
+      {/* Dual ring spinner */}
+      <div style={{ position: "relative", width: 46, height: 46 }}>
+        <div style={{
+          position: "absolute", inset: 0, borderRadius: "50%",
+          border: "3px solid #F0EDEA",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0, borderRadius: "50%",
+          border: "3px solid transparent",
+          borderTopColor: "#E8471A",
+          borderRightColor: "#E8471A",
+          animation: "ldSpin 0.7s cubic-bezier(.6,.1,.4,.9) infinite"
+        }} />
+      </div>
+
+      {/* Thin progress bar */}
+      <div style={{ width: 120, height: 3, borderRadius: 3, background: "#F0EDEA", overflow: "hidden" }}>
+        <div style={{ height: "100%", background: "linear-gradient(90deg,#F2551F,#E8471A)", borderRadius: 3, animation: "ldBar 1.5s cubic-bezier(.16,1,.3,1) forwards" }} />
+      </div>
+
+      <style>{`
+        @keyframes ldSpin { to { transform: rotate(360deg); } }
+        @keyframes ldPulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(.94); } }
+        @keyframes ldBar { 0% { width: 0; } 100% { width: 100%; } }
+      `}</style>
     </div>
   );
 }

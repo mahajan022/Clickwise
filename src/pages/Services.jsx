@@ -77,7 +77,7 @@ function AccordionItem({ service, isOpen, onToggle }) {
             {service.title}
           </h3>
           {!isOpen && (
-            <p style={{ fontSize: 13, color: "#AAAAAA", marginTop: 3 }}>
+            <p style={{ fontSize: 14, color: "#7A7A7A", marginTop: 4 }}>
               {service.desc}
             </p>
           )}
@@ -111,6 +111,9 @@ function AccordionItem({ service, isOpen, onToggle }) {
               <img
                 src={service.image}
                 alt=""
+                loading="lazy"
+                decoding="async"
+                onLoad={(e) => { e.currentTarget.style.opacity = 0.85; }}
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -118,7 +121,8 @@ function AccordionItem({ service, isOpen, onToggle }) {
                   height: "100%",
                   objectFit: "cover",
                   objectPosition: "center",
-                  opacity: 0.5,
+                  opacity: 0,
+                  transition: "opacity .5s ease",
                   pointerEvents: "none",
                 }}
               />
@@ -128,7 +132,7 @@ function AccordionItem({ service, isOpen, onToggle }) {
             <div style={{
               position: "absolute",
               inset: 0,
-              background: "rgba(255,255,255,0.72)",
+              background: "linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.95) 42%, rgba(255,255,255,0.55) 70%, rgba(255,255,255,0.25) 100%)",
               pointerEvents: "none",
             }} />
 
@@ -145,8 +149,8 @@ function AccordionItem({ service, isOpen, onToggle }) {
               {/* Left — description, features, CTA */}
               <div>
                 <p style={{
-                  fontSize: 14.5,
-                  color: "#111111",
+                  fontSize: 16,
+                  color: "#1A1A1A",
                   lineHeight: 1.85,
                   marginBottom: 28,
                   opacity: isOpen ? 1 : 0,
@@ -179,7 +183,7 @@ function AccordionItem({ service, isOpen, onToggle }) {
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E8471A" strokeWidth="2.5" strokeLinecap="round">
                         <polyline points="20 6 9 17 4 12"/>
                       </svg>
-                      <span style={{ fontSize: 13.5, color: "#111111", fontWeight: 600 }}>{f}</span>
+                      <span style={{ fontSize: 15, color: "#111111", fontWeight: 600 }}>{f}</span>
                     </div>
                   ))}
                 </div>
@@ -187,23 +191,24 @@ function AccordionItem({ service, isOpen, onToggle }) {
                 <a
                   href="/contact"
                   style={{
-                    display: "inline-flex", alignItems: "center", gap: 8,
-                    background: "#E8471A", color: "#fff",
-                    padding: "12px 24px", borderRadius: 8,
-                    textDecoration: "none", fontSize: 12, fontWeight: 700,
-                    letterSpacing: "0.08em", textTransform: "uppercase",
-                    transition: "all .2s ease",
+                    display: "inline-flex", alignItems: "center", gap: 9,
+                    background: "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)", color: "#fff",
+                    padding: "14px 30px", borderRadius: 10,
+                    textDecoration: "none", fontSize: 13, fontWeight: 700,
+                    letterSpacing: "0.05em", textTransform: "uppercase",
+                    boxShadow: "0 8px 24px rgba(232,71,26,.3), inset 0 1px 0 rgba(255,255,255,.18)",
+                    transition: "all .25s cubic-bezier(.16,1,.3,1)",
                     opacity: isOpen ? 1 : 0,
                     transform: isOpen ? "none" : "translateY(6px)",
                     transitionDelay: "0.35s",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#111";
-                    e.currentTarget.style.transform = "translateY(-1px)";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.boxShadow = "0 14px 36px rgba(232,71,26,.45), inset 0 1px 0 rgba(255,255,255,.25)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#E8471A";
                     e.currentTarget.style.transform = "none";
+                    e.currentTarget.style.boxShadow = "0 8px 24px rgba(232,71,26,.3), inset 0 1px 0 rgba(255,255,255,.18)";
                   }}
                 >
                   Get a Quote
@@ -312,7 +317,7 @@ export default function Services() {
                 fontSize: 11, fontWeight: 700, color: "#ffffff",
                 textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 10,
               }}>{s.label}</div>
-              <p style={{ fontSize: 13, color: "#555555", lineHeight: 1.75 }}>{s.desc}</p>
+              <p style={{ fontSize: 14, color: "#888888", lineHeight: 1.75 }}>{s.desc}</p>
             </div>
           ))}
         </div>
@@ -360,7 +365,7 @@ export default function Services() {
                   }}
                 >
                   <span style={{
-                    fontSize: 13.5, fontWeight: 600,
+                    fontSize: 15, fontWeight: 600,
                     color: faqOpen === i ? "#fff" : "#111111",
                     transition: "color .2s",
                   }}>{f.q}</span>
@@ -391,7 +396,7 @@ export default function Services() {
                   <h3 style={{ fontSize: 17, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>
                     {FAQS[faqOpen].q}
                   </h3>
-                  <p style={{ fontSize: 13.5, color: "#444444", lineHeight: 1.85 }}>
+                  <p style={{ fontSize: 15, color: "#444444", lineHeight: 1.85 }}>
                     {FAQS[faqOpen].a}
                   </p>
                   <p style={{ fontSize: 11, color: "#CCCCCC", marginTop: 28, letterSpacing: "0.08em" }}>
