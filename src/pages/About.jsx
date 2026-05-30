@@ -291,6 +291,34 @@ function WhyClickwise({ ref6, v6 }) {
   );
 }
 
+/* ─── TIMELINE MILESTONE (reveals individually on scroll) ─── */
+function MilestoneItem({ m }) {
+  const [ref, v] = useInView(0.35);
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: "relative",
+        paddingBottom: 56,
+        opacity: v ? 1 : 0,
+        transform: v ? "none" : "translateX(-22px)",
+        transition: "all .7s cubic-bezier(.16,1,.3,1)",
+      }}
+    >
+      <div style={{
+        position: "absolute", left: -34, top: 6, width: 12, height: 12, borderRadius: "50%",
+        background: "#E8471A",
+        boxShadow: v ? "0 0 0 5px rgba(232,71,26,0.18)" : "0 0 0 3px rgba(232,71,26,0.10)",
+        transform: v ? "scale(1)" : "scale(.6)",
+        transition: "all .5s cubic-bezier(.16,1,.3,1)",
+      }} />
+      <div style={{ fontSize: 11, fontWeight: 800, color: "#E8471A", letterSpacing: "0.1em", marginBottom: 10 }}>{m.year}</div>
+      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 10 }}>{m.title}</h3>
+      <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>{m.desc}</p>
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════
    MAIN ABOUT PAGE
 ═══════════════════════════════════════════ */
@@ -389,12 +417,7 @@ export default function About() {
             <div style={{ position: "relative", paddingLeft: 28 }}>
               <div style={{ position: "absolute", left: 0, top: 8, bottom: 0, width: 1, background: "linear-gradient(to bottom, #E8471A 0%, #E4E3DD 100%)" }} />
               {milestones.map((m, i) => (
-                <div key={i} style={{ position: "relative", paddingBottom: 56, opacity: v3 ? 1 : 0, transform: v3 ? "none" : "translateX(-16px)", transition: `all .8s cubic-bezier(.16,1,.3,1) ${i * 0.12}s` }}>
-                  <div style={{ position: "absolute", left: -34, top: 6, width: 12, height: 12, borderRadius: "50%", background: "#E8471A", boxShadow: "0 0 0 3px rgba(232,71,26,0.15)" }} />
-                  <div style={{ fontSize: 11, fontWeight: 800, color: "#E8471A", letterSpacing: "0.1em", marginBottom: 10 }}>{m.year}</div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 10 }}>{m.title}</h3>
-                  <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>{m.desc}</p>
-                </div>
+                <MilestoneItem key={i} m={m} />
               ))}
             </div>
             <div style={{ position: "sticky", top: 120 }}>

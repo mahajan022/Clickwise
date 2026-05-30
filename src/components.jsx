@@ -513,54 +513,71 @@ export function Loader({ onDone }) {
     return () => clearTimeout(timer);
   }, [onDone]);
 
-  const letters = "CLICKWISE".split("");
+  const words = ["WEB", "·", "ADS", "·", "BRANDING"];
 
   return (
     <div style={{
       position: "fixed", inset: 0,
       background: "#111111",
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-      gap: 34, zIndex: 9999, overflow: "hidden",
+      gap: 26, zIndex: 9999, overflow: "hidden",
     }}>
-      {/* Background image — drop your file at public/loader-bg.png */}
-      <img
-        src="/loader-bg.png"
-        alt=""
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }}
-        onError={(e) => { e.currentTarget.style.display = "none"; }}
-      />
-      {/* Dark overlay so text stays readable on any image */}
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(17,17,17,.7) 0%, rgba(17,17,17,.55) 50%, rgba(17,17,17,.8) 100%)" }} />
+      {/* Background video — replace the Cloudinary URL with your own uploaded video.
+          Keep f_auto,q_auto for fast streaming. */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.4 }}
+      >
+        <source src="https://res.cloudinary.com/dpejpwl80/video/upload/q_auto/f_auto/v1780137982/Firefly_Fast-paced_2-second_montage_for_a_creative_digital_agency_intro._Rapid_cuts_flashing_through_fstckd.mp4" type="video/mp4" />
+      </video>
+      {/* Dark overlay so logo + text stay readable on any background */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(17,17,17,.72) 0%, rgba(17,17,17,.55) 50%, rgba(17,17,17,.82) 100%)" }} />
 
-      {/* CLICKWISE letters revealing one by one */}
-      <div style={{ position: "relative", zIndex: 1, display: "flex", gap: "clamp(2px,1vw,8px)" }}>
-        {letters.map((ch, i) => (
+      {/* Logo — fades + scales in */}
+      <img
+        src="/logo-white.png"
+        alt="Clickwise"
+        style={{
+          position: "relative", zIndex: 1,
+          height: "clamp(48px,7vw,84px)", width: "auto", objectFit: "contain",
+          opacity: 0, transform: "scale(.9)",
+          animation: "cwLogo .7s cubic-bezier(.16,1,.3,1) forwards",
+        }}
+        onError={(e) => { e.currentTarget.src = "/logo.png"; }}
+      />
+
+      {/* Tagline — words load one by one */}
+      <div style={{ position: "relative", zIndex: 1, display: "flex", gap: 10 }}>
+        {words.map((w, i) => (
           <span
             key={i}
             style={{
-              fontSize: "clamp(34px,6vw,72px)",
-              fontWeight: 900,
-              letterSpacing: "-1px",
-              color: "#fff",
-              display: "inline-block",
+              fontSize: "clamp(11px,1.4vw,15px)",
+              fontWeight: 700,
+              letterSpacing: "0.22em",
+              color: w === "·" ? "#E8471A" : "rgba(255,255,255,0.85)",
               opacity: 0,
-              transform: "translateY(26px) scale(.85)",
-              animation: `cwLetter .5s cubic-bezier(.16,1,.3,1) forwards`,
-              animationDelay: `${i * 0.11}s`,
+              transform: "translateY(10px)",
+              animation: "cwWord .45s ease forwards",
+              animationDelay: `${0.5 + i * 0.18}s`,
             }}
           >
-            {ch}
+            {w}
           </span>
         ))}
       </div>
 
       {/* Thin progress bar */}
-      <div style={{ position: "relative", zIndex: 1, width: 160, height: 3, borderRadius: 3, background: "rgba(255,255,255,0.15)", overflow: "hidden" }}>
+      <div style={{ position: "relative", zIndex: 1, width: 160, height: 3, borderRadius: 3, background: "rgba(255,255,255,0.15)", overflow: "hidden", marginTop: 6 }}>
         <div style={{ height: "100%", background: "linear-gradient(90deg,#F2551F,#E8471A)", borderRadius: 3, animation: "cwBar 1.9s cubic-bezier(.16,1,.3,1) forwards" }} />
       </div>
 
       <style>{`
-        @keyframes cwLetter { to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes cwLogo { to { opacity: 1; transform: scale(1); } }
+        @keyframes cwWord { to { opacity: 1; transform: translateY(0); } }
         @keyframes cwBar { 0% { width: 0; } 100% { width: 100%; } }
       `}</style>
     </div>
