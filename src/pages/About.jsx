@@ -183,35 +183,19 @@ function FloatingServicesSection({ ref2, v2 }) {
 
 /* ═══════════════════════════════════════════
    PROCESS HERO — full bleed bg image + text only
-   Replace src="" with your image path
-   Recommended: wide natural-light workspace photo
 ═══════════════════════════════════════════ */
 function ProcessHero({ ref4, v4 }) {
   return (
     <section style={{ position: "relative", width: "100%", minHeight: "70vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
-
-      {/* Fallback bg (shows when no image) */}
       <div style={{ position: "absolute", inset: 0, background: "#EDEBE6" }} />
-
-      {/*
-        YOUR BACKGROUND IMAGE — replace src below
-        e.g. src="/about-process-bg.jpg"
-        Best: wide landscape, natural window/outdoor light, workspace or team candid
-      */}
       <img
         src=""
         alt=""
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", filter: "saturate(0.65) brightness(1.05)" }}
       />
-
-      {/* Fade to white — left + right */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #fff 0%, transparent 25%, transparent 75%, #fff 100%)", zIndex: 1 }} />
-      {/* Fade to white — top + bottom */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, #fff 0%, transparent 20%, transparent 80%, #fff 100%)", zIndex: 1 }} />
-      {/* Centre veil — keeps text legible */}
       <div style={{ position: "absolute", inset: 0, background: "rgba(255,255,255,0.42)", zIndex: 2 }} />
-
-      {/* Text */}
       <div
         ref={ref4}
         style={{
@@ -234,49 +218,74 @@ function ProcessHero({ ref4, v4 }) {
 }
 
 /* ═══════════════════════════════════════════
-   FOUNDER VISUAL — branded monogram + quote panel
-   (replaces the portrait image — no face needed)
+   WHY CLICKWISE — values / promise (no personal info)
 ═══════════════════════════════════════════ */
-function FounderPanel() {
+const VALUES = [
+  { icon: "ti-bolt", title: "Speed without shortcuts", desc: "Landing pages in days, full sites in weeks — without ever cutting corners on quality or care." },
+  { icon: "ti-eye", title: "Total transparency", desc: "You know the timeline and the price before we start. No hidden costs, no surprise invoices, ever." },
+  { icon: "ti-diamond", title: "Built to last", desc: "Clean, custom code and design that performs for years — never templated, never thrown together." },
+  { icon: "ti-users", title: "Direct access", desc: "A deliberately small studio means real attention on every project and one point of contact throughout." },
+];
+
+function WhyClickwise({ ref6, v6 }) {
   return (
-    <div style={{
-      borderRadius: 20,
-      overflow: "hidden",
-      aspectRatio: "3/4",
-      background: "linear-gradient(145deg, #1a1a1a 0%, #2a2018 100%)",
-      border: "1px solid rgba(255,255,255,0.08)",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-      padding: "44px 40px",
-      position: "relative",
-    }}>
-      {/* Subtle radial glow */}
-      <div style={{ position: "absolute", top: -80, right: -80, width: 260, height: 260, borderRadius: "50%", background: "radial-gradient(circle, rgba(232,71,26,0.18) 0%, transparent 70%)", pointerEvents: "none" }} />
+    <section style={{ background: "#111111", padding: "120px clamp(20px,5vw,80px)" }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
 
-      {/* Monogram top */}
-      <div style={{
-        width: 64, height: 64, borderRadius: 16,
-        background: "#E8471A",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 30, fontWeight: 900, color: "#fff",
-        boxShadow: "0 16px 40px rgba(232,71,26,0.4)",
-        position: "relative", zIndex: 1,
-      }}>C</div>
+        {/* Left — heading + intro */}
+        <div ref={ref6} style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
+          <div style={{ display: "inline-block", fontSize: 11, fontWeight: 800, color: "#E8471A", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 24, background: "rgba(232,71,26,0.12)", padding: "6px 14px", borderRadius: 100 }}>
+            Why Clickwise
+          </div>
+          <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
+            Premium work,<br />without the agency games.
+          </h2>
+          <p style={{ fontSize: 15, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 20 }}>
+            We started Clickwise because too many businesses were paying premium prices for slow, templated, mediocre work. We do the opposite — design that converts, code that performs, and a process that respects your time.
+          </p>
+          <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>
+            Whether you're a startup launching your first product or an established brand reinventing itself, you get the same obsession with quality — all under one roof, with one standard: excellence.
+          </p>
+          <div style={{ marginTop: 40, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 40 }}>
+            <div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "#E8471A", lineHeight: 1 }}>50+</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 6 }}>Projects</div>
+            </div>
+            <div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "#E8471A", lineHeight: 1 }}>4</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 6 }}>Countries</div>
+            </div>
+            <div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "#E8471A", lineHeight: 1 }}>100%</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 6 }}>Satisfaction</div>
+            </div>
+          </div>
+        </div>
 
-      {/* Big quote */}
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ fontSize: 52, color: "#E8471A", lineHeight: 0.6, fontWeight: 900, marginBottom: 16 }}>"</div>
-        <p style={{ fontSize: "clamp(20px,2vw,28px)", fontWeight: 700, color: "#fff", lineHeight: 1.3, letterSpacing: "-0.5px", margin: 0 }}>
-          We don't ship templates.<br />We build things that last.
-        </p>
+        {/* Right — value cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(32px)", transition: "all 1s cubic-bezier(.16,1,.3,1) 0.15s" }}>
+          {VALUES.map((val, i) => (
+            <div key={i}
+              style={{
+                background: "linear-gradient(155deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 18,
+                padding: "28px 24px",
+                transition: "border-color .3s ease, transform .3s ease",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,71,26,0.5)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.transform = "translateY(0)"; }}
+            >
+              <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(232,71,26,0.14)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
+                <i className={`ti ${val.icon}`} style={{ fontSize: 20, color: "#E8471A" }} />
+              </div>
+              <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 10 }}>{val.title}</h3>
+              <p style={{ fontSize: 13, color: "#9CA3AF", lineHeight: 1.7, margin: 0 }}>{val.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* Footer line */}
-      <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", position: "relative", zIndex: 1 }}>
-        Clickwise Studio · Est. 2021
-      </div>
-    </div>
+    </section>
   );
 }
 
@@ -439,35 +448,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* ══ FOUNDER ══ */}
-      <section style={{ background: "#111111", padding: "120px clamp(20px,5vw,80px)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
-          <div ref={ref6} style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
-            <FounderPanel />
-          </div>
-          <div style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(32px)", transition: "all 1s cubic-bezier(.16,1,.3,1) 0.15s" }}>
-            <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
-              Built by someone who was tired of settling for average.
-            </h2>
-            <p style={{ fontSize: 15, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 20 }}>
-              Anuragg started Clickwise from a home office in Mumbai in 2021. The first client was a restaurant that needed a proper website. It was delivered in 4 days, and they said it was the best investment they'd ever made.
-            </p>
-            <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9, marginBottom: 20 }}>
-              That project set the standard. Since then, Clickwise has grown into a full-service studio handling everything from brand identity and ad shoots to web development and performance marketing — for clients across India, the UAE, Australia, and the UK.
-            </p>
-            <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>
-              The studio is deliberately small. Every client gets direct access, real attention, and work that's actually thought through — not templated and shipped.
-            </p>
-            <div style={{ marginTop: 40, display: "flex", alignItems: "center", gap: 16, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-              <div style={{ width: 52, height: 52, borderRadius: "50%", background: "#E8471A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 800, color: "#fff", flexShrink: 0 }}>A</div>
-              <div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff" }}>Anuragg</div>
-                <div style={{ fontSize: 12, color: "#6B7280", marginTop: 2 }}>Founder, Clickwise Studio</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ══ WHY CLICKWISE (replaces founder) ══ */}
+      <WhyClickwise ref6={ref6} v6={v6} />
 
       {/* ══ CTA ══ */}
       <section style={{ background: "#E8471A", padding: "120px clamp(20px,5vw,80px)" }}>
