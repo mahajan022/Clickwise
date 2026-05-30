@@ -78,7 +78,7 @@ export default function Work() {
         tag="WORK"
         title="Projects That Made Impact."
         sub="A selection of brands we've helped grow. Every project tells a story of strategy, design, and results."
-        bg="/work-banner.png"
+        bg="https://res.cloudinary.com/dpejpwl80/image/upload/q_auto/f_auto/v1780139606/work-banner_by47lv.png"
       />
 
       {/* ── FEATURED PROJECTS ── */}

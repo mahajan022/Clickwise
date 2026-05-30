@@ -12,7 +12,7 @@ const FAQS = [
 
 /* ── IMAGE PATHS ── drop files in /public/ */
 const CONTACT_IMAGES = {
-  hero:    "/contact-banner.png",     // Big hero image top right
+  hero:    "https://res.cloudinary.com/dpejpwl80/image/upload/q_auto/f_auto/v1780139502/contact-banner_mcgzi0.png",  // Hero section image
   mid1:    "/contact1.png",     // Middle section image 1
   mid2:    "/contact2.png",     // Middle section image 2
   bottom:  "/contact-wp.png",   // Bottom CTA image

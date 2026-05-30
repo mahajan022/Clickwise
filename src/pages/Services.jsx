@@ -265,7 +265,7 @@ export default function Services() {
         tag="SERVICES"
         title="Full-Service Creative & Digital Agency."
         sub="From brand identity to websites, photo shoots, social media, ads, and everything in between — we do it all, and we do it brilliantly."
-        bg="/servicesBanner.png"
+        bg="https://res.cloudinary.com/dpejpwl80/image/upload/q_auto/f_auto/v1780139668/servicesBanner_sbj5f4.png"
       />
 
       {/* ── SERVICES ACCORDION ── */}
