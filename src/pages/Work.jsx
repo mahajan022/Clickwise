@@ -150,7 +150,7 @@ export default function Work() {
                     <span style={{ fontSize: 10, fontWeight: 700, color: "#E8471A", letterSpacing: "0.15em", textTransform: "uppercase" }}>{w.tag}</span>
                   </div>
                   <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>{w.title}</h2>
-                  <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9, marginBottom: 32 }}>{w.desc}</p>
+                  <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.9, marginBottom: 32 }}>{w.desc}</p>
                   <div style={{ display: "flex", gap: 32, marginBottom: 36, paddingBottom: 32, borderBottom: "1px solid #E4E3DD" }}>
                     {[
                       { label: "Category", value: w.cat },
@@ -158,7 +158,7 @@ export default function Work() {
                     ].map((m, j) => (
                       <div key={j}>
                         <p style={{ fontSize: 10, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>{m.label}</p>
-                        <p style={{ fontSize: 14, fontWeight: 600, color: "#111111" }}>{m.value}</p>
+                        <p style={{ fontSize: 15, fontWeight: 600, color: "#111111" }}>{m.value}</p>
                       </div>
                     ))}
                   </div>
@@ -195,7 +195,7 @@ export default function Work() {
             <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", marginBottom: 12 }}>
               Tools We Use To Deliver Results
             </h2>
-            <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
+            <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
               Industry-leading tools and platforms — chosen for performance, reliability, and results.
             </p>
           </div>
@@ -221,7 +221,7 @@ export default function Work() {
           <h2 style={{ fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, color: "#fff", marginBottom: 20, lineHeight: 1.1, letterSpacing: "-1px" }}>
             Ready to be our next success story?
           </h2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,.85)", marginBottom: 36, lineHeight: 1.8 }}>
+          <p style={{ fontSize: 16, color: "rgba(255,255,255,.85)", marginBottom: 36, lineHeight: 1.8 }}>
             Let's work together to build something that stands out and drives real results.
           </p>
           <a href="/contact" className="btn-white" style={{ textDecoration: "none" }}>Start Your Project →</a>

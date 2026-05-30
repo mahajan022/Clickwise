@@ -54,7 +54,7 @@ function ServicesPreview() {
           <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(20px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .1s" }}>
             Complete Creative Solutions.
           </h2>
-          <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 500, margin: "16px auto 0", lineHeight: 1.8, opacity: v ? 1 : 0, transition: "all .7s .2s" }}>
+          <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 500, margin: "16px auto 0", lineHeight: 1.8, opacity: v ? 1 : 0, transition: "all .7s .2s" }}>
             From brand identity to full-stack web apps — we handle everything so you can focus on your business.
           </p>
         </div>
@@ -72,7 +72,7 @@ function ServicesPreview() {
               </div>
               <div style={{ padding: 28 }}>
                 <h3 style={{ fontSize: 18, fontWeight: 700, color: "#0D0D0D", marginBottom: 10 }}>{s.title}</h3>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7 }}>{s.desc}</p>
+                <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7 }}>{s.desc}</p>
               </div>
             </div>
           ))}
@@ -99,7 +99,7 @@ function ProcessSection() {
             <h2 style={{ fontSize: "clamp(30px,3vw,48px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
               How We Work.<br /><span style={{ color: "#E8471A" }}>Every Single Time.</span>
             </h2>
-            <p style={{ fontSize: 15, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
+            <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
               Our 6-phase process has been refined across 50+ projects. No guesswork, no surprises — just reliable delivery, every time.
             </p>
             <Link to="/about" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#E8471A", color: "#fff", padding: "13px 28px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700, transition: "all .25s" }}
@@ -115,7 +115,7 @@ function ProcessSection() {
               >
                 <div style={{ fontSize: 10, fontWeight: 800, color: "#E8471A", letterSpacing: "0.1em", marginBottom: 10 }}>{p.num}</div>
                 <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{p.title}</h4>
-                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.7 }}>{p.desc}</p>
+                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7 }}>{p.desc}</p>
               </div>
             ))}
           </div>
@@ -143,7 +143,7 @@ function WhyUs() {
           <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", marginBottom: 16 }}>
             One Agency. Everything You Need.
           </h2>
-          <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
+          <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
             Stop juggling multiple vendors. We handle design, development, branding, and marketing — under one roof.
           </p>
         </div>
@@ -157,7 +157,7 @@ function WhyUs() {
                 <img src={card.icon} alt={card.title} style={{ width: 42, height: 42, objectFit: "contain" }} />
               </div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: "#111111", marginBottom: 10 }}>{card.title}</h3>
-              <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.8 }}>{card.desc}</p>
+              <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.8 }}>{card.desc}</p>
             </div>
           ))}
         </div>
@@ -182,7 +182,7 @@ function WorkPreview() {
           <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(20px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .1s" }}>
             Projects That Made Impact.
           </h2>
-          <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 480, margin: "16px auto 0", lineHeight: 1.8, opacity: v ? 1 : 0, transition: "all .7s .2s" }}>
+          <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 480, margin: "16px auto 0", lineHeight: 1.8, opacity: v ? 1 : 0, transition: "all .7s .2s" }}>
             Real clients, real results. Here's a glimpse of what we've built.
           </p>
         </div>
@@ -196,7 +196,7 @@ function WorkPreview() {
                 <img src={w.image} alt={w.title} style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0, transition: "transform .5s cubic-bezier(.16,1,.3,1)" }} />
                 <div className="overlay" style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.82)", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: 36, textAlign: "center", opacity: 0, transform: "translateY(20px)", transition: "all .4s cubic-bezier(.16,1,.3,1)" }}>
                   <h3 style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginBottom: 14, letterSpacing: "-0.3px" }}>{w.title}</h3>
-                  <p style={{ fontSize: 13, color: "rgba(255,255,255,.75)", lineHeight: 1.75, marginBottom: 24 }}>{w.desc}</p>
+                  <p style={{ fontSize: 14, color: "rgba(255,255,255,.75)", lineHeight: 1.75, marginBottom: 24 }}>{w.desc}</p>
                   <a href={w.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, fontWeight: 700, color: "#fff", background: "#E8471A", padding: "10px 24px", borderRadius: 6, textDecoration: "none" }}>View Project ↗</a>
                 </div>
               </div>
@@ -222,7 +222,7 @@ function AnimatedTestimonials() {
     <section style={{ background: "#111111", padding: "90px 0", overflow: "hidden" }}>
       <div ref={ref} style={{ textAlign: "center", marginBottom: 60, padding: "0 clamp(20px,5vw,80px)" }}>
         <h2 style={{ fontSize: "clamp(28px,3vw,48px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-1px", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(20px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .1s" }}>What Our Clients Say.</h2>
-        <p style={{ fontSize: 15, color: "#6B7280", marginTop: 12, opacity: v ? 1 : 0, transition: "all .7s .2s" }}>Don't take our word for it — hear from the businesses we've helped grow.</p>
+        <p style={{ fontSize: 16, color: "#6B7280", marginTop: 12, opacity: v ? 1 : 0, transition: "all .7s .2s" }}>Don't take our word for it — hear from the businesses we've helped grow.</p>
       </div>
       <div style={{ position: "relative" }}>
         <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 120, background: "linear-gradient(to right, #111111, transparent)", zIndex: 2, pointerEvents: "none" }} />
@@ -234,14 +234,14 @@ function AnimatedTestimonials() {
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,.08)"; e.currentTarget.parentElement.style.animationPlayState = "running"; }}
             >
               <div style={{ color: "#E8471A", fontSize: 14, letterSpacing: 3, marginBottom: 18 }}>★★★★★</div>
-              <p style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.85, color: "rgba(255,255,255,.75)", marginBottom: 28, fontStyle: "italic" }}>"{t.quote}"</p>
+              <p style={{ fontSize: 15, fontWeight: 300, lineHeight: 1.85, color: "rgba(255,255,255,.75)", marginBottom: 28, fontStyle: "italic" }}>"{t.quote}"</p>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <div style={{ width: 44, height: 44, borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
                   {t.photo ? <img src={t.photo} alt={t.author} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #E8471A, #FF7A45)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#fff" }}>{t.initials}</div>}
                 </div>
                 <div>
-                  <p style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>{t.author}</p>
-                  <p style={{ fontSize: 11, color: "rgba(255,255,255,.4)", marginTop: 3 }}>{t.role}</p>
+                  <p style={{ fontSize: 15, fontWeight: 700, color: "#FFFFFF" }}>{t.author}</p>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,.4)", marginTop: 3 }}>{t.role}</p>
                 </div>
               </div>
             </div>
@@ -262,7 +262,7 @@ function CTA() {
       <div ref={ref} style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto", gap: 80, alignItems: "center", position: "relative", zIndex: 1 }}>
         <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateY(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <h2 style={{ fontSize: "clamp(36px,4.5vw,64px)", fontWeight: 800, color: "#fff", lineHeight: 1.06, letterSpacing: "-1.5px", marginBottom: 18 }}>Ready to build something extraordinary?</h2>
-          <p style={{ fontSize: 15, fontWeight: 300, color: "rgba(255,255,255,.8)", lineHeight: 1.85 }}>Free consultation. No commitment. Let's talk about your project.</p>
+          <p style={{ fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,.8)", lineHeight: 1.85 }}>Free consultation. No commitment. Let's talk about your project.</p>
         </div>
         <div style={{ opacity: v ? 1 : 0, transition: "opacity .7s .25s" }}>
           <Link to="/contact" className="btn-white" style={{ textDecoration: "none", whiteSpace: "nowrap" }}>Get a Free Quote →</Link>

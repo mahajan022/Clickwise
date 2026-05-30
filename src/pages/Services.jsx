@@ -77,7 +77,7 @@ function AccordionItem({ service, isOpen, onToggle }) {
             {service.title}
           </h3>
           {!isOpen && (
-            <p style={{ fontSize: 14, color: "#7A7A7A", marginTop: 4 }}>
+            <p style={{ fontSize: 15, color: "#7A7A7A", marginTop: 4 }}>
               {service.desc}
             </p>
           )}
@@ -317,7 +317,7 @@ export default function Services() {
                 fontSize: 11, fontWeight: 700, color: "#ffffff",
                 textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 10,
               }}>{s.label}</div>
-              <p style={{ fontSize: 14, color: "#888888", lineHeight: 1.75 }}>{s.desc}</p>
+              <p style={{ fontSize: 15, color: "#888888", lineHeight: 1.75 }}>{s.desc}</p>
             </div>
           ))}
         </div>
@@ -393,13 +393,13 @@ export default function Services() {
                   animation: "faqSlide .3s ease",
                 }}>
                   <div style={{ width: 32, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 18 }} />
-                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>
                     {FAQS[faqOpen].q}
                   </h3>
-                  <p style={{ fontSize: 15, color: "#444444", lineHeight: 1.85 }}>
+                  <p style={{ fontSize: 16, color: "#444444", lineHeight: 1.85 }}>
                     {FAQS[faqOpen].a}
                   </p>
-                  <p style={{ fontSize: 11, color: "#CCCCCC", marginTop: 28, letterSpacing: "0.08em" }}>
+                  <p style={{ fontSize: 12, color: "#CCCCCC", marginTop: 28, letterSpacing: "0.08em" }}>
                     {faqOpen + 1} / {FAQS.length}
                   </p>
                 </div>

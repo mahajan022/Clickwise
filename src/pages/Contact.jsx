@@ -59,13 +59,13 @@ export default function Contact() {
 
             {/* Left — heading */}
             <div style={{ paddingBottom: 80, opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", color: "#E8471A", textTransform: "uppercase", marginBottom: 24 }}>Get In Touch</p>
+              <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", color: "#E8471A", textTransform: "uppercase", marginBottom: 24 }}>Get In Touch</p>
               <h1 style={{ fontSize: "clamp(40px,5vw,72px)", fontWeight: 800, color: "#111111", lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 28 }}>
                 Let's Build<br />
                 Something<br />
                 <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary.</span>
               </h1>
-              <p style={{ fontSize: 17, color: "#5A6270", lineHeight: 1.8, maxWidth: 420, marginBottom: 48 }}>
+              <p style={{ fontSize: 18, color: "#5A6270", lineHeight: 1.8, maxWidth: 420, marginBottom: 48 }}>
                 Have a project in mind? We'd love to hear about it. Free consultation, no commitment, no sales pitch — just an honest conversation about your goals.
               </p>
 
@@ -100,7 +100,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p style={{ fontSize: 10, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 2 }}>{item.label}</p>
-                      <p className="contact-val" style={{ fontSize: 15, fontWeight: 700, color: "#111111", transition: "color .25s" }}>{item.value}</p>
+                      <p className="contact-val" style={{ fontSize: 16, fontWeight: 700, color: "#111111", transition: "color .25s" }}>{item.value}</p>
                     </div>
                   </a>
                 ))}
@@ -132,7 +132,7 @@ export default function Contact() {
                   <div style={{ fontSize: "clamp(32px,4vw,48px)", fontWeight: 800, color: "#fff", letterSpacing: "-2px", lineHeight: 1 }}>24h</div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,.7)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: 8 }}>Response Time</div>
                   <div style={{ width: 32, height: 2, background: "rgba(255,255,255,.4)", marginTop: 16 }} />
-                  <p style={{ fontSize: 12, color: "rgba(255,255,255,.7)", lineHeight: 1.7, marginTop: 12 }}>We reply to every inquiry within 24 hours — guaranteed.</p>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,.7)", lineHeight: 1.7, marginTop: 12 }}>We reply to every inquiry within 24 hours — guaranteed.</p>
                 </div>
               </div>
 
@@ -161,7 +161,7 @@ export default function Contact() {
                 <h2 style={{ fontSize: "clamp(24px,2.5vw,32px)", fontWeight: 800, color: "#111111", marginBottom: 8, letterSpacing: "-0.8px" }}>
                   Tell us about your project
                 </h2>
-                <p style={{ fontSize: 15, color: "#5A6270", marginBottom: 36, lineHeight: 1.7 }}>
+                <p style={{ fontSize: 16, color: "#5A6270", marginBottom: 36, lineHeight: 1.7 }}>
                   We'll get back to you within 24 hours with a plan and estimate.
                 </p>
 
@@ -193,7 +193,7 @@ export default function Contact() {
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="What are you building? What's your timeline? What's your budget range?"
                       required
-                      style={{ width: "100%", padding: "13px 16px", border: "1.5px solid #E4E3DD", borderRadius: 10, fontSize: 14, minHeight: 130, outline: "none", boxSizing: "border-box", resize: "vertical", background: "#FAFAF9", transition: "all .25s", fontFamily: "inherit", lineHeight: 1.6 }}
+                      style={{ width: "100%", padding: "13px 16px", border: "1.5px solid #E4E3DD", borderRadius: 10, fontSize: 15, minHeight: 130, outline: "none", boxSizing: "border-box", resize: "vertical", background: "#FAFAF9", transition: "all .25s", fontFamily: "inherit", lineHeight: 1.6 }}
                       onFocus={(e) => { e.target.style.borderColor = "#E8471A"; e.target.style.background = "#fff"; e.target.style.boxShadow = "0 0 0 3px rgba(232,71,26,.08)"; }}
                       onBlur={(e) => { e.target.style.borderColor = "#E4E3DD"; e.target.style.background = "#FAFAF9"; e.target.style.boxShadow = "none"; }}
                     />
@@ -222,7 +222,7 @@ export default function Contact() {
                     {submitted ? "Message Sent! ✓" : "Send Message →"}
                   </button>
 
-                  <p style={{ fontSize: 12, color: "#9CA3AF", marginTop: 16, textAlign: "center", lineHeight: 1.6 }}>
+                  <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 16, textAlign: "center", lineHeight: 1.6 }}>
                     Prefer WhatsApp?{" "}
                     <a href="https://wa.me/917051575007" target="_blank" rel="noopener noreferrer" style={{ color: "#25D366", fontWeight: 600, textDecoration: "none" }}>
                       Chat with us instantly →
@@ -239,21 +239,22 @@ export default function Contact() {
       <section style={{ background: "#111111", padding: "80px clamp(20px,5vw,80px)" }}>
         <div ref={ref3} style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1 }}>
           {[
-            { title: "You Reach Out", desc: "Fill the form or WhatsApp us. We respond within 24 hours.",
-              icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> },
-            { title: "Discovery Call", desc: "A quick 30-min call to understand your goals and vision.",
-              icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.49 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg> },
-            { title: "We Send a Plan", desc: "Detailed proposal with scope, timeline, and fixed pricing.",
-              icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg> },
-            { title: "We Get to Work", desc: "Project kicks off. You're updated at every milestone.",
-              icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> },
+            { title: "You Reach Out", desc: "Fill the form or WhatsApp us. We respond within 24 hours.", icon: "/icons/reach-out.png" },
+            { title: "Discovery Call", desc: "A quick 30-min call to understand your goals and vision.", icon: "/icons/discovery.png" },
+            { title: "We Send a Plan", desc: "Detailed proposal with scope, timeline, and fixed pricing.", icon: "/icons/plan.png" },
+            { title: "We Get to Work", desc: "Project kicks off. You're updated at every milestone.", icon: "/icons/work.png" },
           ].map((s, i) => (
             <div key={i} style={{ padding: "44px 36px", borderRight: i < 3 ? "1px solid #1F2937" : "none", opacity: v3 ? 1 : 0, transform: v3 ? "none" : "translateY(20px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i * 0.1}s` }}>
-              <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(232,71,26,0.12)", color: "#E8471A", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 22 }}>
-                {s.icon}
-              </div>
+              <img
+                src={s.icon}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                onLoad={(e) => { e.currentTarget.style.opacity = 1; }}
+                style={{ width: 46, height: 46, objectFit: "contain", marginBottom: 22, display: "block", opacity: 0, transition: "opacity .4s ease" }}
+              />
               <h4 style={{ fontSize: 17, fontWeight: 700, color: "#fff", marginBottom: 10 }}>{s.title}</h4>
-              <p style={{ fontSize: 14, color: "#8A93A0", lineHeight: 1.8 }}>{s.desc}</p>
+              <p style={{ fontSize: 15, color: "#8A93A0", lineHeight: 1.8 }}>{s.desc}</p>
             </div>
           ))}
         </div>
@@ -283,9 +284,9 @@ export default function Contact() {
             <div style={{ position: "sticky", top: 100 }}>
               <div key={activeFAQ} style={{ background: "#fff", borderRadius: 16, padding: "40px 36px", border: "1.5px solid #E8471A", boxShadow: "0 12px 48px rgba(232,71,26,.08)", animation: "faqIn .3s cubic-bezier(.16,1,.3,1)" }}>
                 <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 20 }} />
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>{FAQS[activeFAQ].q}</h3>
-                <p style={{ fontSize: 15, color: "#5A6270", lineHeight: 1.9 }}>{FAQS[activeFAQ].a}</p>
-                <p style={{ fontSize: 11, color: "#C4C4C4", marginTop: 28, letterSpacing: "0.08em" }}>{activeFAQ + 1} / {FAQS.length}</p>
+                <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>{FAQS[activeFAQ].q}</h3>
+                <p style={{ fontSize: 16, color: "#5A6270", lineHeight: 1.9 }}>{FAQS[activeFAQ].a}</p>
+                <p style={{ fontSize: 12, color: "#C4C4C4", marginTop: 28, letterSpacing: "0.08em" }}>{activeFAQ + 1} / {FAQS.length}</p>
               </div>
             </div>
           </div>
@@ -316,15 +317,11 @@ export default function Contact() {
           <h2 style={{ fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, color: "#fff", marginBottom: 20, letterSpacing: "-1.5px", lineHeight: 1.1 }}>
             Let's Turn Your Vision Into Reality
           </h2>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,.8)", marginBottom: 40, lineHeight: 1.8 }}>
+          <p style={{ fontSize: 18, color: "rgba(255,255,255,.8)", marginBottom: 40, lineHeight: 1.8 }}>
             No project is too big or too small. Let's build something extraordinary together.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="https://wa.me/917051575007" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#25D366", color: "#fff", padding: "16px 36px", borderRadius: 10, textDecoration: "none", fontSize: 15, fontWeight: 700, letterSpacing: "0.03em", transition: "all .3s cubic-bezier(.16,1,.3,1)", boxShadow: "0 10px 34px rgba(37,211,102,.42), inset 0 1px 0 rgba(255,255,255,.18)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "#1ebe5d"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#25D366"; e.currentTarget.style.transform = "none"; }}
-            >
+            <a href="https://wa.me/917051575007" target="_blank" rel="noopener noreferrer" className="cw-btn cw-btn-wa" style={{ textTransform: "none", letterSpacing: "0.03em" }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               WhatsApp Us
             </a>

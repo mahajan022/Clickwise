@@ -238,10 +238,10 @@ function WhyClickwise({ ref6, v6 }) {
           <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
             Premium work,<br />without the agency games.
           </h2>
-          <p style={{ fontSize: 15, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 20 }}>
+          <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 20 }}>
             We started Clickwise because too many businesses were paying premium prices for slow, templated, mediocre work. We do the opposite — design that converts, code that performs, and a process that respects your time.
           </p>
-          <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>
+          <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>
             Whether you're a startup launching your first product or an established brand reinventing itself, you get the same obsession with quality — all under one roof, with one standard: excellence.
           </p>
           <div style={{ marginTop: 40, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 40 }}>
@@ -281,8 +281,8 @@ function WhyClickwise({ ref6, v6 }) {
                 decoding="async"
                 style={{ width: 40, height: 40, objectFit: "contain", marginBottom: 18, display: "block" }}
               />
-              <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 10 }}>{val.title}</h3>
-              <p style={{ fontSize: 13, color: "#9CA3AF", lineHeight: 1.7, margin: 0 }}>{val.desc}</p>
+              <h3 style={{ fontSize: 17, fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 10 }}>{val.title}</h3>
+              <p style={{ fontSize: 14, color: "#9CA3AF", lineHeight: 1.7, margin: 0 }}>{val.desc}</p>
             </div>
           ))}
         </div>
@@ -338,13 +338,13 @@ export default function About() {
             <h2 style={{ fontSize: "clamp(28px,3vw,48px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", lineHeight: 1.15, marginBottom: 28 }}>
               We don't just build websites.<br />We build businesses.
             </h2>
-            <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.9, marginBottom: 20 }}>
+            <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.9, marginBottom: 20 }}>
               Clickwise was born from a frustration with agencies that charged premium prices for mediocre, templated work. We believed Mumbai's businesses deserved better — design that actually converts, code that actually performs, and strategy that actually drives growth.
             </p>
-            <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9, marginBottom: 20 }}>
+            <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9, marginBottom: 20 }}>
               Since our founding, we've partnered with startups launching their first product, mid-sized companies scaling their digital presence, and established brands reinventing themselves for the digital age. Each project gets the same level of obsession — because we understand that your website is your most important salesperson, working 24/7.
             </p>
-            <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>
+            <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>
               Today, Clickwise is a full-service creative digital agency offering web design, development, brand identity, photography, social media, SEO, and growth marketing — all under one roof, with one point of contact, and one standard: excellence.
             </p>
           </div>
@@ -393,7 +393,7 @@ export default function About() {
                   <div style={{ position: "absolute", left: -34, top: 6, width: 12, height: 12, borderRadius: "50%", background: "#E8471A", boxShadow: "0 0 0 3px rgba(232,71,26,0.15)" }} />
                   <div style={{ fontSize: 11, fontWeight: 800, color: "#E8471A", letterSpacing: "0.1em", marginBottom: 10 }}>{m.year}</div>
                   <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 10 }}>{m.title}</h3>
-                  <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.9 }}>{m.desc}</p>
+                  <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>{m.desc}</p>
                 </div>
               ))}
             </div>
@@ -443,8 +443,8 @@ export default function About() {
             <div style={{ background: "#F7F7F5", borderRadius: 16, padding: "40px 36px", border: "1px solid #E4E3DD", position: "sticky", top: 100 }}>
               <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 24 }} />
               <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 16, lineHeight: 1.4 }}>{faqs[activeFAQ].q}</h3>
-              <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>{faqs[activeFAQ].a}</p>
-              <p style={{ fontSize: 11, color: "#C4C0B8", marginTop: 32 }}>{activeFAQ + 1} / {faqs.length}</p>
+              <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>{faqs[activeFAQ].a}</p>
+              <p style={{ fontSize: 12, color: "#C4C0B8", marginTop: 32 }}>{activeFAQ + 1} / {faqs.length}</p>
             </div>
           </div>
         </div>
@@ -459,20 +459,17 @@ export default function About() {
           <h2 style={{ fontSize: "clamp(32px,4.5vw,60px)", fontWeight: 900, color: "#fff", marginBottom: 20, lineHeight: 1.05, letterSpacing: "-1.5px" }}>
             Ready to build<br />something real?
           </h2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,.85)", lineHeight: 1.8, maxWidth: 480, margin: "0 auto 40px" }}>
+          <p style={{ fontSize: 16, color: "rgba(255,255,255,.85)", lineHeight: 1.8, maxWidth: 480, margin: "0 auto 40px" }}>
             Free 30-minute call. No pitch deck. Just an honest conversation about your brand and what it needs.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link to="/contact"
-              style={{ fontSize: 12, fontWeight: 700, color: "#E8471A", background: "#fff", padding: "14px 32px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase", transition: "all .3s" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.88)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; }}
-            >Start a Project →</Link>
-            <a href="https://wa.me/917051575007" target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: 12, fontWeight: 700, color: "#fff", background: "transparent", padding: "14px 32px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase", border: "2px solid rgba(255,255,255,0.5)", transition: "all .3s" }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#fff"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)"; }}
-            >💬 WhatsApp Us</a>
+            <Link to="/contact" className="cw-btn cw-btn-light">
+              Start a Project →
+            </Link>
+            <a href="https://wa.me/917051575007" target="_blank" rel="noopener noreferrer" className="cw-btn cw-btn-wa">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </section>

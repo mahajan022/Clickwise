@@ -195,7 +195,7 @@ export function Nav() {
                 {item.label}
               </Link>
             ))}
-            <Link to="/contact" className="nav-cta">
+            <Link to="/contact" className="cw-btn" style={{ fontSize: 13, padding: "12px 28px" }}>
               Contact
             </Link>
           </div>
@@ -409,16 +409,12 @@ export function Footer() {
             <h3 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
               Let's Create Something <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary</span>
             </h3>
-            <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.8, maxWidth: 480 }}>
+            <p style={{ fontSize: 17, color: "#9CA3AF", lineHeight: 1.8, maxWidth: 480 }}>
               Ready to transform your brand? Let's build something that stands out and drives results.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "flex-start", whiteSpace: "nowrap" }}>
-            <a href="mailto:anuragg7051@gmail.com"
-              style={{ background: "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)", color: "#fff", padding: "16px 38px", borderRadius: 10, textDecoration: "none", fontWeight: 700, fontSize: 14, letterSpacing: "0.04em", textTransform: "uppercase", transition: "all .3s cubic-bezier(.16,1,.3,1)", boxShadow: "0 10px 30px rgba(232,71,26,.35), inset 0 1px 0 rgba(255,255,255,.18)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 44px rgba(232,71,26,.5), inset 0 1px 0 rgba(255,255,255,.25)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(232,71,26,.35), inset 0 1px 0 rgba(255,255,255,.18)"; }}
-            >
+            <a href="mailto:anuragg7051@gmail.com" className="cw-btn">
               Start Your Project →
             </a>
           </div>
@@ -428,7 +424,7 @@ export function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr repeat(3, 1fr)", gap: 80, marginBottom: 80 }}>
           <div>
             <img src="/logo-white.png" alt="Clickwise" style={{ height: 120, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
-            <p style={{ fontSize: 15, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
+            <p style={{ fontSize: 16, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
               Mumbai's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
             </p>
             <div style={{ display: "flex", gap: 12 }}>
@@ -474,7 +470,7 @@ export function Footer() {
 
           <div>
             <h4 style={{ color: "#E8471A", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Get in Touch</h4>
-            <p style={{ color: "#9CA3AF", fontSize: 13, marginBottom: 14, lineHeight: 1.8 }}>
+            <p style={{ color: "#9CA3AF", fontSize: 14, marginBottom: 14, lineHeight: 1.8 }}>
               📍 Mumbai, Maharashtra, India
             </p>
             <a href="tel:+917051575007" style={{ color: "#9CA3AF", fontSize: 13, fontWeight: 500, display: "block", marginBottom: 8, textDecoration: "none", transition: "color .2s" }}
@@ -490,8 +486,8 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: "1px solid #1F2937", padding: "28px 0 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-          <p style={{ color: "#4B5563", fontSize: 12 }}>© 2025 Clickwise. All rights reserved.</p>
-          <p style={{ color: "#4B5563", fontSize: 12 }}>Made with ❤️ from India 🇮🇳</p>
+          <p style={{ color: "#4B5563", fontSize: 13 }}>© 2025 Clickwise. All rights reserved.</p>
+          <p style={{ color: "#4B5563", fontSize: 13 }}>Made with ❤️ from India 🇮🇳</p>
           <div style={{ display: "flex", gap: 20 }}>
             <a href="#privacy" style={{ color: "#6B7280", fontSize: 12, textDecoration: "none" }}
               onMouseEnter={(e) => { e.target.style.color = "#E8471A"; }}
@@ -513,48 +509,59 @@ export function Loader({ onDone }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (onDone) onDone();
-    }, 1500);
+    }, 1900);
     return () => clearTimeout(timer);
   }, [onDone]);
 
+  const letters = "CLICKWISE".split("");
+
   return (
     <div style={{
-      position: "fixed", inset: 0, background: "#fff",
+      position: "fixed", inset: 0,
+      background: "#111111",
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-      gap: 28, zIndex: 9999
+      gap: 34, zIndex: 9999, overflow: "hidden",
     }}>
-      {/* Logo pulse */}
+      {/* Background image — drop your file at public/loader-bg.png */}
       <img
-        src="/logo.png"
-        alt="Clickwise"
-        style={{ height: 40, width: "auto", objectFit: "contain", animation: "ldPulse 1.4s ease-in-out infinite" }}
+        src="/loader-bg.png"
+        alt=""
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }}
         onError={(e) => { e.currentTarget.style.display = "none"; }}
       />
+      {/* Dark overlay so text stays readable on any image */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(17,17,17,.7) 0%, rgba(17,17,17,.55) 50%, rgba(17,17,17,.8) 100%)" }} />
 
-      {/* Dual ring spinner */}
-      <div style={{ position: "relative", width: 46, height: 46 }}>
-        <div style={{
-          position: "absolute", inset: 0, borderRadius: "50%",
-          border: "3px solid #F0EDEA",
-        }} />
-        <div style={{
-          position: "absolute", inset: 0, borderRadius: "50%",
-          border: "3px solid transparent",
-          borderTopColor: "#E8471A",
-          borderRightColor: "#E8471A",
-          animation: "ldSpin 0.7s cubic-bezier(.6,.1,.4,.9) infinite"
-        }} />
+      {/* CLICKWISE letters revealing one by one */}
+      <div style={{ position: "relative", zIndex: 1, display: "flex", gap: "clamp(2px,1vw,8px)" }}>
+        {letters.map((ch, i) => (
+          <span
+            key={i}
+            style={{
+              fontSize: "clamp(34px,6vw,72px)",
+              fontWeight: 900,
+              letterSpacing: "-1px",
+              color: "#fff",
+              display: "inline-block",
+              opacity: 0,
+              transform: "translateY(26px) scale(.85)",
+              animation: `cwLetter .5s cubic-bezier(.16,1,.3,1) forwards`,
+              animationDelay: `${i * 0.11}s`,
+            }}
+          >
+            {ch}
+          </span>
+        ))}
       </div>
 
       {/* Thin progress bar */}
-      <div style={{ width: 120, height: 3, borderRadius: 3, background: "#F0EDEA", overflow: "hidden" }}>
-        <div style={{ height: "100%", background: "linear-gradient(90deg,#F2551F,#E8471A)", borderRadius: 3, animation: "ldBar 1.5s cubic-bezier(.16,1,.3,1) forwards" }} />
+      <div style={{ position: "relative", zIndex: 1, width: 160, height: 3, borderRadius: 3, background: "rgba(255,255,255,0.15)", overflow: "hidden" }}>
+        <div style={{ height: "100%", background: "linear-gradient(90deg,#F2551F,#E8471A)", borderRadius: 3, animation: "cwBar 1.9s cubic-bezier(.16,1,.3,1) forwards" }} />
       </div>
 
       <style>{`
-        @keyframes ldSpin { to { transform: rotate(360deg); } }
-        @keyframes ldPulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(.94); } }
-        @keyframes ldBar { 0% { width: 0; } 100% { width: 100%; } }
+        @keyframes cwLetter { to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes cwBar { 0% { width: 0; } 100% { width: 100%; } }
       `}</style>
     </div>
   );
