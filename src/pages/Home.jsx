@@ -94,7 +94,7 @@ function ProcessSection() {
   return (
     <section style={{ background: "#111111", padding: "110px clamp(20px,5vw,80px)" }}>
       <div style={{ maxWidth: 1320, margin: "0 auto" }}>
-        <div ref={ref} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(48px,6vw,100px)", alignItems: "center", marginBottom: 80 }}>
+        <div ref={ref} className="cw-grid-2" style={{ gap: "clamp(48px,6vw,100px)", alignItems: "center", marginBottom: 80 }}>
           <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateX(-20px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
             <h2 style={{ fontSize: "clamp(30px,3vw,48px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
               How We Work.<br /><span style={{ color: "#E8471A" }}>Every Single Time.</span>
@@ -107,7 +107,7 @@ function ProcessSection() {
               onMouseLeave={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "none"; }}
             >Our Process →</Link>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, opacity: v ? 1 : 0, transform: v ? "none" : "translateX(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .1s" }}>
+          <div className="cw-grid-2" style={{ gap: 16, opacity: v ? 1 : 0, transform: v ? "none" : "translateX(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .1s" }}>
             {PROCESS.slice(0, 4).map((p, i) => (
               <div key={i} style={{ background: "#1A1A1A", borderRadius: 12, padding: "24px 20px", border: "1px solid #1F2937", transition: "all .3s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,71,26,.4)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
@@ -147,7 +147,7 @@ function WhyUs() {
             Stop juggling multiple vendors. We handle design, development, branding, and marketing — under one roof.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+        <div className="cw-grid-3" style={{ gap: 24 }}>
           {cards.map((card, i) => (
             <div key={i} style={{ padding: "36px 32px", borderRadius: 16, border: "1px solid #E4E3DD", background: "#fff", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(24px)", transition: `all .65s cubic-bezier(.16,1,.3,1) ${i * 0.07}s` }}
               onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 20px 60px rgba(17,17,17,.1)"; e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.borderColor = "transparent"; }}
@@ -259,7 +259,7 @@ function CTA() {
   return (
     <section style={{ background: "#E8471A", padding: "110px clamp(20px,5vw,80px)", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
-      <div ref={ref} style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto", gap: 80, alignItems: "center", position: "relative", zIndex: 1 }}>
+      <div ref={ref} className="cw-grid-1auto" style={{ maxWidth: 1320, margin: "0 auto", gap: 80, alignItems: "center", position: "relative", zIndex: 1 }}>
         <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateY(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <h2 style={{ fontSize: "clamp(36px,4.5vw,64px)", fontWeight: 800, color: "#fff", lineHeight: 1.06, letterSpacing: "-1.5px", marginBottom: 18 }}>Ready to build something extraordinary?</h2>
           <p style={{ fontSize: 16, fontWeight: 300, color: "rgba(255,255,255,.8)", lineHeight: 1.85 }}>Free consultation. No commitment. Let's talk about your project.</p>

@@ -12,7 +12,7 @@ const FAQS = [
 
 /* ── IMAGE PATHS ── drop files in /public/ */
 const CONTACT_IMAGES = {
-  hero:    "https://res.cloudinary.com/dpejpwl80/image/upload/q_auto/f_auto/v1780139502/contact-banner_mcgzi0.png",  // Hero section image
+  hero:    "https://res.cloudinary.com/dpejpwl80/image/upload/q_auto/f_auto/v1780139502/contact-banner_mcgzi0.png",     // Big hero image top right
   mid1:    "/contact1.png",     // Middle section image 1
   mid2:    "/contact2.png",     // Middle section image 2
   bottom:  "/contact-wp.png",   // Bottom CTA image
@@ -55,7 +55,7 @@ export default function Contact() {
       {/* ── HERO SECTION ── */}
       <section style={{ background: "#fff", padding: "100px clamp(20px,5vw,80px) 0" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto" }}>
-          <div ref={ref1} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "end" }}>
+          <div ref={ref1} className="cw-grid-2" style={{ gap: 60, alignItems: "end" }}>
 
             {/* Left — heading */}
             <div style={{ paddingBottom: 80, opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
@@ -120,12 +120,12 @@ export default function Contact() {
       {/* ── FORM + IMAGES ── */}
       <section style={{ background: "#F7F7F5", padding: "100px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto" }}>
-          <div ref={ref2} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "start" }}>
+          <div ref={ref2} className="cw-grid-2" style={{ gap: 60, alignItems: "start" }}>
 
             {/* Left — image stack */}
             <div style={{ display: "flex", flexDirection: "column", gap: 16, opacity: v2 ? 1 : 0, transform: v2 ? "none" : "translateX(-24px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
               <ImgBox src={CONTACT_IMAGES.mid1} ratio="16/9" />
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div className="cw-grid-2" style={{ gap: 16 }}>
                 <ImgBox src={CONTACT_IMAGES.mid2} ratio="1/1" />
                 {/* Stats card */}
                 <div style={{ borderRadius: 16, background: "#E8471A", padding: "32px 24px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -237,7 +237,7 @@ export default function Contact() {
 
       {/* ── PROCESS STRIP ── */}
       <section style={{ background: "#111111", padding: "80px clamp(20px,5vw,80px)" }}>
-        <div ref={ref3} style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1 }}>
+        <div ref={ref3} className="cw-grid-4 cw-stack-mobile" style={{ maxWidth: 1320, margin: "0 auto", gap: 1 }}>
           {[
             { title: "You Reach Out", desc: "Fill the form or WhatsApp us. We respond within 24 hours.", icon: "/icons/reach-out.png" },
             { title: "Discovery Call", desc: "A quick 30-min call to understand your goals and vision.", icon: "/icons/discovery.png" },
@@ -268,7 +268,7 @@ export default function Contact() {
               Frequently Asked Questions
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+          <div className="cw-grid-2" style={{ gap: 32, alignItems: "start" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {FAQS.map((faq, i) => (
                 <div key={i} onClick={() => setActiveFAQ(i)}
@@ -281,7 +281,7 @@ export default function Contact() {
                 </div>
               ))}
             </div>
-            <div style={{ position: "sticky", top: 100 }}>
+            <div className="cw-unsticky-mobile" style={{ position: "sticky", top: 100 }}>
               <div key={activeFAQ} style={{ background: "#fff", borderRadius: 16, padding: "40px 36px", border: "1.5px solid #E8471A", boxShadow: "0 12px 48px rgba(232,71,26,.08)", animation: "faqIn .3s cubic-bezier(.16,1,.3,1)" }}>
                 <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 20 }} />
                 <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>{FAQS[activeFAQ].q}</h3>

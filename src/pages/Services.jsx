@@ -137,13 +137,11 @@ function AccordionItem({ service, isOpen, onToggle }) {
             }} />
 
             {/* Content grid */}
-            <div style={{
+            <div className="cw-grid-2" style={{
               position: "relative",
               zIndex: 1,
-              display: "grid",
-              gridTemplateColumns: "1.2fr 0.8fr",
               gap: 48,
-              padding: "44px 48px 48px",
+              padding: "clamp(28px,5vw,44px) clamp(24px,5vw,48px) clamp(28px,5vw,48px)",
             }}>
 
               {/* Left — description, features, CTA */}
@@ -295,7 +293,7 @@ export default function Services() {
 
       {/* ── STATS ── */}
       <section style={{ background: "#111111", padding: "72px clamp(20px,5vw,80px)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
+        <div className="cw-grid-3" style={{ maxWidth: 1100, margin: "0 auto" }}>
           {[
             { num: "11+",  label: "Services",       desc: "Everything under one roof — no agency hopping." },
             { num: "7–21", label: "Days to Deliver", desc: "Fast without ever sacrificing quality." },
@@ -336,7 +334,7 @@ export default function Services() {
             Frequently Asked Questions
           </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, alignItems: "start" }}>
+          <div className="cw-grid-2" style={{ gap: 28, alignItems: "start" }}>
 
             {/* Question list */}
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -382,7 +380,7 @@ export default function Services() {
             </div>
 
             {/* Answer panel */}
-            <div style={{ position: "sticky", top: 100 }}>
+            <div className="cw-unsticky-mobile" style={{ position: "sticky", top: 100 }}>
               {faqOpen !== null && (
                 <div style={{
                   background: "#ffffff",

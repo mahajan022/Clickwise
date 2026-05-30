@@ -90,8 +90,8 @@ export default function Work() {
             return (
               <div
                 key={i}
+                className="cw-grid-2"
                 style={{
-                  display: "grid",
                   gridTemplateColumns: isEven ? "1.1fr 1fr" : "1fr 1.1fr",
                   gap: "clamp(40px,5vw,80px)",
                   alignItems: "center",

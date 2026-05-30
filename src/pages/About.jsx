@@ -70,9 +70,6 @@ function TiltImageCard({ src = "", ratio = "4/3", label = "Your 3D image" }) {
   );
 }
 
-/* ═══════════════════════════════════════════
-   SERVICE CARDS DATA
-═══════════════════════════════════════════ */
 const SERVICE_CARDS = [
   { label: "Ad Shoots", sub: "Photography & Video", icon: "ti-camera", color: "#FFF5F2", accent: "#E8471A", span: 2, img: "/adShoot.png" },
   { label: "Social Media Management", sub: "Content & Community", icon: "ti-brand-instagram", color: "#F7F7F5", accent: "#111111", span: 1, img: "/socialMedia.png" },
@@ -88,7 +85,6 @@ const SERVICE_CARDS = [
   { label: "SEO", sub: "Organic & AI Search", icon: "ti-search", color: "#F0FBF4", accent: "#16A34A", span: 1, img: "/seoMar.png" },
 ];
 
-/* ─── INDIVIDUAL FLOAT CARD ─── */
 function FloatCard({ card, origin, delay, fired, settled, span = 1 }) {
   const tilt = useTilt();
   const [hovered, setHovered] = useState(false);
@@ -139,9 +135,6 @@ function FloatCard({ card, origin, delay, fired, settled, span = 1 }) {
   );
 }
 
-/* ═══════════════════════════════════════════
-   FLOATING SERVICES SECTION
-═══════════════════════════════════════════ */
 function FloatingServicesSection({ ref2, v2 }) {
   const sectionRef = useRef(null);
   const [fired, setFired] = useState(false);
@@ -171,7 +164,7 @@ function FloatingServicesSection({ ref2, v2 }) {
             <span style={{ color: "#9CA3AF" }}>One team. One roof.</span>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18 }}>
+        <div className="cw-grid-4 cw-stack-mobile" style={{ gap: 18 }}>
           {SERVICE_CARDS.map((card, i) => (
             <FloatCard key={i} card={card} origin={origins.current[i]} delay={i * 55} fired={fired} settled={settled} span={card.span} />
           ))}
@@ -181,9 +174,6 @@ function FloatingServicesSection({ ref2, v2 }) {
   );
 }
 
-/* ═══════════════════════════════════════════
-   PROCESS HERO — full bleed bg image + text only
-═══════════════════════════════════════════ */
 function ProcessHero({ ref4, v4 }) {
   return (
     <section style={{ position: "relative", width: "100%", minHeight: "70vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -217,10 +207,6 @@ function ProcessHero({ ref4, v4 }) {
   );
 }
 
-/* ═══════════════════════════════════════════
-   WHY CLICKWISE — values / promise (no personal info)
-   Icons are custom PNGs in public/icons/ → referenced as /icons/...
-═══════════════════════════════════════════ */
 const VALUES = [
   { icon: "/icons/speed.png", title: "Speed without shortcuts", desc: "Landing pages in days, full sites in weeks — without ever cutting corners on quality or care." },
   { icon: "/icons/transparency.png", title: "Total transparency", desc: "You know the timeline and the price before we start. No hidden costs, no surprise invoices, ever." },
@@ -231,9 +217,8 @@ const VALUES = [
 function WhyClickwise({ ref6, v6 }) {
   return (
     <section style={{ background: "#111111", padding: "120px clamp(20px,5vw,80px)" }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
+      <div className="cw-grid-2a" style={{ maxWidth: 1320, margin: "0 auto", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
 
-        {/* Left — heading + intro */}
         <div ref={ref6} style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
           <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
             Premium work,<br />without the agency games.
@@ -260,8 +245,7 @@ function WhyClickwise({ ref6, v6 }) {
           </div>
         </div>
 
-        {/* Right — value cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(32px)", transition: "all 1s cubic-bezier(.16,1,.3,1) 0.15s" }}>
+        <div className="cw-grid-2" style={{ gap: 18, opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(32px)", transition: "all 1s cubic-bezier(.16,1,.3,1) 0.15s" }}>
           {VALUES.map((val, i) => (
             <div key={i}
               style={{
@@ -291,7 +275,6 @@ function WhyClickwise({ ref6, v6 }) {
   );
 }
 
-/* ─── TIMELINE MILESTONE (reveals individually on scroll) ─── */
 function MilestoneItem({ m }) {
   const [ref, v] = useInView(0.35);
   return (
@@ -319,9 +302,6 @@ function MilestoneItem({ m }) {
   );
 }
 
-/* ═══════════════════════════════════════════
-   MAIN ABOUT PAGE
-═══════════════════════════════════════════ */
 export default function About() {
   const [ref1, v1] = useInView();
   const [ref2, v2] = useInView();
@@ -360,7 +340,7 @@ export default function About() {
 
       {/* ══ WHO WE ARE ══ */}
       <section style={{ background: "#fff", padding: "120px clamp(20px,5vw,80px)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
+        <div className="cw-grid-2" style={{ maxWidth: 1320, margin: "0 auto", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
 
           <div ref={ref1} style={{ opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
             <h2 style={{ fontSize: "clamp(28px,3vw,48px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", lineHeight: 1.15, marginBottom: 28 }}>
@@ -394,7 +374,7 @@ export default function About() {
           </div>
         </div>
 
-        <div style={{ maxWidth: 1320, margin: "72px auto 0", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 32, paddingTop: 56, borderTop: "1px solid #E4E3DD" }}>
+        <div className="cw-grid-4" style={{ maxWidth: 1320, margin: "72px auto 0", gap: 32, paddingTop: 56, borderTop: "1px solid #E4E3DD" }}>
           {STATS.map((s, i) => (
             <div key={i} style={{ opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateY(20px)", transition: `all .8s cubic-bezier(.16,1,.3,1) ${i * 0.1 + 0.3}s` }}>
               <div style={{ fontSize: 36, fontWeight: 900, color: "#E8471A", letterSpacing: "-1px", lineHeight: 1 }}>{s.v}</div>
@@ -404,7 +384,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ══ SERVICES — FLOATING CARDS ══ */}
       <FloatingServicesSection ref2={ref2} v2={v2} />
 
       {/* ══ STORY ══ */}
@@ -413,26 +392,25 @@ export default function About() {
           <div ref={ref3} style={{ marginBottom: 80, opacity: v3 ? 1 : 0, transform: v3 ? "none" : "translateY(20px)", transition: "all .8s" }}>
             <h2 style={{ fontSize: "clamp(30px,3.5vw,54px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", lineHeight: 1.1 }}>Four years. No shortcuts.</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(60px,7vw,120px)", alignItems: "start" }}>
+          <div className="cw-grid-2" style={{ gap: "clamp(60px,7vw,120px)", alignItems: "start" }}>
             <div style={{ position: "relative", paddingLeft: 28 }}>
               <div style={{ position: "absolute", left: 0, top: 8, bottom: 0, width: 1, background: "linear-gradient(to bottom, #E8471A 0%, #E4E3DD 100%)" }} />
               {milestones.map((m, i) => (
                 <MilestoneItem key={i} m={m} />
               ))}
             </div>
-            <div style={{ position: "sticky", top: 120 }}>
+            <div className="cw-unsticky-mobile" style={{ position: "sticky", top: 120 }}>
               <TiltImageCard src="/studio.png" ratio="4/5" label="Your story / studio 3D image" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ PROCESS — full bleed image + text only ══ */}
       <ProcessHero ref4={ref4} v4={v4} />
 
       {/* ══ STATS RED BAND ══ */}
       <section style={{ background: "#E8471A", padding: "90px clamp(20px,5vw,80px)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 40 }}>
+        <div className="cw-grid-4" style={{ maxWidth: 1320, margin: "0 auto", gap: 40 }}>
           {[{ v: "50", s: "+", l: "Projects Delivered" }, { v: "30", s: "+", l: "Happy Clients" }, { v: "3", s: "+", l: "Years of Craft" }, { v: "100", s: "%", l: "Satisfaction" }].map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
               <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, color: "#fff", letterSpacing: "-2px", lineHeight: 1 }}>
@@ -450,7 +428,7 @@ export default function About() {
           <div ref={ref5} style={{ textAlign: "center", marginBottom: 80, opacity: v5 ? 1 : 0, transition: "all .7s" }}>
             <h2 style={{ fontSize: "clamp(30px,3.5vw,52px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px" }}>Frequently Asked Questions</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+          <div className="cw-grid-2" style={{ gap: 32, alignItems: "start" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {faqs.map((faq, i) => (
                 <div key={i} onClick={() => setActiveFAQ(i)}
@@ -463,7 +441,7 @@ export default function About() {
                 </div>
               ))}
             </div>
-            <div style={{ background: "#F7F7F5", borderRadius: 16, padding: "40px 36px", border: "1px solid #E4E3DD", position: "sticky", top: 100 }}>
+            <div className="cw-unsticky-mobile" style={{ background: "#F7F7F5", borderRadius: 16, padding: "40px 36px", border: "1px solid #E4E3DD", position: "sticky", top: 100 }}>
               <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 24 }} />
               <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 16, lineHeight: 1.4 }}>{faqs[activeFAQ].q}</h3>
               <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>{faqs[activeFAQ].a}</p>
@@ -473,7 +451,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ══ WHY CLICKWISE (replaces founder) ══ */}
       <WhyClickwise ref6={ref6} v6={v6} />
 
       {/* ══ CTA ══ */}

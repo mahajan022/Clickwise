@@ -404,7 +404,7 @@ export function Footer() {
 
       <div style={{ maxWidth: 1320, margin: "0 auto", position: "relative", zIndex: 1 }}>
         {/* Top CTA */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 80, alignItems: "center", paddingBottom: 80, borderBottom: "1px solid #1F2937", marginBottom: 80 }}>
+        <div className="cw-grid-1auto" style={{ gap: 80, alignItems: "center", paddingBottom: 80, borderBottom: "1px solid #1F2937", marginBottom: 80 }}>
           <div>
             <h3 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
               Let's Create Something <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary</span>
@@ -421,7 +421,7 @@ export function Footer() {
         </div>
 
         {/* Middle grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr repeat(3, 1fr)", gap: 80, marginBottom: 80 }}>
+        <div className="cw-grid-footer" style={{ gap: 80, marginBottom: 80 }}>
           <div>
             <img src="/logo-white.png" alt="Clickwise" style={{ height: 120, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
             <p style={{ fontSize: 16, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
