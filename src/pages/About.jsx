@@ -219,12 +219,13 @@ function ProcessHero({ ref4, v4 }) {
 
 /* ═══════════════════════════════════════════
    WHY CLICKWISE — values / promise (no personal info)
+   Icons are custom PNGs in public/icons/ → referenced as /icons/...
 ═══════════════════════════════════════════ */
 const VALUES = [
-  { icon: "/public/icons/speed.png", title: "Speed without shortcuts", desc: "Landing pages in days, full sites in weeks — without ever cutting corners on quality or care." },
-  { icon: "/public/icons/transparency.png", title: "Total transparency", desc: "You know the timeline and the price before we start. No hidden costs, no surprise invoices, ever." },
-  { icon: "/public/icons/built.png", title: "Built to last", desc: "Clean, custom code and design that performs for years — never templated, never thrown together." },
-  { icon: "/public/icons/access.png", title: "Direct access", desc: "A deliberately small studio means real attention on every project and one point of contact throughout." },
+  { icon: "/icons/speed.png", title: "Speed without shortcuts", desc: "Landing pages in days, full sites in weeks — without ever cutting corners on quality or care." },
+  { icon: "/icons/transparency.png", title: "Total transparency", desc: "You know the timeline and the price before we start. No hidden costs, no surprise invoices, ever." },
+  { icon: "/icons/built.png", title: "Built to last", desc: "Clean, custom code and design that performs for years — never templated, never thrown together." },
+  { icon: "/icons/access.png", title: "Direct access", desc: "A deliberately small studio means real attention on every project and one point of contact throughout." },
 ];
 
 function WhyClickwise({ ref6, v6 }) {
@@ -273,9 +274,13 @@ function WhyClickwise({ ref6, v6 }) {
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,71,26,0.5)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.transform = "translateY(0)"; }}
             >
-              <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(232,71,26,0.14)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
-                <i className={`ti ${val.icon}`} style={{ fontSize: 20, color: "#E8471A" }} />
-              </div>
+              <img
+                src={val.icon}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                style={{ width: 40, height: 40, objectFit: "contain", marginBottom: 18, display: "block" }}
+              />
               <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 10 }}>{val.title}</h3>
               <p style={{ fontSize: 13, color: "#9CA3AF", lineHeight: 1.7, margin: 0 }}>{val.desc}</p>
             </div>
