@@ -355,7 +355,7 @@ export default function About() {
         tag="ABOUT"
         title="A Mumbai studio that builds legendary brands."
         sub="We combine beautiful design, clean code, and smart strategy to help ambitious businesses grow, convert, and dominate online."
-        bg="/bannerAbout.png"
+        bg="https://res.cloudinary.com/dpejpwl80/image/upload/q_auto/f_auto/v1780139235/bannerAbout_hdlh8v.png
       />
 
       {/* ══ WHO WE ARE ══ */}
