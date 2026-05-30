@@ -221,10 +221,10 @@ function ProcessHero({ ref4, v4 }) {
    WHY CLICKWISE — values / promise (no personal info)
 ═══════════════════════════════════════════ */
 const VALUES = [
-  { icon: "ti-bolt", title: "Speed without shortcuts", desc: "Landing pages in days, full sites in weeks — without ever cutting corners on quality or care." },
-  { icon: "ti-eye", title: "Total transparency", desc: "You know the timeline and the price before we start. No hidden costs, no surprise invoices, ever." },
-  { icon: "ti-diamond", title: "Built to last", desc: "Clean, custom code and design that performs for years — never templated, never thrown together." },
-  { icon: "ti-users", title: "Direct access", desc: "A deliberately small studio means real attention on every project and one point of contact throughout." },
+  { icon: "/icons/speed.png", title: "Speed without shortcuts", desc: "Landing pages in days, full sites in weeks — without ever cutting corners on quality or care." },
+  { icon: "/icons/transparency.png", title: "Total transparency", desc: "You know the timeline and the price before we start. No hidden costs, no surprise invoices, ever." },
+  { icon: "/icons/built.png", title: "Built to last", desc: "Clean, custom code and design that performs for years — never templated, never thrown together." },
+  { icon: "/icons/access.png", title: "Direct access", desc: "A deliberately small studio means real attention on every project and one point of contact throughout." },
 ];
 
 function WhyClickwise({ ref6, v6 }) {
