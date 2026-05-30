@@ -234,9 +234,6 @@ function WhyClickwise({ ref6, v6 }) {
 
         {/* Left — heading + intro */}
         <div ref={ref6} style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
-          <div style={{ display: "inline-block", fontSize: 11, fontWeight: 800, color: "#E8471A", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 24, background: "rgba(232,71,26,0.12)", padding: "6px 14px", borderRadius: 100 }}>
-            Why Clickwise
-          </div>
           <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
             Premium work,<br />without the agency games.
           </h2>
