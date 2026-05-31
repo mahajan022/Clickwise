@@ -39,13 +39,31 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name && email && message) {
-      const mailtoLink = `mailto:anuragg7051@gmail.com?subject=New Contact from ${name}&body=${message}%0D%0A%0D%0AName: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}`;
-      window.location.href = mailtoLink;
-      setSubmitted(true);
-      setTimeout(() => { setName(""); setEmail(""); setPhone(""); setMessage(""); setSubmitted(false); }, 3000);
+    if (!name || !email || !message) return;
+
+    try {
+      const res = await fetch("https://formspree.io/f/mbdbepwr", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+          _subject: `New Clickwise Enquiry from ${name}`,
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setTimeout(() => { setName(""); setEmail(""); setPhone(""); setMessage(""); setSubmitted(false); }, 3000);
+      } else {
+        alert("Something went wrong. Please WhatsApp us or email anuragg7051@gmail.com directly.");
+      }
+    } catch (err) {
+      alert("Network error. Please WhatsApp us or email anuragg7051@gmail.com directly.");
     }
   };
 
