@@ -113,8 +113,7 @@ function ProcessSection() {
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,71,26,.4)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#1F2937"; e.currentTarget.style.transform = "none"; }}
               >
-                <div style={{ fontSize: 46, fontWeight: 900, color: "#E8471A", letterSpacing: "-2px", lineHeight: 1, marginBottom: 14, opacity: 0.9 }}>{p.num}</div>
-                <h4 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{p.title}</h4>
+                <h4 style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginBottom: 10, letterSpacing: "-0.5px" }}>{p.title}</h4>
                 <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7 }}>{p.desc}</p>
               </div>
             ))}
