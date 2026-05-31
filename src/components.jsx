@@ -309,8 +309,10 @@ export function MarqueeBar() {
     { icon: "›", text: "50+ Projects Delivered" },
     { icon: "›", text: "100% Client Satisfaction" },
     { icon: "›", text: "3+ Years of Craft" },
-    { icon: "›", text: "Mumbai's Top Digital Agency" },
+    { icon: "›", text: "India's Top Digital Agency" },
     { icon: "›", text: "30+ Happy Clients" },
+    { icon: "›", text: "Marketing" },
+    { icon: "›", text: "SEO" },
     { icon: "›", text: "Premium Web & Brand Design" },
     { icon: "›", text: "React & MERN Experts" },
     { icon: "›", text: "Results-Driven Strategy" },
@@ -425,7 +427,7 @@ export function Footer() {
           <div>
             <img src="/logo-white.png" alt="Clickwise" style={{ height: 120, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
             <p style={{ fontSize: 16, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
-              Mumbai's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
+              India's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
             </p>
             <div style={{ display: "flex", gap: 12 }}>
               {socialLinks.map(({ label, url, color, svg }) => (
@@ -486,7 +488,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: "1px solid #1F2937", padding: "28px 0 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-          <p style={{ color: "#4B5563", fontSize: 13 }}>© 2025 Clickwise. All rights reserved.</p>
+          <p style={{ color: "#4B5563", fontSize: 13 }}>© 2026 Clickwise. All rights reserved.</p>
           <p style={{ color: "#4B5563", fontSize: 13 }}>Made with ❤️ from India 🇮🇳</p>
           <div style={{ display: "flex", gap: 20 }}>
             <a href="#privacy" style={{ color: "#6B7280", fontSize: 12, textDecoration: "none" }}
