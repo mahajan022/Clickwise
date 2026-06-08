@@ -186,7 +186,7 @@ function WorkPreview() {
           </p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
-          {WORKS.map((w, i) => (
+          {WORKS.slice(0, 3).map((w, i) => (
             <div key={i} style={{ padding: 3, borderRadius: 14, background: i === 0 ? "linear-gradient(135deg, #E8471A, #ff9a00)" : i === 1 ? "linear-gradient(135deg, #E8471A, #cc0000)" : "linear-gradient(135deg, #E8471A, #ff6b6b)", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(30px)", transition: `opacity .65s cubic-bezier(.16,1,.3,1) ${i * 0.08}s, transform .65s cubic-bezier(.16,1,.3,1) ${i * 0.08}s, box-shadow .3s`, boxShadow: "0 8px 32px rgba(232,71,26,.15)" }}
               onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 20px 60px rgba(232,71,26,.45)"; e.currentTarget.querySelector("img").style.transform = "scale(1.08)"; e.currentTarget.querySelector(".overlay").style.opacity = "1"; e.currentTarget.querySelector(".overlay").style.transform = "translateY(0)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 8px 32px rgba(232,71,26,.15)"; e.currentTarget.querySelector("img").style.transform = "scale(1)"; e.currentTarget.querySelector(".overlay").style.opacity = "0"; e.currentTarget.querySelector(".overlay").style.transform = "translateY(20px)"; }}
