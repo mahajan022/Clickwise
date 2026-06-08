@@ -104,6 +104,7 @@ export const WORKS = [
   { title: "Enrachna Design Labs", cat: "Branding + Web", url: "https://enrachnadesignlabs.com/", tag: "BRAND IDENTITY", bg: "#EDE8E0", year: "2024", desc: "Complete brand identity and website for a Mumbai-based design studio. Crafted a distinctive visual language that positions them as a premium creative firm.", image: "/work1.png" },
   { title: "Riya Cargo Pune", cat: "Website Development", url: "https://riyacargopune.com/", tag: "WEB DEV", bg: "#EFEFEF", year: "2024", desc: "High-performance logistics website built to generate B2B leads. Clean, trust-building design with fast load times and clear service communication.", image: "/work2.png" },
   { title: "Adswirl", cat: "Digital Marketing", url: "https://adswirl.netlify.app/", tag: "MARKETING", bg: "#EFEFEF", year: "2023", desc: "End-to-end digital marketing platform interface. Designed and developed a clean dashboard and marketing site for this growing adtech startup.", image: "/work3.png" },
+  { title: "Nityan Exports", cat: "Website Development", url: "https://www.nityanexports.com/", tag: "WEB DEV", bg: "#EFEFEF", year: "2025", desc: "Premium export company website connecting India's finest agricultural products, spices, leather goods, and handicrafts to global markets. Built with product showcases, WhatsApp integration, SEO optimization, and a downloadable product brochure.", image: "/work4.png" },
 ];
 
 export const STATS = [
