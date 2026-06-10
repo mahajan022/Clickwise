@@ -167,7 +167,7 @@ export function Nav() {
         <div style={{
           maxWidth: 1320,
           margin: "0 auto",
-          padding: "0 clamp(20px,5vw,80px)",
+          padding: "0 clamp(16px,2vw,32px)",
           height: 72,
           display: "flex",
           justifyContent: "space-between",
