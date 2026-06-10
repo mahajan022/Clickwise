@@ -7,7 +7,13 @@ export default defineConfig({
     react(),
     sitemap({
       hostname: 'https://clicksnads.com',
-      routes: ['/', '/about', '/services', '/work', '/contact'],
+      routes: [
+        '/',
+        '/about',
+        '/services',
+        '/work',
+        '/contact',
+      ],
     }),
   ],
 })
