@@ -178,7 +178,7 @@ export function Nav() {
             <img
               src="/logo.png"
               alt="Clickwise"
-              style={{ height: 36, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
+              style={{ height: 150, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
               onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
             />
@@ -425,7 +425,7 @@ export function Footer() {
         {/* Middle grid */}
         <div className="cw-grid-footer" style={{ gap: 80, marginBottom: 80 }}>
           <div>
-            <img src="/logo-white.png" alt="Clickwise" style={{ height: 120, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
+            <img src="/logo-white.png" alt="Clickwise" style={{ height: 250, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
             <p style={{ fontSize: 16, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
               India's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
             </p>
