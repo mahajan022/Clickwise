@@ -66,18 +66,10 @@ export function Nav() {
           border-radius: 2px;
           transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .nav-link:hover {
-          color: #E8471A;
-        }
-        .nav-link:hover::after {
-          width: 100%;
-        }
-        .nav-link.active {
-          color: #E8471A;
-        }
-        .nav-link.active::after {
-          width: 100%;
-        }
+        .nav-link:hover { color: #E8471A; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active { color: #E8471A; }
+        .nav-link.active::after { width: 100%; }
 
         .nav-cta {
           font-family: 'Poppins', sans-serif;
@@ -107,12 +99,8 @@ export function Nav() {
           transform: translateY(-2px);
           box-shadow: 0 12px 34px rgba(232,71,26,.5), inset 0 1px 0 rgba(255,255,255,.25);
         }
-        .nav-cta:hover::before {
-          left: 130%;
-        }
-        .nav-cta:active {
-          transform: translateY(0px);
-        }
+        .nav-cta:hover::before { left: 130%; }
+        .nav-cta:active { transform: translateY(0px); }
 
         .mobile-menu {
           display: none;
@@ -178,7 +166,7 @@ export function Nav() {
             <img
               src="/logo.png"
               alt="Clickwise"
-              style={{ height: 150, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
+              style={{ height: 44, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
               onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
             />
@@ -401,7 +389,7 @@ export function Footer() {
   ];
 
   return (
-    <footer style={{ background: "#0F0F0F", padding: "120px clamp(20px,5vw,80px) 0", position: "relative", overflow: "hidden" }}>
+    <footer style={{ background: "#0F0F0F", padding: "100px clamp(20px,5vw,80px) 0", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: 0, right: "-50%", width: "100%", height: "100%", background: "radial-gradient(circle, rgba(232,71,26,.04) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1320, margin: "0 auto", position: "relative", zIndex: 1 }}>
@@ -425,8 +413,20 @@ export function Footer() {
         {/* Middle grid */}
         <div className="cw-grid-footer" style={{ gap: 80, marginBottom: 80 }}>
           <div>
-            <img src="/logo-white.png" alt="Clickwise" style={{ height: 250, width: "auto", objectFit: "contain", marginBottom: 24, display: "block", opacity: .95 }} />
-            <p style={{ fontSize: 16, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
+            {/* ✅ Footer logo — sahi size aur aligned */}
+            <img
+              src="/logo-white.png"
+              alt="Clickwise"
+              style={{
+                height: 52,
+                width: "auto",
+                objectFit: "contain",
+                marginBottom: 24,
+                display: "block",
+                opacity: 0.95,
+              }}
+            />
+            <p style={{ fontSize: 15, fontWeight: 300, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32, maxWidth: 320 }}>
               India's premier creative digital agency. We help ambitious brands grow, look incredible, and win online through strategic design and technology.
             </p>
             <div style={{ display: "flex", gap: 12 }}>
@@ -524,8 +524,6 @@ export function Loader({ onDone }) {
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
       gap: 26, zIndex: 9999, overflow: "hidden",
     }}>
-      {/* Background video — replace the Cloudinary URL with your own uploaded video.
-          Keep f_auto,q_auto for fast streaming. */}
       <video
         autoPlay
         muted
@@ -535,10 +533,8 @@ export function Loader({ onDone }) {
       >
         <source src="https://res.cloudinary.com/dpejpwl80/video/upload/q_auto/f_auto/v1780137982/Firefly_Fast-paced_2-second_montage_for_a_creative_digital_agency_intro._Rapid_cuts_flashing_through_fstckd.mp4" type="video/mp4" />
       </video>
-      {/* Dark overlay so logo + text stay readable on any background */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(17,17,17,.72) 0%, rgba(17,17,17,.55) 50%, rgba(17,17,17,.82) 100%)" }} />
 
-      {/* Logo — fades + scales in */}
       <img
         src="/logo-white.png"
         alt="Clickwise"
@@ -551,7 +547,6 @@ export function Loader({ onDone }) {
         onError={(e) => { e.currentTarget.src = "/logo.png"; }}
       />
 
-      {/* Tagline — words load one by one */}
       <div style={{ position: "relative", zIndex: 1, display: "flex", gap: 10 }}>
         {words.map((w, i) => (
           <span
@@ -572,7 +567,6 @@ export function Loader({ onDone }) {
         ))}
       </div>
 
-      {/* Thin progress bar */}
       <div style={{ position: "relative", zIndex: 1, width: 160, height: 3, borderRadius: 3, background: "rgba(255,255,255,0.15)", overflow: "hidden", marginTop: 6 }}>
         <div style={{ height: "100%", background: "linear-gradient(90deg,#F2551F,#E8471A)", borderRadius: 3, animation: "cwBar 1.9s cubic-bezier(.16,1,.3,1) forwards" }} />
       </div>
