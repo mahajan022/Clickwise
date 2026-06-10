@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import sitemap from 'vite-plugin-sitemap'
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/',
-  server: {
-    historyApiFallback: true,
-  },
-  build: {
-    outDir: 'dist',
-  }
+  plugins: [
+    react(),
+    sitemap({
+      hostname: 'https://clicksnads.com',
+      routes: ['/', '/about', '/services', '/work', '/contact'],
+    }),
+  ],
 })
