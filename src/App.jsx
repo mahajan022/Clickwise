@@ -7,6 +7,7 @@ import Services from "./pages/Services";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 import "./index.css";
+import ChatBot from './ChatBot'
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -26,6 +27,7 @@ function Layout() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
+      <ChatBot />
     </>
   );
 }
