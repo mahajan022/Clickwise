@@ -4,7 +4,7 @@ import { SERVICES, WORKS, FAQS, STATS, PROCESS } from "./globals";
 /* ════════════════════════════════════════════════════════
    GEMINI API CONFIG
    ════════════════════════════════════════════════════════ */
-const GEMINI_API_KEY = "AQ.Ab8RN6LCIEh-mqtzaZbCJqJLsAHhLWBP8leUFILv-_Xb92a-fg";
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
 
@@ -175,17 +175,25 @@ export default function ChatBot() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 26,
           cursor: "pointer",
           boxShadow: "0 8px 32px rgba(232,71,26,.4)",
           zIndex: 1000,
           transition: "all .3s cubic-bezier(.16,1,.3,1)",
           color: "#fff",
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.1)"; }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.08)"; }}
         onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
       >
-        {open ? "✕" : "💬"}
+        {open ? (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        ) : (
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+        )}
       </button>
 
       {open && (
