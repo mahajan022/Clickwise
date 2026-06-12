@@ -1,132 +1,156 @@
 import { useState, useRef, useEffect } from "react";
+import { SERVICES, WORKS, FAQS, STATS, PROCESS } from "./globals";
 
 /* ════════════════════════════════════════════════════════
-   EDIT THIS SECTION — Add/remove your own Q&A pairs here.
-   - "keywords": words that trigger this answer (lowercase)
-   - "answer": the response shown to the user
+   GEMINI API CONFIG
    ════════════════════════════════════════════════════════ */
-const FAQ_DATA = [
-  {
-    keywords: ["price", "pricing", "cost", "charge", "fees", "rate"],
-    answer:
-      "Our pricing depends on the project. A logo starts from ₹8,000, websites start from ₹15,000, and full brand + web packages start from ₹40,000. Contact us for an accurate quote based on your needs!",
-  },
-  {
-    keywords: ["service", "services", "what do you do", "offer"],
-    answer:
-      "We offer: Website Design & Development, Logo & Brand Identity, Website Redesign, Photography & Content, Social Media Management, Growth & Marketing, MERN Stack Development, AI Solutions & Automation, SEO & AI Search, and Support & Maintenance.",
-  },
-  {
-    keywords: ["time", "long", "duration", "deliver", "timeline"],
-    answer:
-      "Most websites are delivered in 7–21 days depending on scope. Simple landing pages take 3–5 days, while complex web apps or full brand + web packages take 3–6 weeks.",
-  },
-  {
-    keywords: ["location", "where", "based", "office", "mumbai", "city"],
-    answer:
-      "We're based in Mumbai, Maharashtra, India — but we work with clients across India and internationally. Everything is managed remotely with clear communication.",
-  },
-  {
-    keywords: ["contact", "reach", "email", "phone", "call", "whatsapp", "number"],
-    answer:
-      "You can reach us at anuragg7051@gmail.com or call/WhatsApp us at +91 70515 75007. We'd love to hear about your project!",
-  },
-  {
-    keywords: ["support", "maintenance", "after launch", "post launch"],
-    answer:
-      "Yes! Every project includes a 30-day support window post-launch. We also offer monthly maintenance retainers for ongoing updates, security monitoring, and performance optimization.",
-  },
-  {
-    keywords: ["portfolio", "work", "projects", "examples", "clients"],
-    answer:
-      "We've delivered 50+ projects for 30+ happy clients — including Enrachna Design Labs, Riya Cargo Pune, Adswirl, and Nityan Exports. Check out our Work page to see them live!",
-  },
-  {
-    keywords: ["website", "web design", "web development", "build a site"],
-    answer:
-      "We build custom, hand-coded websites using React, Next.js, and modern tech stacks — fast, responsive, SEO-optimized, and built to convert. No bloated templates!",
-  },
-  {
-    keywords: ["logo", "brand", "branding", "identity"],
-    answer:
-      "We create complete brand identity systems — logo design (multiple concepts), brand guidelines, color palettes, typography, and social media templates that make your business unforgettable.",
-  },
-  {
-    keywords: ["seo", "google", "rank", "search engine"],
-    answer:
-      "We offer Technical SEO audits, content strategy, keyword research, and AI search optimization — helping you rank on Google and get discovered on AI assistants like ChatGPT.",
-  },
-  {
-    keywords: ["ai", "automation", "chatbot", "artificial intelligence"],
-    answer:
-      "We build AI-powered chatbots, workflow automation (Make/Zapier), and custom AI integrations to save your business hours of manual work every week.",
-  },
-  {
-    keywords: ["social media", "instagram", "facebook", "marketing"],
-    answer:
-      "We manage your entire social media presence — content calendars, graphic design, copywriting, community management, and paid ads (Meta/LinkedIn) with monthly reporting.",
-  },
-  {
-    keywords: ["hi", "hello", "hey", "namaste"],
-    answer:
-      "Hey there! 👋 I'm Clicksnads' assistant. Ask me about our services, pricing, timelines, or how to get in touch!",
-  },
-  {
-    keywords: ["thanks", "thank you", "thx"],
-    answer: "You're welcome! Feel free to ask anything else, or reach out at anuragg7051@gmail.com 😊",
-  },
-];
+const GEMINI_API_KEY = "AQ.Ab8RN6LCIEh-mqtzaZbCJqJLsAHhLWBP8leUFILv-_Xb92a-fg";
+const GEMINI_MODEL = "gemini-2.5-flash";
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
 
-const DEFAULT_ANSWER =
-  "I'm not sure about that one! For detailed info, please reach out directly at anuragg7051@gmail.com or +91 70515 75007, and our team will help you.";
+/* ════════════════════════════════════════════════════════
+   BUILD WEBSITE CONTEXT FROM globals.js DATA
+   ════════════════════════════════════════════════════════ */
+function buildSiteContext() {
+  const servicesText = SERVICES.map(
+    (s) =>
+      `- ${s.title}: ${s.desc} ${s.about} Features: ${s.features?.join(", ")}`
+  ).join("\n");
+
+  const worksText = WORKS.map(
+    (w) => `- ${w.title} (${w.cat}, ${w.year}): ${w.desc} URL: ${w.url}`
+  ).join("\n");
+
+  const faqsText = FAQS.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n\n");
+
+  const statsText = STATS.map((s) => `${s.v} ${s.l}`).join(", ");
+
+  const processText = PROCESS.map((p) => `${p.num}. ${p.title}: ${p.desc}`).join("\n");
+
+  return `
+You are the official AI assistant for Clicksnads, a creative digital agency based in Mumbai, India.
+Answer user questions ONLY using the information below about Clicksnads. Be friendly, concise, and helpful.
+If asked something unrelated to Clicksnads or not covered here, politely say you don't have that info and suggest contacting via email (anuragg7051@gmail.com) or WhatsApp (+91 70515 75007).
+
+COMPANY STATS:
+${statsText}
+
+SERVICES OFFERED:
+${servicesText}
+
+OUR PROCESS:
+${processText}
+
+PORTFOLIO / RECENT WORK:
+${worksText}
+
+FREQUENTLY ASKED QUESTIONS:
+${faqsText}
+
+CONTACT INFO:
+Email: anuragg7051@gmail.com
+Phone/WhatsApp: +91 70515 75007
+Location: Mumbai, Maharashtra, India
+
+Keep answers short (2-4 sentences) unless the user asks for more detail.
+`.trim();
+}
+
+const SITE_CONTEXT = buildSiteContext();
+
+/* ════════════════════════════════════════════════════════
+   GEMINI API CALL
+   ════════════════════════════════════════════════════════ */
+async function askGemini(userMessage, history) {
+  const contents = [
+    {
+      role: "user",
+      parts: [{ text: SITE_CONTEXT }],
+    },
+    {
+      role: "model",
+      parts: [{ text: "Understood! I'm ready to help visitors with questions about Clicksnads." }],
+    },
+    ...history.map((m) => ({
+      role: m.from === "user" ? "user" : "model",
+      parts: [{ text: m.text }],
+    })),
+    {
+      role: "user",
+      parts: [{ text: userMessage }],
+    },
+  ];
+
+  const res = await fetch(GEMINI_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents,
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 300,
+      },
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Gemini API error: ${res.status}`);
+  }
+
+  const data = await res.json();
+  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  return text || "Sorry, I couldn't generate a response. Please try again or contact us directly.";
+}
 
 const SUGGESTED_QUESTIONS = [
   "What services do you offer?",
   "What's your pricing?",
-  "How long does a project take?",
+  "Show me your recent work",
   "How can I contact you?",
 ];
-
-function getBotResponse(input) {
-  const text = input.toLowerCase();
-  for (const item of FAQ_DATA) {
-    if (item.keywords.some((kw) => text.includes(kw))) {
-      return item.answer;
-    }
-  }
-  return DEFAULT_ANSWER;
-}
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       from: "bot",
-      text: "Hi! 👋 I'm Clicksnads' assistant. Ask me anything about our services, pricing, or process!",
+      text: "Hi! 👋 I'm Clicksnads' AI assistant. Ask me anything about our services, pricing, portfolio, or process!",
     },
   ]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const scrollRef = useRef(null);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, open]);
+  }, [messages, open, loading]);
 
-  const sendMessage = (text) => {
+  const sendMessage = async (text) => {
     const trimmed = text.trim();
-    if (!trimmed) return;
+    if (!trimmed || loading) return;
 
     const userMsg = { from: "user", text: trimmed };
-    const botMsg = { from: "bot", text: getBotResponse(trimmed) };
-
-    setMessages((prev) => [...prev, userMsg]);
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
     setInput("");
+    setLoading(true);
 
-    setTimeout(() => {
-      setMessages((prev) => [...prev, botMsg]);
-    }, 500);
+    try {
+      const reply = await askGemini(trimmed, newMessages.slice(1));
+      setMessages((prev) => [...prev, { from: "bot", text: reply }]);
+    } catch (err) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          from: "bot",
+          text: "Sorry, something went wrong. Please try again or reach us at anuragg7051@gmail.com.",
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -136,7 +160,6 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Floating toggle button */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Open chat"
@@ -159,26 +182,21 @@ export default function ChatBot() {
           transition: "all .3s cubic-bezier(.16,1,.3,1)",
           color: "#fff",
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.1)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-        }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.1)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
       >
         {open ? "✕" : "💬"}
       </button>
 
-      {/* Chat window */}
       {open && (
         <div
           style={{
             position: "fixed",
             bottom: 170,
             right: 30,
-            width: 340,
+            width: 360,
             maxWidth: "calc(100vw - 40px)",
-            height: 460,
+            height: 500,
             maxHeight: "calc(100vh - 220px)",
             background: "#fff",
             borderRadius: 18,
@@ -191,7 +209,6 @@ export default function ChatBot() {
             border: "1px solid #E4E3DD",
           }}
         >
-          {/* Header */}
           <div
             style={{
               background: "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)",
@@ -201,13 +218,12 @@ export default function ChatBot() {
               fontSize: 15,
             }}
           >
-            Clicksnads Assistant
+            Clicksnads AI Assistant
             <div style={{ fontSize: 12, fontWeight: 400, opacity: 0.85, marginTop: 2 }}>
-              Ask about services, pricing & more
+              Powered by AI · Ask me anything
             </div>
           </div>
 
-          {/* Messages */}
           <div
             ref={scrollRef}
             style={{
@@ -232,6 +248,7 @@ export default function ChatBot() {
                   maxWidth: "85%",
                   fontSize: 13.5,
                   lineHeight: 1.6,
+                  whiteSpace: "pre-wrap",
                   boxShadow: m.from === "bot" ? "0 1px 4px rgba(0,0,0,.06)" : "none",
                   border: m.from === "bot" ? "1px solid #E4E3DD" : "none",
                 }}
@@ -240,8 +257,23 @@ export default function ChatBot() {
               </div>
             ))}
 
-            {/* Suggested questions - shown only at start */}
-            {messages.length === 1 && (
+            {loading && (
+              <div
+                style={{
+                  alignSelf: "flex-start",
+                  background: "#fff",
+                  border: "1px solid #E4E3DD",
+                  padding: "10px 14px",
+                  borderRadius: 14,
+                  fontSize: 13.5,
+                  color: "#999",
+                }}
+              >
+                Typing...
+              </div>
+            )}
+
+            {messages.length === 1 && !loading && (
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 4 }}>
                 {SUGGESTED_QUESTIONS.map((q, i) => (
                   <button
@@ -269,7 +301,6 @@ export default function ChatBot() {
             )}
           </div>
 
-          {/* Input */}
           <form
             onSubmit={handleSubmit}
             style={{
@@ -285,6 +316,7 @@ export default function ChatBot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your question..."
+              disabled={loading}
               style={{
                 flex: 1,
                 border: "1px solid #E4E3DD",
@@ -297,6 +329,7 @@ export default function ChatBot() {
             />
             <button
               type="submit"
+              disabled={loading}
               style={{
                 background: "#E8471A",
                 color: "#fff",
@@ -305,8 +338,9 @@ export default function ChatBot() {
                 width: 40,
                 height: 40,
                 fontSize: 16,
-                cursor: "pointer",
+                cursor: loading ? "default" : "pointer",
                 flexShrink: 0,
+                opacity: loading ? 0.6 : 1,
               }}
             >
               →
