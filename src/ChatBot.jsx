@@ -114,7 +114,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState([
     {
       from: "bot",
-      text: "Hi! 👋 I'm Clicksnads' AI assistant. Ask me anything about our services, pricing, portfolio, or process!",
+      text: "Hey! I'm the Clicksnads assistant. Ask me about our services, pricing, portfolio, or process.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -160,6 +160,23 @@ export default function ChatBot() {
 
   return (
     <>
+      <style>{`
+        @keyframes cwChatIn {
+          from { opacity: 0; transform: translateY(16px) scale(.97); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes cwDot {
+          0%, 80%, 100% { transform: scale(0.6); opacity: .3; }
+          40% { transform: scale(1); opacity: 1; }
+        }
+        .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
+        .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
+        .cw-chat-input::placeholder { color: #6B7280; }
+        .cw-chat-input:focus { border-color: #E8471A !important; }
+        .cw-suggest-btn:hover { border-color: #E8471A !important; color: #fff !important; background: rgba(232,71,26,.08) !important; }
+      `}</style>
+
+      {/* Floating toggle button */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Open chat"
@@ -167,81 +184,125 @@ export default function ChatBot() {
           position: "fixed",
           bottom: 100,
           right: 30,
-          width: 60,
-          height: 60,
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)",
-          border: "none",
+          width: 56,
+          height: 56,
+          borderRadius: 16,
+          background: "#111111",
+          border: "1px solid #2A2A2A",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          boxShadow: "0 8px 32px rgba(232,71,26,.4)",
+          boxShadow: "0 8px 28px rgba(0,0,0,.35)",
           zIndex: 1000,
-          transition: "all .3s cubic-bezier(.16,1,.3,1)",
+          transition: "all .25s cubic-bezier(.16,1,.3,1)",
           color: "#fff",
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.08)"; }}
-        onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-2px)";
+          e.currentTarget.style.borderColor = "#E8471A";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.borderColor = "#2A2A2A";
+        }}
       >
         {open ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         ) : (
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8 9h8M8 13h6" />
+            <path d="M21 11.5c0 4.6-4 8.3-9 8.3a9.8 9.8 0 0 1-3.3-.56L3 21l1.2-3.6A8.4 8.4 0 0 1 3 11.5C3 6.9 7 3.2 12 3.2s9 3.7 9 8.3z" />
           </svg>
+        )}
+        {/* Status dot */}
+        {!open && (
+          <span
+            style={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              width: 8,
+              height: 8,
+              borderRadius: "50%",
+              background: "#E8471A",
+            }}
+          />
         )}
       </button>
 
+      {/* Chat window */}
       {open && (
         <div
           style={{
             position: "fixed",
-            bottom: 170,
+            bottom: 168,
             right: 30,
             width: 360,
             maxWidth: "calc(100vw - 40px)",
-            height: 500,
+            height: 520,
             maxHeight: "calc(100vh - 220px)",
-            background: "#fff",
-            borderRadius: 18,
-            boxShadow: "0 20px 60px rgba(0,0,0,.25)",
+            background: "#0D0D0D",
+            borderRadius: 20,
+            boxShadow: "0 24px 70px rgba(0,0,0,.5)",
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
             zIndex: 999,
             fontFamily: "'Poppins', sans-serif",
-            border: "1px solid #E4E3DD",
+            border: "1px solid #1F2937",
+            animation: "cwChatIn .25s cubic-bezier(.16,1,.3,1)",
           }}
         >
+          {/* Header */}
           <div
             style={{
-              background: "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)",
-              color: "#fff",
-              padding: "16px 20px",
-              fontWeight: 700,
-              fontSize: 15,
+              padding: "18px 20px",
+              borderBottom: "1px solid #1F2937",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
             }}
           >
-            Clicksnads AI Assistant
-            <div style={{ fontSize: 12, fontWeight: 400, opacity: 0.85, marginTop: 2 }}>
-              Powered by AI · Ask me anything
+            <div
+              style={{
+                width: 36,
+                height: 36,
+                borderRadius: 10,
+                background: "#1A1A1A",
+                border: "1px solid #2A2A2A",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}
+            >
+              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#E8471A", display: "block" }} />
+            </div>
+            <div>
+              <div style={{ color: "#fff", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
+                Clicksnads Assistant
+              </div>
+              <div style={{ color: "#6B7280", fontSize: 11.5, marginTop: 1 }}>
+                Usually replies in a few seconds
+              </div>
             </div>
           </div>
 
+          {/* Messages */}
           <div
             ref={scrollRef}
+            className="cw-chat-scroll"
             style={{
               flex: 1,
               overflowY: "auto",
-              padding: "16px",
+              padding: "18px 16px",
               display: "flex",
               flexDirection: "column",
-              gap: 10,
-              background: "#FAFAF8",
+              gap: 12,
             }}
           >
             {messages.map((m, i) => (
@@ -249,16 +310,15 @@ export default function ChatBot() {
                 key={i}
                 style={{
                   alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                  background: m.from === "user" ? "#E8471A" : "#fff",
-                  color: m.from === "user" ? "#fff" : "#111",
+                  background: m.from === "user" ? "#fff" : "#161616",
+                  color: m.from === "user" ? "#111" : "#E5E7EB",
                   padding: "10px 14px",
-                  borderRadius: 14,
-                  maxWidth: "85%",
+                  borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
+                  maxWidth: "82%",
                   fontSize: 13.5,
                   lineHeight: 1.6,
                   whiteSpace: "pre-wrap",
-                  boxShadow: m.from === "bot" ? "0 1px 4px rgba(0,0,0,.06)" : "none",
-                  border: m.from === "bot" ? "1px solid #E4E3DD" : "none",
+                  border: m.from === "bot" ? "1px solid #1F2937" : "none",
                 }}
               >
                 {m.text}
@@ -269,38 +329,52 @@ export default function ChatBot() {
               <div
                 style={{
                   alignSelf: "flex-start",
-                  background: "#fff",
-                  border: "1px solid #E4E3DD",
-                  padding: "10px 14px",
-                  borderRadius: 14,
-                  fontSize: 13.5,
-                  color: "#999",
+                  background: "#161616",
+                  border: "1px solid #1F2937",
+                  padding: "12px 16px",
+                  borderRadius: "14px 14px 14px 4px",
+                  display: "flex",
+                  gap: 4,
                 }}
               >
-                Typing...
+                {[0, 1, 2].map((i) => (
+                  <span
+                    key={i}
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      background: "#6B7280",
+                      animation: `cwDot 1.2s ease-in-out ${i * 0.15}s infinite`,
+                    }}
+                  />
+                ))}
               </div>
             )}
 
+            {/* Suggested questions - shown only at start */}
             {messages.length === 1 && !loading && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 4 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 6 }}>
+                <div style={{ color: "#6B7280", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>
+                  Quick questions
+                </div>
                 {SUGGESTED_QUESTIONS.map((q, i) => (
                   <button
                     key={i}
+                    className="cw-suggest-btn"
                     onClick={() => sendMessage(q)}
                     style={{
                       textAlign: "left",
-                      background: "#fff",
-                      border: "1px solid #E4E3DD",
+                      background: "transparent",
+                      border: "1px solid #1F2937",
                       borderRadius: 12,
-                      padding: "8px 12px",
-                      fontSize: 12.5,
-                      color: "#E8471A",
-                      fontWeight: 600,
+                      padding: "10px 14px",
+                      fontSize: 13,
+                      color: "#9CA3AF",
+                      fontWeight: 500,
                       cursor: "pointer",
                       transition: "all .2s",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "#FFF3EE")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "#fff")}
                   >
                     {q}
                   </button>
@@ -309,30 +383,34 @@ export default function ChatBot() {
             )}
           </div>
 
+          {/* Input */}
           <form
             onSubmit={handleSubmit}
             style={{
               display: "flex",
-              borderTop: "1px solid #E4E3DD",
-              padding: 10,
+              borderTop: "1px solid #1F2937",
+              padding: 12,
               gap: 8,
-              background: "#fff",
             }}
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your question..."
+              placeholder="Message Clicksnads..."
               disabled={loading}
+              className="cw-chat-input"
               style={{
                 flex: 1,
-                border: "1px solid #E4E3DD",
-                borderRadius: 999,
-                padding: "10px 14px",
+                background: "#161616",
+                border: "1px solid #1F2937",
+                borderRadius: 12,
+                padding: "11px 14px",
                 fontSize: 13.5,
                 outline: "none",
                 fontFamily: "inherit",
+                color: "#fff",
+                transition: "border-color .2s",
               }}
             />
             <button
@@ -342,16 +420,22 @@ export default function ChatBot() {
                 background: "#E8471A",
                 color: "#fff",
                 border: "none",
-                borderRadius: "50%",
-                width: 40,
-                height: 40,
-                fontSize: 16,
+                borderRadius: 12,
+                width: 42,
+                height: 42,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: loading ? "default" : "pointer",
                 flexShrink: 0,
-                opacity: loading ? 0.6 : 1,
+                opacity: loading ? 0.5 : 1,
+                transition: "opacity .2s",
               }}
             >
-              →
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5" />
+                <polyline points="5 12 12 5 19 12" />
+              </svg>
             </button>
           </form>
         </div>
