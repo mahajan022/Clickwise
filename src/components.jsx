@@ -158,9 +158,9 @@ export function Nav() {
         position: "sticky",
         top: 0,
         zIndex: 100,
-        backdropFilter: "blur(12px)",
-        background: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.95)",
-        borderBottom: scrolled ? "1px solid #E4E3DD" : "1px solid rgba(228,227,221,0.6)",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        background: scrolled ? "rgba(255,255,255,0.98)" : "transparent",
+        borderBottom: scrolled ? "1px solid #E4E3DD" : "1px solid transparent",
         boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
         transition: "all 0.3s ease",
       }}>
