@@ -181,7 +181,7 @@ export function Nav() {
             <img
               src={scrolled ? "/logo.png" : "/logo-white.png"}
               alt="Clicks&ads"
-              style={{ height: 56, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
+              style={{ height: 68, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
               onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
             />
@@ -556,7 +556,7 @@ export function Loader({ onDone }) {
         alt="Clicks&ads"
         style={{
           position: "relative", zIndex: 1,
-          height: "clamp(70px,9vw,110px)",
+          height: "clamp(50px,6vw,80px)",
           width: "auto",
           objectFit: "contain",
           opacity: 0,
