@@ -176,7 +176,7 @@ export default function ChatBot() {
         .cw-suggest-btn:hover { border-color: #E8471A !important; color: #fff !important; background: rgba(232,71,26,.08) !important; }
       `}</style>
 
-      {/* Floating toggle button */}
+      {/* Floating toggle button - bot avatar style */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Open chat"
@@ -184,53 +184,42 @@ export default function ChatBot() {
           position: "fixed",
           bottom: 100,
           right: 30,
-          width: 56,
-          height: 56,
-          borderRadius: 16,
-          background: "#111111",
-          border: "1px solid #2A2A2A",
+          width: 60,
+          height: 60,
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #F2551F 0%, #E8471A 60%, #C93C12 100%)",
+          border: "3px solid #0D0D0D",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          boxShadow: "0 8px 28px rgba(0,0,0,.35)",
+          boxShadow: "0 8px 28px rgba(232,71,26,.45)",
           zIndex: 1000,
           transition: "all .25s cubic-bezier(.16,1,.3,1)",
           color: "#fff",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-2px)";
-          e.currentTarget.style.borderColor = "#E8471A";
+          e.currentTarget.style.transform = "scale(1.08)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.borderColor = "#2A2A2A";
+          e.currentTarget.style.transform = "scale(1)";
         }}
       >
         {open ? (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         ) : (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M8 9h8M8 13h6" />
-            <path d="M21 11.5c0 4.6-4 8.3-9 8.3a9.8 9.8 0 0 1-3.3-.56L3 21l1.2-3.6A8.4 8.4 0 0 1 3 11.5C3 6.9 7 3.2 12 3.2s9 3.7 9 8.3z" />
+          /* Friendly bot face icon */
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="8" width="18" height="12" rx="3" />
+            <circle cx="8.5" cy="14" r="1.4" fill="currentColor" stroke="none" />
+            <circle cx="15.5" cy="14" r="1.4" fill="currentColor" stroke="none" />
+            <path d="M12 8V5" />
+            <circle cx="12" cy="3.5" r="1.2" fill="currentColor" stroke="none" />
+            <path d="M3 13H1.5M22.5 13H21" />
           </svg>
-        )}
-        {/* Status dot */}
-        {!open && (
-          <span
-            style={{
-              position: "absolute",
-              top: 8,
-              right: 8,
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: "#E8471A",
-            }}
-          />
         )}
       </button>
 
@@ -260,7 +249,7 @@ export default function ChatBot() {
           {/* Header */}
           <div
             style={{
-              padding: "18px 20px",
+              padding: "16px 20px",
               borderBottom: "1px solid #1F2937",
               display: "flex",
               alignItems: "center",
@@ -269,25 +258,32 @@ export default function ChatBot() {
           >
             <div
               style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "#1A1A1A",
-                border: "1px solid #2A2A2A",
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, #F2551F 0%, #E8471A 60%, #C93C12 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
               }}
             >
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#E8471A", display: "block" }} />
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="8" width="18" height="12" rx="3" />
+                <circle cx="8.5" cy="14" r="1.4" fill="#fff" stroke="none" />
+                <circle cx="15.5" cy="14" r="1.4" fill="#fff" stroke="none" />
+                <path d="M12 8V5" />
+                <circle cx="12" cy="3.5" r="1.2" fill="#fff" stroke="none" />
+                <path d="M3 13H1.5M22.5 13H21" />
+              </svg>
             </div>
             <div>
               <div style={{ color: "#fff", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
                 Clicksnads Assistant
               </div>
-              <div style={{ color: "#6B7280", fontSize: 11.5, marginTop: 1 }}>
-                Usually replies in a few seconds
+              <div style={{ color: "#9CA3AF", fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
+                Online · Replies instantly
               </div>
             </div>
           </div>
