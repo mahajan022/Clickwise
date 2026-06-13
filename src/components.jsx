@@ -556,7 +556,7 @@ export function Loader({ onDone }) {
         alt="Clicks&ads"
         style={{
           position: "relative", zIndex: 1,
-          height: "clamp(50px,6vw,80px)",
+          height: "clamp(36px,4vw,55px)",
           width: "auto",
           objectFit: "contain",
           opacity: 0,
