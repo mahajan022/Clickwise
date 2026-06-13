@@ -188,7 +188,7 @@ export default function ChatBot() {
           height: 60,
           borderRadius: "50%",
           background: "linear-gradient(135deg, #F2551F 0%, #E8471A 60%, #C93C12 100%)",
-          border: "3px solid #0D0D0D",
+          border: "none",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -211,15 +211,12 @@ export default function ChatBot() {
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         ) : (
-          /* Friendly bot face icon */
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="8" width="18" height="12" rx="3" />
-            <circle cx="8.5" cy="14" r="1.4" fill="currentColor" stroke="none" />
-            <circle cx="15.5" cy="14" r="1.4" fill="currentColor" stroke="none" />
-            <path d="M12 8V5" />
-            <circle cx="12" cy="3.5" r="1.2" fill="currentColor" stroke="none" />
-            <path d="M3 13H1.5M22.5 13H21" />
-          </svg>
+          /* Custom chatbot icon image - place your image in /public folder */
+          <img
+            src="/chatbot-icon.png"
+            alt="Chat"
+            style={{ width: 32, height: 32, objectFit: "contain", borderRadius: "50%" }}
+          />
         )}
       </button>
 
@@ -268,14 +265,11 @@ export default function ChatBot() {
                 flexShrink: 0,
               }}
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="8" width="18" height="12" rx="3" />
-                <circle cx="8.5" cy="14" r="1.4" fill="#fff" stroke="none" />
-                <circle cx="15.5" cy="14" r="1.4" fill="#fff" stroke="none" />
-                <path d="M12 8V5" />
-                <circle cx="12" cy="3.5" r="1.2" fill="#fff" stroke="none" />
-                <path d="M3 13H1.5M22.5 13H21" />
-              </svg>
+              <img
+                src="/chatbot-icon.png"
+                alt="Chat"
+                style={{ width: 24, height: 24, objectFit: "contain", borderRadius: "50%" }}
+              />
             </div>
             <div>
               <div style={{ color: "#fff", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
