@@ -181,9 +181,9 @@ export function Nav() {
           {/* Logo */}
           <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
             <img
-              src={scrolled ? "/logo.png" : "/logo-white.png"}
+              src={isSolid ? "/logo.png" : "/logo-white.png"}
               alt="Clicks&ads"
-              style={{ height: 52, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
+              style={{ height: isSolid ? 64 : 48, width: "auto", objectFit: "contain", transition: "all 0.3s ease" }}
               onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
               onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
             />
