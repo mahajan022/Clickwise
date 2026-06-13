@@ -176,7 +176,7 @@ export default function ChatBot() {
         }
         .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
         .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
-        .cw-chat-input::placeholder { color: #6B7280; }
+        .cw-chat-input::placeholder { color: #9CA3AF; }
         .cw-chat-input:focus { border-color: #E8471A !important; }
         .cw-suggest-btn:hover { border-color: #E8471A !important; color: #E8471A !important; background: rgba(232,71,26,.05) !important; }
       `}</style>
@@ -385,7 +385,7 @@ export default function ChatBot() {
             {/* Suggested questions - shown only at start */}
             {messages.length === 1 && !loading && (
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 6 }}>
-                <div style={{ color: "#9CA3AF", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>
+                <div style={{ color: "#6B7280", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>
                   Quick questions
                 </div>
                 {SUGGESTED_QUESTIONS.map((q, i) => (
@@ -399,9 +399,9 @@ export default function ChatBot() {
                       border: "1px solid #E4E3DD",
                       borderRadius: 12,
                       padding: "10px 14px",
-                      fontSize: 13,
-                      color: "#6B7280",
-                      fontWeight: 500,
+                      fontSize: 13.5,
+                      color: "#374151",
+                      fontWeight: 600,
                       cursor: "pointer",
                       transition: "all .2s",
                     }}
