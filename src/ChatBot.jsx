@@ -28,9 +28,9 @@ function buildSiteContext() {
   const processText = PROCESS.map((p) => `${p.num}. ${p.title}: ${p.desc}`).join("\n");
 
   return `
-You are the official AI assistant for Clicksnads, a creative digital agency based in Mumbai, India.
-Answer user questions ONLY using the information below about Clicksnads. Be friendly, concise, and helpful.
-If asked something unrelated to Clicksnads or not covered here, politely say you don't have that info and suggest contacting via email (anuragg7051@gmail.com) or WhatsApp (+91 70515 75007).
+You are the official AI assistant for Clicks&ads, a creative digital agency based in Mumbai, India.
+Answer user questions ONLY using the information below about Clicks&ads. Be friendly, concise, and helpful.
+If asked something unrelated to Clicks&ads or not covered here, politely say you don't have that info and suggest contacting via email (anuragg7051@gmail.com) or WhatsApp (+91 70515 75007).
 
 COMPANY STATS:
 ${statsText}
@@ -69,7 +69,7 @@ async function askGemini(userMessage, history) {
     },
     {
       role: "model",
-      parts: [{ text: "Understood! I'm ready to help visitors with questions about Clicksnads." }],
+      parts: [{ text: "Understood! I'm ready to help visitors with questions about Clicks&ads." }],
     },
     ...history.map((m) => ({
       role: m.from === "user" ? "user" : "model",
@@ -114,7 +114,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState([
     {
       from: "bot",
-      text: "Hey! I'm the Clicksnads assistant. Ask me about our services, pricing, portfolio, or process.",
+      text: "Hey! I'm the Clicks&ads assistant. Ask me about our services, pricing, portfolio, or process.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -313,7 +313,7 @@ export default function ChatBot() {
             </div>
             <div>
               <div style={{ color: "#111111", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
-                Clicksnads Assistant
+                Clicks&ads Assistant
               </div>
               <div style={{ color: "#6B7280", fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
@@ -427,7 +427,7 @@ export default function ChatBot() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Message Clicksnads..."
+              placeholder="Message Clicks&ads..."
               disabled={loading}
               className="cw-chat-input"
               style={{

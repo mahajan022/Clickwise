@@ -224,7 +224,7 @@ function WhyClickwise({ ref6, v6 }) {
             Premium work,<br />without the agency games.
           </h2>
           <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 20 }}>
-            We started Clicksnads because too many businesses were paying premium prices for slow, templated, mediocre work. We do the opposite — design that converts, code that performs, and a process that respects your time.
+            We started Clicks&ads because too many businesses were paying premium prices for slow, templated, mediocre work. We do the opposite — design that converts, code that performs, and a process that respects your time.
           </p>
           <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>
             Whether you're a startup launching your first product or an established brand reinventing itself, you get the same obsession with quality — all under one roof, with one standard: excellence.
@@ -347,13 +347,13 @@ export default function About() {
               We don't just build websites.<br />We build businesses.
             </h2>
             <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.9, marginBottom: 20 }}>
-              Clicksnads was born from a frustration with agencies that charged premium prices for mediocre, templated work. We believed Mumbai's businesses deserved better — design that actually converts, code that actually performs, and strategy that actually drives growth.
+              Clicks&ads was born from a frustration with agencies that charged premium prices for mediocre, templated work. We believed Mumbai's businesses deserved better — design that actually converts, code that actually performs, and strategy that actually drives growth.
             </p>
             <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9, marginBottom: 20 }}>
               Since our founding, we've partnered with startups launching their first product, mid-sized companies scaling their digital presence, and established brands reinventing themselves for the digital age. Each project gets the same level of obsession — because we understand that your website is your most important salesperson, working 24/7.
             </p>
             <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>
-              Today, Clicksnads is a full-service creative digital agency offering web design, development, brand identity, photography, social media, SEO, and growth marketing — all under one roof, with one point of contact, and one standard: excellence.
+              Today, Clicks&ads is a full-service creative digital agency offering web design, development, brand identity, photography, social media, SEO, and growth marketing — all under one roof, with one point of contact, and one standard: excellence.
             </p>
           </div>
 
