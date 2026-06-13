@@ -49,7 +49,7 @@ export function Nav() {
           font-family: 'Poppins', sans-serif;
           font-size: 15px;
           font-weight: 600;
-          color: #111111;
+          color: var(--nav-text, #111111);
           text-decoration: none;
           letter-spacing: 0.01em;
           padding: 6px 0;
@@ -155,14 +155,17 @@ export function Nav() {
       `}</style>
 
       <nav style={{
-        position: "sticky",
+        position: "fixed",
         top: 0,
+        left: 0,
+        right: 0,
         zIndex: 100,
         backdropFilter: scrolled ? "blur(12px)" : "none",
-        background: scrolled ? "rgba(255,255,255,0.98)" : "transparent",
+        background: scrolled ? "#ffffff" : "transparent",
         borderBottom: scrolled ? "1px solid #E4E3DD" : "1px solid transparent",
         boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
         transition: "all 0.3s ease",
+        "--nav-text": scrolled ? "#111111" : "#ffffff",
       }}>
         <div style={{
           maxWidth: 1320,
@@ -176,7 +179,7 @@ export function Nav() {
           {/* Logo */}
           <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
             <img
-              src="/logo.png"
+              src={scrolled ? "/logo.png" : "/logo-white.png"}
               alt="Clicks&ads"
               style={{ height: 56, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
@@ -219,7 +222,7 @@ export function Nav() {
                 display: "block",
                 width: 24,
                 height: 2,
-                background: "#111",
+                background: scrolled ? "#111" : "#fff",
                 borderRadius: 2,
                 transition: "all 0.3s ease",
                 transform: mobileOpen
