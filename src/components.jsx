@@ -178,7 +178,7 @@ export function Nav() {
             <img
               src="/logo.png"
               alt="Clicks&ads"
-              style={{ height: 40, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
+              style={{ height: 56, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
               onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
             />
