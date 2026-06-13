@@ -165,6 +165,11 @@ export default function ChatBot() {
           from { opacity: 0; transform: translateY(16px) scale(.97); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
+        @keyframes cwPulseRing {
+          0% { transform: scale(1); opacity: .55; }
+          70% { transform: scale(1.8); opacity: 0; }
+          100% { transform: scale(1.8); opacity: 0; }
+        }
         @keyframes cwDot {
           0%, 80%, 100% { transform: scale(0.6); opacity: .3; }
           40% { transform: scale(1); opacity: 1; }
@@ -177,48 +182,83 @@ export default function ChatBot() {
       `}</style>
 
       {/* Floating toggle button - bot avatar style */}
-      <button
-        onClick={() => setOpen((o) => !o)}
-        aria-label="Open chat"
+      <div
         style={{
           position: "fixed",
           bottom: 100,
           right: 30,
-          width: 60,
-          height: 60,
-          borderRadius: "50%",
-          background: "#ffffff",
-          border: "1px solid #E4E3DD",
+          width: 72,
+          height: 72,
+          zIndex: 1000,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          cursor: "pointer",
-          boxShadow: "0 8px 28px rgba(0,0,0,.18)",
-          zIndex: 1000,
-          transition: "all .25s cubic-bezier(.16,1,.3,1)",
-          color: "#fff",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.08)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
         }}
       >
-        {open ? (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        ) : (
-          /* Custom chatbot icon image - place your image in /public folder */
-          <img
-            src="/chatbot-icon.png"
-            alt="Chat"
-            style={{ width: 32, height: 32, objectFit: "contain", borderRadius: "50%" }}
-          />
+        {/* Pulsing attention rings - only show when closed */}
+        {!open && (
+          <>
+            <span
+              style={{
+                position: "absolute",
+                inset: 0,
+                borderRadius: "50%",
+                border: "2px solid #E8471A",
+                animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite",
+              }}
+            />
+            <span
+              style={{
+                position: "absolute",
+                inset: 0,
+                borderRadius: "50%",
+                border: "2px solid #E8471A",
+                animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite 1.1s",
+              }}
+            />
+          </>
         )}
-      </button>
+
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-label="Open chat"
+          style={{
+            position: "relative",
+            width: 64,
+            height: 64,
+            borderRadius: "50%",
+            background: "#ffffff",
+            border: "1px solid #E4E3DD",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            boxShadow: "0 8px 28px rgba(0,0,0,.18)",
+            transition: "all .25s cubic-bezier(.16,1,.3,1)",
+            color: "#fff",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          {open ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            /* Custom chatbot icon image - place your image in /public folder */
+            <img
+              src="/chatbot-icon.png"
+              alt="Chat"
+              style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
+            />
+          )}
+        </button>
+      </div>
 
       {/* Chat window */}
       {open && (
