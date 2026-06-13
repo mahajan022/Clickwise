@@ -31,6 +31,8 @@ export function Nav() {
   }, []);
 
   const isActive = (path) => loc.pathname === path;
+  const isContact = loc.pathname === "/contact";
+  const isSolid = scrolled || isContact;
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -160,12 +162,12 @@ export function Nav() {
         left: 0,
         right: 0,
         zIndex: 100,
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        background: scrolled ? "#ffffff" : "transparent",
-        borderBottom: scrolled ? "1px solid #E4E3DD" : "1px solid transparent",
-        boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
+        backdropFilter: isSolid ? "blur(12px)" : "none",
+        background: isSolid ? "#ffffff" : "transparent",
+        borderBottom: isSolid ? "1px solid #E4E3DD" : "1px solid transparent",
+        boxShadow: isSolid ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
         transition: "all 0.3s ease",
-        "--nav-text": scrolled ? "#111111" : "#ffffff",
+        "--nav-text": isSolid ? "#111111" : "#ffffff",
       }}>
         <div style={{
           maxWidth: 1320,
@@ -222,7 +224,7 @@ export function Nav() {
                 display: "block",
                 width: 24,
                 height: 2,
-                background: scrolled ? "#111" : "#fff",
+                background: isSolid ? "#111" : "#fff",
                 borderRadius: 2,
                 transition: "all 0.3s ease",
                 transform: mobileOpen
