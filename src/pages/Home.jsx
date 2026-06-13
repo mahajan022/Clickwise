@@ -8,7 +8,7 @@ function Hero() {
   const [v, setV] = useState(false);
   useEffect(() => { setTimeout(() => setV(true), 150); }, []);
   return (
-    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
+    <section style={{ position: "relative", height: "115vh", overflow: "hidden", background: "#111" }}>
       <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}>
         <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
       </video>
