@@ -177,7 +177,7 @@ export function Nav() {
           <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
             <img
               src="/logo.png"
-              alt="Clickwise"
+              alt="Clicks&ads"
               style={{ height: 40, width: "auto", objectFit: "contain", transition: "opacity 0.2s" }}
               onMouseEnter={(e) => e.currentTarget.style.opacity = "0.85"}
               onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
@@ -426,7 +426,7 @@ export function Footer() {
         <div className="cw-grid-footer" style={{ gap: 80, marginBottom: 80 }}>
           <div>
             <img src="/logo-white.png"
-              alt="Clickwise"
+              alt="Clicks&ads"
               style={{
                 height: 36,
                 width: "auto",
@@ -497,7 +497,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: "1px solid #1F2937", padding: "28px 0 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-          <p style={{ color: "#4B5563", fontSize: 13 }}>© 2026 Clickwise. All rights reserved.</p>
+          <p style={{ color: "#4B5563", fontSize: 13 }}>© 2026 Clicks&ads. All rights reserved.</p>
           <p style={{ color: "#4B5563", fontSize: 13 }}>Made with ❤️ from India 🇮🇳</p>
           <div style={{ display: "flex", gap: 20 }}>
             <a href="#privacy" style={{ color: "#6B7280", fontSize: 12, textDecoration: "none" }}
@@ -550,7 +550,7 @@ export function Loader({ onDone }) {
       {/* Logo — fades + scales in */}
       <img
         src="/logo-white.png"
-              alt="Clickwise"
+              alt="Clicks&ads"
               style={{
                 height: 36,
                 width: "auto",

@@ -117,13 +117,13 @@ export const STATS = [
 export const MQ = ["Web Design", "Brand Identity", "SEO & AI", "MERN Stack", "AI Solutions", "Social Media", "Photography", "Growth Strategy", "UI / UX Design", "Automation"];
 
 export const TESTIMONIALS = [
-  { quote: "Clickwise transformed our entire online presence. The website they built gets us genuine inquiries every week. Exceptional attention to detail and craft.", author: "Rohan Mehta", role: "Founder, Enrachna Design Labs", initials: "RM", photo: "/t1.jpeg" },
+  { quote: "Clicks&ads transformed our entire online presence. The website they built gets us genuine inquiries every week. Exceptional attention to detail and craft.", author: "Rohan Mehta", role: "Founder, Enrachna Design Labs", initials: "RM", photo: "/t1.jpeg" },
   { quote: "Our new site looked incredible and was delivered in under 10 days. They truly understood our logistics business and made it shine online.", author: "Priya Sharma", role: "Director, Riya Cargo", initials: "PS", photo: "/t2.jpeg" },
   { quote: "The brand identity work was stunning. Our clients immediately noticed the upgrade. Worth every rupee — this is what premium looks like.", author: "Aditya Kulkarni", role: "CEO, Adswirl", initials: "AK", photo: "/t3.jpeg" },
-  { quote: "We approached Clickwise with a vague brief and they turned it into something we couldn't have imagined. The whole team was responsive, sharp, and genuinely invested.", author: "Sneha Iyer", role: "Co-Founder, KA Impex", initials: "SI", photo: "/t4.jpeg" },
-  { quote: "From logo to full website in two weeks. Clickwise nailed the brief on the first round. Clients keep complimenting the branding — it speaks for itself.", author: "Farhan Qureshi", role: "Director, Media Fusion", initials: "FQ", photo: "/t5.jpeg" },
+  { quote: "We approached Clicks&ads with a vague brief and they turned it into something we couldn't have imagined. The whole team was responsive, sharp, and genuinely invested.", author: "Sneha Iyer", role: "Co-Founder, KA Impex", initials: "SI", photo: "/t4.jpeg" },
+  { quote: "From logo to full website in two weeks. Clicks&ads nailed the brief on the first round. Clients keep complimenting the branding — it speaks for itself.", author: "Farhan Qureshi", role: "Director, Media Fusion", initials: "FQ", photo: "/t5.jpeg" },
   { quote: "I was skeptical at first but the results were undeniable. Our Instagram grew 3x in three months and website traffic doubled. These guys know what they're doing.", author: "Tanvi Desai", role: "Founder, Nutrition Hub", initials: "TD", photo: "/t6.jpeg" },
-  { quote: "Clean code, pixel-perfect design, zero back-and-forth headaches. Clickwise delivered a MERN app for us ahead of schedule. Genuinely rare in this industry.", author: "Mihir Joshi", role: "CTO, Finulent Solutions", initials: "MJ", photo: "/t7.jpeg" },
+  { quote: "Clean code, pixel-perfect design, zero back-and-forth headaches. Clicks&ads delivered a MERN app for us ahead of schedule. Genuinely rare in this industry.", author: "Mihir Joshi", role: "CTO, Finulent Solutions", initials: "MJ", photo: "/t7.jpeg" },
 ];
 
 export const PROCESS = [
