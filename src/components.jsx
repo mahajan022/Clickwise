@@ -428,7 +428,7 @@ export function Footer() {
             <img src="/logo-white.png"
               alt="Clicks&ads"
               style={{
-                height: 36,
+                height: 64,
                 width: "auto",
                 objectFit: "contain",
                 marginBottom: 16,
@@ -550,15 +550,16 @@ export function Loader({ onDone }) {
       {/* Logo — fades + scales in */}
       <img
         src="/logo-white.png"
-              alt="Clicks&ads"
-              style={{
-                height: 36,
-                width: "auto",
-                objectFit: "contain",
-                marginBottom: 16,
-                display: "block",
-                opacity: 0.95,
-              }}
+        alt="Clicks&ads"
+        style={{
+          position: "relative", zIndex: 1,
+          height: "clamp(70px,9vw,110px)",
+          width: "auto",
+          objectFit: "contain",
+          opacity: 0,
+          transform: "scale(.9)",
+          animation: "cwLogo .7s cubic-bezier(.16,1,.3,1) forwards",
+        }}
         onError={(e) => { e.currentTarget.src = "/logo.png"; }}
       />
 
