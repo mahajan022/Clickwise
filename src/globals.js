@@ -47,7 +47,7 @@ export const SERVICES = [
   { 
     icon: "social", 
     title: "Social Media Management", 
-    desc: "Strategic content and community growth across all platforms.",
+    desc: "Social media marketing strategy and community growth across all platforms.",
     about: "We manage your entire social presence—from content creation to community engagement. Data-driven strategies that grow your following and drive sales.",
     detail: "Content calendars, copywriting, design, scheduling, community management, and monthly analytics reporting. Everything you need to dominate social.",
     image: "/socialMediaServices.png",
@@ -55,9 +55,9 @@ export const SERVICES = [
   },
   { 
     icon: "growth", 
-    title: "Growth & Marketing", 
-    desc: "Data-driven strategies to acquire and retain customers.",
-    about: "We combine paid ads, email marketing, and conversion optimization into a cohesive growth engine that consistently delivers results.",
+    title: "Digital Marketing & Performance Marketing", 
+    desc: "Data-driven digital marketing strategies to acquire and retain customers.",
+    about: "As a full-service digital marketing agency, we combine performance marketing, paid ads, email marketing, and conversion optimization into a cohesive growth engine that consistently delivers results.",
     detail: "Paid ads, email funnels, landing page optimization, funnel strategy—tailored to your market and audience for maximum ROI.",
     image: "/strategyServices.png",
     features: ["Paid Ads Strategy (Google, Meta)", "Email Marketing Funnels", "Landing Page Optimization", "Conversion Rate Optimization", "Analytics Setup", "Monthly Reporting"]
@@ -84,7 +84,7 @@ export const SERVICES = [
     icon: "seo", 
     title: "SEO & AI Search", 
     desc: "Rank on Google and get discovered on ChatGPT.",
-    about: "Modern SEO goes beyond Google. We optimize for search, AI assistants, voice search, and emerging platforms to maximize visibility.",
+    about: "As an experienced SEO agency, modern search optimization goes beyond Google—we optimize for search engines, AI assistants, voice search, and emerging platforms to maximize visibility.",
     detail: "Technical SEO, content strategy, AI search optimization. Get discovered where your customers are actually searching.",
     image: "/seoServices.png",
     features: ["Technical SEO Audit", "Content Strategy", "Keyword Research", "Link Building", "Core Web Vitals Optimization", "AI Search Optimization"]

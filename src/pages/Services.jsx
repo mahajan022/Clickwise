@@ -259,10 +259,10 @@ export default function Services() {
 
   return (
     <div className="page-enter">
-      <PageBanner
-        tag="SERVICES"
-        title="Full-Service Creative & Digital Agency."
-        sub="From brand identity to websites, photo shoots, social media, ads, and everything in between — we do it all, and we do it brilliantly."
+     <PageBanner
+  tag="SERVICES"
+  title="Digital Marketing & Website Development Services in Mumbai"
+  sub="From website development and SEO to performance marketing, branding, and social media management — Clicks&Ads is your full-service digital marketing agency in Mumbai."
         bg="https://res.cloudinary.com/dpejpwl80/image/upload/q_auto/f_auto/v1780139668/servicesBanner_sbj5f4.png"
       />
 
