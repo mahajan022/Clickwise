@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useInView, MarqueeBar } from "../components";
 import { SERVICES, WORKS, STATS, TESTIMONIALS, PROCESS } from "../globals";
+import { Helmet } from "react-helmet-async";
 
 /* ── HERO ── */
 function Hero() {
@@ -21,7 +22,7 @@ function Hero() {
             WIN ONLINE.
           </h1>
           <p style={{ fontSize: "clamp(14px,1.4vw,17px)", color: "rgba(255,255,255,.8)", lineHeight: 1.8, maxWidth: 520, marginBottom: 40, fontWeight: 300, opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .6s" }}>
-            Web design, development, brand identity, SEO & digital marketing — everything you need to grow, under one roof.
+           Mumbai's digital marketing agency for web design, website development, SEO, and PPC — everything you need to grow, under one roof.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(12px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .75s" }}>
             <Link to="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#E8471A", color: "#fff", padding: "15px 32px", borderRadius: 50, textDecoration: "none", fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", transition: "all .25s", boxShadow: "0 8px 32px rgba(232,71,26,.5)" }}
@@ -274,6 +275,10 @@ function CTA() {
 export default function Home() {
   return (
     <div className="page-enter">
+      <Helmet>
+        <title>Clicks&Ads — Digital Marketing Agency & Website Development Company in Mumbai</title>
+        <meta name="description" content="Clicks&Ads is a Mumbai-based digital marketing agency and website development company offering web design, SEO, PPC, and branding services." />
+      </Helmet>
       <Hero />
       <MarqueeBar />
       <ServicesPreview />

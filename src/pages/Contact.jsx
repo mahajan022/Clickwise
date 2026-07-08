@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useInView, PageBanner } from "../components";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const FAQS = [
   { q: "What's your turnaround time?", a: "Projects typically take 2–8 weeks depending on complexity. We provide a detailed timeline after the initial consultation, so you always know what to expect." },
@@ -69,6 +70,10 @@ export default function Contact() {
 
   return (
     <div className="page-enter">
+      <Helmet>
+  <title>Contact Clicks&Ads — Digital Marketing Agency Near You in Mumbai</title>
+  <meta name="description" content="Get in touch with Mumbai's trusted digital marketing agency and web development company. Free consultation, fast turnaround." />
+</Helmet>
 
       {/* ── HERO SECTION ── */}
       <section style={{ background: "#fff", padding: "100px clamp(20px,5vw,80px) 0" }}>

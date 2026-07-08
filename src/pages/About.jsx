@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useInView, PageBanner } from "../components";
 import { STATS } from "../globals";
+import { Helmet } from "react-helmet-async";
+
 
 /* ─── TILT HOOK ─── */
 function useTilt() {
@@ -331,6 +333,10 @@ export default function About() {
 
   return (
     <div className="page-enter">
+      <Helmet>
+  <title>About Clicks&Ads — Mumbai-Based Digital Marketing & Web Design Agency</title>
+  <meta name="description" content="Clicks&Ads is a full-service digital agency in Mumbai. Meet the web development company and marketing agency behind 50+ brand projects." />
+</Helmet>
       <PageBanner
         tag="ABOUT"
         title="A Mumbai studio that builds legendary brands."

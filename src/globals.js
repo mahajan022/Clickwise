@@ -12,7 +12,7 @@ export const SERVICES = [
     icon: "code", 
     title: "Website Development", 
     desc: "Custom-built, fast, SEO-ready websites that convert.",
-    about: "Hand-coded, scalable websites built on modern tech stacks. No bloated page builders—just clean, performant code that ranks on Google and loads instantly.",
+    about: "As a trusted website development company, we build hand-coded, scalable websites on modern tech stacks. No bloated page builders—just clean, performant code that ranks on Google and loads instantly.",
     detail: "We hand-code and carefully architect every site. Fast load times, responsive design, built-in SEO, and production-ready infrastructure from day one.",
     image: "/service2.png",
     features: ["React/Vue/Next.js", "Responsive Design", "SEO Optimization", "Page Speed (Core Web Vitals)", "SSL & Security", "CDN Integration"]
@@ -56,7 +56,7 @@ export const SERVICES = [
   { 
     icon: "growth", 
     title: "Digital Marketing & Performance Marketing", 
-    desc: "Data-driven digital marketing strategies to acquire and retain customers.",
+    desc: "PPC agency services and data-driven digital marketing strategies to acquire and retain customers.",
     about: "As a full-service digital marketing agency, we combine performance marketing, paid ads, email marketing, and conversion optimization into a cohesive growth engine that consistently delivers results.",
     detail: "Paid ads, email funnels, landing page optimization, funnel strategy—tailored to your market and audience for maximum ROI.",
     image: "/strategyServices.png",

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useInView, PageBanner } from "../components";
 import { WORKS } from "../globals";
+import { Helmet } from "react-helmet-async";
 
 const TOOLS = [
   { name: "Figma",       bg: "#FFF0EB", color: "#F24E1E", svg: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4zm0-20H4C1.792 4 0 5.792 0 8s1.792 4 4 4h4V4zM12 4v8h4c2.208 0 4-1.792 4-4s-1.792-4-4-4h-4zm4 10h-4v4c0 2.208 1.792 4 4 4s4-1.792 4-4-1.792-4-4-4zM8 12H4c-2.208 0-4 1.792-4 4s1.792 4 4 4h4v-8z"/></svg> },
@@ -74,6 +75,10 @@ export default function Work() {
 
   return (
     <div className="page-enter">
+      <Helmet>
+  <title>Our Work — Web Design & Digital Marketing Portfolio | Clicks&Ads</title>
+  <meta name="description" content="See real projects by our web development company and digital marketing agency — websites, branding, SEO & PPC campaigns." />
+</Helmet>
       <PageBanner
         tag="WORK"
         title="Projects That Made Impact."
