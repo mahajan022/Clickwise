@@ -250,11 +250,20 @@ export default function ChatBot() {
           </button>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
             <div style={{ width: 38, height: 38, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <img
-                src="/chatbot-icon.png"
-                alt="Chat"
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 style={{ width: 38, height: 38, objectFit: "contain", borderRadius: "50%" }}
-              />
+              >
+                <source src="/chatbot-icon.mp4" type="video/webm" />
+                <img
+                  src="/chatbot-icon.png"
+                  alt="Chat"
+                  style={{ width: 38, height: 38, objectFit: "contain", borderRadius: "50%" }}
+                />
+              </video>
             </div>
             <div style={{ fontWeight: 700, fontSize: 15, color: "#111111" }}>Clicks&ads Assistant</div>
           </div>
@@ -325,12 +334,21 @@ export default function ChatBot() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            /* Custom chatbot icon — place your image file at: public/chatbot-icon.png */
-            <img
-              src="/chatbot-icon.png"
-              alt="Chat"
+            /* Looping mascot animation — place files at: public/chatbot-icon.webm and public/chatbot-icon.png */
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
               style={{ width: 58, height: 58, objectFit: "contain", borderRadius: "50%" }}
-            />
+            >
+              <source src="/chatbot-icon.webm" type="video/webm" />
+              <img
+                src="/chatbot-icon.png"
+                alt="Chat"
+                style={{ width: 58, height: 58, objectFit: "contain", borderRadius: "50%" }}
+              />
+            </video>
           )}
         </button>
       </div>
@@ -378,11 +396,20 @@ export default function ChatBot() {
                 flexShrink: 0,
               }}
             >
-              <img
-                src="/chatbot-icon.png"
-                alt="Chat"
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
-              />
+              >
+                <source src="/chatbot-icon.webm" type="video/webm" />
+                <img
+                  src="/chatbot-icon.png"
+                  alt="Chat"
+                  style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
+                />
+              </video>
             </div>
             <div>
               <div style={{ color: "#111111", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
