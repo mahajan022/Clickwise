@@ -206,18 +206,18 @@ export default function ChatBot() {
         <div
           style={{
             position: "fixed",
-            bottom: 100,
+            bottom: 96,
             right: 24,
-            maxWidth: 260,
-            background: "#111111",
-            color: "#fff",
-            borderRadius: "16px 16px 4px 16px",
-            padding: "14px 16px",
-            boxShadow: "0 12px 32px rgba(0,0,0,.22)",
+            width: 300,
+            maxWidth: "calc(100vw - 48px)",
+            background: "#ffffff",
+            color: "#111111",
+            borderRadius: 20,
+            padding: "20px 22px",
+            boxShadow: "0 18px 48px rgba(0,0,0,.16)",
+            border: "1px solid #EDEBE6",
             zIndex: 1000,
             fontFamily: "'Poppins', sans-serif",
-            fontSize: 13.5,
-            lineHeight: 1.6,
             animation: "cwChatIn .3s cubic-bezier(.16,1,.3,1)",
             cursor: "pointer",
           }}
@@ -228,27 +228,37 @@ export default function ChatBot() {
             aria-label="Dismiss"
             style={{
               position: "absolute",
-              top: -8,
-              right: -8,
-              width: 22,
-              height: 22,
+              top: -10,
+              right: -10,
+              width: 26,
+              height: 26,
               borderRadius: "50%",
-              background: "#E8471A",
-              border: "2px solid #fff",
-              color: "#fff",
+              background: "#fff",
+              border: "1.5px solid #E4E3DD",
+              color: "#6B7280",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               cursor: "pointer",
               padding: 0,
-              fontSize: 12,
+              fontSize: 13,
               lineHeight: 1,
+              boxShadow: "0 4px 10px rgba(0,0,0,.08)",
             }}
           >
             ✕
           </button>
-          <div style={{ fontWeight: 700, marginBottom: 3, color: "#fff" }}>Clicks&ads Assistant</div>
-          <div style={{ color: "#D1D5DB" }}>Got a question about our services or pricing? Ask away — I reply instantly.</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <div style={{ width: 34, height: 34, borderRadius: "50%", background: "#E8471A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+            </div>
+            <div style={{ fontWeight: 700, fontSize: 15, color: "#111111" }}>Clicks&ads Assistant</div>
+          </div>
+          <div style={{ color: "#6B7280", fontSize: 14, lineHeight: 1.65 }}>
+            Got a question about our services or pricing? Ask away — I reply instantly.
+          </div>
         </div>
       )}
 
