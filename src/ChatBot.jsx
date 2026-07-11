@@ -249,10 +249,12 @@ export default function ChatBot() {
             ✕
           </button>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-            <div style={{ width: 34, height: 34, borderRadius: "50%", background: "#E8471A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
+            <div style={{ width: 34, height: 34, borderRadius: "50%", background: "#E8471A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden" }}>
+              <img
+                src="/chatbot-icon.png"
+                alt="Chat"
+                style={{ width: 20, height: 20, objectFit: "contain" }}
+              />
             </div>
             <div style={{ fontWeight: 700, fontSize: 15, color: "#111111" }}>Clicks&ads Assistant</div>
           </div>
@@ -323,9 +325,12 @@ export default function ChatBot() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-            </svg>
+            /* Custom chatbot icon — place your image file at: public/chatbot-icon.png */
+            <img
+              src="/chatbot-icon.png"
+              alt="Chat"
+              style={{ width: 34, height: 34, objectFit: "contain", borderRadius: "50%" }}
+            />
           )}
         </button>
       </div>
@@ -373,11 +378,14 @@ export default function ChatBot() {
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
+                overflow: "hidden",
               }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
+              <img
+                src="/chatbot-icon.png"
+                alt="Chat"
+                style={{ width: 24, height: 24, objectFit: "contain" }}
+              />
             </div>
             <div>
               <div style={{ color: "#111111", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
