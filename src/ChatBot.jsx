@@ -249,11 +249,11 @@ export default function ChatBot() {
             ✕
           </button>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-            <div style={{ width: 34, height: 34, borderRadius: "50%", background: "#E8471A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden" }}>
+            <div style={{ width: 38, height: 38, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <img
                 src="/chatbot-icon.png"
                 alt="Chat"
-                style={{ width: 20, height: 20, objectFit: "contain" }}
+                style={{ width: 38, height: 38, objectFit: "contain", borderRadius: "50%" }}
               />
             </div>
             <div style={{ fontWeight: 700, fontSize: 15, color: "#111111" }}>Clicks&ads Assistant</div>
@@ -302,13 +302,13 @@ export default function ChatBot() {
             width: 58,
             height: 58,
             borderRadius: "50%",
-            background: "#E8471A",
+            background: open ? "#E8471A" : "transparent",
             border: "none",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
-            boxShadow: "0 10px 26px rgba(232,71,26,.35)",
+            boxShadow: open ? "0 10px 26px rgba(232,71,26,.35)" : "0 8px 22px rgba(0,0,0,.15)",
             transition: "all .25s cubic-bezier(.16,1,.3,1)",
             color: "#fff",
           }}
@@ -329,7 +329,7 @@ export default function ChatBot() {
             <img
               src="/chatbot-icon.png"
               alt="Chat"
-              style={{ width: 34, height: 34, objectFit: "contain", borderRadius: "50%" }}
+              style={{ width: 58, height: 58, objectFit: "contain", borderRadius: "50%" }}
             />
           )}
         </button>
@@ -370,21 +370,18 @@ export default function ChatBot() {
           >
             <div
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                background: "#E8471A",
+                width: 44,
+                height: 44,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
-                overflow: "hidden",
               }}
             >
               <img
                 src="/chatbot-icon.png"
                 alt="Chat"
-                style={{ width: 24, height: 24, objectFit: "contain" }}
+                style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
               />
             </div>
             <div>
