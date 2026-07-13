@@ -76,14 +76,14 @@ export default function Contact() {
 </Helmet>
 
       {/* ── HERO SECTION ── */}
-      <section style={{ background: "#fff", padding: "100px clamp(20px,5vw,80px) 0" }}>
+      <section style={{ background: "#FAF8F5", padding: "100px clamp(20px,5vw,80px) 0" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto" }}>
           <div ref={ref1} className="cw-grid-2" style={{ gap: 60, alignItems: "end" }}>
 
             {/* Left — heading */}
             <div style={{ paddingBottom: 80, opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
               <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", color: "#E8471A", textTransform: "uppercase", marginBottom: 24 }}>Get In Touch</p>
-              <h1 style={{ fontSize: "clamp(40px,5vw,72px)", fontWeight: 800, color: "#111111", lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 28 }}>
+              <h1 style={{ fontSize: "clamp(40px,5vw,72px)", fontWeight: 800, color: "#14161C", lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 28 }}>
                 Let's Build<br />
                 Something<br />
                 <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary.</span>
@@ -96,7 +96,7 @@ export default function Contact() {
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
                   { label: "Email us", value: "anuragg7051@gmail.com", href: "mailto:anuragg7051@gmail.com", color: "#E8471A" },
-                  { label: "Call us", value: "+91 70515 75007", href: "tel:+917051575007", color: "#111111" },
+                  { label: "Call us", value: "+91 70515 75007", href: "tel:+917051575007", color: "#14161C" },
                   { label: "WhatsApp", value: "Chat with us instantly", href: "https://wa.me/917051575007", color: "#25D366" },
                 ].map((item, i) => (
                   <a
@@ -114,7 +114,7 @@ export default function Contact() {
                       transition: `all .7s cubic-bezier(.16,1,.3,1) ${.2 + i * 0.1}s`,
                     }}
                     onMouseEnter={(e) => { e.currentTarget.querySelector(".contact-val").style.color = item.color; }}
-                    onMouseLeave={(e) => { e.currentTarget.querySelector(".contact-val").style.color = "#111111"; }}
+                    onMouseLeave={(e) => { e.currentTarget.querySelector(".contact-val").style.color = "#14161C"; }}
                   >
                     <div style={{ width: 48, height: 48, borderRadius: 12, background: "#F7F7F5", border: "1px solid #E4E3DD", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       {i === 0 && <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={item.color} strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>}
@@ -123,7 +123,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p style={{ fontSize: 10, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 2 }}>{item.label}</p>
-                      <p className="contact-val" style={{ fontSize: 16, fontWeight: 700, color: "#111111", transition: "color .25s" }}>{item.value}</p>
+                      <p className="contact-val" style={{ fontSize: 16, fontWeight: 700, color: "#14161C", transition: "color .25s" }}>{item.value}</p>
                     </div>
                   </a>
                 ))}
@@ -152,7 +152,7 @@ export default function Contact() {
                 <ImgBox src={CONTACT_IMAGES.mid2} ratio="1/1" />
                 {/* Stats card */}
                 <div style={{ borderRadius: 16, background: "#E8471A", padding: "32px 24px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                  <div style={{ fontSize: "clamp(32px,4vw,48px)", fontWeight: 800, color: "#fff", letterSpacing: "-2px", lineHeight: 1 }}>24h</div>
+                  <div style={{ fontSize: "clamp(32px,4vw,48px)", fontWeight: 800, color: "#FAF8F5", letterSpacing: "-2px", lineHeight: 1 }}>24h</div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,.7)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: 8 }}>Response Time</div>
                   <div style={{ width: 32, height: 2, background: "rgba(255,255,255,.4)", marginTop: 16 }} />
                   <p style={{ fontSize: 13, color: "rgba(255,255,255,.7)", lineHeight: 1.7, marginTop: 12 }}>We reply to every inquiry within 24 hours — guaranteed.</p>
@@ -160,8 +160,8 @@ export default function Contact() {
               </div>
 
               {/* Why work with us */}
-              <div style={{ background: "#fff", borderRadius: 16, padding: "32px 28px", border: "1px solid #E4E3DD" }}>
-                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#111111", marginBottom: 20 }}>Why work with us?</h3>
+              <div style={{ background: "#FAF8F5", borderRadius: 16, padding: "32px 28px", border: "1px solid #E4E3DD" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#14161C", marginBottom: 20 }}>Why work with us?</h3>
                 {[
                   "Free consultation, no commitment",
                   "Detailed proposal within 48 hours",
@@ -180,8 +180,8 @@ export default function Contact() {
 
             {/* Right — form */}
             <div style={{ opacity: v2 ? 1 : 0, transform: v2 ? "none" : "translateY(24px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .1s" }}>
-              <div style={{ background: "#fff", borderRadius: 20, padding: "48px 40px", boxShadow: "0 4px 6px rgba(0,0,0,.04), 0 24px 80px rgba(0,0,0,.08)" }}>
-                <h2 style={{ fontSize: "clamp(24px,2.5vw,32px)", fontWeight: 800, color: "#111111", marginBottom: 8, letterSpacing: "-0.8px" }}>
+              <div style={{ background: "#FAF8F5", borderRadius: 20, padding: "48px 40px", boxShadow: "0 4px 6px rgba(0,0,0,.04), 0 24px 80px rgba(0,0,0,.08)" }}>
+                <h2 style={{ fontSize: "clamp(24px,2.5vw,32px)", fontWeight: 800, color: "#14161C", marginBottom: 8, letterSpacing: "-0.8px" }}>
                   Tell us about your project
                 </h2>
                 <p style={{ fontSize: 16, color: "#5A6270", marginBottom: 36, lineHeight: 1.7 }}>
@@ -195,7 +195,7 @@ export default function Contact() {
                     { label: "Phone (Optional)", type: "tel", value: phone, onChange: setPhone, placeholder: "+91 98765 43210" },
                   ].map((field, i) => (
                     <div key={i} style={{ marginBottom: 20 }}>
-                      <label style={{ fontSize: 12, fontWeight: 700, color: "#111111", display: "block", marginBottom: 8, letterSpacing: "0.02em" }}>{field.label}</label>
+                      <label style={{ fontSize: 12, fontWeight: 700, color: "#14161C", display: "block", marginBottom: 8, letterSpacing: "0.02em" }}>{field.label}</label>
                       <input
                         type={field.type}
                         value={field.value}
@@ -203,21 +203,21 @@ export default function Contact() {
                         placeholder={field.placeholder}
                         required={field.label.includes("*")}
                         style={{ width: "100%", padding: "13px 16px", border: "1.5px solid #E4E3DD", borderRadius: 10, fontSize: 14, outline: "none", boxSizing: "border-box", background: "#FAFAF9", transition: "all .25s", fontFamily: "inherit" }}
-                        onFocus={(e) => { e.target.style.borderColor = "#E8471A"; e.target.style.background = "#fff"; e.target.style.boxShadow = "0 0 0 3px rgba(232,71,26,.08)"; }}
+                        onFocus={(e) => { e.target.style.borderColor = "#E8471A"; e.target.style.background = "#FAF8F5"; e.target.style.boxShadow = "0 0 0 3px rgba(232,71,26,.08)"; }}
                         onBlur={(e) => { e.target.style.borderColor = "#E4E3DD"; e.target.style.background = "#FAFAF9"; e.target.style.boxShadow = "none"; }}
                       />
                     </div>
                   ))}
 
                   <div style={{ marginBottom: 28 }}>
-                    <label style={{ fontSize: 12, fontWeight: 700, color: "#111111", display: "block", marginBottom: 8 }}>Tell us about your project *</label>
+                    <label style={{ fontSize: 12, fontWeight: 700, color: "#14161C", display: "block", marginBottom: 8 }}>Tell us about your project *</label>
                     <textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="What are you building? What's your timeline? What's your budget range?"
                       required
                       style={{ width: "100%", padding: "13px 16px", border: "1.5px solid #E4E3DD", borderRadius: 10, fontSize: 15, minHeight: 130, outline: "none", boxSizing: "border-box", resize: "vertical", background: "#FAFAF9", transition: "all .25s", fontFamily: "inherit", lineHeight: 1.6 }}
-                      onFocus={(e) => { e.target.style.borderColor = "#E8471A"; e.target.style.background = "#fff"; e.target.style.boxShadow = "0 0 0 3px rgba(232,71,26,.08)"; }}
+                      onFocus={(e) => { e.target.style.borderColor = "#E8471A"; e.target.style.background = "#FAF8F5"; e.target.style.boxShadow = "0 0 0 3px rgba(232,71,26,.08)"; }}
                       onBlur={(e) => { e.target.style.borderColor = "#E4E3DD"; e.target.style.background = "#FAFAF9"; e.target.style.boxShadow = "none"; }}
                     />
                   </div>
@@ -227,7 +227,7 @@ export default function Contact() {
                     style={{
                       width: "100%",
                       background: submitted ? "#22C55E" : "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)",
-                      color: "#fff",
+                      color: "#FAF8F5",
                       border: "none",
                       padding: "17px 28px",
                       borderRadius: 12,
@@ -259,7 +259,7 @@ export default function Contact() {
       </section>
 
       {/* ── PROCESS STRIP ── */}
-      <section style={{ background: "#111111", padding: "80px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#14161C", padding: "80px clamp(20px,5vw,80px)" }}>
         <div ref={ref3} className="cw-grid-4 cw-stack-mobile" style={{ maxWidth: 1320, margin: "0 auto", gap: 1 }}>
           {[
             { title: "You Reach Out", desc: "Fill the form or WhatsApp us. We respond within 24 hours.", icon: "/icons/reach-out.png" },
@@ -276,7 +276,7 @@ export default function Contact() {
                 onLoad={(e) => { e.currentTarget.style.opacity = 1; }}
                 style={{ width: 46, height: 46, objectFit: "contain", marginBottom: 22, display: "block", opacity: 0, transition: "opacity .4s ease" }}
               />
-              <h4 style={{ fontSize: 17, fontWeight: 700, color: "#fff", marginBottom: 10 }}>{s.title}</h4>
+              <h4 style={{ fontSize: 17, fontWeight: 700, color: "#FAF8F5", marginBottom: 10 }}>{s.title}</h4>
               <p style={{ fontSize: 15, color: "#8A93A0", lineHeight: 1.8 }}>{s.desc}</p>
             </div>
           ))}
@@ -284,10 +284,10 @@ export default function Contact() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ background: "#fff", padding: "100px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#FAF8F5", padding: "100px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div ref={ref4} style={{ textAlign: "center", marginBottom: 72, opacity: v4 ? 1 : 0, transition: "all .7s" }}>
-            <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#14161C", letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>
@@ -299,15 +299,15 @@ export default function Contact() {
                   onMouseEnter={(e) => { if (activeFAQ !== i) { e.currentTarget.style.borderColor = "rgba(232,71,26,.4)"; e.currentTarget.style.background = "#fff5f3"; } }}
                   onMouseLeave={(e) => { if (activeFAQ !== i) { e.currentTarget.style.borderColor = "#E4E3DD"; e.currentTarget.style.background = "#F7F7F5"; } }}
                 >
-                  <span style={{ fontSize: 14, fontWeight: 600, color: activeFAQ === i ? "#fff" : "#111111", transition: "color .25s" }}>{faq.q}</span>
-                  <span style={{ fontSize: 18, color: activeFAQ === i ? "#fff" : "#E8471A", flexShrink: 0, transition: "transform .3s", transform: activeFAQ === i ? "rotate(45deg)" : "none", fontWeight: 300 }}>+</span>
+                  <span style={{ fontSize: 14, fontWeight: 600, color: activeFAQ === i ? "#FAF8F5" : "#14161C", transition: "color .25s" }}>{faq.q}</span>
+                  <span style={{ fontSize: 18, color: activeFAQ === i ? "#FAF8F5" : "#E8471A", flexShrink: 0, transition: "transform .3s", transform: activeFAQ === i ? "rotate(45deg)" : "none", fontWeight: 300 }}>+</span>
                 </div>
               ))}
             </div>
             <div className="cw-unsticky-mobile" style={{ position: "sticky", top: 100 }}>
-              <div key={activeFAQ} style={{ background: "#fff", borderRadius: 16, padding: "40px 36px", border: "1.5px solid #E8471A", boxShadow: "0 12px 48px rgba(232,71,26,.08)", animation: "faqIn .3s cubic-bezier(.16,1,.3,1)" }}>
+              <div key={activeFAQ} style={{ background: "#FAF8F5", borderRadius: 16, padding: "40px 36px", border: "1.5px solid #E8471A", boxShadow: "0 12px 48px rgba(232,71,26,.08)", animation: "faqIn .3s cubic-bezier(.16,1,.3,1)" }}>
                 <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 20 }} />
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>{FAQS[activeFAQ].q}</h3>
+                <h3 style={{ fontSize: 18, fontWeight: 700, color: "#14161C", marginBottom: 14, lineHeight: 1.4 }}>{FAQS[activeFAQ].q}</h3>
                 <p style={{ fontSize: 16, color: "#5A6270", lineHeight: 1.9 }}>{FAQS[activeFAQ].a}</p>
                 <p style={{ fontSize: 12, color: "#C4C4C4", marginTop: 28, letterSpacing: "0.08em" }}>{activeFAQ + 1} / {FAQS.length}</p>
               </div>
@@ -337,7 +337,7 @@ export default function Contact() {
           <div style={{ position: "absolute", inset: 0, background: "rgba(17,17,17,.45)" }} />
         </div>
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto", padding: "100px clamp(20px,5vw,80px)", textAlign: "center", width: "100%" }}>
-          <h2 style={{ fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, color: "#fff", marginBottom: 20, letterSpacing: "-1.5px", lineHeight: 1.1 }}>
+          <h2 style={{ fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, color: "#FAF8F5", marginBottom: 20, letterSpacing: "-1.5px", lineHeight: 1.1 }}>
             Let's Turn Your Vision Into Reality
           </h2>
           <p style={{ fontSize: 18, color: "rgba(255,255,255,.8)", marginBottom: 40, lineHeight: 1.8 }}>

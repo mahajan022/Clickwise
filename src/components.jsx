@@ -51,7 +51,7 @@ export function Nav() {
           font-family: 'Poppins', sans-serif;
           font-size: 15px;
           font-weight: 600;
-          color: var(--nav-text, #111111);
+          color: var(--nav-text, #14161C);
           text-decoration: none;
           letter-spacing: 0.01em;
           padding: 6px 0;
@@ -85,7 +85,7 @@ export function Nav() {
           font-family: 'Poppins', sans-serif;
           font-size: 13px;
           font-weight: 700;
-          color: #fff;
+          color: #FAF8F5;
           text-decoration: none;
           background: linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%);
           padding: 12px 28px;
@@ -138,7 +138,7 @@ export function Nav() {
           font-family: 'Poppins', sans-serif;
           font-size: 18px;
           font-weight: 700;
-          color: #111;
+          color: #14161C;
           text-decoration: none;
           padding: 12px 0;
           border-bottom: 1px solid #F0EFEA;
@@ -163,11 +163,11 @@ export function Nav() {
         right: 0,
         zIndex: 100,
         backdropFilter: isSolid ? "blur(12px)" : "none",
-        background: isSolid ? "#ffffff" : "transparent",
+        background: isSolid ? "#FAF8F5" : "transparent",
         borderBottom: isSolid ? "1px solid #E4E3DD" : "1px solid transparent",
         boxShadow: isSolid ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
         transition: "all 0.3s ease",
-        "--nav-text": isSolid ? "#111111" : "#ffffff",
+        "--nav-text": isSolid ? "#14161C" : "#FAF8F5",
       }}>
         <div style={{
           maxWidth: 1320,
@@ -224,7 +224,7 @@ export function Nav() {
                 display: "block",
                 width: 24,
                 height: 2,
-                background: isSolid ? "#111" : "#fff",
+                background: isSolid ? "#14161C" : "#FAF8F5",
                 borderRadius: 2,
                 transition: "all 0.3s ease",
                 transform: mobileOpen
@@ -271,7 +271,7 @@ export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle", bg
   const [ref, v] = useInView();
   return (
     <section style={{
-      background: bg ? `url(${bg}) center/cover no-repeat` : "#fff",
+      background: bg ? `url(${bg}) center/cover no-repeat` : "#FAF8F5",
       borderBottom: "1px solid #E4E3DD",
       padding: "80px clamp(20px,5vw,80px)",
       position: "relative",
@@ -287,7 +287,7 @@ export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle", bg
       <div ref={ref} style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
         <h1 style={{
           fontSize: "clamp(40px,5vw,64px)", fontWeight: 800,
-          color: bg ? "#fff" : "#111111",
+          color: bg ? "#FAF8F5" : "#14161C",
           lineHeight: 1.1, marginBottom: 20, letterSpacing: "-1px",
           opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)",
           transition: "all .7s cubic-bezier(.16,1,.3,1) .1s"
@@ -324,12 +324,12 @@ export function MarqueeBar() {
   ];
   const doubled = [...items, ...items];
   return (
-    <div style={{ background: "#0D0D0D", padding: "18px 0", overflow: "hidden", borderBottom: "1px solid #1F2937" }}>
+    <div style={{ background: "#14161C", padding: "18px 0", overflow: "hidden", borderBottom: "1px solid #1F2937" }}>
       <div style={{ display: "flex", gap: 0, whiteSpace: "nowrap", animation: "scroll 35s linear infinite" }}>
         {doubled.map((item, i) => (
           <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 10, paddingRight: 48 }}>
             <span style={{ color: "#E8471A", fontSize: 14, fontWeight: 900 }}>{item.icon}</span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#FAF8F5", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               {item.text}
             </span>
           </span>
@@ -406,14 +406,14 @@ export function Footer() {
   ];
 
   return (
-    <footer style={{ background: "#0F0F0F", padding: "120px clamp(20px,5vw,80px) 0", position: "relative", overflow: "hidden" }}>
+    <footer style={{ background: "#14161C", padding: "120px clamp(20px,5vw,80px) 0", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: 0, right: "-50%", width: "100%", height: "100%", background: "radial-gradient(circle, rgba(232,71,26,.04) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1320, margin: "0 auto", position: "relative", zIndex: 1 }}>
         {/* Top CTA */}
         <div className="cw-grid-1auto" style={{ gap: 80, alignItems: "center", paddingBottom: 80, borderBottom: "1px solid #1F2937", marginBottom: 80 }}>
           <div>
-            <h3 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
+            <h3 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#FAF8F5", lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
               Let's Create Something <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary</span>
             </h3>
             <p style={{ fontSize: 17, color: "#9CA3AF", lineHeight: 1.8, maxWidth: 480 }}>
@@ -452,7 +452,7 @@ export function Footer() {
                     display: "flex", alignItems: "center", justifyContent: "center",
                     cursor: "pointer", transition: "all .3s cubic-bezier(.16,1,.3,1)",
                     background: hoveredIcon === label ? color : "transparent",
-                    color: hoveredIcon === label ? "#fff" : "#6B7280",
+                    color: hoveredIcon === label ? "#FAF8F5" : "#6B7280",
                     textDecoration: "none",
                   }}
                   onMouseEnter={() => setHoveredIcon(label)}
@@ -562,7 +562,7 @@ export function Loader({ onDone }) {
   return (
     <div style={{
       position: "fixed", inset: 0,
-      background: "#111111",
+      background: "#14161C",
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
       gap: 26, zIndex: 9999, overflow: "hidden",
     }}>
@@ -578,7 +578,7 @@ export function Loader({ onDone }) {
         <source src="https://res.cloudinary.com/dpejpwl80/video/upload/q_auto/f_auto/v1780137982/Firefly_Fast-paced_2-second_montage_for_a_creative_digital_agency_intro._Rapid_cuts_flashing_through_fstckd.mp4" type="video/mp4" />
       </video>
       {/* Dark overlay so logo + text stay readable on any background */}
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(17,17,17,.72) 0%, rgba(17,17,17,.55) 50%, rgba(17,17,17,.82) 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,22,28,.72) 0%, rgba(20,22,28,.55) 50%, rgba(20,22,28,.82) 100%)" }} />
 
       {/* Logo — fades + scales in */}
       <img

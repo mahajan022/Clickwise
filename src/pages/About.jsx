@@ -74,15 +74,15 @@ function TiltImageCard({ src = "", ratio = "4/3", label = "Your 3D image" }) {
 
 const SERVICE_CARDS = [
   { label: "Ad Shoots", sub: "Photography & Video", icon: "ti-camera", color: "#FFF5F2", accent: "#E8471A", span: 2, img: "/adShoot.png" },
-  { label: "Social Media Management", sub: "Content & Community", icon: "ti-brand-instagram", color: "#F7F7F5", accent: "#111111", span: 1, img: "/socialMedia.png" },
+  { label: "Social Media Management", sub: "Content & Community", icon: "ti-brand-instagram", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/socialMedia.png" },
   { label: "Web Development", sub: "React & Custom Code", icon: "ti-code", color: "#EEF2FF", accent: "#4F46E5", span: 1, img: "/webDev.png" },
   { label: "Meta Ads", sub: "Paid Social & Campaigns", icon: "ti-brand-meta", color: "#FFF5F2", accent: "#E8471A", span: 1, img: "/metaAds.png" },
-  { label: "Content Strategy", sub: "Planning & Creation", icon: "ti-pencil", color: "#F7F7F5", accent: "#111111", span: 1, img: "/growthStrategy.png" },
+  { label: "Content Strategy", sub: "Planning & Creation", icon: "ti-pencil", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/growthStrategy.png" },
   { label: "Growth Dashboards", sub: "Analytics & Reporting", icon: "ti-chart-line", color: "#F0FBF4", accent: "#16A34A", span: 2, img: "/growth.png" },
-  { label: "Web Redesign", sub: "Conversion Focused", icon: "ti-layout", color: "#F7F7F5", accent: "#111111", span: 1, img: "/webRede.png" },
+  { label: "Web Redesign", sub: "Conversion Focused", icon: "ti-layout", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/webRede.png" },
   { label: "Brand Identity", sub: "Logo & Visual System", icon: "ti-vector-triangle", color: "#FFF5F2", accent: "#E8471A", span: 1, img: "/brandIdentity.png" },
   { label: "Google Ads", sub: "Search & Display", icon: "ti-brand-google", color: "#FFFBF0", accent: "#D97706", span: 1, img: "/googleAds.png" },
-  { label: "Reels & Video Ads", sub: "Short-form Production", icon: "ti-player-play", color: "#F7F7F5", accent: "#111111", span: 1, img: "/reels.png" },
+  { label: "Reels & Video Ads", sub: "Short-form Production", icon: "ti-player-play", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/reels.png" },
   { label: "Email Marketing", sub: "Sequences & Campaigns", icon: "ti-mail", color: "#EEF2FF", accent: "#4F46E5", span: 1, img: "/email.png" },
   { label: "SEO", sub: "Organic & AI Search", icon: "ti-search", color: "#F0FBF4", accent: "#16A34A", span: 1, img: "/seoMar.png" },
 ];
@@ -131,7 +131,7 @@ function FloatCard({ card, origin, delay, fired, settled, span = 1 }) {
         <div style={{ display: "inline-block", fontSize: 9, fontWeight: 800, color: card.accent, letterSpacing: "0.13em", textTransform: "uppercase", marginBottom: 7, background: `${card.accent}14`, padding: "3px 9px", borderRadius: 100 }}>
           {card.sub}
         </div>
-        <h3 style={{ fontSize: span === 2 ? 22 : 15, fontWeight: 700, color: "#111111", lineHeight: 1.25, margin: 0 }}>{card.label}</h3>
+        <h3 style={{ fontSize: span === 2 ? 22 : 15, fontWeight: 700, color: "#14161C", lineHeight: 1.25, margin: 0 }}>{card.label}</h3>
       </div>
     </div>
   );
@@ -161,7 +161,7 @@ function FloatingServicesSection({ ref2, v2 }) {
     <section ref={sectionRef} style={{ background: "#F7F7F5", padding: "120px clamp(20px,5vw,80px)", overflow: "hidden" }}>
       <div style={{ maxWidth: 1320, margin: "0 auto" }}>
         <div ref={ref2} style={{ marginBottom: 64, opacity: v2 ? 1 : 0, transform: v2 ? "none" : "translateY(20px)", transition: "all .8s" }}>
-          <h2 style={{ fontSize: "clamp(30px,3.5vw,54px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", lineHeight: 1.1, maxWidth: 680 }}>
+          <h2 style={{ fontSize: "clamp(30px,3.5vw,54px)", fontWeight: 800, color: "#14161C", letterSpacing: "-1px", lineHeight: 1.1, maxWidth: 680 }}>
             Everything your brand needs.<br />
             <span style={{ color: "#9CA3AF" }}>One team. One roof.</span>
           </h2>
@@ -185,8 +185,8 @@ function ProcessHero({ ref4, v4 }) {
         alt=""
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", filter: "saturate(0.65) brightness(1.05)" }}
       />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #fff 0%, transparent 25%, transparent 75%, #fff 100%)", zIndex: 1 }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, #fff 0%, transparent 20%, transparent 80%, #fff 100%)", zIndex: 1 }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #FAF8F5 0%, transparent 25%, transparent 75%, #FAF8F5 100%)", zIndex: 1 }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, #FAF8F5 0%, transparent 20%, transparent 80%, #FAF8F5 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", inset: 0, background: "rgba(255,255,255,0.42)", zIndex: 2 }} />
       <div
         ref={ref4}
@@ -197,7 +197,7 @@ function ProcessHero({ ref4, v4 }) {
           transition: "all 1s cubic-bezier(.16,1,.3,1)",
         }}
       >
-        <h2 style={{ fontSize: "clamp(40px,5.5vw,80px)", fontWeight: 900, color: "#111111", letterSpacing: "-2.5px", lineHeight: 1.02, marginBottom: 28 }}>
+        <h2 style={{ fontSize: "clamp(40px,5.5vw,80px)", fontWeight: 900, color: "#14161C", letterSpacing: "-2.5px", lineHeight: 1.02, marginBottom: 28 }}>
           Fast, honest,<br />no surprises.
         </h2>
         <p style={{ fontSize: "clamp(15px,1.4vw,18px)", color: "#4B5563", lineHeight: 1.85, maxWidth: 500, margin: "0 auto" }}>
@@ -218,11 +218,11 @@ const VALUES = [
 
 function WhyClickwise({ ref6, v6 }) {
   return (
-    <section style={{ background: "#111111", padding: "120px clamp(20px,5vw,80px)" }}>
+    <section style={{ background: "#14161C", padding: "120px clamp(20px,5vw,80px)" }}>
       <div className="cw-grid-2a" style={{ maxWidth: 1320, margin: "0 auto", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
 
         <div ref={ref6} style={{ opacity: v6 ? 1 : 0, transform: v6 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
-          <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
+          <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#FAF8F5", letterSpacing: "-1px", lineHeight: 1.2, marginBottom: 24 }}>
             Premium work,<br />without the agency games.
           </h2>
           <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 20 }}>
@@ -267,7 +267,7 @@ function WhyClickwise({ ref6, v6 }) {
                 decoding="async"
                 style={{ width: 40, height: 40, objectFit: "contain", marginBottom: 18, display: "block" }}
               />
-              <h3 style={{ fontSize: 17, fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 10 }}>{val.title}</h3>
+              <h3 style={{ fontSize: 17, fontWeight: 700, color: "#FAF8F5", lineHeight: 1.3, marginBottom: 10 }}>{val.title}</h3>
               <p style={{ fontSize: 14, color: "#9CA3AF", lineHeight: 1.7, margin: 0 }}>{val.desc}</p>
             </div>
           ))}
@@ -298,7 +298,7 @@ function MilestoneItem({ m }) {
         transition: "all .5s cubic-bezier(.16,1,.3,1)",
       }} />
       <div style={{ fontSize: 11, fontWeight: 800, color: "#E8471A", letterSpacing: "0.1em", marginBottom: 10 }}>{m.year}</div>
-      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 10 }}>{m.title}</h3>
+      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#14161C", marginBottom: 10 }}>{m.title}</h3>
       <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>{m.desc}</p>
     </div>
   );
@@ -345,11 +345,11 @@ export default function About() {
       />
 
       {/* ══ WHO WE ARE ══ */}
-      <section style={{ background: "#fff", padding: "120px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#FAF8F5", padding: "120px clamp(20px,5vw,80px)" }}>
         <div className="cw-grid-2" style={{ maxWidth: 1320, margin: "0 auto", gap: "clamp(60px,7vw,120px)", alignItems: "center" }}>
 
           <div ref={ref1} style={{ opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateX(-32px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
-            <h2 style={{ fontSize: "clamp(28px,3vw,48px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", lineHeight: 1.15, marginBottom: 28 }}>
+            <h2 style={{ fontSize: "clamp(28px,3vw,48px)", fontWeight: 800, color: "#14161C", letterSpacing: "-1px", lineHeight: 1.15, marginBottom: 28 }}>
               We don't just build websites.<br />We build businesses.
             </h2>
             <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.9, marginBottom: 20 }}>
@@ -366,10 +366,10 @@ export default function About() {
           <div ref={ref1} style={{ opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateX(32px)", transition: "all 1s cubic-bezier(.16,1,.3,1) 0.15s", position: "relative" }}>
             <TiltImageCard src="/about-main.png" ratio="4/5" label="Your main 3D image" />
             <div style={{ position: "absolute", top: -16, right: -16, background: "#E8471A", borderRadius: 14, padding: "18px 22px", boxShadow: "0 16px 40px rgba(232,71,26,0.35)", animation: "floatA 4s ease-in-out infinite" }}>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#fff", letterSpacing: "-1px", lineHeight: 1 }}>50+</div>
+              <div style={{ fontSize: 26, fontWeight: 900, color: "#FAF8F5", letterSpacing: "-1px", lineHeight: 1 }}>50+</div>
               <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 4 }}>Projects</div>
             </div>
-            <div style={{ position: "absolute", bottom: 28, left: -20, background: "#fff", border: "1px solid #E4E3DD", borderRadius: 12, padding: "14px 18px", boxShadow: "0 12px 32px rgba(17,17,17,0.12)", animation: "floatB 5s ease-in-out infinite" }}>
+            <div style={{ position: "absolute", bottom: 28, left: -20, background: "#FAF8F5", border: "1px solid #E4E3DD", borderRadius: 12, padding: "14px 18px", boxShadow: "0 12px 32px rgba(17,17,17,0.12)", animation: "floatB 5s ease-in-out infinite" }}>
               <div style={{ fontSize: 20, fontWeight: 900, color: "#E8471A", letterSpacing: "-0.5px", lineHeight: 1 }}>100%</div>
               <div style={{ fontSize: 9, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 4 }}>Satisfaction</div>
             </div>
@@ -393,10 +393,10 @@ export default function About() {
       <FloatingServicesSection ref2={ref2} v2={v2} />
 
       {/* ══ STORY ══ */}
-      <section style={{ background: "#fff", padding: "120px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#FAF8F5", padding: "120px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto" }}>
           <div ref={ref3} style={{ marginBottom: 80, opacity: v3 ? 1 : 0, transform: v3 ? "none" : "translateY(20px)", transition: "all .8s" }}>
-            <h2 style={{ fontSize: "clamp(30px,3.5vw,54px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px", lineHeight: 1.1 }}>Four years. No shortcuts.</h2>
+            <h2 style={{ fontSize: "clamp(30px,3.5vw,54px)", fontWeight: 800, color: "#14161C", letterSpacing: "-1px", lineHeight: 1.1 }}>Four years. No shortcuts.</h2>
           </div>
           <div className="cw-grid-2" style={{ gap: "clamp(60px,7vw,120px)", alignItems: "start" }}>
             <div style={{ position: "relative", paddingLeft: 28 }}>
@@ -415,24 +415,24 @@ export default function About() {
       <ProcessHero ref4={ref4} v4={v4} />
 
       {/* ══ STATS RED BAND ══ */}
-      <section style={{ background: "#E8471A", padding: "90px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#14161C", padding: "90px clamp(20px,5vw,80px)" }}>
         <div className="cw-grid-4" style={{ maxWidth: 1320, margin: "0 auto", gap: 40 }}>
           {[{ v: "50", s: "+", l: "Projects Delivered" }, { v: "30", s: "+", l: "Happy Clients" }, { v: "3", s: "+", l: "Years of Craft" }, { v: "100", s: "%", l: "Satisfaction" }].map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, color: "#fff", letterSpacing: "-2px", lineHeight: 1 }}>
+              <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, color: "#E8471A", letterSpacing: "-2px", lineHeight: 1 }}>
                 <Counter target={s.v} suffix={s.s} />
               </div>
-              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.65)", textTransform: "uppercase", letterSpacing: "0.16em", fontWeight: 700, marginTop: 12 }}>{s.l}</div>
+              <div style={{ fontSize: 10, color: "rgba(250,248,245,0.65)", textTransform: "uppercase", letterSpacing: "0.16em", fontWeight: 700, marginTop: 12 }}>{s.l}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* ══ FAQ ══ */}
-      <section style={{ background: "#fff", padding: "120px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#FAF8F5", padding: "120px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div ref={ref5} style={{ textAlign: "center", marginBottom: 80, opacity: v5 ? 1 : 0, transition: "all .7s" }}>
-            <h2 style={{ fontSize: "clamp(30px,3.5vw,52px)", fontWeight: 800, color: "#111111", letterSpacing: "-1px" }}>Frequently Asked Questions</h2>
+            <h2 style={{ fontSize: "clamp(30px,3.5vw,52px)", fontWeight: 800, color: "#14161C", letterSpacing: "-1px" }}>Frequently Asked Questions</h2>
           </div>
           <div className="cw-grid-2" style={{ gap: 32, alignItems: "start" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -442,14 +442,14 @@ export default function About() {
                   onMouseEnter={(e) => { if (activeFAQ !== i) e.currentTarget.style.borderColor = "rgba(232,71,26,0.4)"; }}
                   onMouseLeave={(e) => { if (activeFAQ !== i) e.currentTarget.style.borderColor = "#E4E3DD"; }}
                 >
-                  <span style={{ fontSize: 14, fontWeight: 600, color: activeFAQ === i ? "#fff" : "#111111" }}>{faq.q}</span>
-                  <span style={{ color: activeFAQ === i ? "#fff" : "#E8471A", fontSize: 18, flexShrink: 0 }}>{activeFAQ === i ? "✕" : "+"}</span>
+                  <span style={{ fontSize: 14, fontWeight: 600, color: activeFAQ === i ? "#FAF8F5" : "#14161C" }}>{faq.q}</span>
+                  <span style={{ color: activeFAQ === i ? "#FAF8F5" : "#E8471A", fontSize: 18, flexShrink: 0 }}>{activeFAQ === i ? "✕" : "+"}</span>
                 </div>
               ))}
             </div>
             <div className="cw-unsticky-mobile" style={{ background: "#F7F7F5", borderRadius: 16, padding: "40px 36px", border: "1px solid #E4E3DD", position: "sticky", top: 100 }}>
               <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 24 }} />
-              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 16, lineHeight: 1.4 }}>{faqs[activeFAQ].q}</h3>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#14161C", marginBottom: 16, lineHeight: 1.4 }}>{faqs[activeFAQ].q}</h3>
               <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>{faqs[activeFAQ].a}</p>
               <p style={{ fontSize: 12, color: "#C4C0B8", marginTop: 32 }}>{activeFAQ + 1} / {faqs.length}</p>
             </div>
@@ -460,9 +460,9 @@ export default function About() {
       <WhyClickwise ref6={ref6} v6={v6} />
 
       {/* ══ CTA ══ */}
-      <section style={{ background: "#E8471A", padding: "120px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#14161C", padding: "120px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontSize: "clamp(32px,4.5vw,60px)", fontWeight: 900, color: "#fff", marginBottom: 20, lineHeight: 1.05, letterSpacing: "-1.5px" }}>
+          <h2 style={{ fontSize: "clamp(32px,4.5vw,60px)", fontWeight: 900, color: "#FAF8F5", marginBottom: 20, lineHeight: 1.05, letterSpacing: "-1.5px" }}>
             Ready to build<br />something real?
           </h2>
           <p style={{ fontSize: 16, color: "rgba(255,255,255,.85)", lineHeight: 1.8, maxWidth: 480, margin: "0 auto 40px" }}>
