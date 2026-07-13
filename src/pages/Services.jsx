@@ -45,18 +45,18 @@ function AccordionItem({ service, isOpen, onToggle }) {
           userSelect: "none",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.querySelector(".svc-title").style.color = "#E8471A";
+          e.currentTarget.querySelector(".svc-title").style.color = "#C9922F";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.querySelector(".svc-title").style.color = isOpen ? "#E8471A" : "#111111";
+          e.currentTarget.querySelector(".svc-title").style.color = isOpen ? "#C9922F" : "#16161A";
         }}
       >
         {/* Icon */}
         <div style={{
           width: 42, height: 42, borderRadius: 10, flexShrink: 0,
-          background: isOpen ? "rgba(232,71,26,.08)" : "#F5F5F5",
+          background: isOpen ? "rgba(201,146,47,.08)" : "#F5F5F5",
           display: "flex", alignItems: "center", justifyContent: "center",
-          color: isOpen ? "#E8471A" : "#888",
+          color: isOpen ? "#C9922F" : "#888",
           transition: "all .3s ease",
         }}>
           <div style={{ width: 18, height: 18 }}><ServiceIcon type={service.icon} /></div>
@@ -69,7 +69,7 @@ function AccordionItem({ service, isOpen, onToggle }) {
             style={{
               fontSize: "clamp(15px,1.3vw,18px)",
               fontWeight: 600,
-              color: isOpen ? "#E8471A" : "#111111",
+              color: isOpen ? "#C9922F" : "#16161A",
               letterSpacing: "-0.2px",
               transition: "color .25s",
               margin: 0,
@@ -87,9 +87,9 @@ function AccordionItem({ service, isOpen, onToggle }) {
         {/* Toggle button */}
         <div style={{
           width: 34, height: 34, borderRadius: "50%", flexShrink: 0,
-          border: `1.5px solid ${isOpen ? "#E8471A" : "#DEDEDE"}`,
+          border: `1.5px solid ${isOpen ? "#C9922F" : "#DEDEDE"}`,
           display: "flex", alignItems: "center", justifyContent: "center",
-          color: isOpen ? "#E8471A" : "#AAAAAA",
+          color: isOpen ? "#C9922F" : "#AAAAAA",
           fontSize: 20, fontWeight: 300,
           transition: "all .3s ease",
           transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
@@ -179,10 +179,10 @@ function AccordionItem({ service, isOpen, onToggle }) {
                       transform: isOpen ? "none" : "translateX(-8px)",
                       transition: `all .35s ease ${0.1 + i * 0.04}s`,
                     }}>
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E8471A" strokeWidth="2.5" strokeLinecap="round">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9922F" strokeWidth="2.5" strokeLinecap="round">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span style={{ fontSize: 15, color: "#111111", fontWeight: 600 }}>{f}</span>
+                      <span style={{ fontSize: 15, color: "#16161A", fontWeight: 600 }}>{f}</span>
                     </div>
                   ))}
                 </div>
@@ -191,11 +191,11 @@ function AccordionItem({ service, isOpen, onToggle }) {
                   href="/contact"
                   style={{
                     display: "inline-flex", alignItems: "center", gap: 9,
-                    background: "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)", color: "#fff",
+                    background: "linear-gradient(135deg, #DDA847 0%, #C9922F 55%, #A97824 100%)", color: "#fff",
                     padding: "14px 30px", borderRadius: 10,
                     textDecoration: "none", fontSize: 13, fontWeight: 700,
                     letterSpacing: "0.05em", textTransform: "uppercase",
-                    boxShadow: "0 8px 24px rgba(232,71,26,.3), inset 0 1px 0 rgba(255,255,255,.18)",
+                    boxShadow: "0 8px 24px rgba(201,146,47,.3), inset 0 1px 0 rgba(255,255,255,.18)",
                     transition: "all .25s cubic-bezier(.16,1,.3,1)",
                     opacity: isOpen ? 1 : 0,
                     transform: isOpen ? "none" : "translateY(6px)",
@@ -203,11 +203,11 @@ function AccordionItem({ service, isOpen, onToggle }) {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-2px)";
-                    e.currentTarget.style.boxShadow = "0 14px 36px rgba(232,71,26,.45), inset 0 1px 0 rgba(255,255,255,.25)";
+                    e.currentTarget.style.boxShadow = "0 14px 36px rgba(201,146,47,.45), inset 0 1px 0 rgba(255,255,255,.25)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "none";
-                    e.currentTarget.style.boxShadow = "0 8px 24px rgba(232,71,26,.3), inset 0 1px 0 rgba(255,255,255,.18)";
+                    e.currentTarget.style.boxShadow = "0 8px 24px rgba(201,146,47,.3), inset 0 1px 0 rgba(255,255,255,.18)";
                   }}
                 >
                   Get a Quote
@@ -233,7 +233,7 @@ function AccordionItem({ service, isOpen, onToggle }) {
                     width: "fit-content",
                     fontSize: 11,
                     fontWeight: 600,
-                    color: "#111111",
+                    color: "#16161A",
                     background: "rgba(255,255,255,0.85)",
                     border: "1px solid rgba(0,0,0,0.12)",
                     padding: "5px 14px",
@@ -298,7 +298,7 @@ export default function Services() {
       </section>
 
       {/* ── STATS ── */}
-      <section style={{ background: "#111111", padding: "72px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#16161A", padding: "72px clamp(20px,5vw,80px)" }}>
         <div className="cw-grid-3" style={{ maxWidth: 1100, margin: "0 auto" }}>
           {[
             { num: "11+", label: "Services", desc: "Everything under one roof — no agency hopping." },
@@ -312,7 +312,7 @@ export default function Services() {
               <div style={{
                 fontSize: "clamp(34px,3.2vw,50px)",
                 fontWeight: 800,
-                color: "#E8471A",
+                color: "#C9922F",
                 letterSpacing: "-2px",
                 lineHeight: 1,
                 marginBottom: 10,
@@ -333,7 +333,7 @@ export default function Services() {
 
           <h2 style={{
             fontSize: "clamp(26px,2.8vw,40px)",
-            fontWeight: 800, color: "#111111",
+            fontWeight: 800, color: "#16161A",
             letterSpacing: "-0.6px", marginBottom: 56,
             textAlign: "center",
           }}>
@@ -351,13 +351,13 @@ export default function Services() {
                   style={{
                     padding: "16px 20px", borderRadius: 10, cursor: "pointer",
                     transition: "all .2s ease",
-                    background: faqOpen === i ? "#E8471A" : "#ffffff",
-                    border: `1px solid ${faqOpen === i ? "#E8471A" : "#E8E8E8"}`,
+                    background: faqOpen === i ? "#C9922F" : "#ffffff",
+                    border: `1px solid ${faqOpen === i ? "#C9922F" : "#E8E8E8"}`,
                     display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14,
                   }}
                   onMouseEnter={(e) => {
                     if (faqOpen !== i) {
-                      e.currentTarget.style.borderColor = "rgba(232,71,26,.35)";
+                      e.currentTarget.style.borderColor = "rgba(201,146,47,.35)";
                       e.currentTarget.style.background = "#FFF6F4";
                     }
                   }}
@@ -370,11 +370,11 @@ export default function Services() {
                 >
                   <span style={{
                     fontSize: 15, fontWeight: 600,
-                    color: faqOpen === i ? "#fff" : "#111111",
+                    color: faqOpen === i ? "#fff" : "#16161A",
                     transition: "color .2s",
                   }}>{f.q}</span>
                   <span style={{
-                    fontSize: 18, color: faqOpen === i ? "#fff" : "#E8471A",
+                    fontSize: 18, color: faqOpen === i ? "#fff" : "#C9922F",
                     flexShrink: 0,
                     transition: "transform .25s ease",
                     transform: faqOpen === i ? "rotate(45deg)" : "rotate(0deg)",
@@ -396,8 +396,8 @@ export default function Services() {
                   boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
                   animation: "faqSlide .3s ease",
                 }}>
-                  <div style={{ width: 32, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 18 }} />
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#111111", marginBottom: 14, lineHeight: 1.4 }}>
+                  <div style={{ width: 32, height: 3, background: "#C9922F", borderRadius: 2, marginBottom: 18 }} />
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#16161A", marginBottom: 14, lineHeight: 1.4 }}>
                     {FAQS[faqOpen].q}
                   </h3>
                   <p style={{ fontSize: 16, color: "#444444", lineHeight: 1.85 }}>

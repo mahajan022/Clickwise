@@ -51,7 +51,7 @@ export function Nav() {
           font-family: 'Poppins', sans-serif;
           font-size: 15px;
           font-weight: 600;
-          color: var(--nav-text, #111111);
+          color: var(--nav-text, #16161A);
           text-decoration: none;
           letter-spacing: 0.01em;
           padding: 6px 0;
@@ -64,18 +64,18 @@ export function Nav() {
           left: 0;
           width: 0%;
           height: 2px;
-          background: #E8471A;
+          background: #C9922F;
           border-radius: 2px;
           transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .nav-link:hover {
-          color: #E8471A;
+          color: #C9922F;
         }
         .nav-link:hover::after {
           width: 100%;
         }
         .nav-link.active {
-          color: #E8471A;
+          color: #C9922F;
         }
         .nav-link.active::after {
           width: 100%;
@@ -87,13 +87,13 @@ export function Nav() {
           font-weight: 700;
           color: #fff;
           text-decoration: none;
-          background: linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%);
+          background: linear-gradient(135deg, #DDA847 0%, #C9922F 55%, #A97824 100%);
           padding: 12px 28px;
           border-radius: 10px;
           letter-spacing: 0.05em;
           text-transform: uppercase;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 6px 22px rgba(232,71,26,.38), inset 0 1px 0 rgba(255,255,255,.18);
+          box-shadow: 0 6px 22px rgba(201,146,47,.38), inset 0 1px 0 rgba(255,255,255,.18);
           position: relative;
           overflow: hidden;
         }
@@ -107,7 +107,7 @@ export function Nav() {
         }
         .nav-cta:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 34px rgba(232,71,26,.5), inset 0 1px 0 rgba(255,255,255,.25);
+          box-shadow: 0 12px 34px rgba(201,146,47,.5), inset 0 1px 0 rgba(255,255,255,.25);
         }
         .nav-cta:hover::before {
           left: 130%;
@@ -146,7 +146,7 @@ export function Nav() {
           display: block;
         }
         .mobile-nav-link:hover, .mobile-nav-link.active {
-          color: #E8471A;
+          color: #C9922F;
           padding-left: 8px;
         }
 
@@ -167,7 +167,7 @@ export function Nav() {
         borderBottom: isSolid ? "1px solid #E4E3DD" : "1px solid transparent",
         boxShadow: isSolid ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
         transition: "all 0.3s ease",
-        "--nav-text": isSolid ? "#111111" : "#ffffff",
+        "--nav-text": isSolid ? "#16161A" : "#ffffff",
       }}>
         <div style={{
           maxWidth: 1320,
@@ -287,7 +287,7 @@ export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle", bg
       <div ref={ref} style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
         <h1 style={{
           fontSize: "clamp(40px,5vw,64px)", fontWeight: 800,
-          color: bg ? "#fff" : "#111111",
+          color: bg ? "#fff" : "#16161A",
           lineHeight: 1.1, marginBottom: 20, letterSpacing: "-1px",
           opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)",
           transition: "all .7s cubic-bezier(.16,1,.3,1) .1s"
@@ -324,11 +324,11 @@ export function MarqueeBar() {
   ];
   const doubled = [...items, ...items];
   return (
-    <div style={{ background: "#0D0D0D", padding: "18px 0", overflow: "hidden", borderBottom: "1px solid #1F2937" }}>
+    <div style={{ background: "#16161A", padding: "18px 0", overflow: "hidden", borderBottom: "1px solid #1F2937" }}>
       <div style={{ display: "flex", gap: 0, whiteSpace: "nowrap", animation: "scroll 35s linear infinite" }}>
         {doubled.map((item, i) => (
           <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 10, paddingRight: 48 }}>
-            <span style={{ color: "#E8471A", fontSize: 14, fontWeight: 900 }}>{item.icon}</span>
+            <span style={{ color: "#C9922F", fontSize: 14, fontWeight: 900 }}>{item.icon}</span>
             <span style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               {item.text}
             </span>
@@ -407,21 +407,21 @@ export function Footer() {
 
   return (
     <footer style={{ background: "#0F0F0F", padding: "120px clamp(20px,5vw,80px) 0", position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", top: 0, right: "-50%", width: "100%", height: "100%", background: "radial-gradient(circle, rgba(232,71,26,.04) 0%, transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: 0, right: "-50%", width: "100%", height: "100%", background: "radial-gradient(circle, rgba(201,146,47,.04) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1320, margin: "0 auto", position: "relative", zIndex: 1 }}>
         {/* Top CTA */}
         <div className="cw-grid-1auto" style={{ gap: 80, alignItems: "center", paddingBottom: 80, borderBottom: "1px solid #1F2937", marginBottom: 80 }}>
           <div>
             <h3 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
-              Let's Create Something <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary</span>
+              Let's Create Something <span style={{ color: "#C9922F", fontStyle: "italic" }}>Extraordinary</span>
             </h3>
             <p style={{ fontSize: 17, color: "#9CA3AF", lineHeight: 1.8, maxWidth: 480 }}>
               Ready to transform your brand? Let's build something that stands out and drives results.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "flex-start", whiteSpace: "nowrap" }}>
-            <a href="mailto:support.clicksnads@gmail.com" className="cw-btn">
+            <a href="mailto:anuragg7051@gmail.com" className="cw-btn">
               Start Your Project →
             </a>
           </div>
@@ -465,66 +465,38 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 style={{ color: "#E8471A", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Services</h4>
+            <h4 style={{ color: "#C9922F", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Services</h4>
             {["Web Design", "Development", "Branding", "Photography", "SEO & AI", "Growth Strategy", "Social Media", "Automation"].map(s => (
               <a key={s} href="#services" style={{ color: "#6B7280", fontSize: 13, marginBottom: 14, display: "block", textDecoration: "none", transition: "all .2s" }}
-                onMouseEnter={(e) => { e.target.style.color = "#E8471A"; e.target.style.transform = "translateX(4px)"; }}
+                onMouseEnter={(e) => { e.target.style.color = "#C9922F"; e.target.style.transform = "translateX(4px)"; }}
                 onMouseLeave={(e) => { e.target.style.color = "#6B7280"; e.target.style.transform = "translateX(0)"; }}
               >{s}</a>
             ))}
           </div>
 
           <div>
-            <h4 style={{ color: "#E8471A", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Company</h4>
+            <h4 style={{ color: "#C9922F", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Company</h4>
             {[["/", "Home"], ["/about", "About"], ["/work", "Work"], ["/services", "Services"], ["/contact", "Contact"]].map(([link, label]) => (
               <Link key={label} to={link} style={{ color: "#6B7280", fontSize: 13, marginBottom: 14, display: "block", textDecoration: "none", transition: "all .2s" }}
-                onMouseEnter={(e) => { e.target.style.color = "#E8471A"; e.target.style.transform = "translateX(4px)"; }}
+                onMouseEnter={(e) => { e.target.style.color = "#C9922F"; e.target.style.transform = "translateX(4px)"; }}
                 onMouseLeave={(e) => { e.target.style.color = "#6B7280"; e.target.style.transform = "translateX(0)"; }}
               >{label}</Link>
             ))}
           </div>
 
           <div>
-            <h4 style={{ color: "#E8471A", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Get in Touch</h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-              {[
-                {
-                  href: "tel:+919136875990",
-                  label: "Call us",
-                  value: "+91 91368 75990",
-                  svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
-                },
-                {
-                  href: "mailto:support.clicksnads@gmail.com",
-                  label: "Email us",
-                  value: "support.clicksnads@gmail.com",
-                  svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16v16H4z" fill="none"/><path d="M4 4h16v16H4V4z"/><path d="m4 6 8 7 8-7"/></svg>,
-                },
-              ].map(({ href, label, value, svg }) => (
-                <a key={label} href={href} style={{ display: "flex", alignItems: "flex-start", gap: 12, textDecoration: "none", color: "inherit" }}
-                  onMouseEnter={(e) => { const v = e.currentTarget.querySelector(".cw-contact-value"); if (v) v.style.color = "#E8471A"; const b = e.currentTarget.querySelector(".cw-contact-badge"); if (b) { b.style.borderColor = "#E8471A"; b.style.color = "#E8471A"; } }}
-                  onMouseLeave={(e) => { const v = e.currentTarget.querySelector(".cw-contact-value"); if (v) v.style.color = "#D1D5DB"; const b = e.currentTarget.querySelector(".cw-contact-badge"); if (b) { b.style.borderColor = "#1F2937"; b.style.color = "#6B7280"; } }}
-                >
-                  <span className="cw-contact-badge" style={{ width: 34, height: 34, borderRadius: 9, border: "1.5px solid #1F2937", display: "flex", alignItems: "center", justifyContent: "center", color: "#6B7280", flexShrink: 0, transition: "all .25s" }}>
-                    {svg}
-                  </span>
-                  <span>
-                    <div style={{ color: "#4B5563", fontSize: 10.5, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 3 }}>{label}</div>
-                    <div className="cw-contact-value" style={{ color: "#D1D5DB", fontSize: 13.5, fontWeight: 500, lineHeight: 1.5, transition: "color .2s", wordBreak: "break-word" }}>{value}</div>
-                  </span>
-                </a>
-              ))}
-
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <span style={{ width: 34, height: 34, borderRadius: 9, border: "1.5px solid #1F2937", display: "flex", alignItems: "center", justifyContent: "center", color: "#6B7280", flexShrink: 0 }}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </span>
-                <span>
-                  <div style={{ color: "#4B5563", fontSize: 10.5, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 3 }}>Location</div>
-                  <div style={{ color: "#D1D5DB", fontSize: 13.5, fontWeight: 500, lineHeight: 1.5 }}>Mumbai, Maharashtra, India</div>
-                </span>
-              </div>
-            </div>
+            <h4 style={{ color: "#C9922F", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Get in Touch</h4>
+            <p style={{ color: "#9CA3AF", fontSize: 14, marginBottom: 14, lineHeight: 1.8 }}>
+              📍 Mumbai, Maharashtra, India
+            </p>
+            <a href="tel:+917051575007" style={{ color: "#9CA3AF", fontSize: 13, fontWeight: 500, display: "block", marginBottom: 8, textDecoration: "none", transition: "color .2s" }}
+              onMouseEnter={(e) => { e.target.style.color = "#C9922F"; }}
+              onMouseLeave={(e) => { e.target.style.color = "#9CA3AF"; }}
+            >+91 70515 75007</a>
+            <a href="mailto:anuragg7051@gmail.com" style={{ color: "#C9922F", fontSize: 13, fontWeight: 600, textDecoration: "none" }}
+              onMouseEnter={(e) => { e.target.style.opacity = ".8"; }}
+              onMouseLeave={(e) => { e.target.style.opacity = "1"; }}
+            >anuragg7051@gmail.com</a>
           </div>
         </div>
 
@@ -534,11 +506,11 @@ export function Footer() {
           <p style={{ color: "#4B5563", fontSize: 13 }}>Made with ❤️ from India 🇮🇳</p>
           <div style={{ display: "flex", gap: 20 }}>
             <a href="#privacy" style={{ color: "#6B7280", fontSize: 12, textDecoration: "none" }}
-              onMouseEnter={(e) => { e.target.style.color = "#E8471A"; }}
+              onMouseEnter={(e) => { e.target.style.color = "#C9922F"; }}
               onMouseLeave={(e) => { e.target.style.color = "#6B7280"; }}
             >Privacy Policy</a>
             <a href="#terms" style={{ color: "#6B7280", fontSize: 12, textDecoration: "none" }}
-              onMouseEnter={(e) => { e.target.style.color = "#E8471A"; }}
+              onMouseEnter={(e) => { e.target.style.color = "#C9922F"; }}
               onMouseLeave={(e) => { e.target.style.color = "#6B7280"; }}
             >Terms of Service</a>
           </div>
@@ -562,7 +534,7 @@ export function Loader({ onDone }) {
   return (
     <div style={{
       position: "fixed", inset: 0,
-      background: "#111111",
+      background: "#16161A",
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
       gap: 26, zIndex: 9999, overflow: "hidden",
     }}>
@@ -605,7 +577,7 @@ export function Loader({ onDone }) {
               fontSize: "clamp(11px,1.4vw,15px)",
               fontWeight: 700,
               letterSpacing: "0.22em",
-              color: w === "·" ? "#E8471A" : "rgba(255,255,255,0.85)",
+              color: w === "·" ? "#C9922F" : "rgba(255,255,255,0.85)",
               opacity: 0,
               transform: "translateY(10px)",
               animation: "cwWord .45s ease forwards",
@@ -619,7 +591,7 @@ export function Loader({ onDone }) {
 
       {/* Thin progress bar */}
       <div style={{ position: "relative", zIndex: 1, width: 160, height: 3, borderRadius: 3, background: "rgba(255,255,255,0.15)", overflow: "hidden", marginTop: 6 }}>
-        <div style={{ height: "100%", background: "linear-gradient(90deg,#F2551F,#E8471A)", borderRadius: 3, animation: "cwBar 1.9s cubic-bezier(.16,1,.3,1) forwards" }} />
+        <div style={{ height: "100%", background: "linear-gradient(90deg,#DDA847,#C9922F)", borderRadius: 3, animation: "cwBar 1.9s cubic-bezier(.16,1,.3,1) forwards" }} />
       </div>
 
       <style>{`
