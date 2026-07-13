@@ -82,11 +82,11 @@ export default function Contact() {
 
             {/* Left — heading */}
             <div style={{ paddingBottom: 80, opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
-              <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", color: "#E8471A", textTransform: "uppercase", marginBottom: 24 }}>Get In Touch</p>
+              <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", color: "#C6742C", textTransform: "uppercase", marginBottom: 24 }}>Get In Touch</p>
               <h1 style={{ fontSize: "clamp(40px,5vw,72px)", fontWeight: 800, color: "#14161C", lineHeight: 1.05, letterSpacing: "-2px", marginBottom: 28 }}>
                 Let's Build<br />
                 Something<br />
-                <span style={{ color: "#E8471A", fontStyle: "italic" }}>Extraordinary.</span>
+                <span style={{ color: "#C6742C", fontStyle: "italic" }}>Extraordinary.</span>
               </h1>
               <p style={{ fontSize: 18, color: "#5A6270", lineHeight: 1.8, maxWidth: 420, marginBottom: 48 }}>
                 Have a project in mind? We'd love to hear about it. Free consultation, no commitment, no sales pitch — just an honest conversation about your goals.
@@ -95,7 +95,7 @@ export default function Contact() {
               {/* Contact quick links */}
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
-                  { label: "Email us", value: "anuragg7051@gmail.com", href: "mailto:anuragg7051@gmail.com", color: "#E8471A" },
+                  { label: "Email us", value: "anuragg7051@gmail.com", href: "mailto:anuragg7051@gmail.com", color: "#C6742C" },
                   { label: "Call us", value: "+91 70515 75007", href: "tel:+917051575007", color: "#14161C" },
                   { label: "WhatsApp", value: "Chat with us instantly", href: "https://wa.me/917051575007", color: "#25D366" },
                 ].map((item, i) => (
@@ -151,7 +151,7 @@ export default function Contact() {
               <div className="cw-grid-2" style={{ gap: 16 }}>
                 <ImgBox src={CONTACT_IMAGES.mid2} ratio="1/1" />
                 {/* Stats card */}
-                <div style={{ borderRadius: 16, background: "#E8471A", padding: "32px 24px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <div style={{ borderRadius: 16, background: "#C6742C", padding: "32px 24px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <div style={{ fontSize: "clamp(32px,4vw,48px)", fontWeight: 800, color: "#FAF8F5", letterSpacing: "-2px", lineHeight: 1 }}>24h</div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,.7)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: 8 }}>Response Time</div>
                   <div style={{ width: 32, height: 2, background: "rgba(255,255,255,.4)", marginTop: 16 }} />
@@ -169,8 +169,8 @@ export default function Contact() {
                   "30-day post-launch support included",
                 ].map((point, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                    <div style={{ width: 20, height: 20, borderRadius: "50%", background: "rgba(232,71,26,.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E8471A" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    <div style={{ width: 20, height: 20, borderRadius: "50%", background: "rgba(198,116,44,.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C6742C" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
                     </div>
                     <span style={{ fontSize: 14, color: "#4B5563", fontWeight: 500 }}>{point}</span>
                   </div>
@@ -203,7 +203,7 @@ export default function Contact() {
                         placeholder={field.placeholder}
                         required={field.label.includes("*")}
                         style={{ width: "100%", padding: "13px 16px", border: "1.5px solid #E4E3DD", borderRadius: 10, fontSize: 14, outline: "none", boxSizing: "border-box", background: "#FAFAF9", transition: "all .25s", fontFamily: "inherit" }}
-                        onFocus={(e) => { e.target.style.borderColor = "#E8471A"; e.target.style.background = "#FAF8F5"; e.target.style.boxShadow = "0 0 0 3px rgba(232,71,26,.08)"; }}
+                        onFocus={(e) => { e.target.style.borderColor = "#C6742C"; e.target.style.background = "#FAF8F5"; e.target.style.boxShadow = "0 0 0 3px rgba(198,116,44,.08)"; }}
                         onBlur={(e) => { e.target.style.borderColor = "#E4E3DD"; e.target.style.background = "#FAFAF9"; e.target.style.boxShadow = "none"; }}
                       />
                     </div>
@@ -217,7 +217,7 @@ export default function Contact() {
                       placeholder="What are you building? What's your timeline? What's your budget range?"
                       required
                       style={{ width: "100%", padding: "13px 16px", border: "1.5px solid #E4E3DD", borderRadius: 10, fontSize: 15, minHeight: 130, outline: "none", boxSizing: "border-box", resize: "vertical", background: "#FAFAF9", transition: "all .25s", fontFamily: "inherit", lineHeight: 1.6 }}
-                      onFocus={(e) => { e.target.style.borderColor = "#E8471A"; e.target.style.background = "#FAF8F5"; e.target.style.boxShadow = "0 0 0 3px rgba(232,71,26,.08)"; }}
+                      onFocus={(e) => { e.target.style.borderColor = "#C6742C"; e.target.style.background = "#FAF8F5"; e.target.style.boxShadow = "0 0 0 3px rgba(198,116,44,.08)"; }}
                       onBlur={(e) => { e.target.style.borderColor = "#E4E3DD"; e.target.style.background = "#FAFAF9"; e.target.style.boxShadow = "none"; }}
                     />
                   </div>
@@ -226,7 +226,7 @@ export default function Contact() {
                     type="submit"
                     style={{
                       width: "100%",
-                      background: submitted ? "#22C55E" : "linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%)",
+                      background: submitted ? "#22C55E" : "linear-gradient(135deg, #D68A42 0%, #C6742C 55%, #8F4A1A 100%)",
                       color: "#FAF8F5",
                       border: "none",
                       padding: "17px 28px",
@@ -236,11 +236,11 @@ export default function Contact() {
                       letterSpacing: "0.03em",
                       cursor: "pointer",
                       transition: "all .3s cubic-bezier(.16,1,.3,1)",
-                      boxShadow: submitted ? "none" : "0 8px 26px rgba(232,71,26,.32), inset 0 1px 0 rgba(255,255,255,.18)",
+                      boxShadow: submitted ? "none" : "0 8px 26px rgba(198,116,44,.32), inset 0 1px 0 rgba(255,255,255,.18)",
                       fontFamily: "inherit",
                     }}
-                    onMouseEnter={(e) => { if (!submitted) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 14px 42px rgba(232,71,26,.45), inset 0 1px 0 rgba(255,255,255,.25)"; } }}
-                    onMouseLeave={(e) => { if (!submitted) { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 8px 26px rgba(232,71,26,.32), inset 0 1px 0 rgba(255,255,255,.18)"; } }}
+                    onMouseEnter={(e) => { if (!submitted) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 14px 42px rgba(198,116,44,.45), inset 0 1px 0 rgba(255,255,255,.25)"; } }}
+                    onMouseLeave={(e) => { if (!submitted) { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 8px 26px rgba(198,116,44,.32), inset 0 1px 0 rgba(255,255,255,.18)"; } }}
                   >
                     {submitted ? "Message Sent! ✓" : "Send Message →"}
                   </button>
@@ -295,18 +295,18 @@ export default function Contact() {
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {FAQS.map((faq, i) => (
                 <div key={i} onClick={() => setActiveFAQ(i)}
-                  style={{ padding: "18px 24px", borderRadius: 10, cursor: "pointer", transition: "all .25s", background: activeFAQ === i ? "#E8471A" : "#F7F7F5", border: `1px solid ${activeFAQ === i ? "#E8471A" : "#E4E3DD"}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}
-                  onMouseEnter={(e) => { if (activeFAQ !== i) { e.currentTarget.style.borderColor = "rgba(232,71,26,.4)"; e.currentTarget.style.background = "#fff5f3"; } }}
+                  style={{ padding: "18px 24px", borderRadius: 10, cursor: "pointer", transition: "all .25s", background: activeFAQ === i ? "#C6742C" : "#F7F7F5", border: `1px solid ${activeFAQ === i ? "#C6742C" : "#E4E3DD"}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}
+                  onMouseEnter={(e) => { if (activeFAQ !== i) { e.currentTarget.style.borderColor = "rgba(198,116,44,.4)"; e.currentTarget.style.background = "#fff5f3"; } }}
                   onMouseLeave={(e) => { if (activeFAQ !== i) { e.currentTarget.style.borderColor = "#E4E3DD"; e.currentTarget.style.background = "#F7F7F5"; } }}
                 >
                   <span style={{ fontSize: 14, fontWeight: 600, color: activeFAQ === i ? "#FAF8F5" : "#14161C", transition: "color .25s" }}>{faq.q}</span>
-                  <span style={{ fontSize: 18, color: activeFAQ === i ? "#FAF8F5" : "#E8471A", flexShrink: 0, transition: "transform .3s", transform: activeFAQ === i ? "rotate(45deg)" : "none", fontWeight: 300 }}>+</span>
+                  <span style={{ fontSize: 18, color: activeFAQ === i ? "#FAF8F5" : "#C6742C", flexShrink: 0, transition: "transform .3s", transform: activeFAQ === i ? "rotate(45deg)" : "none", fontWeight: 300 }}>+</span>
                 </div>
               ))}
             </div>
             <div className="cw-unsticky-mobile" style={{ position: "sticky", top: 100 }}>
-              <div key={activeFAQ} style={{ background: "#FAF8F5", borderRadius: 16, padding: "40px 36px", border: "1.5px solid #E8471A", boxShadow: "0 12px 48px rgba(232,71,26,.08)", animation: "faqIn .3s cubic-bezier(.16,1,.3,1)" }}>
-                <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 20 }} />
+              <div key={activeFAQ} style={{ background: "#FAF8F5", borderRadius: 16, padding: "40px 36px", border: "1.5px solid #C6742C", boxShadow: "0 12px 48px rgba(198,116,44,.08)", animation: "faqIn .3s cubic-bezier(.16,1,.3,1)" }}>
+                <div style={{ width: 40, height: 3, background: "#C6742C", borderRadius: 2, marginBottom: 20 }} />
                 <h3 style={{ fontSize: 18, fontWeight: 700, color: "#14161C", marginBottom: 14, lineHeight: 1.4 }}>{FAQS[activeFAQ].q}</h3>
                 <p style={{ fontSize: 16, color: "#5A6270", lineHeight: 1.9 }}>{FAQS[activeFAQ].a}</p>
                 <p style={{ fontSize: 12, color: "#C4C4C4", marginTop: 28, letterSpacing: "0.08em" }}>{activeFAQ + 1} / {FAQS.length}</p>

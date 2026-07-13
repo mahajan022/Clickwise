@@ -18,16 +18,16 @@ function Hero() {
         <div style={{ maxWidth: 900 }}>
           <h1 style={{ fontSize: "clamp(52px,8vw,110px)", fontWeight: 800, color: "#FAF8F5", lineHeight: 0.95, letterSpacing: "-4px", marginBottom: 28, textTransform: "uppercase", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(24px)", transition: "all .9s cubic-bezier(.16,1,.3,1) .4s" }}>
             WE BUILD<br />
-            <span style={{ color: "#E8471A", fontStyle: "italic", textTransform: "none", letterSpacing: "-3px" }}>Brands</span> THAT<br />
+            <span style={{ color: "#C6742C", fontStyle: "italic", textTransform: "none", letterSpacing: "-3px" }}>Brands</span> THAT<br />
             WIN ONLINE.
           </h1>
           <p style={{ fontSize: "clamp(14px,1.4vw,17px)", color: "rgba(255,255,255,.8)", lineHeight: 1.8, maxWidth: 520, marginBottom: 40, fontWeight: 300, opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .6s" }}>
            Mumbai's digital marketing agency for web design, website development, SEO, and PPC — everything you need to grow, under one roof.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(12px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .75s" }}>
-            <Link to="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#E8471A", color: "#FAF8F5", padding: "15px 32px", borderRadius: 50, textDecoration: "none", fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", transition: "all .25s", boxShadow: "0 8px 32px rgba(232,71,26,.5)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "#d03d16"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "none"; }}
+            <Link to="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#C6742C", color: "#FAF8F5", padding: "15px 32px", borderRadius: 50, textDecoration: "none", fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", transition: "all .25s", boxShadow: "0 8px 32px rgba(198,116,44,.5)" }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#8F4A1A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "#C6742C"; e.currentTarget.style.transform = "none"; }}
             >
               Start a Project
               <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(255,255,255,.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -80,7 +80,7 @@ function ServicesPreview() {
         </div>
         <div style={{ textAlign: "center", marginTop: 52 }}>
           <Link to="/services" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#14161C", color: "#FAF8F5", padding: "14px 32px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700, transition: "all .25s" }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#C6742C"; e.currentTarget.style.transform = "translateY(-2px)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#14161C"; e.currentTarget.style.transform = "none"; }}
           >View All Our Services →</Link>
         </div>
@@ -98,20 +98,20 @@ function ProcessSection() {
         <div ref={ref} className="cw-grid-2" style={{ gap: "clamp(48px,6vw,100px)", alignItems: "center", marginBottom: 80 }}>
           <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateX(-20px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
             <h2 style={{ fontSize: "clamp(30px,3vw,48px)", fontWeight: 800, color: "#FAF8F5", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
-              How We Work.<br /><span style={{ color: "#E8471A" }}>Every Single Time.</span>
+              How We Work.<br /><span style={{ color: "#C6742C" }}>Every Single Time.</span>
             </h2>
             <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 32 }}>
               Our 6-phase process has been refined across 50+ projects. No guesswork, no surprises — just reliable delivery, every time.
             </p>
-            <Link to="/about" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#E8471A", color: "#FAF8F5", padding: "13px 28px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700, transition: "all .25s" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "#d03d16"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "none"; }}
+            <Link to="/about" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#C6742C", color: "#FAF8F5", padding: "13px 28px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700, transition: "all .25s" }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#8F4A1A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "#C6742C"; e.currentTarget.style.transform = "none"; }}
             >Our Process →</Link>
           </div>
           <div className="cw-grid-2" style={{ gap: 16, opacity: v ? 1 : 0, transform: v ? "none" : "translateX(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .1s" }}>
             {PROCESS.slice(0, 4).map((p, i) => (
               <div key={i} style={{ background: "#1B1E24", borderRadius: 12, padding: "24px 20px", border: "1px solid #1F2937", transition: "all .3s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,71,26,.4)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(198,116,44,.4)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#1F2937"; e.currentTarget.style.transform = "none"; }}
               >
                 <h4 style={{ fontSize: 22, fontWeight: 800, color: "#FAF8F5", marginBottom: 10, letterSpacing: "-0.5px" }}>{p.title}</h4>
@@ -129,7 +129,7 @@ function ProcessSection() {
 function WhyUs() {
   const [ref, v] = useInView();
   const cards = [
-    { icon: "/icons/paint palette.png", bg: "#FFF0EB", color: "#E8471A", title: "Premium Design", desc: "Hand-crafted, pixel-perfect designs that convert visitors into paying customers every time." },
+    { icon: "/icons/paint palette.png", bg: "#FFF0EB", color: "#C6742C", title: "Premium Design", desc: "Hand-crafted, pixel-perfect designs that convert visitors into paying customers every time." },
     { icon: "/icons/rocket speed.png", bg: "#FFFBEB", color: "#F59E0B", title: "Fast Delivery", desc: "Most projects delivered in 7–21 days. Fast without ever compromising on quality." },
     { icon: "/icons/code brackets.png", bg: "#EFF6FF", color: "#3B82F6", title: "Clean Code", desc: "No page builders. Pure hand-coded React — fast, scalable, and SEO-ready from day one." },
     { icon: "/icons/layers stack.png", bg: "#F0FDF4", color: "#22C55E", title: "Full Service", desc: "Design, dev, branding, SEO, social — everything under one roof, one vision, zero chaos." },
@@ -163,7 +163,7 @@ function WhyUs() {
         </div>
         <div style={{ textAlign: "center", marginTop: 52 }}>
           <Link to="/about" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#14161C", color: "#FAF8F5", padding: "14px 28px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700, transition: "all .25s" }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#C6742C"; e.currentTarget.style.transform = "translateY(-2px)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#14161C"; e.currentTarget.style.transform = "none"; }}
           >Learn About Us →</Link>
         </div>
@@ -188,16 +188,16 @@ function WorkPreview() {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
           {WORKS.slice(0, 3).map((w, i) => (
-            <div key={i} style={{ padding: 3, borderRadius: 14, background: i === 0 ? "linear-gradient(135deg, #E8471A, #ff9a00)" : i === 1 ? "linear-gradient(135deg, #E8471A, #cc0000)" : "linear-gradient(135deg, #E8471A, #ff6b6b)", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(30px)", transition: `opacity .65s cubic-bezier(.16,1,.3,1) ${i * 0.08}s, transform .65s cubic-bezier(.16,1,.3,1) ${i * 0.08}s, box-shadow .3s`, boxShadow: "0 8px 32px rgba(232,71,26,.15)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 20px 60px rgba(232,71,26,.45)"; e.currentTarget.querySelector("img").style.transform = "scale(1.08)"; e.currentTarget.querySelector(".overlay").style.opacity = "1"; e.currentTarget.querySelector(".overlay").style.transform = "translateY(0)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "0 8px 32px rgba(232,71,26,.15)"; e.currentTarget.querySelector("img").style.transform = "scale(1)"; e.currentTarget.querySelector(".overlay").style.opacity = "0"; e.currentTarget.querySelector(".overlay").style.transform = "translateY(20px)"; }}
+            <div key={i} className="wp-card" style={{ padding: 3, borderRadius: 14, background: i === 0 ? "linear-gradient(135deg, #1B1E24, #3A3F4B)" : i === 1 ? "linear-gradient(135deg, #14161C, #2C2F38)" : "linear-gradient(135deg, #1B1E24, #454B58)", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(30px)", transition: `opacity .65s cubic-bezier(.16,1,.3,1) ${i * 0.08}s, transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s cubic-bezier(.16,1,.3,1), background .4s ease`, boxShadow: "0 8px 32px rgba(20,22,28,.18)" }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = i === 0 ? "linear-gradient(135deg, #2A2E37, #565D6E)" : i === 1 ? "linear-gradient(135deg, #1F222A, #40454F)" : "linear-gradient(135deg, #2A2E37, #63697A)"; e.currentTarget.style.boxShadow = "0 24px 60px rgba(20,22,28,.35)"; e.currentTarget.style.transform = "translateY(-10px) scale(1.015)"; e.currentTarget.querySelector("img").style.transform = "scale(1.08)"; e.currentTarget.querySelector(".overlay").style.opacity = "1"; e.currentTarget.querySelector(".overlay").style.transform = "translateY(0)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = i === 0 ? "linear-gradient(135deg, #1B1E24, #3A3F4B)" : i === 1 ? "linear-gradient(135deg, #14161C, #2C2F38)" : "linear-gradient(135deg, #1B1E24, #454B58)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(20,22,28,.18)"; e.currentTarget.style.transform = "none"; e.currentTarget.querySelector("img").style.transform = "scale(1)"; e.currentTarget.querySelector(".overlay").style.opacity = "0"; e.currentTarget.querySelector(".overlay").style.transform = "translateY(20px)"; }}
             >
               <div style={{ position: "relative", height: 380, borderRadius: 11, overflow: "hidden", cursor: "pointer", background: "#e0e0e0" }}>
                 <img src={w.image} alt={w.title} style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0, transition: "transform .5s cubic-bezier(.16,1,.3,1)" }} />
                 <div className="overlay" style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.82)", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: 36, textAlign: "center", opacity: 0, transform: "translateY(20px)", transition: "all .4s cubic-bezier(.16,1,.3,1)" }}>
                   <h3 style={{ fontSize: 22, fontWeight: 800, color: "#FAF8F5", marginBottom: 14, letterSpacing: "-0.3px" }}>{w.title}</h3>
                   <p style={{ fontSize: 14, color: "rgba(255,255,255,.75)", lineHeight: 1.75, marginBottom: 24 }}>{w.desc}</p>
-                  <a href={w.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, fontWeight: 700, color: "#FAF8F5", background: "#E8471A", padding: "10px 24px", borderRadius: 6, textDecoration: "none" }}>View Project ↗</a>
+                  <a href={w.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, fontWeight: 700, color: "#FAF8F5", background: "#C6742C", padding: "10px 24px", borderRadius: 6, textDecoration: "none" }}>View Project ↗</a>
                 </div>
               </div>
             </div>
@@ -205,7 +205,7 @@ function WorkPreview() {
         </div>
         <div style={{ textAlign: "center", marginTop: 52 }}>
           <Link to="/work" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#14161C", color: "#FAF8F5", padding: "14px 32px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 700, transition: "all .25s" }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#C6742C"; e.currentTarget.style.transform = "translateY(-2px)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#14161C"; e.currentTarget.style.transform = "none"; }}
           >View All Our Work →</Link>
         </div>
@@ -230,14 +230,14 @@ function AnimatedTestimonials() {
         <div style={{ display: "flex", gap: 24, width: "max-content", animation: "testimonialScroll 40s linear infinite" }}>
           {doubled.map((t, i) => (
             <div key={i} style={{ width: 360, flexShrink: 0, background: "#1B1E24", border: "1px solid rgba(255,255,255,.08)", borderRadius: 16, padding: "32px 28px", transition: "border-color .3s" }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,71,26,.5)"; e.currentTarget.parentElement.style.animationPlayState = "paused"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(198,116,44,.5)"; e.currentTarget.parentElement.style.animationPlayState = "paused"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,.08)"; e.currentTarget.parentElement.style.animationPlayState = "running"; }}
             >
-              <div style={{ color: "#E8471A", fontSize: 14, letterSpacing: 3, marginBottom: 18 }}>★★★★★</div>
+              <div style={{ color: "#C6742C", fontSize: 14, letterSpacing: 3, marginBottom: 18 }}>★★★★★</div>
               <p style={{ fontSize: 15, fontWeight: 300, lineHeight: 1.85, color: "rgba(255,255,255,.75)", marginBottom: 28, fontStyle: "italic" }}>"{t.quote}"</p>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <div style={{ width: 44, height: 44, borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
-                  {t.photo ? <img src={t.photo} alt={t.author} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #E8471A, #FF7A45)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#FAF8F5" }}>{t.initials}</div>}
+                  {t.photo ? <img src={t.photo} alt={t.author} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #C6742C, #FF7A45)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#FAF8F5" }}>{t.initials}</div>}
                 </div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: "#FAF8F5" }}>{t.author}</p>

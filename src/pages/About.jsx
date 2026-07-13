@@ -73,14 +73,14 @@ function TiltImageCard({ src = "", ratio = "4/3", label = "Your 3D image" }) {
 }
 
 const SERVICE_CARDS = [
-  { label: "Ad Shoots", sub: "Photography & Video", icon: "ti-camera", color: "#FFF5F2", accent: "#E8471A", span: 2, img: "/adShoot.png" },
+  { label: "Ad Shoots", sub: "Photography & Video", icon: "ti-camera", color: "#FFF5F2", accent: "#C6742C", span: 2, img: "/adShoot.png" },
   { label: "Social Media Management", sub: "Content & Community", icon: "ti-brand-instagram", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/socialMedia.png" },
   { label: "Web Development", sub: "React & Custom Code", icon: "ti-code", color: "#EEF2FF", accent: "#4F46E5", span: 1, img: "/webDev.png" },
-  { label: "Meta Ads", sub: "Paid Social & Campaigns", icon: "ti-brand-meta", color: "#FFF5F2", accent: "#E8471A", span: 1, img: "/metaAds.png" },
+  { label: "Meta Ads", sub: "Paid Social & Campaigns", icon: "ti-brand-meta", color: "#FFF5F2", accent: "#C6742C", span: 1, img: "/metaAds.png" },
   { label: "Content Strategy", sub: "Planning & Creation", icon: "ti-pencil", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/growthStrategy.png" },
   { label: "Growth Dashboards", sub: "Analytics & Reporting", icon: "ti-chart-line", color: "#F0FBF4", accent: "#16A34A", span: 2, img: "/growth.png" },
   { label: "Web Redesign", sub: "Conversion Focused", icon: "ti-layout", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/webRede.png" },
-  { label: "Brand Identity", sub: "Logo & Visual System", icon: "ti-vector-triangle", color: "#FFF5F2", accent: "#E8471A", span: 1, img: "/brandIdentity.png" },
+  { label: "Brand Identity", sub: "Logo & Visual System", icon: "ti-vector-triangle", color: "#FFF5F2", accent: "#C6742C", span: 1, img: "/brandIdentity.png" },
   { label: "Google Ads", sub: "Search & Display", icon: "ti-brand-google", color: "#FFFBF0", accent: "#D97706", span: 1, img: "/googleAds.png" },
   { label: "Reels & Video Ads", sub: "Short-form Production", icon: "ti-player-play", color: "#F7F7F5", accent: "#14161C", span: 1, img: "/reels.png" },
   { label: "Email Marketing", sub: "Sequences & Campaigns", icon: "ti-mail", color: "#EEF2FF", accent: "#4F46E5", span: 1, img: "/email.png" },
@@ -233,15 +233,15 @@ function WhyClickwise({ ref6, v6 }) {
           </p>
           <div style={{ marginTop: 40, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 40 }}>
             <div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: "#E8471A", lineHeight: 1 }}>50+</div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "#C6742C", lineHeight: 1 }}>50+</div>
               <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 6 }}>Projects</div>
             </div>
             <div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: "#E8471A", lineHeight: 1 }}>4</div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "#C6742C", lineHeight: 1 }}>4</div>
               <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 6 }}>Countries</div>
             </div>
             <div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: "#E8471A", lineHeight: 1 }}>100%</div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: "#C6742C", lineHeight: 1 }}>100%</div>
               <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", letterSpacing: "0.14em", textTransform: "uppercase", marginTop: 6 }}>Satisfaction</div>
             </div>
           </div>
@@ -257,7 +257,7 @@ function WhyClickwise({ ref6, v6 }) {
                 padding: "28px 24px",
                 transition: "border-color .3s ease, transform .3s ease",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,71,26,0.5)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(198,116,44,0.5)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.transform = "translateY(0)"; }}
             >
               <img
@@ -292,12 +292,12 @@ function MilestoneItem({ m }) {
     >
       <div style={{
         position: "absolute", left: -34, top: 6, width: 12, height: 12, borderRadius: "50%",
-        background: "#E8471A",
-        boxShadow: v ? "0 0 0 5px rgba(232,71,26,0.18)" : "0 0 0 3px rgba(232,71,26,0.10)",
+        background: "#C6742C",
+        boxShadow: v ? "0 0 0 5px rgba(198,116,44,0.18)" : "0 0 0 3px rgba(198,116,44,0.10)",
         transform: v ? "scale(1)" : "scale(.6)",
         transition: "all .5s cubic-bezier(.16,1,.3,1)",
       }} />
-      <div style={{ fontSize: 11, fontWeight: 800, color: "#E8471A", letterSpacing: "0.1em", marginBottom: 10 }}>{m.year}</div>
+      <div style={{ fontSize: 11, fontWeight: 800, color: "#C6742C", letterSpacing: "0.1em", marginBottom: 10 }}>{m.year}</div>
       <h3 style={{ fontSize: 18, fontWeight: 700, color: "#14161C", marginBottom: 10 }}>{m.title}</h3>
       <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.9 }}>{m.desc}</p>
     </div>
@@ -365,12 +365,12 @@ export default function About() {
 
           <div ref={ref1} style={{ opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateX(32px)", transition: "all 1s cubic-bezier(.16,1,.3,1) 0.15s", position: "relative" }}>
             <TiltImageCard src="/about-main.png" ratio="4/5" label="Your main 3D image" />
-            <div style={{ position: "absolute", top: -16, right: -16, background: "#E8471A", borderRadius: 14, padding: "18px 22px", boxShadow: "0 16px 40px rgba(232,71,26,0.35)", animation: "floatA 4s ease-in-out infinite" }}>
+            <div style={{ position: "absolute", top: -16, right: -16, background: "#C6742C", borderRadius: 14, padding: "18px 22px", boxShadow: "0 16px 40px rgba(198,116,44,0.35)", animation: "floatA 4s ease-in-out infinite" }}>
               <div style={{ fontSize: 26, fontWeight: 900, color: "#FAF8F5", letterSpacing: "-1px", lineHeight: 1 }}>50+</div>
               <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 4 }}>Projects</div>
             </div>
             <div style={{ position: "absolute", bottom: 28, left: -20, background: "#FAF8F5", border: "1px solid #E4E3DD", borderRadius: 12, padding: "14px 18px", boxShadow: "0 12px 32px rgba(17,17,17,0.12)", animation: "floatB 5s ease-in-out infinite" }}>
-              <div style={{ fontSize: 20, fontWeight: 900, color: "#E8471A", letterSpacing: "-0.5px", lineHeight: 1 }}>100%</div>
+              <div style={{ fontSize: 20, fontWeight: 900, color: "#C6742C", letterSpacing: "-0.5px", lineHeight: 1 }}>100%</div>
               <div style={{ fontSize: 9, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 4 }}>Satisfaction</div>
             </div>
             <style>{`
@@ -383,7 +383,7 @@ export default function About() {
         <div className="cw-grid-4" style={{ maxWidth: 1320, margin: "72px auto 0", gap: 32, paddingTop: 56, borderTop: "1px solid #E4E3DD" }}>
           {STATS.map((s, i) => (
             <div key={i} style={{ opacity: v1 ? 1 : 0, transform: v1 ? "none" : "translateY(20px)", transition: `all .8s cubic-bezier(.16,1,.3,1) ${i * 0.1 + 0.3}s` }}>
-              <div style={{ fontSize: 36, fontWeight: 900, color: "#E8471A", letterSpacing: "-1px", lineHeight: 1 }}>{s.v}</div>
+              <div style={{ fontSize: 36, fontWeight: 900, color: "#C6742C", letterSpacing: "-1px", lineHeight: 1 }}>{s.v}</div>
               <div style={{ fontSize: 10, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.14em", fontWeight: 700, marginTop: 8 }}>{s.l}</div>
             </div>
           ))}
@@ -400,7 +400,7 @@ export default function About() {
           </div>
           <div className="cw-grid-2" style={{ gap: "clamp(60px,7vw,120px)", alignItems: "start" }}>
             <div style={{ position: "relative", paddingLeft: 28 }}>
-              <div style={{ position: "absolute", left: 0, top: 8, bottom: 0, width: 1, background: "linear-gradient(to bottom, #E8471A 0%, #E4E3DD 100%)" }} />
+              <div style={{ position: "absolute", left: 0, top: 8, bottom: 0, width: 1, background: "linear-gradient(to bottom, #C6742C 0%, #E4E3DD 100%)" }} />
               {milestones.map((m, i) => (
                 <MilestoneItem key={i} m={m} />
               ))}
@@ -419,7 +419,7 @@ export default function About() {
         <div className="cw-grid-4" style={{ maxWidth: 1320, margin: "0 auto", gap: 40 }}>
           {[{ v: "50", s: "+", l: "Projects Delivered" }, { v: "30", s: "+", l: "Happy Clients" }, { v: "3", s: "+", l: "Years of Craft" }, { v: "100", s: "%", l: "Satisfaction" }].map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, color: "#E8471A", letterSpacing: "-2px", lineHeight: 1 }}>
+              <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, color: "#C6742C", letterSpacing: "-2px", lineHeight: 1 }}>
                 <Counter target={s.v} suffix={s.s} />
               </div>
               <div style={{ fontSize: 10, color: "rgba(250,248,245,0.65)", textTransform: "uppercase", letterSpacing: "0.16em", fontWeight: 700, marginTop: 12 }}>{s.l}</div>
@@ -438,17 +438,17 @@ export default function About() {
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {faqs.map((faq, i) => (
                 <div key={i} onClick={() => setActiveFAQ(i)}
-                  style={{ padding: "18px 24px", borderRadius: 10, cursor: "pointer", background: activeFAQ === i ? "#E8471A" : "#F7F7F5", border: `1px solid ${activeFAQ === i ? "#E8471A" : "#E4E3DD"}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, transition: "all .3s" }}
-                  onMouseEnter={(e) => { if (activeFAQ !== i) e.currentTarget.style.borderColor = "rgba(232,71,26,0.4)"; }}
+                  style={{ padding: "18px 24px", borderRadius: 10, cursor: "pointer", background: activeFAQ === i ? "#C6742C" : "#F7F7F5", border: `1px solid ${activeFAQ === i ? "#C6742C" : "#E4E3DD"}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, transition: "all .3s" }}
+                  onMouseEnter={(e) => { if (activeFAQ !== i) e.currentTarget.style.borderColor = "rgba(198,116,44,0.4)"; }}
                   onMouseLeave={(e) => { if (activeFAQ !== i) e.currentTarget.style.borderColor = "#E4E3DD"; }}
                 >
                   <span style={{ fontSize: 14, fontWeight: 600, color: activeFAQ === i ? "#FAF8F5" : "#14161C" }}>{faq.q}</span>
-                  <span style={{ color: activeFAQ === i ? "#FAF8F5" : "#E8471A", fontSize: 18, flexShrink: 0 }}>{activeFAQ === i ? "✕" : "+"}</span>
+                  <span style={{ color: activeFAQ === i ? "#FAF8F5" : "#C6742C", fontSize: 18, flexShrink: 0 }}>{activeFAQ === i ? "✕" : "+"}</span>
                 </div>
               ))}
             </div>
             <div className="cw-unsticky-mobile" style={{ background: "#F7F7F5", borderRadius: 16, padding: "40px 36px", border: "1px solid #E4E3DD", position: "sticky", top: 100 }}>
-              <div style={{ width: 40, height: 3, background: "#E8471A", borderRadius: 2, marginBottom: 24 }} />
+              <div style={{ width: 40, height: 3, background: "#C6742C", borderRadius: 2, marginBottom: 24 }} />
               <h3 style={{ fontSize: 18, fontWeight: 700, color: "#14161C", marginBottom: 16, lineHeight: 1.4 }}>{faqs[activeFAQ].q}</h3>
               <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.9 }}>{faqs[activeFAQ].a}</p>
               <p style={{ fontSize: 12, color: "#C4C0B8", marginTop: 32 }}>{activeFAQ + 1} / {faqs.length}</p>

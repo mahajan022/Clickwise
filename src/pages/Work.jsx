@@ -150,9 +150,9 @@ export default function Work() {
 
                 {/* Text */}
                 <div style={{ order: isEven ? 1 : 0 }}>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(232,71,26,.08)", padding: "6px 14px", borderRadius: 20, marginBottom: 20 }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#E8471A" }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, color: "#E8471A", letterSpacing: "0.15em", textTransform: "uppercase" }}>{w.tag}</span>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(198,116,44,.08)", padding: "6px 14px", borderRadius: 20, marginBottom: 20 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C6742C" }} />
+                    <span style={{ fontSize: 10, fontWeight: 700, color: "#C6742C", letterSpacing: "0.15em", textTransform: "uppercase" }}>{w.tag}</span>
                   </div>
                   <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#14161C", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>{w.title}</h2>
                   <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.9, marginBottom: 32 }}>{w.desc}</p>
@@ -170,7 +170,7 @@ export default function Work() {
                   <a
                     href={w.url} target="_blank" rel="noopener noreferrer"
                     style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#14161C", color: "#FAF8F5", padding: "14px 28px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "all .25s" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.background = "#E8471A"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = "#C6742C"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                     onMouseLeave={(e) => { e.currentTarget.style.background = "#14161C"; e.currentTarget.style.transform = "none"; }}
                   >
                     View Live Site

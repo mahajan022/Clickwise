@@ -177,8 +177,8 @@ export default function ChatBot() {
         .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
         .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
         .cw-chat-input::placeholder { color: #9CA3AF; }
-        .cw-chat-input:focus { border-color: #E8471A !important; }
-        .cw-suggest-btn:hover { border-color: #E8471A !important; color: #E8471A !important; background: rgba(232,71,26,.05) !important; }
+        .cw-chat-input:focus { border-color: #C6742C !important; }
+        .cw-suggest-btn:hover { border-color: #C6742C !important; color: #C6742C !important; background: rgba(198,116,44,.05) !important; }
       `}</style>
 
       {/* Floating toggle button - bot avatar style */}
@@ -203,7 +203,7 @@ export default function ChatBot() {
                 position: "absolute",
                 inset: 0,
                 borderRadius: "50%",
-                border: "2px solid #E8471A",
+                border: "2px solid #C6742C",
                 animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite",
               }}
             />
@@ -212,7 +212,7 @@ export default function ChatBot() {
                 position: "absolute",
                 inset: 0,
                 borderRadius: "50%",
-                border: "2px solid #E8471A",
+                border: "2px solid #C6742C",
                 animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite 1.1s",
               }}
             />
@@ -340,7 +340,7 @@ export default function ChatBot() {
                 key={i}
                 style={{
                   alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                  background: m.from === "user" ? "#E8471A" : "#F5F4F1",
+                  background: m.from === "user" ? "#C6742C" : "#F5F4F1",
                   color: m.from === "user" ? "#FAF8F5" : "#14161C",
                   padding: "10px 14px",
                   borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
@@ -447,7 +447,7 @@ export default function ChatBot() {
               type="submit"
               disabled={loading}
               style={{
-                background: "#E8471A",
+                background: "#C6742C",
                 color: "#FAF8F5",
                 border: "none",
                 borderRadius: 12,

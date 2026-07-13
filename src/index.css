@@ -5,8 +5,8 @@
   --bg-alt:     #F7F7F5;
   --bg-alt2:    #F0EFEA;
   --dark:       #14161C;
-  --accent:     #E8471A;
-  --accent-lt:  rgba(232,71,26,.09);
+  --accent:     #C6742C;
+  --accent-lt:  rgba(198,116,44,.09);
   --muted:      #6B7280;
   --border:     #E4E3DD;
   --card-bg:    #FAF8F5;
@@ -79,10 +79,10 @@ body {
   text-decoration: none;
 }
 .btn-solid:hover {
-  background: #c73a12;
-  border-color: #c73a12;
+  background: #8F4A1A;
+  border-color: #8F4A1A;
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(232,71,26,.25);
+  box-shadow: 0 10px 28px rgba(198,116,44,.25);
 }
 .btn-ghost {
   font-family: 'Poppins', sans-serif;
@@ -166,7 +166,7 @@ body {
   color: var(--dark); outline: none;
   transition: border-color .2s, box-shadow .2s; border-radius: 6px;
 }
-.finp:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,71,26,.09); }
+.finp:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198,116,44,.09); }
 .finp::placeholder { color: #ABABAB; font-weight: 300; font-size: 13px; }
 
 /* ── TESTIMONIAL ── */
@@ -207,6 +207,20 @@ body {
 }
 
 /* ── UNIFIED SITE BUTTON ── one animation for every CTA ── */
+
+/* ── WORK PREVIEW CARD (float + hover glow) ── */
+@keyframes wpFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.wp-card {
+  animation: wpFloat 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+.wp-card:nth-child(1) { animation-delay: 0s; }
+.wp-card:nth-child(2) { animation-delay: .35s; }
+.wp-card:nth-child(3) { animation-delay: .7s; }
+.wp-card:hover { animation-play-state: paused; }
 .cw-btn {
   position: relative;
   display: inline-flex;
@@ -220,13 +234,13 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   color: #FAF8F5;
-  background: linear-gradient(135deg, #F2551F 0%, #E8471A 55%, #C93C12 100%);
+  background: linear-gradient(135deg, #D68A42 0%, #C6742C 55%, #8F4A1A 100%);
   padding: 14px 32px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 6px 22px rgba(232,71,26,.35), inset 0 1px 0 rgba(255,255,255,.18);
+  box-shadow: 0 6px 22px rgba(198,116,44,.35), inset 0 1px 0 rgba(255,255,255,.18);
   transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s cubic-bezier(.16,1,.3,1);
 }
 .cw-btn::before {
@@ -240,7 +254,7 @@ body {
 }
 .cw-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 38px rgba(232,71,26,.5), inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow: 0 14px 38px rgba(198,116,44,.5), inset 0 1px 0 rgba(255,255,255,.25);
 }
 .cw-btn:hover::before { left: 130%; }
 .cw-btn:active { transform: translateY(0); }
@@ -248,7 +262,7 @@ body {
 /* light/ghost variant (white bg) — same motion */
 .cw-btn.cw-btn-light {
   background: #FAF8F5;
-  color: #E8471A;
+  color: #C6742C;
   box-shadow: 0 6px 22px rgba(0,0,0,.12);
 }
 .cw-btn.cw-btn-light:hover {
