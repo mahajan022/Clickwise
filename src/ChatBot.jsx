@@ -111,6 +111,7 @@ const SUGGESTED_QUESTIONS = [
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
+  const [teaserVisible, setTeaserVisible] = useState(false);
   const [messages, setMessages] = useState([
     {
       from: "bot",
@@ -126,6 +127,25 @@ export default function ChatBot() {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, open, loading]);
+
+  // Show a one-time teaser bubble a few seconds after page load,
+  // but only if the visitor hasn't already opened or dismissed it.
+  useEffect(() => {
+    const alreadySeen = sessionStorage.getItem("cw-chat-teaser-seen");
+    if (alreadySeen) return;
+    const timer = setTimeout(() => setTeaserVisible(true), 3500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const dismissTeaser = () => {
+    setTeaserVisible(false);
+    sessionStorage.setItem("cw-chat-teaser-seen", "1");
+  };
+
+  const openFromTeaser = () => {
+    dismissTeaser();
+    setOpen(true);
+  };
 
   const sendMessage = async (text) => {
     const trimmed = text.trim();
@@ -177,65 +197,129 @@ export default function ChatBot() {
         .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
         .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
         .cw-chat-input::placeholder { color: #9CA3AF; }
-        .cw-chat-input:focus { border-color: #C6742C !important; }
-        .cw-suggest-btn:hover { border-color: #C6742C !important; color: #C6742C !important; background: rgba(198,116,44,.05) !important; }
+        .cw-chat-input:focus { border-color: #E8471A !important; }
+        .cw-suggest-btn:hover { border-color: #E8471A !important; color: #E8471A !important; background: rgba(232,71,26,.05) !important; }
       `}</style>
 
-      {/* Floating toggle button - bot avatar style */}
+      {/* Teaser bubble - text only, no fake profile photos since this is a pure AI assistant */}
+      {teaserVisible && !open && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 96,
+            right: 24,
+            width: 300,
+            maxWidth: "calc(100vw - 48px)",
+            background: "#ffffff",
+            color: "#111111",
+            borderRadius: 20,
+            padding: "20px 22px",
+            boxShadow: "0 18px 48px rgba(0,0,0,.16)",
+            border: "1px solid #EDEBE6",
+            zIndex: 1000,
+            fontFamily: "'Poppins', sans-serif",
+            animation: "cwChatIn .3s cubic-bezier(.16,1,.3,1)",
+            cursor: "pointer",
+          }}
+          onClick={openFromTeaser}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); dismissTeaser(); }}
+            aria-label="Dismiss"
+            style={{
+              position: "absolute",
+              top: -10,
+              right: -10,
+              width: 26,
+              height: 26,
+              borderRadius: "50%",
+              background: "#fff",
+              border: "1.5px solid #E4E3DD",
+              color: "#6B7280",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              padding: 0,
+              fontSize: 13,
+              lineHeight: 1,
+              boxShadow: "0 4px 10px rgba(0,0,0,.08)",
+            }}
+          >
+            ✕
+          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <div style={{ width: 38, height: 38, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: 38, height: 38, objectFit: "contain", borderRadius: "50%" }}
+              >
+                <source src="/chatbot-icon.mp4" type="video/webm" />
+                <img
+                  src="/chatbot-icon.png"
+                  alt="Chat"
+                  style={{ width: 38, height: 38, objectFit: "contain", borderRadius: "50%" }}
+                />
+              </video>
+            </div>
+            <div style={{ fontWeight: 700, fontSize: 15, color: "#111111" }}>Clicks&ads Assistant</div>
+          </div>
+          <div style={{ color: "#6B7280", fontSize: 14, lineHeight: 1.65 }}>
+            Got a question about our services or pricing? Ask away — I reply instantly.
+          </div>
+        </div>
+      )}
+
+      {/* Floating toggle button */}
       <div
         style={{
           position: "fixed",
-          bottom: 100,
-          right: 30,
-          width: 72,
-          height: 72,
+          bottom: 24,
+          right: 24,
+          width: 60,
+          height: 60,
           zIndex: 1000,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        {/* Pulsing attention rings - only show when closed */}
-        {!open && (
-          <>
-            <span
-              style={{
-                position: "absolute",
-                inset: 0,
-                borderRadius: "50%",
-                border: "2px solid #C6742C",
-                animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite",
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                inset: 0,
-                borderRadius: "50%",
-                border: "2px solid #C6742C",
-                animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite 1.1s",
-              }}
-            />
-          </>
+        {/* Subtle pulsing ring - only show when closed and before the teaser has been dismissed */}
+        {!open && teaserVisible && (
+          <span
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: "50%",
+              border: "2px solid #E8471A",
+              animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite",
+            }}
+          />
         )}
 
         <button
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Open chat"
+          onClick={() => {
+            setOpen((o) => !o);
+            dismissTeaser();
+          }}
+          aria-label={open ? "Close chat" : "Open chat"}
           style={{
             position: "relative",
-            width: 64,
-            height: 64,
+            width: 58,
+            height: 58,
             borderRadius: "50%",
-            background: "#FAF8F5",
-            border: "1px solid #E4E3DD",
+            background: open ? "#E8471A" : "transparent",
+            border: "none",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
-            boxShadow: "0 8px 28px rgba(0,0,0,.18)",
+            boxShadow: open ? "0 10px 26px rgba(232,71,26,.35)" : "0 8px 22px rgba(0,0,0,.15)",
             transition: "all .25s cubic-bezier(.16,1,.3,1)",
-            color: "#FAF8F5",
+            color: "#fff",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.08)";
@@ -245,17 +329,26 @@ export default function ChatBot() {
           }}
         >
           {open ? (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14161C" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            /* Custom chatbot icon image - place your image in /public folder */
-            <img
-              src="/chatbot-icon.png"
-              alt="Chat"
-              style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
-            />
+            /* Looping mascot animation — place files at: public/chatbot-icon.webm and public/chatbot-icon.png */
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: 58, height: 58, objectFit: "contain", borderRadius: "50%" }}
+            >
+              <source src="/chatbot-icon.webm" type="video/webm" />
+              <img
+                src="/chatbot-icon.png"
+                alt="Chat"
+                style={{ width: 58, height: 58, objectFit: "contain", borderRadius: "50%" }}
+              />
+            </video>
           )}
         </button>
       </div>
@@ -265,13 +358,13 @@ export default function ChatBot() {
         <div
           style={{
             position: "fixed",
-            bottom: 168,
-            right: 30,
+            bottom: 96,
+            right: 24,
             width: 360,
             maxWidth: "calc(100vw - 40px)",
             height: 520,
             maxHeight: "calc(100vh - 220px)",
-            background: "#FAF8F5",
+            background: "#ffffff",
             borderRadius: 20,
             boxShadow: "0 24px 70px rgba(0,0,0,.18)",
             display: "flex",
@@ -295,24 +388,31 @@ export default function ChatBot() {
           >
             <div
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                background: "transparent",
+                width: 44,
+                height: 44,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
               }}
             >
-              <img
-                src="/chatbot-icon.png"
-                alt="Chat"
-                style={{ width: 40, height: 40, objectFit: "contain", borderRadius: "50%" }}
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
+              >
+                <source src="/chatbot-icon.webm" type="video/webm" />
+                <img
+                  src="/chatbot-icon.png"
+                  alt="Chat"
+                  style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
+                />
+              </video>
             </div>
             <div>
-              <div style={{ color: "#14161C", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
+              <div style={{ color: "#111111", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
                 Clicks&ads Assistant
               </div>
               <div style={{ color: "#6B7280", fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
@@ -340,8 +440,8 @@ export default function ChatBot() {
                 key={i}
                 style={{
                   alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                  background: m.from === "user" ? "#C6742C" : "#F5F4F1",
-                  color: m.from === "user" ? "#FAF8F5" : "#14161C",
+                  background: m.from === "user" ? "#E8471A" : "#F5F4F1",
+                  color: m.from === "user" ? "#fff" : "#111111",
                   padding: "10px 14px",
                   borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
                   maxWidth: "82%",
@@ -439,7 +539,7 @@ export default function ChatBot() {
                 fontSize: 13.5,
                 outline: "none",
                 fontFamily: "inherit",
-                color: "#14161C",
+                color: "#111111",
                 transition: "border-color .2s",
               }}
             />
@@ -447,8 +547,8 @@ export default function ChatBot() {
               type="submit"
               disabled={loading}
               style={{
-                background: "#C6742C",
-                color: "#FAF8F5",
+                background: "#E8471A",
+                color: "#fff",
                 border: "none",
                 borderRadius: 12,
                 width: 42,
