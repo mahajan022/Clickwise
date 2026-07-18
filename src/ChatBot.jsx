@@ -8,6 +8,10 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const GEMINI_MODEL = "gemini-2.5-flash";
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
 
+/* Drop your own circular avatar image into /public and point this at it.
+   If the file isn't there yet, the circle just shows as an empty brand-tinted disc. */
+const AVATAR_SRC = "/chatbot-avatar.png";
+
 /* ════════════════════════════════════════════════════════
    BUILD WEBSITE CONTEXT FROM globals.js DATA
    ════════════════════════════════════════════════════════ */
@@ -63,22 +67,13 @@ const SITE_CONTEXT = buildSiteContext();
    ════════════════════════════════════════════════════════ */
 async function askGemini(userMessage, history) {
   const contents = [
-    {
-      role: "user",
-      parts: [{ text: SITE_CONTEXT }],
-    },
-    {
-      role: "model",
-      parts: [{ text: "Understood! I'm ready to help visitors with questions about Clicks&ads." }],
-    },
+    { role: "user", parts: [{ text: SITE_CONTEXT }] },
+    { role: "model", parts: [{ text: "Understood! I'm ready to help visitors with questions about Clicks&ads." }] },
     ...history.map((m) => ({
       role: m.from === "user" ? "user" : "model",
       parts: [{ text: m.text }],
     })),
-    {
-      role: "user",
-      parts: [{ text: userMessage }],
-    },
+    { role: "user", parts: [{ text: userMessage }] },
   ];
 
   const res = await fetch(GEMINI_URL, {
@@ -86,10 +81,7 @@ async function askGemini(userMessage, history) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       contents,
-      generationConfig: {
-        temperature: 0.7,
-        maxOutputTokens: 300,
-      },
+      generationConfig: { temperature: 0.7, maxOutputTokens: 300 },
     }),
   });
 
@@ -109,25 +101,9 @@ const SUGGESTED_QUESTIONS = [
   "How can I contact you?",
 ];
 
-/* ════════════════════════════════════════════════════════
-   BRAND TOKENS — unchanged from the existing site
-   ════════════════════════════════════════════════════════ */
-const INK = "#141210";
-const ACCENT = "#C1502E";
-const CREAM = "#F3EEE5";
-const PANEL_BG = "#ffffff";
-const SURFACE = "#F5F4F1";
-const BORDER = "#E4E3DD";
-const MUTED = "#6B7280";
-
-/* Closed pill size vs. open panel size — the same box morphs between the two */
-const PILL_W = 168;
-const PILL_H = 58;
-const PANEL_W = "min(380px, calc(100vw - 40px))";
-const PANEL_H = "min(560px, calc(100vh - 140px))";
-
 export default function ChatBot() {
-  const [open, setOpen] = useState(false); // controls both the box size AND which layer is visible
+  const [open, setOpen] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(true);
   const [messages, setMessages] = useState([
     {
       from: "bot",
@@ -143,8 +119,6 @@ export default function ChatBot() {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, open, loading]);
-
-  const handleToggle = () => setOpen((o) => !o);
 
   const sendMessage = async (text) => {
     const trimmed = text.trim();
@@ -162,10 +136,7 @@ export default function ChatBot() {
     } catch (err) {
       setMessages((prev) => [
         ...prev,
-        {
-          from: "bot",
-          text: "Sorry, something went wrong. Please try again or reach us at anuragg7051@gmail.com.",
-        },
+        { from: "bot", text: "Sorry, something went wrong. Please try again or reach us at anuragg7051@gmail.com." },
       ]);
     } finally {
       setLoading(false);
@@ -177,17 +148,26 @@ export default function ChatBot() {
     sendMessage(input);
   };
 
+  const openChat = () => {
+    setOpen(true);
+    setShowGreeting(false);
+  };
+
   return (
     <>
       <style>{`
-        @keyframes cwPillGlow {
-          0% { box-shadow: 0 10px 30px rgba(20,18,16,.35), 0 0 0 0 rgba(193,80,46,.45); }
-          70% { box-shadow: 0 10px 30px rgba(20,18,16,.35), 0 0 0 14px rgba(193,80,46,0); }
-          100% { box-shadow: 0 10px 30px rgba(20,18,16,.35), 0 0 0 0 rgba(193,80,46,0); }
+        @keyframes cwChatIn {
+          from { opacity: 0; transform: translateY(16px) scale(.97); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        @keyframes cwFadeUp {
-          from { opacity: 0; transform: translateY(8px); }
+        @keyframes cwGreetIn {
+          from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes cwPulseRing {
+          0% { transform: scale(1); opacity: .55; }
+          70% { transform: scale(1.6); opacity: 0; }
+          100% { transform: scale(1.6); opacity: 0; }
         }
         @keyframes cwDot {
           0%, 80%, 100% { transform: scale(0.6); opacity: .3; }
@@ -196,316 +176,375 @@ export default function ChatBot() {
         .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
         .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
         .cw-chat-input::placeholder { color: #9CA3AF; }
-        .cw-chat-input:focus { border-color: ${ACCENT} !important; }
-        .cw-suggest-btn:hover { border-color: ${ACCENT} !important; color: ${ACCENT} !important; background: rgba(193,80,46,.05) !important; }
-        .cw-box { transition: width .38s cubic-bezier(.16,1,.3,1), height .38s cubic-bezier(.16,1,.3,1), border-radius .38s cubic-bezier(.16,1,.3,1); }
+        .cw-chat-input:focus { border-color: var(--accent) !important; }
+        .cw-chip:hover { background: var(--accent) !important; color: #fff !important; }
+        .cw-pill:hover { box-shadow: 0 14px 38px rgba(20,18,16,.28) !important; transform: translateY(-1px); }
       `}</style>
 
-      {/* Single morphing container: pill when closed, full panel when open.
-          Background is ALWAYS white — only the small pill layer below is dark,
-          and it's pinned to its own fixed footprint (never stretched). */}
-      <div
-        className="cw-box"
-        style={{
-          position: "fixed",
-          bottom: 24,
-          right: 24,
-          width: open ? PANEL_W : PILL_W,
-          height: open ? PANEL_H : PILL_H,
-          borderRadius: open ? 20 : 29,
-          background: PANEL_BG,
-          overflow: "hidden",
-          zIndex: 1000,
-          boxShadow: open
-            ? "0 24px 70px rgba(0,0,0,.18)"
-            : "0 10px 30px rgba(20,18,16,.35)",
-          border: `1px solid ${open ? BORDER : INK}`,
-          fontFamily: "'Poppins', sans-serif",
-        }}
-      >
-        {/* ── Collapsed pill layer — fixed size, pinned bottom-right, fades out (never stretches) ── */}
-        <button
-          onClick={handleToggle}
-          aria-label="Open chat"
-          style={{
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-            width: PILL_W,
-            height: PILL_H,
-            borderRadius: 29,
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            padding: "0 18px 0 6px",
-            background: INK,
-            border: "none",
-            cursor: open ? "default" : "pointer",
-            opacity: open ? 0 : 1,
-            pointerEvents: open ? "none" : "auto",
-            transition: "opacity .18s ease",
-            animation: open ? "none" : "cwPillGlow 2.6s ease-out infinite",
-          }}
-        >
-          <span
-            style={{
-              width: 46,
-              height: 46,
-              borderRadius: "50%",
-              overflow: "hidden",
-              flexShrink: 0,
-              background: SURFACE,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {/* Drop your own square/circular avatar image at /public/chatbot-icon.png */}
-            <img
-              src="/chatbot-icon.png"
-              alt=""
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          </span>
-          <span style={{ color: CREAM, fontWeight: 700, fontSize: 14.5, whiteSpace: "nowrap" }}>
-            Ask AI
-          </span>
-        </button>
-
-        {/* ── Expanded panel layer — fills the box, fades in once it's grown ── */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            flexDirection: "column",
-            opacity: open ? 1 : 0,
-            pointerEvents: open ? "auto" : "none",
-            transition: open ? "opacity .25s ease .12s" : "opacity .12s ease",
-          }}
-        >
-            {/* Header: color band with avatar overlapping into the white body */}
-            <div style={{ position: "relative", flexShrink: 0 }}>
-              <div
-                style={{
-                  height: 64,
-                  background: ACCENT,
-                  display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "flex-end",
-                  padding: "12px 14px 0 0",
-                }}
-              >
-                <button
-                  onClick={handleToggle}
-                  aria-label="Close chat"
-                  style={{
-                    width: 28,
-                    height: 28,
-                    borderRadius: "50%",
-                    border: "none",
-                    background: "rgba(0,0,0,.15)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    cursor: "pointer",
-                  }}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-end",
-                  gap: 12,
-                  padding: "0 20px",
-                  marginTop: -32,
-                }}
-              >
-                <span
-                  style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    flexShrink: 0,
-                    background: SURFACE,
-                    border: `3px solid ${PANEL_BG}`,
-                    boxShadow: "0 4px 14px rgba(0,0,0,.15)",
-                  }}
-                >
-                  <img
-                    src="/chatbot-icon.png"
-                    alt=""
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                </span>
-                <div style={{ paddingBottom: 6 }}>
-                  <div style={{ color: INK, fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
-                    Clicks&ads Assistant
-                  </div>
-                  <div style={{ color: MUTED, fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
-                    Online · Replies instantly
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Messages */}
+      {/* ══════════ CLOSED STATE: stretched "Ask AI" pill ══════════ */}
+      {!open && (
+        <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 1000, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 14 }}>
+          {/* Greeting bubble */}
+          {showGreeting && (
             <div
-              ref={scrollRef}
-              className="cw-chat-scroll"
               style={{
-                flex: 1,
-                overflowY: "auto",
-                padding: "16px 16px 18px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 12,
+                position: "relative",
+                width: 280,
+                maxWidth: "calc(100vw - 48px)",
+                background: "#fff",
+                borderRadius: 16,
+                padding: "16px 18px",
+                boxShadow: "0 16px 46px rgba(20,18,16,.18)",
+                animation: "cwGreetIn .3s cubic-bezier(.16,1,.3,1)",
               }}
             >
-              {messages.map((m, i) => (
-                <div
-                  key={i}
-                  style={{
-                    alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                    background: m.from === "user" ? ACCENT : SURFACE,
-                    color: m.from === "user" ? "#fff" : INK,
-                    padding: "10px 14px",
-                    borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
-                    maxWidth: "82%",
-                    fontSize: 13.5,
-                    lineHeight: 1.6,
-                    whiteSpace: "pre-wrap",
-                    border: "none",
-                  }}
-                >
-                  {m.text}
-                </div>
-              ))}
-
-              {loading && (
-                <div
-                  style={{
-                    alignSelf: "flex-start",
-                    background: SURFACE,
-                    border: "none",
-                    padding: "12px 16px",
-                    borderRadius: "14px 14px 14px 4px",
-                    display: "flex",
-                    gap: 4,
-                  }}
-                >
-                  {[0, 1, 2].map((i) => (
-                    <span
-                      key={i}
-                      style={{
-                        width: 6,
-                        height: 6,
-                        borderRadius: "50%",
-                        background: "#9CA3AF",
-                        animation: `cwDot 1.2s ease-in-out ${i * 0.15}s infinite`,
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
-
-              {/* Suggested questions - shown only at start */}
-              {messages.length === 1 && !loading && (
-                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 6 }}>
-                  <div style={{ color: MUTED, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>
-                    Quick questions
-                  </div>
-                  {SUGGESTED_QUESTIONS.map((q, i) => (
-                    <button
-                      key={i}
-                      className="cw-suggest-btn"
-                      onClick={() => sendMessage(q)}
-                      style={{
-                        textAlign: "left",
-                        background: "transparent",
-                        border: `1px solid ${BORDER}`,
-                        borderRadius: 12,
-                        padding: "10px 14px",
-                        fontSize: 13.5,
-                        color: "#374151",
-                        fontWeight: 600,
-                        cursor: "pointer",
-                        transition: "all .2s",
-                      }}
-                    >
-                      {q}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Input */}
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                display: "flex",
-                borderTop: `1px solid ${BORDER}`,
-                padding: 12,
-                gap: 8,
-                flexShrink: 0,
-              }}
-            >
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Message Clicks&ads..."
-                disabled={loading}
-                className="cw-chat-input"
-                style={{
-                  flex: 1,
-                  background: SURFACE,
-                  border: `1px solid ${BORDER}`,
-                  borderRadius: 12,
-                  padding: "11px 14px",
-                  fontSize: 13.5,
-                  outline: "none",
-                  fontFamily: "inherit",
-                  color: INK,
-                  transition: "border-color .2s",
-                }}
-              />
               <button
-                type="submit"
-                disabled={loading}
+                onClick={() => setShowGreeting(false)}
+                aria-label="Dismiss"
+                style={{ position: "absolute", top: 8, right: 10, background: "none", border: "none", cursor: "pointer", color: "#9CA3AF", fontSize: 16, lineHeight: 1, padding: 4 }}
+              >
+                ×
+              </button>
+              <p style={{ fontSize: 13.5, color: "#141210", lineHeight: 1.6, marginBottom: 12, paddingRight: 14 }}>
+                Hey! I'm the <b>Clicks&ads</b> assistant 👋 Got a question about our services or pricing?
+              </p>
+              <button
+                onClick={openChat}
                 style={{
-                  background: ACCENT,
+                  width: "100%",
+                  background: "var(--dark, #141210)",
                   color: "#fff",
                   border: "none",
-                  borderRadius: 12,
-                  width: 42,
-                  height: 42,
+                  borderRadius: 10,
+                  padding: "11px 14px",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  textAlign: "center",
+                }}
+              >
+                Ask a question →
+              </button>
+            </div>
+          )}
+
+          {/* Pill bar */}
+          <div style={{ position: "relative" }}>
+            {!showGreeting && (
+              <span
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: 999,
+                  border: "1.5px solid var(--accent)",
+                  animation: "cwPulseRing 2.6s cubic-bezier(.4,0,.6,1) infinite",
+                }}
+              />
+            )}
+            <button
+              className="cw-pill"
+              onClick={openChat}
+              aria-label="Open chat"
+              style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                width: 240,
+                maxWidth: "calc(100vw - 48px)",
+                background: "#fff",
+                border: "2px solid var(--accent)",
+                borderRadius: 999,
+                padding: "6px 6px 6px 6px",
+                cursor: "pointer",
+                boxShadow: "0 10px 30px rgba(20,18,16,.2)",
+                transition: "all .25s cubic-bezier(.16,1,.3,1)",
+              }}
+            >
+              {/* Empty circular avatar slot — drop your own image at /public/chatbot-avatar.png */}
+              <div
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  flexShrink: 0,
+                  background: "var(--bg-alt2, #F1ECE5)",
+                  border: "1px solid var(--border, #E7E1D8)",
+                }}
+              >
+                <img
+                  src={AVATAR_SRC}
+                  alt=""
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  onError={(e) => { e.currentTarget.style.display = "none"; }}
+                />
+              </div>
+
+              <span style={{ flex: 1, textAlign: "left", fontSize: 13.5, color: "#9CA3AF", fontWeight: 500 }}>
+                Ask AI...
+              </span>
+
+              <span
+                style={{
+                  width: 34,
+                  height: 34,
+                  borderRadius: "50%",
+                  background: "var(--accent)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  cursor: loading ? "default" : "pointer",
                   flexShrink: 0,
-                  opacity: loading ? 0.5 : 1,
-                  transition: "opacity .2s",
                 }}
               >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="12" y1="19" x2="12" y2="5" />
                   <polyline points="5 12 12 5 19 12" />
                 </svg>
-              </button>
-            </form>
+              </span>
+            </button>
           </div>
-      </div>
+        </div>
+      )}
+
+      {/* ══════════ OPEN STATE: full chat panel ══════════ */}
+      {open && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 24,
+            right: 24,
+            width: 370,
+            maxWidth: "calc(100vw - 40px)",
+            height: 560,
+            maxHeight: "calc(100vh - 100px)",
+            background: "#ffffff",
+            borderRadius: 22,
+            boxShadow: "0 24px 70px rgba(0,0,0,.22)",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+            zIndex: 999,
+            fontFamily: "'Poppins', sans-serif",
+            animation: "cwChatIn .25s cubic-bezier(.16,1,.3,1)",
+          }}
+        >
+          {/* Colored header with avatar + close */}
+          <div
+            style={{
+              background: "linear-gradient(135deg, var(--accent-light, #DE7A4C) 0%, var(--accent) 60%, var(--accent-deep, #9A4322) 100%)",
+              padding: "20px 20px 16px",
+              flexShrink: 0,
+              position: "relative",
+            }}
+          >
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close chat"
+              style={{
+                position: "absolute",
+                top: 14,
+                right: 14,
+                width: 30,
+                height: 30,
+                borderRadius: "50%",
+                background: "rgba(255,255,255,.18)",
+                border: "none",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              {/* Empty circular avatar slot — same image as above */}
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  flexShrink: 0,
+                  background: "rgba(255,255,255,.25)",
+                  border: "2px solid rgba(255,255,255,.5)",
+                }}
+              >
+                <img
+                  src={AVATAR_SRC}
+                  alt=""
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  onError={(e) => { e.currentTarget.style.display = "none"; }}
+                />
+              </div>
+              <div>
+                <div style={{ color: "#fff", fontWeight: 700, fontSize: 15, letterSpacing: "-.2px" }}>
+                  Clicks&ads Assistant
+                </div>
+                <div style={{ color: "rgba(255,255,255,.85)", fontSize: 11.5, marginTop: 2, display: "flex", alignItems: "center", gap: 5 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
+                  Online · Replies instantly
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* thin decorative bar */}
+          <div style={{ height: 4, background: "var(--bg-alt2, #F1ECE5)", flexShrink: 0 }}>
+            <div style={{ width: "35%", height: "100%", background: "var(--dark, #141210)", borderRadius: "0 3px 3px 0" }} />
+          </div>
+
+          {/* Messages */}
+          <div
+            ref={scrollRef}
+            className="cw-chat-scroll"
+            style={{
+              flex: 1,
+              overflowY: "auto",
+              padding: "18px 16px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+            }}
+          >
+            {messages.map((m, i) => (
+              <div
+                key={i}
+                style={{
+                  alignSelf: m.from === "user" ? "flex-end" : "flex-start",
+                  background: m.from === "user" ? "var(--accent)" : "#F5F4F1",
+                  color: m.from === "user" ? "#fff" : "#141210",
+                  padding: "10px 14px",
+                  borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
+                  maxWidth: "82%",
+                  fontSize: 13.5,
+                  lineHeight: 1.6,
+                  whiteSpace: "pre-wrap",
+                }}
+              >
+                {m.text}
+              </div>
+            ))}
+
+            {loading && (
+              <div style={{ alignSelf: "flex-start", background: "#F5F4F1", padding: "12px 16px", borderRadius: "14px 14px 14px 4px", display: "flex", gap: 4 }}>
+                {[0, 1, 2].map((i) => (
+                  <span key={i} style={{ width: 6, height: 6, borderRadius: "50%", background: "#9CA3AF", animation: `cwDot 1.2s ease-in-out ${i * 0.15}s infinite` }} />
+                ))}
+              </div>
+            )}
+
+            {/* Suggested questions as right-aligned chips */}
+            {messages.length === 1 && !loading && (
+              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-end", gap: 8, marginTop: 4 }}>
+                {SUGGESTED_QUESTIONS.map((q, i) => (
+                  <button
+                    key={i}
+                    className="cw-chip"
+                    onClick={() => sendMessage(q)}
+                    style={{
+                      background: "var(--bg-alt2, #F1ECE5)",
+                      border: "none",
+                      borderRadius: 999,
+                      padding: "9px 16px",
+                      fontSize: 12.5,
+                      color: "#141210",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      transition: "all .2s",
+                    }}
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Input row with decorative paperclip */}
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              borderTop: "1px solid var(--border, #E7E1D8)",
+              padding: "10px 12px",
+              gap: 8,
+            }}
+          >
+            <span
+              style={{
+                width: 34,
+                height: 34,
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+                color: "#9CA3AF",
+              }}
+              title="Attachments coming soon"
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Type here"
+              disabled={loading}
+              className="cw-chat-input"
+              style={{
+                flex: 1,
+                background: "#F5F4F1",
+                border: "1px solid var(--border, #E7E1D8)",
+                borderRadius: 12,
+                padding: "11px 14px",
+                fontSize: 13.5,
+                outline: "none",
+                fontFamily: "inherit",
+                color: "#141210",
+                transition: "border-color .2s",
+              }}
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                background: "#9CA3AF",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: 38,
+                height: 38,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: loading ? "default" : "pointer",
+                flexShrink: 0,
+                opacity: loading ? 0.5 : 1,
+                transition: "opacity .2s",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5" />
+                <polyline points="5 12 12 5 19 12" />
+              </svg>
+            </button>
+          </form>
+
+          <div style={{ textAlign: "center", fontSize: 10, color: "#B0AEA8", padding: "0 0 12px" }}>
+            Powered by Clicks&ads AI
+          </div>
+        </div>
+      )}
     </>
   );
 }
