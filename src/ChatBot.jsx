@@ -363,12 +363,12 @@ export default function ChatBot() {
             </button>
 
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              {/* Empty circular avatar slot — same image as above */}
+              {/* Empty squircle avatar slot — same image source as the closed pill, different shape */}
               <div
                 style={{
                   width: 52,
                   height: 52,
-                  borderRadius: "50%",
+                  borderRadius: 16,
                   overflow: "hidden",
                   flexShrink: 0,
                   background: "rgba(255,255,255,.25)",
