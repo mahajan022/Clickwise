@@ -242,7 +242,6 @@ export default function ChatBot() {
             border: "none",
             cursor: open ? "default" : "pointer",
             opacity: open ? 0 : 1,
-            visibility: open ? "hidden" : "visible",
             pointerEvents: open ? "none" : "auto",
             transition: "opacity .18s ease",
             animation: open ? "none" : "cwPillGlow 2.6s ease-out infinite",
@@ -277,17 +276,14 @@ export default function ChatBot() {
         <div
           style={{
             position: "absolute",
-              inset: 0,
-              display: "flex",
-              flexDirection: "column",
-              opacity: open ? 1 : 0,
-              visibility: open ? "visible" : "hidden",
-              pointerEvents: open ? "auto" : "none",
-              transition: open
-                ? "opacity .25s ease .12s, visibility 0s linear 0s"
-                : "opacity .12s ease, visibility 0s linear .12s",
-            }}
-          >
+            inset: 0,
+            display: "flex",
+            flexDirection: "column",
+            opacity: open ? 1 : 0,
+            pointerEvents: open ? "auto" : "none",
+            transition: open ? "opacity .25s ease .12s" : "opacity .12s ease",
+          }}
+        >
             {/* Header: color band with avatar overlapping into the white body */}
             <div style={{ position: "relative", flexShrink: 0 }}>
               <div
