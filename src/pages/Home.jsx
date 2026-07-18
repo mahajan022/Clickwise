@@ -6,20 +6,18 @@ import { Helmet } from "react-helmet-async";
 /* ── HERO ── */
 function Hero() {
   return (
-    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#FFFFFF" }}>
-      <div
-        style={{
-          position: "absolute", inset: 0,
-          WebkitMaskImage: "linear-gradient(to bottom, #000 88%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, #000 88%, transparent 100%)",
-        }}
-      >
-        <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
-          <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
-        </video>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,.22) 100%)", pointerEvents: "none" }} />
-      </div>
+    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
+      <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
+        <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
+      </video>
     </section>
+  );
+}
+
+/* soft shadow strip that sits in the white area right below the hero — never touches the video itself */
+function HeroSeam() {
+  return (
+    <div style={{ height: 48, background: "linear-gradient(to bottom, rgba(20,18,16,.10), rgba(20,18,16,0))", pointerEvents: "none" }} />
   );
 }
 
@@ -296,6 +294,7 @@ export default function Home() {
         <meta name="description" content="Clicks&Ads is a Mumbai-based digital marketing agency and website development company offering web design, SEO, PPC, and branding services." />
       </Helmet>
       <Hero />
+      <HeroSeam />
       <AnimatedHeadline />
       <ServicesPreview />
       <ProcessSection />
