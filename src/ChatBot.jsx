@@ -127,8 +127,7 @@ const PANEL_W = "min(380px, calc(100vw - 40px))";
 const PANEL_H = "min(560px, calc(100vh - 140px))";
 
 export default function ChatBot() {
-  const [open, setOpen] = useState(false);       // controls the box size (pill vs panel)
-  const [expanded, setExpanded] = useState(false); // controls which content is shown, slightly after the box resizes
+  const [open, setOpen] = useState(false); // controls both the box size AND which layer is visible
   const [messages, setMessages] = useState([
     {
       from: "bot",
@@ -143,17 +142,9 @@ export default function ChatBot() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, expanded, loading]);
+  }, [messages, open, loading]);
 
-  const handleToggle = () => {
-    if (!open) {
-      setOpen(true);
-      window.setTimeout(() => setExpanded(true), 160);
-    } else {
-      setExpanded(false);
-      window.setTimeout(() => setOpen(false), 180);
-    }
-  };
+  const handleToggle = () => setOpen((o) => !o);
 
   const sendMessage = async (text) => {
     const trimmed = text.trim();
@@ -210,7 +201,9 @@ export default function ChatBot() {
         .cw-box { transition: width .38s cubic-bezier(.16,1,.3,1), height .38s cubic-bezier(.16,1,.3,1), border-radius .38s cubic-bezier(.16,1,.3,1); }
       `}</style>
 
-      {/* Single morphing container: pill when closed, full panel when open */}
+      {/* Single morphing container: pill when closed, full panel when open.
+          Background is ALWAYS white — only the small pill layer below is dark,
+          and it's pinned to its own fixed footprint (never stretched). */}
       <div
         className="cw-box"
         style={{
@@ -230,59 +223,69 @@ export default function ChatBot() {
           fontFamily: "'Poppins', sans-serif",
         }}
       >
-        {/* ── Collapsed pill content ─────────────────────── */}
-        {!expanded && (
-          <button
-            onClick={handleToggle}
-            aria-label="Open chat"
+        {/* ── Collapsed pill layer — fixed size, pinned bottom-right, fades out (never stretches) ── */}
+        <button
+          onClick={handleToggle}
+          aria-label="Open chat"
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            width: PILL_W,
+            height: PILL_H,
+            borderRadius: 29,
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "0 18px 0 6px",
+            background: INK,
+            border: "none",
+            cursor: open ? "default" : "pointer",
+            opacity: open ? 0 : 1,
+            visibility: open ? "hidden" : "visible",
+            pointerEvents: open ? "none" : "auto",
+            transition: "opacity .18s ease",
+            animation: open ? "none" : "cwPillGlow 2.6s ease-out infinite",
+          }}
+        >
+          <span
             style={{
-              width: "100%",
-              height: "100%",
+              width: 46,
+              height: 46,
+              borderRadius: "50%",
+              overflow: "hidden",
+              flexShrink: 0,
+              background: SURFACE,
               display: "flex",
               alignItems: "center",
-              gap: 10,
-              padding: "0 18px 0 6px",
-              background: INK,
-              border: "none",
-              cursor: "pointer",
-              animation: open ? "none" : "cwPillGlow 2.6s ease-out infinite",
+              justifyContent: "center",
             }}
           >
-            <span
-              style={{
-                width: 46,
-                height: 46,
-                borderRadius: "50%",
-                overflow: "hidden",
-                flexShrink: 0,
-                background: SURFACE,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {/* Drop your own square/circular avatar image at /public/chatbot-icon.png */}
-              <img
-                src="/chatbot-icon.png"
-                alt=""
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </span>
-            <span style={{ color: CREAM, fontWeight: 700, fontSize: 14.5, whiteSpace: "nowrap" }}>
-              Ask AI
-            </span>
-          </button>
-        )}
+            {/* Drop your own square/circular avatar image at /public/chatbot-icon.png */}
+            <img
+              src="/chatbot-icon.png"
+              alt=""
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </span>
+          <span style={{ color: CREAM, fontWeight: 700, fontSize: 14.5, whiteSpace: "nowrap" }}>
+            Ask AI
+          </span>
+        </button>
 
-        {/* ── Expanded panel content ─────────────────────── */}
-        {expanded && (
-          <div
-            style={{
-              width: PANEL_W,
-              height: PANEL_H,
+        {/* ── Expanded panel layer — fills the box, fades in once it's grown ── */}
+        <div
+          style={{
+            position: "absolute",
+              inset: 0,
               display: "flex",
               flexDirection: "column",
-              animation: "cwFadeUp .3s cubic-bezier(.16,1,.3,1)",
+              opacity: open ? 1 : 0,
+              visibility: open ? "visible" : "hidden",
+              pointerEvents: open ? "auto" : "none",
+              transition: open
+                ? "opacity .25s ease .12s, visibility 0s linear 0s"
+                : "opacity .12s ease, visibility 0s linear .12s",
             }}
           >
             {/* Header: color band with avatar overlapping into the white body */}
@@ -506,7 +509,6 @@ export default function ChatBot() {
               </button>
             </form>
           </div>
-        )}
       </div>
     </>
   );
