@@ -109,8 +109,26 @@ const SUGGESTED_QUESTIONS = [
   "How can I contact you?",
 ];
 
+/* ════════════════════════════════════════════════════════
+   BRAND TOKENS — unchanged from the existing site
+   ════════════════════════════════════════════════════════ */
+const INK = "#141210";
+const ACCENT = "#C1502E";
+const CREAM = "#F3EEE5";
+const PANEL_BG = "#ffffff";
+const SURFACE = "#F5F4F1";
+const BORDER = "#E4E3DD";
+const MUTED = "#6B7280";
+
+/* Closed pill size vs. open panel size — the same box morphs between the two */
+const PILL_W = 168;
+const PILL_H = 58;
+const PANEL_W = "min(380px, calc(100vw - 40px))";
+const PANEL_H = "min(560px, calc(100vh - 140px))";
+
 export default function ChatBot() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);       // controls the box size (pill vs panel)
+  const [expanded, setExpanded] = useState(false); // controls which content is shown, slightly after the box resizes
   const [messages, setMessages] = useState([
     {
       from: "bot",
@@ -125,7 +143,17 @@ export default function ChatBot() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, open, loading]);
+  }, [messages, expanded, loading]);
+
+  const handleToggle = () => {
+    if (!open) {
+      setOpen(true);
+      window.setTimeout(() => setExpanded(true), 160);
+    } else {
+      setExpanded(false);
+      window.setTimeout(() => setOpen(false), 180);
+    }
+  };
 
   const sendMessage = async (text) => {
     const trimmed = text.trim();
@@ -161,14 +189,14 @@ export default function ChatBot() {
   return (
     <>
       <style>{`
-        @keyframes cwChatIn {
-          from { opacity: 0; transform: translateY(16px) scale(.97); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes cwPillGlow {
+          0% { box-shadow: 0 10px 30px rgba(20,18,16,.35), 0 0 0 0 rgba(193,80,46,.45); }
+          70% { box-shadow: 0 10px 30px rgba(20,18,16,.35), 0 0 0 14px rgba(193,80,46,0); }
+          100% { box-shadow: 0 10px 30px rgba(20,18,16,.35), 0 0 0 0 rgba(193,80,46,0); }
         }
-        @keyframes cwPulseRing {
-          0% { transform: scale(1); opacity: .55; }
-          70% { transform: scale(1.8); opacity: 0; }
-          100% { transform: scale(1.8); opacity: 0; }
+        @keyframes cwFadeUp {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         @keyframes cwDot {
           0%, 80%, 100% { transform: scale(0.6); opacity: .3; }
@@ -177,288 +205,309 @@ export default function ChatBot() {
         .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
         .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
         .cw-chat-input::placeholder { color: #9CA3AF; }
-        .cw-chat-input:focus { border-color: #C1502E !important; }
-        .cw-suggest-btn:hover { border-color: #C1502E !important; color: #C1502E !important; background: rgba(193,80,46,.05) !important; }
+        .cw-chat-input:focus { border-color: ${ACCENT} !important; }
+        .cw-suggest-btn:hover { border-color: ${ACCENT} !important; color: ${ACCENT} !important; background: rgba(193,80,46,.05) !important; }
+        .cw-box { transition: width .38s cubic-bezier(.16,1,.3,1), height .38s cubic-bezier(.16,1,.3,1), border-radius .38s cubic-bezier(.16,1,.3,1); }
       `}</style>
 
-      {/* Floating toggle button - bot avatar style */}
+      {/* Single morphing container: pill when closed, full panel when open */}
       <div
+        className="cw-box"
         style={{
           position: "fixed",
           bottom: 24,
           right: 24,
-          width: 64,
-          height: 64,
+          width: open ? PANEL_W : PILL_W,
+          height: open ? PANEL_H : PILL_H,
+          borderRadius: open ? 20 : 29,
+          background: PANEL_BG,
+          overflow: "hidden",
           zIndex: 1000,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          boxShadow: open
+            ? "0 24px 70px rgba(0,0,0,.18)"
+            : "0 10px 30px rgba(20,18,16,.35)",
+          border: `1px solid ${open ? BORDER : INK}`,
+          fontFamily: "'Poppins', sans-serif",
         }}
       >
-        {/* Pulsing attention rings - only show when closed */}
-        {!open && (
-          <span
+        {/* ── Collapsed pill content ─────────────────────── */}
+        {!expanded && (
+          <button
+            onClick={handleToggle}
+            aria-label="Open chat"
             style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "50%",
-              border: "1.5px solid #C1502E",
-              animation: "cwPulseRing 2.6s cubic-bezier(.4,0,.6,1) infinite",
-            }}
-          />
-        )}
-
-        <button
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Open chat"
-          style={{
-            position: "relative",
-            width: 58,
-            height: 58,
-            borderRadius: "50%",
-            background: "#141210",
-            border: "1px solid #141210",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            boxShadow: "0 10px 30px rgba(20,18,16,.35)",
-            transition: "all .25s cubic-bezier(.16,1,.3,1)",
-            color: "#fff",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.08)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        >
-          {open ? (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3EEE5" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            /* Custom chatbot icon image - place your image in /public folder */
-            <img
-              src="/chatbot-icon.png"
-              alt="Chat"
-              style={{ width: 36, height: 36, objectFit: "contain", borderRadius: "50%" }}
-            />
-          )}
-        </button>
-      </div>
-
-      {/* Chat window */}
-      {open && (
-        <div
-          style={{
-            position: "fixed",
-            bottom: 96,
-            right: 24,
-            width: 360,
-            maxWidth: "calc(100vw - 40px)",
-            height: 520,
-            maxHeight: "calc(100vh - 220px)",
-            background: "#ffffff",
-            borderRadius: 20,
-            boxShadow: "0 24px 70px rgba(0,0,0,.18)",
-            display: "flex",
-            flexDirection: "column",
-            overflow: "hidden",
-            zIndex: 999,
-            fontFamily: "'Poppins', sans-serif",
-            border: "1px solid #E4E3DD",
-            animation: "cwChatIn .25s cubic-bezier(.16,1,.3,1)",
-          }}
-        >
-          {/* Header */}
-          <div
-            style={{
-              padding: "16px 20px",
-              borderBottom: "1px solid #E4E3DD",
+              width: "100%",
+              height: "100%",
               display: "flex",
               alignItems: "center",
-              gap: 12,
+              gap: 10,
+              padding: "0 18px 0 6px",
+              background: INK,
+              border: "none",
+              cursor: "pointer",
+              animation: open ? "none" : "cwPillGlow 2.6s ease-out infinite",
             }}
           >
-            <div
+            <span
               style={{
-                width: 40,
-                height: 40,
+                width: 46,
+                height: 46,
                 borderRadius: "50%",
-                background: "transparent",
+                overflow: "hidden",
+                flexShrink: 0,
+                background: SURFACE,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                flexShrink: 0,
               }}
             >
+              {/* Drop your own square/circular avatar image at /public/chatbot-icon.png */}
               <img
                 src="/chatbot-icon.png"
-                alt="Chat"
-                style={{ width: 40, height: 40, objectFit: "contain", borderRadius: "50%" }}
+                alt=""
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
-            </div>
-            <div>
-              <div style={{ color: "#141210", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
-                Clicks&ads Assistant
-              </div>
-              <div style={{ color: "#6B7280", fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
-                Online · Replies instantly
-              </div>
-            </div>
-          </div>
+            </span>
+            <span style={{ color: CREAM, fontWeight: 700, fontSize: 14.5, whiteSpace: "nowrap" }}>
+              Ask AI
+            </span>
+          </button>
+        )}
 
-          {/* Messages */}
+        {/* ── Expanded panel content ─────────────────────── */}
+        {expanded && (
           <div
-            ref={scrollRef}
-            className="cw-chat-scroll"
             style={{
-              flex: 1,
-              overflowY: "auto",
-              padding: "18px 16px",
+              width: PANEL_W,
+              height: PANEL_H,
               display: "flex",
               flexDirection: "column",
-              gap: 12,
+              animation: "cwFadeUp .3s cubic-bezier(.16,1,.3,1)",
             }}
           >
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                style={{
-                  alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                  background: m.from === "user" ? "#C1502E" : "#F5F4F1",
-                  color: m.from === "user" ? "#fff" : "#141210",
-                  padding: "10px 14px",
-                  borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
-                  maxWidth: "82%",
-                  fontSize: 13.5,
-                  lineHeight: 1.6,
-                  whiteSpace: "pre-wrap",
-                  border: "none",
-                }}
-              >
-                {m.text}
-              </div>
-            ))}
-
-            {loading && (
+            {/* Header: color band with avatar overlapping into the white body */}
+            <div style={{ position: "relative", flexShrink: 0 }}>
               <div
                 style={{
-                  alignSelf: "flex-start",
-                  background: "#F5F4F1",
-                  border: "none",
-                  padding: "12px 16px",
-                  borderRadius: "14px 14px 14px 4px",
+                  height: 64,
+                  background: ACCENT,
                   display: "flex",
-                  gap: 4,
+                  alignItems: "flex-start",
+                  justifyContent: "flex-end",
+                  padding: "12px 14px 0 0",
                 }}
               >
-                {[0, 1, 2].map((i) => (
-                  <span
-                    key={i}
-                    style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: "50%",
-                      background: "#9CA3AF",
-                      animation: `cwDot 1.2s ease-in-out ${i * 0.15}s infinite`,
-                    }}
+                <button
+                  onClick={handleToggle}
+                  aria-label="Close chat"
+                  style={{
+                    width: 28,
+                    height: 28,
+                    borderRadius: "50%",
+                    border: "none",
+                    background: "rgba(0,0,0,.15)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-end",
+                  gap: 12,
+                  padding: "0 20px",
+                  marginTop: -32,
+                }}
+              >
+                <span
+                  style={{
+                    width: 64,
+                    height: 64,
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    flexShrink: 0,
+                    background: SURFACE,
+                    border: `3px solid ${PANEL_BG}`,
+                    boxShadow: "0 4px 14px rgba(0,0,0,.15)",
+                  }}
+                >
+                  <img
+                    src="/chatbot-icon.png"
+                    alt=""
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
-                ))}
-              </div>
-            )}
-
-            {/* Suggested questions - shown only at start */}
-            {messages.length === 1 && !loading && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 6 }}>
-                <div style={{ color: "#6B7280", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>
-                  Quick questions
+                </span>
+                <div style={{ paddingBottom: 6 }}>
+                  <div style={{ color: INK, fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
+                    Clicks&ads Assistant
+                  </div>
+                  <div style={{ color: MUTED, fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
+                    Online · Replies instantly
+                  </div>
                 </div>
-                {SUGGESTED_QUESTIONS.map((q, i) => (
-                  <button
-                    key={i}
-                    className="cw-suggest-btn"
-                    onClick={() => sendMessage(q)}
-                    style={{
-                      textAlign: "left",
-                      background: "transparent",
-                      border: "1px solid #E4E3DD",
-                      borderRadius: 12,
-                      padding: "10px 14px",
-                      fontSize: 13.5,
-                      color: "#374151",
-                      fontWeight: 600,
-                      cursor: "pointer",
-                      transition: "all .2s",
-                    }}
-                  >
-                    {q}
-                  </button>
-                ))}
               </div>
-            )}
-          </div>
+            </div>
 
-          {/* Input */}
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: "flex",
-              borderTop: "1px solid #E4E3DD",
-              padding: 12,
-              gap: 8,
-            }}
-          >
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Message Clicks&ads..."
-              disabled={loading}
-              className="cw-chat-input"
+            {/* Messages */}
+            <div
+              ref={scrollRef}
+              className="cw-chat-scroll"
               style={{
                 flex: 1,
-                background: "#F5F4F1",
-                border: "1px solid #E4E3DD",
-                borderRadius: 12,
-                padding: "11px 14px",
-                fontSize: 13.5,
-                outline: "none",
-                fontFamily: "inherit",
-                color: "#141210",
-                transition: "border-color .2s",
-              }}
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              style={{
-                background: "#C1502E",
-                color: "#fff",
-                border: "none",
-                borderRadius: 12,
-                width: 42,
-                height: 42,
+                overflowY: "auto",
+                padding: "16px 16px 18px",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: loading ? "default" : "pointer",
-                flexShrink: 0,
-                opacity: loading ? 0.5 : 1,
-                transition: "opacity .2s",
+                flexDirection: "column",
+                gap: 12,
               }}
             >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="19" x2="12" y2="5" />
-                <polyline points="5 12 12 5 19 12" />
-              </svg>
-            </button>
-          </form>
-        </div>
-      )}
+              {messages.map((m, i) => (
+                <div
+                  key={i}
+                  style={{
+                    alignSelf: m.from === "user" ? "flex-end" : "flex-start",
+                    background: m.from === "user" ? ACCENT : SURFACE,
+                    color: m.from === "user" ? "#fff" : INK,
+                    padding: "10px 14px",
+                    borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
+                    maxWidth: "82%",
+                    fontSize: 13.5,
+                    lineHeight: 1.6,
+                    whiteSpace: "pre-wrap",
+                    border: "none",
+                  }}
+                >
+                  {m.text}
+                </div>
+              ))}
+
+              {loading && (
+                <div
+                  style={{
+                    alignSelf: "flex-start",
+                    background: SURFACE,
+                    border: "none",
+                    padding: "12px 16px",
+                    borderRadius: "14px 14px 14px 4px",
+                    display: "flex",
+                    gap: 4,
+                  }}
+                >
+                  {[0, 1, 2].map((i) => (
+                    <span
+                      key={i}
+                      style={{
+                        width: 6,
+                        height: 6,
+                        borderRadius: "50%",
+                        background: "#9CA3AF",
+                        animation: `cwDot 1.2s ease-in-out ${i * 0.15}s infinite`,
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Suggested questions - shown only at start */}
+              {messages.length === 1 && !loading && (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 6 }}>
+                  <div style={{ color: MUTED, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>
+                    Quick questions
+                  </div>
+                  {SUGGESTED_QUESTIONS.map((q, i) => (
+                    <button
+                      key={i}
+                      className="cw-suggest-btn"
+                      onClick={() => sendMessage(q)}
+                      style={{
+                        textAlign: "left",
+                        background: "transparent",
+                        border: `1px solid ${BORDER}`,
+                        borderRadius: 12,
+                        padding: "10px 14px",
+                        fontSize: 13.5,
+                        color: "#374151",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        transition: "all .2s",
+                      }}
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Input */}
+            <form
+              onSubmit={handleSubmit}
+              style={{
+                display: "flex",
+                borderTop: `1px solid ${BORDER}`,
+                padding: 12,
+                gap: 8,
+                flexShrink: 0,
+              }}
+            >
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Message Clicks&ads..."
+                disabled={loading}
+                className="cw-chat-input"
+                style={{
+                  flex: 1,
+                  background: SURFACE,
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: 12,
+                  padding: "11px 14px",
+                  fontSize: 13.5,
+                  outline: "none",
+                  fontFamily: "inherit",
+                  color: INK,
+                  transition: "border-color .2s",
+                }}
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  background: ACCENT,
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 12,
+                  width: 42,
+                  height: 42,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: loading ? "default" : "pointer",
+                  flexShrink: 0,
+                  opacity: loading ? 0.5 : 1,
+                  transition: "opacity .2s",
+                }}
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5" />
+                  <polyline points="5 12 12 5 19 12" />
+                </svg>
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
     </>
   );
 }
