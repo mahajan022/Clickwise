@@ -161,35 +161,35 @@ export default function ChatBot() {
   return (
     <>
       <style>{`
-        @keyframes noupeSlideUp {
+        @keyframes chatSlideUp {
           from { opacity: 0; transform: translateY(20px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        @keyframes noupeFloat {
+        @keyframes buttonFloat {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-8px); }
         }
-        @keyframes noupeDot {
+        @keyframes dotLoader {
           0%, 60%, 100% { opacity: 0.4; transform: scale(0.8); }
           30% { opacity: 1; transform: scale(1); }
         }
         
-        .noupe-chat-scroll::-webkit-scrollbar {
+        .chat-scroll::-webkit-scrollbar {
           width: 6px;
         }
-        .noupe-chat-scroll::-webkit-scrollbar-track {
+        .chat-scroll::-webkit-scrollbar-track {
           background: transparent;
         }
-        .noupe-chat-scroll::-webkit-scrollbar-thumb {
+        .chat-scroll::-webkit-scrollbar-thumb {
           background: #E0E0E0;
           border-radius: 3px;
         }
-        .noupe-chat-scroll::-webkit-scrollbar-thumb:hover {
+        .chat-scroll::-webkit-scrollbar-thumb:hover {
           background: #D0D0D0;
         }
       `}</style>
 
-      {/* Floating button - Clean circular button */}
+      {/* Floating Chat Button */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Open chat"
@@ -200,25 +200,25 @@ export default function ChatBot() {
           width: 56,
           height: 56,
           borderRadius: "50%",
-          background: "linear-gradient(135deg, #E91E8C 0%, #D61A7D 100%)",
+          background: "#C1502E",
           border: "none",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          boxShadow: "0 8px 28px rgba(233, 30, 140, 0.35)",
+          boxShadow: "0 8px 28px rgba(193, 80, 46, 0.35)",
           transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
           color: "#fff",
           zIndex: 1000,
-          animation: !open ? "noupeFloat 3s ease-in-out infinite" : "none",
+          animation: !open ? "buttonFloat 3s ease-in-out infinite" : "none",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "scale(1.1)";
-          e.currentTarget.style.boxShadow = "0 12px 36px rgba(233, 30, 140, 0.45)";
+          e.currentTarget.style.boxShadow = "0 12px 36px rgba(193, 80, 46, 0.45)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.boxShadow = "0 8px 28px rgba(233, 30, 140, 0.35)";
+          e.currentTarget.style.boxShadow = "0 8px 28px rgba(193, 80, 46, 0.35)";
         }}
       >
         {open ? (
@@ -227,13 +227,14 @@ export default function ChatBot() {
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         ) : (
+          /* PASTE YOUR CUSTOM ICON HERE - Replace this SVG */
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
         )}
       </button>
 
-      {/* Chat Window - Noupe Style */}
+      {/* Chat Window - Noupe Layout */}
       {open && (
         <div
           style={{
@@ -250,13 +251,13 @@ export default function ChatBot() {
             overflow: "hidden",
             zIndex: 999,
             fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-            animation: "noupeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+            animation: "chatSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
-          {/* Magenta Header */}
+          {/* Header - Your Orange Color */}
           <div
             style={{
-              background: "linear-gradient(135deg, #E91E8C 0%, #D61A7D 100%)",
+              background: "#C1502E",
               padding: "20px 24px",
               display: "flex",
               alignItems: "center",
@@ -284,7 +285,7 @@ export default function ChatBot() {
                     width: 40,
                     height: 40,
                     borderRadius: "50%",
-                    background: "linear-gradient(135deg, #E91E8C, #D61A7D)",
+                    background: "rgba(255,255,255,0.2)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -318,7 +319,7 @@ export default function ChatBot() {
               </div>
             </div>
 
-            {/* Close button */}
+            {/* Close Button */}
             <button
               onClick={() => setOpen(false)}
               style={{
@@ -349,10 +350,10 @@ export default function ChatBot() {
             </button>
           </div>
 
-          {/* Messages Container */}
+          {/* Messages Area */}
           <div
             ref={scrollRef}
-            className="noupe-chat-scroll"
+            className="chat-scroll"
             style={{
               flex: 1,
               overflowY: "auto",
@@ -375,7 +376,7 @@ export default function ChatBot() {
               >
                 <div
                   style={{
-                    background: m.from === "user" ? "#E91E8C" : "#F0F0F0",
+                    background: m.from === "user" ? "#C1502E" : "#F0F0F0",
                     color: m.from === "user" ? "#fff" : "#1F2937",
                     padding: "11px 16px",
                     borderRadius: m.from === "user" ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
@@ -383,7 +384,7 @@ export default function ChatBot() {
                     lineHeight: 1.5,
                     wordBreak: "break-word",
                     fontWeight: 400,
-                    boxShadow: m.from === "user" ? "0 2px 8px rgba(233, 30, 140, 0.2)" : "none",
+                    boxShadow: m.from === "user" ? "0 2px 8px rgba(193, 80, 46, 0.2)" : "none",
                   }}
                 >
                   {m.text}
@@ -391,7 +392,7 @@ export default function ChatBot() {
               </div>
             ))}
 
-            {/* Loading indicator */}
+            {/* Loading Dots */}
             {loading && (
               <div style={{ alignSelf: "flex-start", display: "flex", gap: 6, padding: "10px 0" }}>
                 {[0, 1, 2].map((i) => (
@@ -402,7 +403,7 @@ export default function ChatBot() {
                       height: 8,
                       borderRadius: "50%",
                       background: "#D0D0D0",
-                      animation: `noupeDot 1.4s ease-in-out ${i * 0.2}s infinite`,
+                      animation: `dotLoader 1.4s ease-in-out ${i * 0.2}s infinite`,
                     }}
                   />
                 ))}
@@ -430,25 +431,25 @@ export default function ChatBot() {
                     onClick={() => sendMessage(q)}
                     style={{
                       textAlign: "left",
-                      background: "#F0E6F6",
-                      border: "1px solid #E8D4F0",
+                      background: "#FFF0EB",
+                      border: "1px solid #FFDCC8",
                       borderRadius: "10px",
                       padding: "11px 14px",
                       fontSize: "13.5px",
-                      color: "#4A2A5F",
+                      color: "#8B4423",
                       fontWeight: 600,
                       cursor: "pointer",
                       transition: "all 0.25s",
                       fontFamily: "inherit",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#E8D4F0";
-                      e.currentTarget.style.borderColor = "#D4B5E6";
+                      e.currentTarget.style.background = "#FFDCC8";
+                      e.currentTarget.style.borderColor = "#FFB8A3";
                       e.currentTarget.style.transform = "translateX(4px)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#F0E6F6";
-                      e.currentTarget.style.borderColor = "#E8D4F0";
+                      e.currentTarget.style.background = "#FFF0EB";
+                      e.currentTarget.style.borderColor = "#FFDCC8";
                       e.currentTarget.style.transform = "translateX(0)";
                     }}
                   >
@@ -498,7 +499,7 @@ export default function ChatBot() {
                   opacity: loading ? 0.6 : 1,
                 }}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "#E91E8C";
+                  e.currentTarget.style.borderColor = "#C1502E";
                   e.currentTarget.style.background = "#FAFAFA";
                 }}
                 onBlur={(e) => {
@@ -510,7 +511,7 @@ export default function ChatBot() {
                 type="submit"
                 disabled={loading}
                 style={{
-                  background: "#E91E8C",
+                  background: "#C1502E",
                   color: "#fff",
                   border: "none",
                   borderRadius: "10px",
@@ -526,13 +527,13 @@ export default function ChatBot() {
                 }}
                 onMouseEnter={(e) => {
                   if (!loading) {
-                    e.currentTarget.style.background = "#D61A7D";
+                    e.currentTarget.style.background = "#9B3D22";
                     e.currentTarget.style.transform = "scale(1.05)";
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!loading) {
-                    e.currentTarget.style.background = "#E91E8C";
+                    e.currentTarget.style.background = "#C1502E";
                     e.currentTarget.style.transform = "scale(1)";
                   }
                 }}
