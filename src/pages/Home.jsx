@@ -10,7 +10,8 @@ function Hero() {
       <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}>
         <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
       </video>
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "50%", background: "linear-gradient(to top, rgba(0,0,0,.6), transparent)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "55%", background: "linear-gradient(to top, rgba(0,0,0,.65), transparent)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "18%", background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0) 100%)", pointerEvents: "none" }} />
     </section>
   );
 }
@@ -27,7 +28,7 @@ function AnimatedHeadline() {
     { text: "ONLINE.", accent: false },
   ];
   return (
-    <section ref={ref} style={{ background: "#FFFFFF", padding: "clamp(90px,14vw,180px) clamp(20px,5vw,80px)" }}>
+    <section ref={ref} style={{ background: "#FFFFFF", padding: "clamp(56px,7vw,96px) clamp(20px,5vw,80px)" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <h1 style={{ fontSize: "clamp(44px,7.5vw,100px)", fontWeight: 800, color: "#141210", lineHeight: 1.02, letterSpacing: "-3px", textTransform: "uppercase", display: "flex", flexWrap: "wrap", gap: "0 22px" }}>
           {words.map((w, i) => (
