@@ -114,7 +114,7 @@ export default function ChatBot() {
   const [messages, setMessages] = useState([
     {
       from: "bot",
-      text: "Hey! I'm the Clicks&ads assistant. Ask me about our services, pricing, portfolio, or process.",
+      text: "Hey! 👋 I'm the Clicks&ads assistant. Ask me about our services, pricing, portfolio, or process.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -161,167 +161,206 @@ export default function ChatBot() {
   return (
     <>
       <style>{`
-        @keyframes cwChatIn {
-          from { opacity: 0; transform: translateY(16px) scale(.97); }
+        @keyframes noupeSlideUp {
+          from { opacity: 0; transform: translateY(20px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        @keyframes cwPulseRing {
-          0% { transform: scale(1); opacity: .55; }
-          70% { transform: scale(1.8); opacity: 0; }
-          100% { transform: scale(1.8); opacity: 0; }
+        @keyframes noupeFloat {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); }
         }
-        @keyframes cwDot {
-          0%, 80%, 100% { transform: scale(0.6); opacity: .3; }
-          40% { transform: scale(1); opacity: 1; }
+        @keyframes noupeDot {
+          0%, 60%, 100% { opacity: 0.4; transform: scale(0.8); }
+          30% { opacity: 1; transform: scale(1); }
         }
-        .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
-        .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
-        .cw-chat-input::placeholder { color: #9CA3AF; }
-        .cw-chat-input:focus { border-color: #C1502E !important; }
-        .cw-suggest-btn:hover { border-color: #C1502E !important; color: #C1502E !important; background: rgba(193,80,46,.05) !important; }
+        
+        .noupe-chat-scroll::-webkit-scrollbar {
+          width: 6px;
+        }
+        .noupe-chat-scroll::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .noupe-chat-scroll::-webkit-scrollbar-thumb {
+          background: #E0E0E0;
+          border-radius: 3px;
+        }
+        .noupe-chat-scroll::-webkit-scrollbar-thumb:hover {
+          background: #D0D0D0;
+        }
       `}</style>
 
-      {/* Floating toggle button - bot avatar style */}
-      <div
+      {/* Floating button - Clean circular button */}
+      <button
+        onClick={() => setOpen((o) => !o)}
+        aria-label="Open chat"
         style={{
           position: "fixed",
-          bottom: 24,
-          right: 24,
-          width: 64,
-          height: 64,
-          zIndex: 1000,
+          bottom: 28,
+          right: 28,
+          width: 56,
+          height: 56,
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #E91E8C 0%, #D61A7D 100%)",
+          border: "none",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          cursor: "pointer",
+          boxShadow: "0 8px 28px rgba(233, 30, 140, 0.35)",
+          transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+          color: "#fff",
+          zIndex: 1000,
+          animation: !open ? "noupeFloat 3s ease-in-out infinite" : "none",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "scale(1.1)";
+          e.currentTarget.style.boxShadow = "0 12px 36px rgba(233, 30, 140, 0.45)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "scale(1)";
+          e.currentTarget.style.boxShadow = "0 8px 28px rgba(233, 30, 140, 0.35)";
         }}
       >
-        {/* Pulsing attention rings - only show when closed */}
-        {!open && (
-          <span
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "50%",
-              border: "1.5px solid #C1502E",
-              animation: "cwPulseRing 2.6s cubic-bezier(.4,0,.6,1) infinite",
-            }}
-          />
+        {open ? (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        ) : (
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
         )}
+      </button>
 
-        <button
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Open chat"
-          style={{
-            position: "relative",
-            width: 58,
-            height: 58,
-            borderRadius: "50%",
-            background: "#141210",
-            border: "1px solid #141210",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            boxShadow: "0 10px 30px rgba(20,18,16,.35)",
-            transition: "all .25s cubic-bezier(.16,1,.3,1)",
-            color: "#fff",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.08)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        >
-          {open ? (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3EEE5" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            /* Custom chatbot icon image - place your image in /public folder */
-            <img
-              src="/chatbot-icon.png"
-              alt="Chat"
-              style={{ width: 36, height: 36, objectFit: "contain", borderRadius: "50%" }}
-            />
-          )}
-        </button>
-      </div>
-
-      {/* Chat window */}
+      {/* Chat Window - Noupe Style */}
       {open && (
         <div
           style={{
             position: "fixed",
-            bottom: 96,
-            right: 24,
-            width: 360,
-            maxWidth: "calc(100vw - 40px)",
-            height: 520,
-            maxHeight: "calc(100vh - 220px)",
-            background: "#ffffff",
-            borderRadius: 20,
-            boxShadow: "0 24px 70px rgba(0,0,0,.18)",
+            bottom: 100,
+            right: 28,
+            width: "min(380px, calc(100vw - 32px))",
+            height: "min(620px, calc(100vh - 140px))",
+            background: "#FFFFFF",
+            borderRadius: "16px",
+            boxShadow: "0 20px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.05)",
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
             zIndex: 999,
-            fontFamily: "'Poppins', sans-serif",
-            border: "1px solid #E4E3DD",
-            animation: "cwChatIn .25s cubic-bezier(.16,1,.3,1)",
+            fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            animation: "noupeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
-          {/* Header */}
+          {/* Magenta Header */}
           <div
             style={{
-              padding: "16px 20px",
-              borderBottom: "1px solid #E4E3DD",
+              background: "linear-gradient(135deg, #E91E8C 0%, #D61A7D 100%)",
+              padding: "20px 24px",
               display: "flex",
               alignItems: "center",
-              gap: 12,
+              justifyContent: "space-between",
+              gap: 16,
             }}
           >
-            <div
+            <div style={{ display: "flex", alignItems: "center", gap: 14, flex: 1 }}>
+              <div
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.15)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255,255,255,0.25)",
+                }}
+              >
+                <div
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: "50%",
+                    background: "linear-gradient(135deg, #E91E8C, #D61A7D)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 20,
+                  }}
+                >
+                  💬
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    color: "#fff",
+                    fontWeight: 700,
+                    fontSize: 15,
+                    letterSpacing: "-0.3px",
+                  }}
+                >
+                  Clicks&ads
+                </div>
+                <div
+                  style={{
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: 12,
+                    marginTop: 2,
+                    fontWeight: 500,
+                  }}
+                >
+                  Always here to help
+                </div>
+              </div>
+            </div>
+
+            {/* Close button */}
+            <button
+              onClick={() => setOpen(false)}
               style={{
-                width: 40,
-                height: 40,
+                background: "rgba(255,255,255,0.2)",
+                border: "none",
+                width: 32,
+                height: 32,
                 borderRadius: "50%",
-                background: "transparent",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                cursor: "pointer",
+                color: "#fff",
+                transition: "all 0.2s",
                 flexShrink: 0,
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+              }}
             >
-              <img
-                src="/chatbot-icon.png"
-                alt="Chat"
-                style={{ width: 40, height: 40, objectFit: "contain", borderRadius: "50%" }}
-              />
-            </div>
-            <div>
-              <div style={{ color: "#141210", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
-                Clicks&ads Assistant
-              </div>
-              <div style={{ color: "#6B7280", fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
-                Online · Replies instantly
-              </div>
-            </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
           </div>
 
-          {/* Messages */}
+          {/* Messages Container */}
           <div
             ref={scrollRef}
-            className="cw-chat-scroll"
+            className="noupe-chat-scroll"
             style={{
               flex: 1,
               overflowY: "auto",
-              padding: "18px 16px",
+              padding: "20px 18px",
               display: "flex",
               flexDirection: "column",
-              gap: 12,
+              gap: 14,
+              background: "#FAFAFA",
             }}
           >
             {messages.map((m, i) => (
@@ -329,70 +368,88 @@ export default function ChatBot() {
                 key={i}
                 style={{
                   alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                  background: m.from === "user" ? "#C1502E" : "#F5F4F1",
-                  color: m.from === "user" ? "#fff" : "#141210",
-                  padding: "10px 14px",
-                  borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
-                  maxWidth: "82%",
-                  fontSize: 13.5,
-                  lineHeight: 1.6,
-                  whiteSpace: "pre-wrap",
-                  border: "none",
+                  maxWidth: "85%",
+                  display: "flex",
+                  flexDirection: m.from === "user" ? "row-reverse" : "row",
                 }}
               >
-                {m.text}
+                <div
+                  style={{
+                    background: m.from === "user" ? "#E91E8C" : "#F0F0F0",
+                    color: m.from === "user" ? "#fff" : "#1F2937",
+                    padding: "11px 16px",
+                    borderRadius: m.from === "user" ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
+                    fontSize: "14px",
+                    lineHeight: 1.5,
+                    wordBreak: "break-word",
+                    fontWeight: 400,
+                    boxShadow: m.from === "user" ? "0 2px 8px rgba(233, 30, 140, 0.2)" : "none",
+                  }}
+                >
+                  {m.text}
+                </div>
               </div>
             ))}
 
+            {/* Loading indicator */}
             {loading && (
-              <div
-                style={{
-                  alignSelf: "flex-start",
-                  background: "#F5F4F1",
-                  border: "none",
-                  padding: "12px 16px",
-                  borderRadius: "14px 14px 14px 4px",
-                  display: "flex",
-                  gap: 4,
-                }}
-              >
+              <div style={{ alignSelf: "flex-start", display: "flex", gap: 6, padding: "10px 0" }}>
                 {[0, 1, 2].map((i) => (
-                  <span
+                  <div
                     key={i}
                     style={{
-                      width: 6,
-                      height: 6,
+                      width: 8,
+                      height: 8,
                       borderRadius: "50%",
-                      background: "#9CA3AF",
-                      animation: `cwDot 1.2s ease-in-out ${i * 0.15}s infinite`,
+                      background: "#D0D0D0",
+                      animation: `noupeDot 1.4s ease-in-out ${i * 0.2}s infinite`,
                     }}
                   />
                 ))}
               </div>
             )}
 
-            {/* Suggested questions - shown only at start */}
+            {/* Suggested Questions */}
             {messages.length === 1 && !loading && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 6 }}>
-                <div style={{ color: "#6B7280", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 8 }}>
+                <div
+                  style={{
+                    color: "#9CA3AF",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    marginBottom: 4,
+                  }}
+                >
                   Quick questions
                 </div>
                 {SUGGESTED_QUESTIONS.map((q, i) => (
                   <button
                     key={i}
-                    className="cw-suggest-btn"
                     onClick={() => sendMessage(q)}
                     style={{
                       textAlign: "left",
-                      background: "transparent",
-                      border: "1px solid #E4E3DD",
-                      borderRadius: 12,
-                      padding: "10px 14px",
-                      fontSize: 13.5,
-                      color: "#374151",
+                      background: "#F0E6F6",
+                      border: "1px solid #E8D4F0",
+                      borderRadius: "10px",
+                      padding: "11px 14px",
+                      fontSize: "13.5px",
+                      color: "#4A2A5F",
                       fontWeight: 600,
                       cursor: "pointer",
-                      transition: "all .2s",
+                      transition: "all 0.25s",
+                      fontFamily: "inherit",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#E8D4F0";
+                      e.currentTarget.style.borderColor = "#D4B5E6";
+                      e.currentTarget.style.transform = "translateX(4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "#F0E6F6";
+                      e.currentTarget.style.borderColor = "#E8D4F0";
+                      e.currentTarget.style.transform = "translateX(0)";
                     }}
                   >
                     {q}
@@ -402,61 +459,91 @@ export default function ChatBot() {
             )}
           </div>
 
-          {/* Input */}
-          <form
-            onSubmit={handleSubmit}
+          {/* Input Area */}
+          <div
             style={{
+              padding: "16px 18px",
+              background: "#FFFFFF",
+              borderTop: "1px solid #EFEFEF",
               display: "flex",
-              borderTop: "1px solid #E4E3DD",
-              padding: 12,
-              gap: 8,
+              gap: 10,
             }}
           >
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Message Clicks&ads..."
-              disabled={loading}
-              className="cw-chat-input"
+            <form
+              onSubmit={handleSubmit}
               style={{
-                flex: 1,
-                background: "#F5F4F1",
-                border: "1px solid #E4E3DD",
-                borderRadius: 12,
-                padding: "11px 14px",
-                fontSize: 13.5,
-                outline: "none",
-                fontFamily: "inherit",
-                color: "#141210",
-                transition: "border-color .2s",
-              }}
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              style={{
-                background: "#C1502E",
-                color: "#fff",
-                border: "none",
-                borderRadius: 12,
-                width: 42,
-                height: 42,
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: loading ? "default" : "pointer",
-                flexShrink: 0,
-                opacity: loading ? 0.5 : 1,
-                transition: "opacity .2s",
+                gap: 10,
+                width: "100%",
               }}
             >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="19" x2="12" y2="5" />
-                <polyline points="5 12 12 5 19 12" />
-              </svg>
-            </button>
-          </form>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type here..."
+                disabled={loading}
+                style={{
+                  flex: 1,
+                  background: "#F5F5F5",
+                  border: "1px solid #EBEBEB",
+                  borderRadius: "10px",
+                  padding: "11px 14px",
+                  fontSize: "13.5px",
+                  outline: "none",
+                  fontFamily: "inherit",
+                  color: "#1F2937",
+                  transition: "all 0.2s",
+                  cursor: loading ? "not-allowed" : "text",
+                  opacity: loading ? 0.6 : 1,
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "#E91E8C";
+                  e.currentTarget.style.background = "#FAFAFA";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "#EBEBEB";
+                  e.currentTarget.style.background = "#F5F5F5";
+                }}
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  background: "#E91E8C",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "10px",
+                  width: 40,
+                  height: 40,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: loading ? "default" : "pointer",
+                  flexShrink: 0,
+                  opacity: loading ? 0.6 : 1,
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  if (!loading) {
+                    e.currentTarget.style.background = "#D61A7D";
+                    e.currentTarget.style.transform = "scale(1.05)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!loading) {
+                    e.currentTarget.style.background = "#E91E8C";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <line x1="12" y1="19" x2="12" y2="5" />
+                  <polyline points="5 12 12 5 19 12" />
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </>
