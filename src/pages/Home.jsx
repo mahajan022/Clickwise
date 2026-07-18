@@ -7,11 +7,11 @@ import { Helmet } from "react-helmet-async";
 function Hero() {
   return (
     <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
-      <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}>
+      <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
         <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
       </video>
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "55%", background: "linear-gradient(to top, rgba(0,0,0,.65), transparent)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "18%", background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0) 100%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0) 65%, rgba(0,0,0,.22) 100%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 140, background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0) 100%)", pointerEvents: "none" }} />
     </section>
   );
 }
