@@ -394,11 +394,6 @@ export default function ChatBot() {
             </div>
           </div>
 
-          {/* thin decorative bar */}
-          <div style={{ height: 4, background: "var(--bg-alt2, #F1ECE5)", flexShrink: 0 }}>
-            <div style={{ width: "35%", height: "100%", background: "var(--dark, #141210)", borderRadius: "0 3px 3px 0" }} />
-          </div>
-
           {/* Messages */}
           <div
             ref={scrollRef}
@@ -466,7 +461,7 @@ export default function ChatBot() {
             )}
           </div>
 
-          {/* Input row with decorative paperclip */}
+          {/* Input row */}
           <form
             onSubmit={handleSubmit}
             style={{
@@ -477,23 +472,6 @@ export default function ChatBot() {
               gap: 8,
             }}
           >
-            <span
-              style={{
-                width: 34,
-                height: 34,
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-                color: "#9CA3AF",
-              }}
-              title="Attachments coming soon"
-            >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-              </svg>
-            </span>
             <input
               type="text"
               value={input}
