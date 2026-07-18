@@ -51,7 +51,7 @@ export function Nav() {
           font-family: 'Poppins', sans-serif;
           font-size: 15px;
           font-weight: 600;
-          color: var(--nav-text, #16161A);
+          color: var(--nav-text, #141210);
           text-decoration: none;
           letter-spacing: 0.01em;
           padding: 6px 0;
@@ -64,18 +64,18 @@ export function Nav() {
           left: 0;
           width: 0%;
           height: 2px;
-          background: #C9922F;
+          background: #C1502E;
           border-radius: 2px;
           transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .nav-link:hover {
-          color: #C9922F;
+          color: #C1502E;
         }
         .nav-link:hover::after {
           width: 100%;
         }
         .nav-link.active {
-          color: #C9922F;
+          color: #C1502E;
         }
         .nav-link.active::after {
           width: 100%;
@@ -87,13 +87,13 @@ export function Nav() {
           font-weight: 700;
           color: #fff;
           text-decoration: none;
-          background: linear-gradient(135deg, #DDA847 0%, #C9922F 55%, #A97824 100%);
+          background: linear-gradient(135deg, #D97A52 0%, #C1502E 55%, #8F3D22 100%);
           padding: 12px 28px;
           border-radius: 10px;
           letter-spacing: 0.05em;
           text-transform: uppercase;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 6px 22px rgba(201,146,47,.38), inset 0 1px 0 rgba(255,255,255,.18);
+          box-shadow: 0 6px 22px rgba(193,80,46,.38), inset 0 1px 0 rgba(255,255,255,.18);
           position: relative;
           overflow: hidden;
         }
@@ -107,7 +107,7 @@ export function Nav() {
         }
         .nav-cta:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 34px rgba(201,146,47,.5), inset 0 1px 0 rgba(255,255,255,.25);
+          box-shadow: 0 12px 34px rgba(193,80,46,.5), inset 0 1px 0 rgba(255,255,255,.25);
         }
         .nav-cta:hover::before {
           left: 130%;
@@ -146,7 +146,7 @@ export function Nav() {
           display: block;
         }
         .mobile-nav-link:hover, .mobile-nav-link.active {
-          color: #C9922F;
+          color: #C1502E;
           padding-left: 8px;
         }
 
@@ -167,7 +167,7 @@ export function Nav() {
         borderBottom: isSolid ? "1px solid #E4E3DD" : "1px solid transparent",
         boxShadow: isSolid ? "0 4px 24px rgba(0,0,0,0.06)" : "none",
         transition: "all 0.3s ease",
-        "--nav-text": isSolid ? "#16161A" : "#ffffff",
+        "--nav-text": isSolid ? "#141210" : "#ffffff",
       }}>
         <div style={{
           maxWidth: 1320,
@@ -287,7 +287,7 @@ export function PageBanner({ tag = "Page", title = "Title", sub = "Subtitle", bg
       <div ref={ref} style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
         <h1 style={{
           fontSize: "clamp(40px,5vw,64px)", fontWeight: 800,
-          color: bg ? "#fff" : "#16161A",
+          color: bg ? "#fff" : "#141210",
           lineHeight: 1.1, marginBottom: 20, letterSpacing: "-1px",
           opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)",
           transition: "all .7s cubic-bezier(.16,1,.3,1) .1s"
@@ -324,11 +324,11 @@ export function MarqueeBar() {
   ];
   const doubled = [...items, ...items];
   return (
-    <div style={{ background: "#16161A", padding: "18px 0", overflow: "hidden", borderBottom: "1px solid #1F2937" }}>
+    <div style={{ background: "#141210", padding: "18px 0", overflow: "hidden", borderBottom: "1px solid #1F2937" }}>
       <div style={{ display: "flex", gap: 0, whiteSpace: "nowrap", animation: "scroll 35s linear infinite" }}>
         {doubled.map((item, i) => (
           <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 10, paddingRight: 48 }}>
-            <span style={{ color: "#C9922F", fontSize: 14, fontWeight: 900 }}>{item.icon}</span>
+            <span style={{ color: "#C1502E", fontSize: 14, fontWeight: 900 }}>{item.icon}</span>
             <span style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               {item.text}
             </span>
@@ -407,14 +407,14 @@ export function Footer() {
 
   return (
     <footer style={{ background: "#0F0F0F", padding: "120px clamp(20px,5vw,80px) 0", position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", top: 0, right: "-50%", width: "100%", height: "100%", background: "radial-gradient(circle, rgba(201,146,47,.04) 0%, transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: 0, right: "-50%", width: "100%", height: "100%", background: "radial-gradient(circle, rgba(193,80,46,.04) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1320, margin: "0 auto", position: "relative", zIndex: 1 }}>
         {/* Top CTA */}
         <div className="cw-grid-1auto" style={{ gap: 80, alignItems: "center", paddingBottom: 80, borderBottom: "1px solid #1F2937", marginBottom: 80 }}>
           <div>
             <h3 style={{ fontSize: "clamp(32px,4vw,52px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 16, letterSpacing: "-1px" }}>
-              Let's Create Something <span style={{ color: "#C9922F", fontStyle: "italic" }}>Extraordinary</span>
+              Let's Create Something <span style={{ color: "#C1502E", fontStyle: "italic" }}>Extraordinary</span>
             </h3>
             <p style={{ fontSize: 17, color: "#9CA3AF", lineHeight: 1.8, maxWidth: 480 }}>
               Ready to transform your brand? Let's build something that stands out and drives results.
@@ -465,35 +465,35 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 style={{ color: "#C9922F", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Services</h4>
+            <h4 style={{ color: "#C1502E", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Services</h4>
             {["Web Design", "Development", "Branding", "Photography", "SEO & AI", "Growth Strategy", "Social Media", "Automation"].map(s => (
               <a key={s} href="#services" style={{ color: "#6B7280", fontSize: 13, marginBottom: 14, display: "block", textDecoration: "none", transition: "all .2s" }}
-                onMouseEnter={(e) => { e.target.style.color = "#C9922F"; e.target.style.transform = "translateX(4px)"; }}
+                onMouseEnter={(e) => { e.target.style.color = "#C1502E"; e.target.style.transform = "translateX(4px)"; }}
                 onMouseLeave={(e) => { e.target.style.color = "#6B7280"; e.target.style.transform = "translateX(0)"; }}
               >{s}</a>
             ))}
           </div>
 
           <div>
-            <h4 style={{ color: "#C9922F", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Company</h4>
+            <h4 style={{ color: "#C1502E", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Company</h4>
             {[["/", "Home"], ["/about", "About"], ["/work", "Work"], ["/services", "Services"], ["/contact", "Contact"]].map(([link, label]) => (
               <Link key={label} to={link} style={{ color: "#6B7280", fontSize: 13, marginBottom: 14, display: "block", textDecoration: "none", transition: "all .2s" }}
-                onMouseEnter={(e) => { e.target.style.color = "#C9922F"; e.target.style.transform = "translateX(4px)"; }}
+                onMouseEnter={(e) => { e.target.style.color = "#C1502E"; e.target.style.transform = "translateX(4px)"; }}
                 onMouseLeave={(e) => { e.target.style.color = "#6B7280"; e.target.style.transform = "translateX(0)"; }}
               >{label}</Link>
             ))}
           </div>
 
           <div>
-            <h4 style={{ color: "#C9922F", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Get in Touch</h4>
+            <h4 style={{ color: "#C1502E", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 28 }}>Get in Touch</h4>
             <p style={{ color: "#9CA3AF", fontSize: 14, marginBottom: 14, lineHeight: 1.8 }}>
               📍 Mumbai, Maharashtra, India
             </p>
             <a href="tel:+917051575007" style={{ color: "#9CA3AF", fontSize: 13, fontWeight: 500, display: "block", marginBottom: 8, textDecoration: "none", transition: "color .2s" }}
-              onMouseEnter={(e) => { e.target.style.color = "#C9922F"; }}
+              onMouseEnter={(e) => { e.target.style.color = "#C1502E"; }}
               onMouseLeave={(e) => { e.target.style.color = "#9CA3AF"; }}
             >+91 70515 75007</a>
-            <a href="mailto:anuragg7051@gmail.com" style={{ color: "#C9922F", fontSize: 13, fontWeight: 600, textDecoration: "none" }}
+            <a href="mailto:anuragg7051@gmail.com" style={{ color: "#C1502E", fontSize: 13, fontWeight: 600, textDecoration: "none" }}
               onMouseEnter={(e) => { e.target.style.opacity = ".8"; }}
               onMouseLeave={(e) => { e.target.style.opacity = "1"; }}
             >anuragg7051@gmail.com</a>
@@ -506,11 +506,11 @@ export function Footer() {
           <p style={{ color: "#4B5563", fontSize: 13 }}>Made with ❤️ from India 🇮🇳</p>
           <div style={{ display: "flex", gap: 20 }}>
             <a href="#privacy" style={{ color: "#6B7280", fontSize: 12, textDecoration: "none" }}
-              onMouseEnter={(e) => { e.target.style.color = "#C9922F"; }}
+              onMouseEnter={(e) => { e.target.style.color = "#C1502E"; }}
               onMouseLeave={(e) => { e.target.style.color = "#6B7280"; }}
             >Privacy Policy</a>
             <a href="#terms" style={{ color: "#6B7280", fontSize: 12, textDecoration: "none" }}
-              onMouseEnter={(e) => { e.target.style.color = "#C9922F"; }}
+              onMouseEnter={(e) => { e.target.style.color = "#C1502E"; }}
               onMouseLeave={(e) => { e.target.style.color = "#6B7280"; }}
             >Terms of Service</a>
           </div>
@@ -534,7 +534,7 @@ export function Loader({ onDone }) {
   return (
     <div style={{
       position: "fixed", inset: 0,
-      background: "#16161A",
+      background: "#141210",
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
       gap: 26, zIndex: 9999, overflow: "hidden",
     }}>
@@ -577,7 +577,7 @@ export function Loader({ onDone }) {
               fontSize: "clamp(11px,1.4vw,15px)",
               fontWeight: 700,
               letterSpacing: "0.22em",
-              color: w === "·" ? "#C9922F" : "rgba(255,255,255,0.85)",
+              color: w === "·" ? "#C1502E" : "rgba(255,255,255,0.85)",
               opacity: 0,
               transform: "translateY(10px)",
               animation: "cwWord .45s ease forwards",
@@ -591,7 +591,7 @@ export function Loader({ onDone }) {
 
       {/* Thin progress bar */}
       <div style={{ position: "relative", zIndex: 1, width: 160, height: 3, borderRadius: 3, background: "rgba(255,255,255,0.15)", overflow: "hidden", marginTop: 6 }}>
-        <div style={{ height: "100%", background: "linear-gradient(90deg,#DDA847,#C9922F)", borderRadius: 3, animation: "cwBar 1.9s cubic-bezier(.16,1,.3,1) forwards" }} />
+        <div style={{ height: "100%", background: "linear-gradient(90deg,#D97A52,#C1502E)", borderRadius: 3, animation: "cwBar 1.9s cubic-bezier(.16,1,.3,1) forwards" }} />
       </div>
 
       <style>{`

@@ -4,9 +4,9 @@
   --bg:         #FFFFFF;
   --bg-alt:     #F7F7F5;
   --bg-alt2:    #F0EFEA;
-  --dark:       #16161A;
-  --accent:     #C9922F;
-  --accent-lt:  rgba(201,146,47,.09);
+  --dark:       #141210;
+  --accent:     #C1502E;
+  --accent-lt:  rgba(193,80,46,.09);
   --muted:      #6B7280;
   --border:     #E4E3DD;
   --card-bg:    #FFFFFF;
@@ -83,10 +83,10 @@ h1, h2, h3, h4 {
   text-decoration: none;
 }
 .btn-solid:hover {
-  background: #A97824;
-  border-color: #A97824;
+  background: #8F3D22;
+  border-color: #8F3D22;
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(201,146,47,.25);
+  box-shadow: 0 10px 28px rgba(193,80,46,.25);
 }
 .btn-ghost {
   font-family: 'Poppins', sans-serif;
@@ -170,7 +170,7 @@ h1, h2, h3, h4 {
   color: var(--dark); outline: none;
   transition: border-color .2s, box-shadow .2s; border-radius: 6px;
 }
-.finp:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,146,47,.09); }
+.finp:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(193,80,46,.09); }
 .finp::placeholder { color: #ABABAB; font-weight: 300; font-size: 13px; }
 
 /* ── TESTIMONIAL ── */
@@ -224,13 +224,13 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;
-  background: linear-gradient(135deg, #DDA847 0%, #C9922F 55%, #A97824 100%);
+  background: linear-gradient(135deg, #D97A52 0%, #C1502E 55%, #8F3D22 100%);
   padding: 14px 32px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 6px 22px rgba(201,146,47,.35), inset 0 1px 0 rgba(255,255,255,.18);
+  box-shadow: 0 6px 22px rgba(193,80,46,.35), inset 0 1px 0 rgba(255,255,255,.18);
   transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s cubic-bezier(.16,1,.3,1);
 }
 .cw-btn::before {
@@ -244,7 +244,7 @@ h1, h2, h3, h4 {
 }
 .cw-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 38px rgba(201,146,47,.5), inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow: 0 14px 38px rgba(193,80,46,.5), inset 0 1px 0 rgba(255,255,255,.25);
 }
 .cw-btn:hover::before { left: 130%; }
 .cw-btn:active { transform: translateY(0); }
@@ -252,7 +252,7 @@ h1, h2, h3, h4 {
 /* light/ghost variant (white bg) — same motion */
 .cw-btn.cw-btn-light {
   background: #fff;
-  color: #C9922F;
+  color: #C1502E;
   box-shadow: 0 6px 22px rgba(0,0,0,.12);
 }
 .cw-btn.cw-btn-light:hover {

@@ -177,18 +177,18 @@ export default function ChatBot() {
         .cw-chat-scroll::-webkit-scrollbar { width: 5px; }
         .cw-chat-scroll::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 4px; }
         .cw-chat-input::placeholder { color: #9CA3AF; }
-        .cw-chat-input:focus { border-color: #C9922F !important; }
-        .cw-suggest-btn:hover { border-color: #C9922F !important; color: #C9922F !important; background: rgba(201,146,47,.05) !important; }
+        .cw-chat-input:focus { border-color: #C1502E !important; }
+        .cw-suggest-btn:hover { border-color: #C1502E !important; color: #C1502E !important; background: rgba(193,80,46,.05) !important; }
       `}</style>
 
       {/* Floating toggle button - bot avatar style */}
       <div
         style={{
           position: "fixed",
-          bottom: 100,
-          right: 30,
-          width: 72,
-          height: 72,
+          bottom: 24,
+          right: 24,
+          width: 64,
+          height: 64,
           zIndex: 1000,
           display: "flex",
           alignItems: "center",
@@ -197,26 +197,15 @@ export default function ChatBot() {
       >
         {/* Pulsing attention rings - only show when closed */}
         {!open && (
-          <>
-            <span
-              style={{
-                position: "absolute",
-                inset: 0,
-                borderRadius: "50%",
-                border: "2px solid #C9922F",
-                animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite",
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                inset: 0,
-                borderRadius: "50%",
-                border: "2px solid #C9922F",
-                animation: "cwPulseRing 2.2s cubic-bezier(.4,0,.6,1) infinite 1.1s",
-              }}
-            />
-          </>
+          <span
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: "50%",
+              border: "1.5px solid #C1502E",
+              animation: "cwPulseRing 2.6s cubic-bezier(.4,0,.6,1) infinite",
+            }}
+          />
         )}
 
         <button
@@ -224,16 +213,16 @@ export default function ChatBot() {
           aria-label="Open chat"
           style={{
             position: "relative",
-            width: 64,
-            height: 64,
+            width: 58,
+            height: 58,
             borderRadius: "50%",
-            background: "#ffffff",
-            border: "1px solid #E4E3DD",
+            background: "#141210",
+            border: "1px solid #141210",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
-            boxShadow: "0 8px 28px rgba(0,0,0,.18)",
+            boxShadow: "0 10px 30px rgba(20,18,16,.35)",
             transition: "all .25s cubic-bezier(.16,1,.3,1)",
             color: "#fff",
           }}
@@ -245,7 +234,7 @@ export default function ChatBot() {
           }}
         >
           {open ? (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3EEE5" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
@@ -254,7 +243,7 @@ export default function ChatBot() {
             <img
               src="/chatbot-icon.png"
               alt="Chat"
-              style={{ width: 44, height: 44, objectFit: "contain", borderRadius: "50%" }}
+              style={{ width: 36, height: 36, objectFit: "contain", borderRadius: "50%" }}
             />
           )}
         </button>
@@ -265,8 +254,8 @@ export default function ChatBot() {
         <div
           style={{
             position: "fixed",
-            bottom: 168,
-            right: 30,
+            bottom: 96,
+            right: 24,
             width: 360,
             maxWidth: "calc(100vw - 40px)",
             height: 520,
@@ -312,7 +301,7 @@ export default function ChatBot() {
               />
             </div>
             <div>
-              <div style={{ color: "#16161A", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
+              <div style={{ color: "#141210", fontWeight: 700, fontSize: 14, letterSpacing: "-.2px" }}>
                 Clicks&ads Assistant
               </div>
               <div style={{ color: "#6B7280", fontSize: 11.5, marginTop: 1, display: "flex", alignItems: "center", gap: 5 }}>
@@ -340,8 +329,8 @@ export default function ChatBot() {
                 key={i}
                 style={{
                   alignSelf: m.from === "user" ? "flex-end" : "flex-start",
-                  background: m.from === "user" ? "#C9922F" : "#F5F4F1",
-                  color: m.from === "user" ? "#fff" : "#16161A",
+                  background: m.from === "user" ? "#C1502E" : "#F5F4F1",
+                  color: m.from === "user" ? "#fff" : "#141210",
                   padding: "10px 14px",
                   borderRadius: m.from === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
                   maxWidth: "82%",
@@ -439,7 +428,7 @@ export default function ChatBot() {
                 fontSize: 13.5,
                 outline: "none",
                 fontFamily: "inherit",
-                color: "#16161A",
+                color: "#141210",
                 transition: "border-color .2s",
               }}
             />
@@ -447,7 +436,7 @@ export default function ChatBot() {
               type="submit"
               disabled={loading}
               style={{
-                background: "#C9922F",
+                background: "#C1502E",
                 color: "#fff",
                 border: "none",
                 borderRadius: 12,

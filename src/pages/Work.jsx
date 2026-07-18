@@ -133,7 +133,7 @@ export default function Work() {
                         href={w.url} target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         style={{
-                          background: "#fff", color: "#16161A",
+                          background: "#fff", color: "#141210",
                           padding: "14px 32px", borderRadius: 8,
                           textDecoration: "none", fontSize: 13, fontWeight: 700,
                           display: "inline-flex", alignItems: "center", gap: 8,
@@ -150,11 +150,11 @@ export default function Work() {
 
                 {/* Text */}
                 <div style={{ order: isEven ? 1 : 0 }}>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(201,146,47,.08)", padding: "6px 14px", borderRadius: 20, marginBottom: 20 }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C9922F" }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, color: "#C9922F", letterSpacing: "0.15em", textTransform: "uppercase" }}>{w.tag}</span>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(193,80,46,.08)", padding: "6px 14px", borderRadius: 20, marginBottom: 20 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C1502E" }} />
+                    <span style={{ fontSize: 10, fontWeight: 700, color: "#C1502E", letterSpacing: "0.15em", textTransform: "uppercase" }}>{w.tag}</span>
                   </div>
-                  <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#16161A", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>{w.title}</h2>
+                  <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#141210", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>{w.title}</h2>
                   <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.9, marginBottom: 32 }}>{w.desc}</p>
                   <div style={{ display: "flex", gap: 32, marginBottom: 36, paddingBottom: 32, borderBottom: "1px solid #E4E3DD" }}>
                     {[
@@ -163,15 +163,15 @@ export default function Work() {
                     ].map((m, j) => (
                       <div key={j}>
                         <p style={{ fontSize: 10, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>{m.label}</p>
-                        <p style={{ fontSize: 15, fontWeight: 600, color: "#16161A" }}>{m.value}</p>
+                        <p style={{ fontSize: 15, fontWeight: 600, color: "#141210" }}>{m.value}</p>
                       </div>
                     ))}
                   </div>
                   <a
                     href={w.url} target="_blank" rel="noopener noreferrer"
-                    style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#16161A", color: "#fff", padding: "14px 28px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "all .25s" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.background = "#C9922F"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.background = "#16161A"; e.currentTarget.style.transform = "none"; }}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#141210", color: "#fff", padding: "14px 28px", borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "all .25s" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = "#C1502E"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = "#141210"; e.currentTarget.style.transform = "none"; }}
                   >
                     View Live Site
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -197,7 +197,7 @@ export default function Work() {
         <div style={{ position: "absolute", inset: 0, background: "rgba(247, 247, 245, 0.88)" }} />
         <div ref={ref2} style={{ position: "relative", zIndex: 1, maxWidth: 1320, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 72, opacity: v2 ? 1 : 0, transform: v2 ? "none" : "translateY(20px)", transition: "all .7s cubic-bezier(.16,1,.3,1)" }}>
-            <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#16161A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(28px,3vw,44px)", fontWeight: 800, color: "#141210", letterSpacing: "-1px", marginBottom: 12 }}>
               Tools We Use To Deliver Results
             </h2>
             <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 520, margin: "0 auto", lineHeight: 1.8 }}>
@@ -221,7 +221,7 @@ export default function Work() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ background: "#C9922F", padding: "110px clamp(20px,5vw,80px)" }}>
+      <section style={{ background: "#C1502E", padding: "110px clamp(20px,5vw,80px)" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, color: "#fff", marginBottom: 20, lineHeight: 1.1, letterSpacing: "-1px" }}>
             Ready to be our next success story?
