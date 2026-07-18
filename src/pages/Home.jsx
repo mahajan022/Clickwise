@@ -1,45 +1,53 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useInView, MarqueeBar } from "../components";
+import { useInView } from "../components";
 import { SERVICES, WORKS, STATS, TESTIMONIALS, PROCESS } from "../globals";
 import { Helmet } from "react-helmet-async";
 
 /* ── HERO ── */
 function Hero() {
-  const [v, setV] = useState(false);
-  useEffect(() => { setTimeout(() => setV(true), 150); }, []);
   return (
-    <section style={{ position: "relative", height: "115vh", overflow: "hidden", background: "#111" }}>
+    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
       <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}>
         <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
       </video>
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "50%", background: "linear-gradient(to top, rgba(0,0,0,.6), transparent)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 clamp(20px,5vw,80px)", paddingTop: 80 }}>
-        <div style={{ maxWidth: 900 }}>
-          <h1 style={{ fontSize: "clamp(52px,8vw,110px)", fontWeight: 800, color: "#fff", lineHeight: 0.95, letterSpacing: "-4px", marginBottom: 28, textTransform: "uppercase", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(24px)", transition: "all .9s cubic-bezier(.16,1,.3,1) .4s" }}>
-            WE BUILD<br />
-            <span style={{ color: "#C1502E", fontStyle: "italic", textTransform: "none", letterSpacing: "-3px" }}>Brands</span> THAT<br />
-            WIN ONLINE.
-          </h1>
-          <p style={{ fontSize: "clamp(14px,1.4vw,17px)", color: "rgba(255,255,255,.8)", lineHeight: 1.8, maxWidth: 520, marginBottom: 40, fontWeight: 300, opacity: v ? 1 : 0, transform: v ? "none" : "translateY(16px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .6s" }}>
-           Mumbai's digital marketing agency for web design, website development, SEO, and PPC — everything you need to grow, under one roof.
-          </p>
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", opacity: v ? 1 : 0, transform: v ? "none" : "translateY(12px)", transition: "all .7s cubic-bezier(.16,1,.3,1) .75s" }}>
-            <Link to="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#C1502E", color: "#fff", padding: "15px 32px", borderRadius: 50, textDecoration: "none", fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", transition: "all .25s", boxShadow: "0 8px 32px rgba(193,80,46,.5)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "#9B3D22"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#C1502E"; e.currentTarget.style.transform = "none"; }}
+    </section>
+  );
+}
+
+/* ── ANIMATED HEADLINE (scroll-triggered, word by word) ── */
+function AnimatedHeadline() {
+  const [ref, v] = useInView(0.4);
+  const words = [
+    { text: "WE", accent: false },
+    { text: "BUILD", accent: false },
+    { text: "Brands", accent: true },
+    { text: "THAT", accent: false },
+    { text: "WIN", accent: false },
+    { text: "ONLINE.", accent: false },
+  ];
+  return (
+    <section ref={ref} style={{ background: "#FFFFFF", padding: "clamp(90px,14vw,180px) clamp(20px,5vw,80px)" }}>
+      <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+        <h1 style={{ fontSize: "clamp(44px,7.5vw,100px)", fontWeight: 800, color: "#141210", lineHeight: 1.02, letterSpacing: "-3px", textTransform: "uppercase", display: "flex", flexWrap: "wrap", gap: "0 22px" }}>
+          {words.map((w, i) => (
+            <span
+              key={i}
+              style={{
+                display: "inline-block",
+                color: w.accent ? "#C1502E" : "#141210",
+                fontStyle: w.accent ? "italic" : "normal",
+                textTransform: w.accent ? "none" : "uppercase",
+                letterSpacing: w.accent ? "-2px" : "-3px",
+                opacity: v ? 1 : 0,
+                transform: v ? "none" : "translateY(28px)",
+                transition: `opacity .6s cubic-bezier(.16,1,.3,1) ${i * 0.5}s, transform .6s cubic-bezier(.16,1,.3,1) ${i * 0.5}s`,
+              }}
             >
-              Start a Project
-              <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(255,255,255,.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </div>
-            </Link>
-            <Link to="/work" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,.12)", color: "#fff", padding: "15px 32px", borderRadius: 50, textDecoration: "none", fontSize: 13, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", transition: "all .25s", border: "1px solid rgba(255,255,255,.25)", backdropFilter: "blur(8px)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,.2)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,.12)"; }}
-            >View Our Work</Link>
-          </div>
-        </div>
+              {w.text}
+            </span>
+          ))}
+        </h1>
       </div>
     </section>
   );
@@ -280,7 +288,7 @@ export default function Home() {
         <meta name="description" content="Clicks&Ads is a Mumbai-based digital marketing agency and website development company offering web design, SEO, PPC, and branding services." />
       </Helmet>
       <Hero />
-      <MarqueeBar />
+      <AnimatedHeadline />
       <ServicesPreview />
       <ProcessSection />
       <WhyUs />
