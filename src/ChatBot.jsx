@@ -169,9 +169,23 @@ export default function ChatBot() {
         .cw-chat-input:focus { border-color: var(--accent) !important; }
         .cw-chip:hover { background: var(--accent) !important; color: #fff !important; }
         .cw-pill:hover { box-shadow: 0 14px 38px rgba(20,18,16,.28) !important; transform: translateY(-1px); }
+
+        /* ══ MOBILE: collapse the stretched pill into a simple circle ══ */
+        @media (max-width: 640px) {
+          .cw-pill {
+            width: 56px !important;
+            padding: 4px !important;
+            justify-content: center !important;
+            gap: 0 !important;
+          }
+          .cw-pill-text,
+          .cw-pill-send {
+            display: none !important;
+          }
+        }
       `}</style>
 
-      {/* ══════════ CLOSED STATE: stretched "Ask AI" pill ══════════ */}
+      {/* ══════════ CLOSED STATE: stretched "Ask AI" pill (circle-only on mobile) ══════════ */}
       {!open && (
         <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 1000 }}>
           <span
@@ -223,11 +237,12 @@ export default function ChatBot() {
               />
             </div>
 
-            <span style={{ flex: 1, textAlign: "left", fontSize: 13.5, color: "#9CA3AF", fontWeight: 500 }}>
+            <span className="cw-pill-text" style={{ flex: 1, textAlign: "left", fontSize: 13.5, color: "#9CA3AF", fontWeight: 500 }}>
               Ask AI...
             </span>
 
             <span
+              className="cw-pill-send"
               style={{
                 width: 34,
                 height: 34,
