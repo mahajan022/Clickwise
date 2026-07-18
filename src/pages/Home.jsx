@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "../components";
 import { SERVICES, WORKS, STATS, TESTIMONIALS, PROCESS } from "../globals";
@@ -5,11 +6,33 @@ import { Helmet } from "react-helmet-async";
 
 /* ── HERO ── */
 function Hero() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const p = Math.min(Math.max(window.scrollY / 520, 0), 1);
+      setProgress(p);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
-      <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
-        <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
-      </video>
+    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#FFFFFF" }}>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          transform: `scale(${1 - progress * 0.09})`,
+          borderRadius: `${progress * 32}px`,
+          overflow: "hidden",
+          boxShadow: progress > 0.02 ? `0 ${20 + progress * 40}px ${60 + progress * 60}px rgba(20,18,16,${0.1 + progress * 0.18})` : "none",
+          willChange: "transform, border-radius, box-shadow",
+        }}
+      >
+        <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
+          <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
+        </video>
+      </div>
     </section>
   );
 }

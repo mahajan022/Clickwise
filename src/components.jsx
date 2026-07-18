@@ -87,30 +87,20 @@ export function Nav() {
           font-weight: 700;
           color: #fff;
           text-decoration: none;
-          background: linear-gradient(135deg, #D97A52 0%, #C1502E 55%, #8F3D22 100%);
+          background: #C1502E;
           padding: 12px 28px;
-          border-radius: 10px;
+          border-radius: 999px;
           letter-spacing: 0.05em;
           text-transform: uppercase;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 6px 22px rgba(193,80,46,.38), inset 0 1px 0 rgba(255,255,255,.18);
+          box-shadow: 0 4px 16px rgba(193,80,46,.28);
           position: relative;
           overflow: hidden;
         }
-        .nav-cta::before {
-          content: '';
-          position: absolute;
-          top: 0; left: -120%;
-          width: 60%; height: 100%;
-          background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
-          transition: left 0.6s cubic-bezier(0.16,1,0.3,1);
-        }
         .nav-cta:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 34px rgba(193,80,46,.5), inset 0 1px 0 rgba(255,255,255,.25);
-        }
-        .nav-cta:hover::before {
-          left: 130%;
+          background: #A9451F;
+          box-shadow: 0 10px 28px rgba(193,80,46,.38);
         }
         .nav-cta:active {
           transform: translateY(0px);
