@@ -6,12 +6,19 @@ import { Helmet } from "react-helmet-async";
 /* ── HERO ── */
 function Hero() {
   return (
-    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#111" }}>
-      <video autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
-        <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
-      </video>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0) 65%, rgba(0,0,0,.22) 100%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 140, background: "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0) 100%)", pointerEvents: "none" }} />
+    <section style={{ position: "relative", height: "100vh", overflow: "hidden", background: "#FFFFFF" }}>
+      <div
+        style={{
+          position: "absolute", inset: 0,
+          WebkitMaskImage: "linear-gradient(to bottom, #000 88%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, #000 88%, transparent 100%)",
+        }}
+      >
+        <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
+          <source src="https://res.cloudinary.com/dpejpwl80/video/upload/v1779949283/download_x2fnji.mp4" type="video/mp4" />
+        </video>
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,.22) 100%)", pointerEvents: "none" }} />
+      </div>
     </section>
   );
 }
@@ -28,7 +35,7 @@ function AnimatedHeadline() {
     { text: "ONLINE.", accent: false },
   ];
   return (
-    <section ref={ref} style={{ background: "#FFFFFF", padding: "clamp(56px,7vw,96px) clamp(20px,5vw,80px)" }}>
+    <section ref={ref} style={{ background: "#FFFFFF", paddingTop: "clamp(20px,3vw,40px)", paddingBottom: "clamp(36px,5vw,64px)", paddingLeft: "clamp(20px,5vw,80px)", paddingRight: "clamp(20px,5vw,80px)" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <h1 style={{ fontSize: "clamp(44px,7.5vw,100px)", fontWeight: 800, color: "#141210", lineHeight: 1.02, letterSpacing: "-3px", textTransform: "uppercase", display: "flex", flexWrap: "wrap", gap: "0 22px" }}>
           {words.map((w, i) => (
