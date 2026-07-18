@@ -103,7 +103,6 @@ const SUGGESTED_QUESTIONS = [
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
-  const [showGreeting, setShowGreeting] = useState(true);
   const [messages, setMessages] = useState([
     {
       from: "bot",
@@ -148,21 +147,12 @@ export default function ChatBot() {
     sendMessage(input);
   };
 
-  const openChat = () => {
-    setOpen(true);
-    setShowGreeting(false);
-  };
-
   return (
     <>
       <style>{`
         @keyframes cwChatIn {
           from { opacity: 0; transform: translateY(16px) scale(.97); }
           to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes cwGreetIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
         }
         @keyframes cwPulseRing {
           0% { transform: scale(1); opacity: .55; }
@@ -183,127 +173,78 @@ export default function ChatBot() {
 
       {/* ══════════ CLOSED STATE: stretched "Ask AI" pill ══════════ */}
       {!open && (
-        <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 1000, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 14 }}>
-          {/* Greeting bubble */}
-          {showGreeting && (
+        <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 1000 }}>
+          <span
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: 999,
+              border: "1.5px solid var(--accent)",
+              animation: "cwPulseRing 2.6s cubic-bezier(.4,0,.6,1) infinite",
+            }}
+          />
+          <button
+            className="cw-pill"
+            onClick={() => setOpen(true)}
+            aria-label="Open chat"
+            style={{
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              width: 240,
+              maxWidth: "calc(100vw - 48px)",
+              background: "#fff",
+              border: "2px solid var(--accent)",
+              borderRadius: 999,
+              padding: "6px 6px 6px 6px",
+              cursor: "pointer",
+              boxShadow: "0 10px 30px rgba(20,18,16,.2)",
+              transition: "all .25s cubic-bezier(.16,1,.3,1)",
+            }}
+          >
+            {/* Empty circular avatar slot — drop your own image at /public/chatbot-avatar.png */}
             <div
               style={{
-                position: "relative",
-                width: 280,
-                maxWidth: "calc(100vw - 48px)",
-                background: "#fff",
-                borderRadius: 16,
-                padding: "16px 18px",
-                boxShadow: "0 16px 46px rgba(20,18,16,.18)",
-                animation: "cwGreetIn .3s cubic-bezier(.16,1,.3,1)",
+                width: 44,
+                height: 44,
+                borderRadius: "50%",
+                overflow: "hidden",
+                flexShrink: 0,
+                background: "var(--bg-alt2, #F1ECE5)",
+                border: "1px solid var(--border, #E7E1D8)",
               }}
             >
-              <button
-                onClick={() => setShowGreeting(false)}
-                aria-label="Dismiss"
-                style={{ position: "absolute", top: 8, right: 10, background: "none", border: "none", cursor: "pointer", color: "#9CA3AF", fontSize: 16, lineHeight: 1, padding: 4 }}
-              >
-                ×
-              </button>
-              <p style={{ fontSize: 13.5, color: "#141210", lineHeight: 1.6, marginBottom: 12, paddingRight: 14 }}>
-                Hey! I'm the <b>Clicks&ads</b> assistant 👋 Got a question about our services or pricing?
-              </p>
-              <button
-                onClick={openChat}
-                style={{
-                  width: "100%",
-                  background: "var(--dark, #141210)",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 10,
-                  padding: "11px 14px",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  textAlign: "center",
-                }}
-              >
-                Ask a question →
-              </button>
-            </div>
-          )}
-
-          {/* Pill bar */}
-          <div style={{ position: "relative" }}>
-            {!showGreeting && (
-              <span
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  borderRadius: 999,
-                  border: "1.5px solid var(--accent)",
-                  animation: "cwPulseRing 2.6s cubic-bezier(.4,0,.6,1) infinite",
-                }}
+              <img
+                src={AVATAR_SRC}
+                alt=""
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                onError={(e) => { e.currentTarget.style.display = "none"; }}
               />
-            )}
-            <button
-              className="cw-pill"
-              onClick={openChat}
-              aria-label="Open chat"
+            </div>
+
+            <span style={{ flex: 1, textAlign: "left", fontSize: 13.5, color: "#9CA3AF", fontWeight: 500 }}>
+              Ask AI...
+            </span>
+
+            <span
               style={{
-                position: "relative",
+                width: 34,
+                height: 34,
+                borderRadius: "50%",
+                background: "var(--accent)",
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
-                width: 240,
-                maxWidth: "calc(100vw - 48px)",
-                background: "#fff",
-                border: "2px solid var(--accent)",
-                borderRadius: 999,
-                padding: "6px 6px 6px 6px",
-                cursor: "pointer",
-                boxShadow: "0 10px 30px rgba(20,18,16,.2)",
-                transition: "all .25s cubic-bezier(.16,1,.3,1)",
+                justifyContent: "center",
+                flexShrink: 0,
               }}
             >
-              {/* Empty circular avatar slot — drop your own image at /public/chatbot-avatar.png */}
-              <div
-                style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: "50%",
-                  overflow: "hidden",
-                  flexShrink: 0,
-                  background: "var(--bg-alt2, #F1ECE5)",
-                  border: "1px solid var(--border, #E7E1D8)",
-                }}
-              >
-                <img
-                  src={AVATAR_SRC}
-                  alt=""
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                  onError={(e) => { e.currentTarget.style.display = "none"; }}
-                />
-              </div>
-
-              <span style={{ flex: 1, textAlign: "left", fontSize: 13.5, color: "#9CA3AF", fontWeight: 500 }}>
-                Ask AI...
-              </span>
-
-              <span
-                style={{
-                  width: 34,
-                  height: 34,
-                  borderRadius: "50%",
-                  background: "var(--accent)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="19" x2="12" y2="5" />
-                  <polyline points="5 12 12 5 19 12" />
-                </svg>
-              </span>
-            </button>
-          </div>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5" />
+                <polyline points="5 12 12 5 19 12" />
+              </svg>
+            </span>
+          </button>
         </div>
       )}
 
