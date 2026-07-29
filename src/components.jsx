@@ -488,11 +488,11 @@ export function Footer() {
             <a href="tel:+919137130817" style={{ color: "#9CA3AF", fontSize: 13, fontWeight: 500, display: "block", marginBottom: 8, textDecoration: "none", transition: "color .2s" }}
               onMouseEnter={(e) => { e.target.style.color = "#C1502E"; }}
               onMouseLeave={(e) => { e.target.style.color = "#9CA3AF"; }}
-            >+91 91371 30817</a>
+            >📞 +91 91371 30817</a>
             <a href="mailto:support.clicksnads@gmail.com" style={{ color: "#C1502E", fontSize: 13, fontWeight: 600, textDecoration: "none" }}
               onMouseEnter={(e) => { e.target.style.opacity = ".8"; }}
               onMouseLeave={(e) => { e.target.style.opacity = "1"; }}
-            >support.clicksnads@gmail.com</a>
+            >✉️ support.clicksnads@gmail.com</a>
           </div>
         </div>
 
