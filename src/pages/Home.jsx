@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useInView } from "../components";
 import { SERVICES, WORKS, STATS, TESTIMONIALS, PROCESS } from "../globals";
 import { Helmet } from "react-helmet-async";
+import { WEBSITE_SCHEMA, jsonLdScript } from "../seo";
 
 /* ── HERO ── */
 function Hero() {
@@ -315,6 +316,8 @@ export default function Home() {
       <Helmet>
         <title>Clicks&Ads — Digital Marketing Agency & Website Development Company in Mumbai</title>
         <meta name="description" content="Clicks&Ads is a Mumbai-based digital marketing agency and website development company offering web design, SEO, PPC, and branding services." />
+        <link rel="canonical" href="https://clicksnads.com/" />
+        <script type="application/ld+json">{jsonLdScript(WEBSITE_SCHEMA)}</script>
       </Helmet>
       <Hero />
       <HeroSeam />

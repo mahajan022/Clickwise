@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Loader, Navbar, Footer } from "./components";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -8,6 +9,7 @@ import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 import "./index.css";
 import ChatBot from './ChatBot'
+import { ORGANIZATION_SCHEMA, jsonLdScript } from "./seo";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -18,6 +20,9 @@ function ScrollToTop() {
 function Layout() {
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">{jsonLdScript(ORGANIZATION_SCHEMA)}</script>
+      </Helmet>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

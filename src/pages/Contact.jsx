@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useInView, PageBanner } from "../components";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { faqSchema, jsonLdScript } from "../seo";
 
 const FAQS = [
   { q: "What's your turnaround time?", a: "Projects typically take 2–8 weeks depending on complexity. We provide a detailed timeline after the initial consultation, so you always know what to expect." },
@@ -73,6 +74,8 @@ export default function Contact() {
       <Helmet>
   <title>Contact Clicks&Ads — Digital Marketing Agency Near You in Mumbai</title>
   <meta name="description" content="Get in touch with Mumbai's trusted digital marketing agency and web development company. Free consultation, fast turnaround." />
+  <link rel="canonical" href="https://clicksnads.com/contact" />
+  <script type="application/ld+json">{jsonLdScript(faqSchema(FAQS))}</script>
 </Helmet>
 
       {/* ── HERO SECTION ── */}

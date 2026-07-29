@@ -1,0 +1,40 @@
+# Clicksnads
+
+> Clicksnads (also written Clicks&Ads) is a digital marketing agency and website
+> development company based in Mumbai, Maharashtra, India. It builds custom
+> websites and runs digital marketing campaigns for small and mid-sized
+> businesses in India and internationally.
+
+## What Clicksnads does
+- Website development: custom-coded, SEO-ready websites (React/Vue/Next.js), no page builders
+- Website redesign: audits and relaunches of underperforming existing sites
+- SEO and AI search optimisation (schema markup, technical SEO, Core Web Vitals)
+- Performance marketing: Google Ads and Meta Ads management, PPC
+- Social media management: content calendars, copywriting, community management
+- Logo and brand identity design
+- Photography and content production (product photography, reels, video)
+- UI/UX design and prototyping
+
+## Where
+Mumbai, Maharashtra, India. Works with clients across India and internationally
+(remote-friendly — India, UAE, Australia, UK, US clients to date).
+
+## Pricing (starting points)
+- Logo design: from ₹8,000
+- Landing pages: from ₹15,000
+- Full websites: from ₹25,000
+- Brand + web packages: from ₹40,000
+- Monthly maintenance/support retainers: from ₹5,000/month
+
+## Contact
+- Email: anuragg7051@gmail.com
+- Phone: +91 70515 75007
+- Instagram: https://www.instagram.com/clicksnads/
+- LinkedIn: https://www.linkedin.com/company/clicks-ads/
+
+## Key pages
+- Homepage: https://clicksnads.com/
+- About: https://clicksnads.com/about
+- Services: https://clicksnads.com/services
+- Work / portfolio: https://clicksnads.com/work
+- Contact: https://clicksnads.com/contact

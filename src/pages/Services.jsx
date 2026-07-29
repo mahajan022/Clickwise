@@ -2,6 +2,7 @@ import { useInView, PageBanner } from "../components";
 import { SERVICES, FAQS } from "../globals";
 import { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { faqSchema, servicesSchema, jsonLdScript } from "../seo";
 
 function ServiceIcon({ type }) {
   const icons = {
@@ -263,6 +264,9 @@ export default function Services() {
             <Helmet>
         <title>Web Development, SEO & PPC Services — Clicks&Ads Digital Marketing Agency</title>
         <meta name="description" content="Explore our web design, website development, SEO, PPC management, and social media services. Trusted digital marketing agency near you in Mumbai." />
+        <link rel="canonical" href="https://clicksnads.com/services" />
+        <script type="application/ld+json">{jsonLdScript(servicesSchema(SERVICES))}</script>
+        <script type="application/ld+json">{jsonLdScript(faqSchema(FAQS))}</script>
       </Helmet>
 
       <PageBanner

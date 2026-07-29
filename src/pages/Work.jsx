@@ -78,6 +78,7 @@ export default function Work() {
       <Helmet>
   <title>Our Work — Web Design & Digital Marketing Portfolio | Clicks&Ads</title>
   <meta name="description" content="See real projects by our web development company and digital marketing agency — websites, branding, SEO & PPC campaigns." />
+  <link rel="canonical" href="https://clicksnads.com/work" />
 </Helmet>
       <PageBanner
         tag="WORK"

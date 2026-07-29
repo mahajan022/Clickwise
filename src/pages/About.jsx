@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useInView, PageBanner } from "../components";
 import { STATS } from "../globals";
 import { Helmet } from "react-helmet-async";
+import { faqSchema, jsonLdScript } from "../seo";
 
 
 /* ─── TILT HOOK ─── */
@@ -336,6 +337,8 @@ export default function About() {
       <Helmet>
   <title>About Clicks&Ads — Mumbai-Based Digital Marketing & Web Design Agency</title>
   <meta name="description" content="Clicks&Ads is a full-service digital agency in Mumbai. Meet the web development company and marketing agency behind 50+ brand projects." />
+  <link rel="canonical" href="https://clicksnads.com/about" />
+  <script type="application/ld+json">{jsonLdScript(faqSchema(faqs))}</script>
 </Helmet>
       <PageBanner
         tag="ABOUT"
