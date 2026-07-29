@@ -34,7 +34,7 @@ function buildSiteContext() {
   return `
 You are the official AI assistant for Clicks&ads, a creative digital agency based in Mumbai, India.
 Answer user questions ONLY using the information below about Clicks&ads. Be friendly, concise, and helpful.
-If asked something unrelated to Clicks&ads or not covered here, politely say you don't have that info and suggest contacting via email (anuragg7051@gmail.com) or WhatsApp (+91 70515 75007).
+If asked something unrelated to Clicks&ads or not covered here, politely say you don't have that info and suggest contacting via email (support.clicksnads@gmail.com) or WhatsApp (+91 91371 30817).
 
 COMPANY STATS:
 ${statsText}
@@ -52,8 +52,8 @@ FREQUENTLY ASKED QUESTIONS:
 ${faqsText}
 
 CONTACT INFO:
-Email: anuragg7051@gmail.com
-Phone/WhatsApp: +91 70515 75007
+Email: support.clicksnads@gmail.com
+Phone/WhatsApp: +91 91371 30817
 Location: Mumbai, Maharashtra, India
 
 Keep answers short (2-4 sentences) unless the user asks for more detail.
@@ -135,7 +135,7 @@ export default function ChatBot() {
     } catch (err) {
       setMessages((prev) => [
         ...prev,
-        { from: "bot", text: "Sorry, something went wrong. Please try again or reach us at anuragg7051@gmail.com." },
+        { from: "bot", text: "Sorry, something went wrong. Please try again or reach us at support.clicksnads@gmail.com." },
       ]);
     } finally {
       setLoading(false);

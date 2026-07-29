@@ -20,8 +20,8 @@ export const ORGANIZATION_SCHEMA = {
   image: `${SITE_URL}/logo.png`,
   description:
     "Clicksnads is a Mumbai-based digital marketing agency and website development company offering web design, SEO, performance marketing (Google/Meta Ads), branding, and social media management.",
-  email: "anuragg7051@gmail.com",
-  telephone: "+91-70515-75007",
+  email: "support.clicksnads@gmail.com",
+  telephone: "+91-91371-30817",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Mumbai",
@@ -36,11 +36,12 @@ export const ORGANIZATION_SCHEMA = {
   sameAs: [
     "https://www.instagram.com/clicksnads/",
     "https://www.linkedin.com/company/clicks-ads/",
+    "https://www.youtube.com/@clicksnads",
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+91-70515-75007",
-    email: "anuragg7051@gmail.com",
+    telephone: "+91-91371-30817",
+    email: "support.clicksnads@gmail.com",
     contactType: "sales",
     areaServed: "IN",
     availableLanguage: ["English", "Hindi"],
