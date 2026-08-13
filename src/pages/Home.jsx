@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "../components";
 import { SERVICES, WORKS, STATS, TESTIMONIALS, PROCESS } from "../globals";
@@ -127,6 +127,135 @@ function ServicesPreview() {
   );
 }
 
+/* ── CUSTOM TOOLS ── */
+function CustomToolsSection() {
+  const [ref, v] = useInView();
+  const tool = SERVICES.find((s) => s.icon === "tools");
+  return (
+    <section style={{ background: "#F7F7F5", padding: "110px clamp(20px,5vw,80px)" }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
+        <div ref={ref} className="cw-grid-2" style={{ gap: "clamp(48px,6vw,100px)", alignItems: "center" }}>
+          <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateX(-20px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(193,80,46,.08)", padding: "6px 14px", borderRadius: 20, marginBottom: 20 }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C1502E" }} />
+              <span style={{ fontSize: 10, fontWeight: 700, color: "#C1502E", letterSpacing: "0.15em", textTransform: "uppercase" }}>Custom Software</span>
+            </div>
+            <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#141210", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
+              Got A Spreadsheet<br />Running <span style={{ color: "#C1502E" }}>Your Business?</span>
+            </h2>
+            <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.9, marginBottom: 32 }}>
+              {tool?.about}
+            </p>
+          </div>
+          <div className="cw-grid-2" style={{ gap: 16, opacity: v ? 1 : 0, transform: v ? "none" : "translateX(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .1s" }}>
+            {(tool?.features || []).map((f, i) => (
+              <div key={i} style={{ background: "#fff", borderRadius: 12, padding: "24px 20px", border: "1px solid #E4E3DD", transition: "all .3s" }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(193,80,46,.4)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E4E3DD"; e.currentTarget.style.transform = "none"; }}
+              >
+                <p style={{ fontSize: 14, fontWeight: 700, color: "#141210", lineHeight: 1.5 }}>{f}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── TOOLS SCREENSHOTS SLIDER ── */
+const TOOL_SCREENSHOTS = [
+  { image: "/tool-data-automation.png" },
+  { image: "/tool-desktop-automation.png" },
+  { image: "/tool-calculator.png" },
+  { image: "/tool-bi-dashboard.png" },
+];
+
+function ToolsScreenshotsSlider() {
+  const [ref, v] = useInView();
+  const [index, setIndex] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const hoveredRef = useRef(false);
+  const total = TOOL_SCREENSHOTS.length;
+
+  useEffect(() => { hoveredRef.current = hovered; }, [hovered]);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      if (!hoveredRef.current) setIndex((i) => (i + 1) % total);
+    }, 4200);
+    return () => clearInterval(t);
+  }, [total]);
+
+  const go = (dir) => setIndex((i) => (i + dir + total) % total);
+  const current = TOOL_SCREENSHOTS[index];
+
+  return (
+    <section style={{ background: "#F7F7F5", padding: "0 0 110px" }}>
+      <div
+        ref={ref}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{ position: "relative", maxWidth: 900, margin: "0 auto", padding: "0 clamp(20px,5vw,80px)", opacity: v ? 1 : 0, transition: "opacity .7s ease" }}
+      >
+        {/* Soft ambient glow behind the active slide — faint, centered, blended */}
+        <div style={{
+          position: "absolute",
+          inset: "8%",
+          zIndex: 0,
+          borderRadius: 24,
+          background: "radial-gradient(50% 50% at 50% 50%, rgba(193,80,46,.09) 0%, rgba(193,80,46,0) 72%)",
+          filter: "blur(40px)",
+          pointerEvents: "none",
+        }} />
+
+        {/* Active slide */}
+        <div style={{ position: "relative", zIndex: 1, borderRadius: 16, overflow: "hidden", border: "1px solid #E4E3DD", background: "#fff", boxShadow: "0 20px 60px rgba(20,18,16,.14)" }}>
+          {current.image ? (
+            <img src={current.image} alt="Custom tool screenshot" style={{ width: "100%", height: 460, objectFit: "cover", display: "block", transition: "opacity .35s ease" }} />
+          ) : (
+            <div style={{ width: "100%", height: 460, background: "repeating-linear-gradient(135deg, #F0EFEA, #F0EFEA 10px, #E9E8E2 10px, #E9E8E2 20px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.08em", textTransform: "uppercase" }}>Screenshot Coming Soon</span>
+            </div>
+          )}
+        </div>
+
+        {/* Arrows — fade in on hover, like the testimonials pause behaviour */}
+        <button
+          onClick={() => go(-1)}
+          aria-label="Previous screenshot"
+          style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 44, height: 44, borderRadius: "50%", border: "none", background: "#141210", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", opacity: hovered ? 1 : 0, transition: "opacity .25s ease, background .25s ease" }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "#C1502E"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "#141210"; }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+        </button>
+        <button
+          onClick={() => go(1)}
+          aria-label="Next screenshot"
+          style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 44, height: 44, borderRadius: "50%", border: "none", background: "#141210", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", opacity: hovered ? 1 : 0, transition: "opacity .25s ease, background .25s ease" }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "#C1502E"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "#141210"; }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+        </button>
+
+        {/* Dots */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 24 }}>
+          {TOOL_SCREENSHOTS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              aria-label={`Go to screenshot ${i + 1}`}
+              style={{ width: i === index ? 22 : 8, height: 8, borderRadius: 4, border: "none", background: i === index ? "#C1502E" : "#DEDEDE", cursor: "pointer", transition: "all .3s ease", padding: 0 }}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── PROCESS ── */
 function ProcessSection() {
   const [ref, v] = useInView();
@@ -173,6 +302,7 @@ function WhyUs() {
     { icon: "/icons/layers stack.png", bg: "#F0FDF4", color: "#22C55E", title: "Full Service", desc: "Design, dev, branding, SEO, social — everything under one roof, one vision, zero chaos." },
     { icon: "/icons/target goal.png", bg: "#FDF4FF", color: "#A855F7", title: "Results Driven", desc: "Every decision tied to business growth. We measure success in leads, sales, and revenue." },
     { icon: "/icons/handshake.png", bg: "#FFF1F2", color: "#F43F5E", title: "True Partner", desc: "Available on WhatsApp, proactive, invested in your success long after launch day." },
+    { icon: "", bg: "#FFF7ED", color: "#C1502E", title: "Custom Tools & Automation", desc: "Beyond web and marketing — we build custom software and automation tools that simplify how your business runs." },
   ]
   return (
     <section style={{ background: "#fff", padding: "110px clamp(20px,5vw,80px)" }}>
@@ -192,7 +322,11 @@ function WhyUs() {
               onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; e.currentTarget.style.borderColor = "#E4E3DD"; }}
             >
               <div style={{ width: 56, height: 56, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
-                <img src={card.icon} alt={card.title} style={{ width: 42, height: 42, objectFit: "contain" }} />
+                {card.icon ? (
+                  <img src={card.icon} alt={card.title} style={{ width: 42, height: 42, objectFit: "contain" }} />
+                ) : (
+                  <div style={{ width: 42, height: 42, borderRadius: "50%", background: card.bg, border: `1.5px solid ${card.color}33` }} />
+                )}
               </div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: "#141210", marginBottom: 10 }}>{card.title}</h3>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.8 }}>{card.desc}</p>
@@ -323,6 +457,8 @@ export default function Home() {
       <HeroSeam />
       <AnimatedHeadline />
       <ServicesPreview />
+      <CustomToolsSection />
+      <ToolsScreenshotsSlider />
       <ProcessSection />
       <WhyUs />
       <WorkPreview />

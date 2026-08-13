@@ -72,6 +72,15 @@ export const SERVICES = [
     features: ["Full-Stack Development", "Database Design (MongoDB)", "API Development & Integration", "User Authentication", "Payment Integration", "Cloud Deployment"]
   },
   { 
+    icon: "tools", 
+    title: "Custom Software & Automation Tools", 
+    desc: "Custom tools that turn messy spreadsheets and manual work into simple systems.",
+    about: "We build the software you didn't know you needed—data automation tools, business calculators, internal dashboards, and desktop utilities. Every tool is built around how your team actually works, so it gets used, not shelved.",
+    detail: "From spreadsheet-to-dashboard automation to rate calculators and document management platforms, we turn slow, error-prone manual processes into fast, reliable tools non-technical staff can run on their own.",
+    image: "/toolsServices.png",
+    features: ["Data Automation & Reporting", "Desktop Automation Utilities", "Business Calculators & Rating Tools", "BI Dashboard Integration", "Document Management Platforms", "Workflow & Process Automation"]
+  },
+  { 
     icon: "ai", 
     title: "AI Solutions & Automation", 
     desc: "AI chatbots and automation workflows that save time.",
