@@ -160,9 +160,6 @@ function CustomToolsSection() {
               animation: "toolsPulseGlow 2.4s ease-in-out infinite",
             }}>
               <Zap size={13} color="#C1502E" fill="#C1502E" />
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#E8956B", letterSpacing: "0.08em" }}>
-                CUSTOM BUILT. NOT OFF-THE-SHELF.
-              </span>
             </div>
             <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
               Got A Spreadsheet<br />Running <span style={{ color: "#C1502E" }}>Your Business?</span>
@@ -222,7 +219,7 @@ function CustomToolsSection() {
           </div>
         </div>
 
-        {/* feature cards — staggered, glass, icon-led */}
+        {/* feature cards — even grid, icon-led */}
         <div className="cw-grid-3" style={{ gap: 16 }}>
           {(tool?.features || []).map((f, i) => {
             const Icon = TOOL_ICONS[i % TOOL_ICONS.length];
@@ -235,7 +232,6 @@ function CustomToolsSection() {
                   border: "1px solid rgba(255,255,255,.08)",
                   borderRadius: 14,
                   padding: "26px 22px",
-                  marginTop: i % 2 === 1 ? 20 : 0,
                   opacity: v ? 1 : 0,
                   transform: v ? "none" : "translateY(24px)",
                   transition: `all .6s cubic-bezier(.16,1,.3,1) ${0.15 + i * 0.06}s`,
