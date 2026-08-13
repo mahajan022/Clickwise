@@ -4,6 +4,7 @@ import { useInView } from "../components";
 import { SERVICES, WORKS, STATS, TESTIMONIALS, PROCESS } from "../globals";
 import { Helmet } from "react-helmet-async";
 import { WEBSITE_SCHEMA, jsonLdScript } from "../seo";
+import { Database, MonitorCog, Calculator, LayoutDashboard, FolderKanban, Workflow, Zap } from "lucide-react";
 
 /* ── HERO ── */
 function Hero() {
@@ -128,37 +129,154 @@ function ServicesPreview() {
 }
 
 /* ── CUSTOM TOOLS ── */
+const TOOL_ICONS = [Database, MonitorCog, Calculator, LayoutDashboard, FolderKanban, Workflow];
+
 function CustomToolsSection() {
   const [ref, v] = useInView();
   const tool = SERVICES.find((s) => s.icon === "tools");
+
   return (
-    <section style={{ background: "#F7F7F5", padding: "110px clamp(20px,5vw,80px)" }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto" }}>
-        <div ref={ref} className="cw-grid-2" style={{ gap: "clamp(48px,6vw,100px)", alignItems: "center" }}>
+    <section style={{ background: "#141210", padding: "110px clamp(20px,5vw,80px)", position: "relative", overflow: "hidden" }}>
+      {/* faint animated grid */}
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundImage: "linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px)",
+        backgroundSize: "42px 42px",
+        maskImage: "radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%)",
+        pointerEvents: "none",
+      }} />
+      {/* glow blobs */}
+      <div style={{ position: "absolute", top: "-10%", left: "5%", width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(193,80,46,.16) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: "-15%", right: "0%", width: 460, height: 460, borderRadius: "50%", background: "radial-gradient(circle, rgba(193,80,46,.12) 0%, transparent 70%)", filter: "blur(70px)", pointerEvents: "none" }} />
+
+      <div style={{ maxWidth: 1320, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div ref={ref} className="cw-grid-2" style={{ gap: "clamp(48px,6vw,100px)", alignItems: "center", marginBottom: 72 }}>
+          {/* LEFT: copy */}
           <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateX(-20px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(193,80,46,.08)", padding: "6px 14px", borderRadius: 20, marginBottom: 20 }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#C1502E" }} />
-              <span style={{ fontSize: 10, fontWeight: 700, color: "#C1502E", letterSpacing: "0.15em", textTransform: "uppercase" }}>Custom Software</span>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              background: "rgba(193,80,46,.12)", border: "1px solid rgba(193,80,46,.35)",
+              padding: "7px 16px", borderRadius: 20, marginBottom: 22,
+              animation: "toolsPulseGlow 2.4s ease-in-out infinite",
+            }}>
+              <Zap size={13} color="#C1502E" fill="#C1502E" />
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#E8956B", letterSpacing: "0.08em" }}>
+                CUSTOM BUILT. NOT OFF-THE-SHELF.
+              </span>
             </div>
-            <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#141210", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
+            <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
               Got A Spreadsheet<br />Running <span style={{ color: "#C1502E" }}>Your Business?</span>
             </h2>
-            <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.9, marginBottom: 32 }}>
+            <p style={{ fontSize: 16, color: "#9CA3AF", lineHeight: 1.9, marginBottom: 8 }}>
               {tool?.about}
             </p>
           </div>
-          <div className="cw-grid-2" style={{ gap: 16, opacity: v ? 1 : 0, transform: v ? "none" : "translateX(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .1s" }}>
-            {(tool?.features || []).map((f, i) => (
-              <div key={i} style={{ background: "#fff", borderRadius: 12, padding: "24px 20px", border: "1px solid #E4E3DD", transition: "all .3s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(193,80,46,.4)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E4E3DD"; e.currentTarget.style.transform = "none"; }}
-              >
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#141210", lineHeight: 1.5 }}>{f}</p>
+
+          {/* RIGHT: mini transformation visual — messy sheet → clean dashboard */}
+          <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateX(20px)", transition: "all .8s cubic-bezier(.16,1,.3,1) .1s" }}>
+            <div style={{
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 18,
+              background: "rgba(255,255,255,.02)", border: "1px solid rgba(255,255,255,.08)",
+              borderRadius: 20, padding: "36px 24px",
+            }}>
+              {/* messy sheet */}
+              <div style={{ flex: 1, maxWidth: 150 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 4 }}>
+                  {Array.from({ length: 9 }).map((_, i) => (
+                    <div key={i} style={{
+                      height: 22, borderRadius: 3,
+                      background: [2, 5, 7].includes(i) ? "rgba(239,68,68,.25)" : "rgba(255,255,255,.07)",
+                      border: [2, 5, 7].includes(i) ? "1px solid rgba(239,68,68,.5)" : "1px solid rgba(255,255,255,.06)",
+                    }} />
+                  ))}
+                </div>
+                <p style={{ fontSize: 10, color: "#6B7280", textAlign: "center", marginTop: 10, letterSpacing: "0.06em" }}>MESSY DATA</p>
               </div>
-            ))}
+
+              {/* animated arrow / flow */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                {[0, 1, 2].map((i) => (
+                  <span key={i} style={{
+                    width: 5, height: 5, borderRadius: "50%", background: "#C1502E",
+                    animation: `toolsFlowDot 1.4s ease-in-out ${i * 0.2}s infinite`,
+                  }} />
+                ))}
+              </div>
+
+              {/* clean dashboard */}
+              <div style={{ flex: 1, maxWidth: 150 }}>
+                <div style={{ background: "rgba(34,197,94,.06)", border: "1px solid rgba(34,197,94,.3)", borderRadius: 8, padding: 10 }}>
+                  <div style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 30, marginBottom: 8 }}>
+                    {[40, 65, 50, 85, 60].map((h, i) => (
+                      <div key={i} style={{ flex: 1, height: `${h}%`, background: "#C1502E", borderRadius: 2, opacity: 0.85 }} />
+                    ))}
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, color: "#22C55E", letterSpacing: "0.04em" }}>SYNCED</span>
+                  </div>
+                </div>
+                <p style={{ fontSize: 10, color: "#6B7280", textAlign: "center", marginTop: 10, letterSpacing: "0.06em" }}>AUTOMATED</p>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* feature cards — staggered, glass, icon-led */}
+        <div className="cw-grid-3" style={{ gap: 16 }}>
+          {(tool?.features || []).map((f, i) => {
+            const Icon = TOOL_ICONS[i % TOOL_ICONS.length];
+            return (
+              <div
+                key={i}
+                style={{
+                  background: "rgba(255,255,255,.03)",
+                  backdropFilter: "blur(8px)",
+                  border: "1px solid rgba(255,255,255,.08)",
+                  borderRadius: 14,
+                  padding: "26px 22px",
+                  marginTop: i % 2 === 1 ? 20 : 0,
+                  opacity: v ? 1 : 0,
+                  transform: v ? "none" : "translateY(24px)",
+                  transition: `all .6s cubic-bezier(.16,1,.3,1) ${0.15 + i * 0.06}s`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(193,80,46,.5)";
+                  e.currentTarget.style.background = "rgba(193,80,46,.05)";
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow = "0 16px 40px rgba(193,80,46,.15)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,.08)";
+                  e.currentTarget.style.background = "rgba(255,255,255,.03)";
+                  e.currentTarget.style.transform = "none";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <div style={{
+                  width: 40, height: 40, borderRadius: 10,
+                  background: "rgba(193,80,46,.12)", border: "1px solid rgba(193,80,46,.25)",
+                  display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16,
+                }}>
+                  <Icon size={19} color="#C1502E" strokeWidth={2} />
+                </div>
+                <p style={{ fontSize: 14, fontWeight: 700, color: "#fff", lineHeight: 1.5 }}>{f}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
+      <style>{`
+        @keyframes toolsPulseGlow {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(193,80,46,.25); }
+          50% { box-shadow: 0 0 0 6px rgba(193,80,46,0); }
+        }
+        @keyframes toolsFlowDot {
+          0%, 100% { opacity: .25; transform: translateX(0); }
+          50% { opacity: 1; transform: translateX(3px); }
+        }
+      `}</style>
     </section>
   );
 }
