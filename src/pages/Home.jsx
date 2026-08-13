@@ -4,7 +4,7 @@ import { useInView } from "../components";
 import { SERVICES, WORKS, STATS, TESTIMONIALS, PROCESS } from "../globals";
 import { Helmet } from "react-helmet-async";
 import { WEBSITE_SCHEMA, jsonLdScript } from "../seo";
-import { Database, MonitorCog, Calculator, LayoutDashboard, FolderKanban, Workflow, Zap } from "lucide-react";
+import { Database, MonitorCog, Calculator, LayoutDashboard, FolderKanban, Workflow } from "lucide-react";
 
 /* ── HERO ── */
 function Hero() {
@@ -137,14 +137,6 @@ function CustomToolsSection() {
 
   return (
     <section style={{ background: "#141210", padding: "110px clamp(20px,5vw,80px)", position: "relative", overflow: "hidden" }}>
-      {/* faint animated grid */}
-      <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: "linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px)",
-        backgroundSize: "42px 42px",
-        maskImage: "radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%)",
-        pointerEvents: "none",
-      }} />
       {/* glow blobs */}
       <div style={{ position: "absolute", top: "-10%", left: "5%", width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(193,80,46,.16) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: "-15%", right: "0%", width: 460, height: 460, borderRadius: "50%", background: "radial-gradient(circle, rgba(193,80,46,.12) 0%, transparent 70%)", filter: "blur(70px)", pointerEvents: "none" }} />
@@ -153,14 +145,6 @@ function CustomToolsSection() {
         <div ref={ref} className="cw-grid-2" style={{ gap: "clamp(48px,6vw,100px)", alignItems: "center", marginBottom: 72 }}>
           {/* LEFT: copy */}
           <div style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateX(-20px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(193,80,46,.12)", border: "1px solid rgba(193,80,46,.35)",
-              padding: "7px 16px", borderRadius: 20, marginBottom: 22,
-              animation: "toolsPulseGlow 2.4s ease-in-out infinite",
-            }}>
-              <Zap size={13} color="#C1502E" fill="#C1502E" />
-            </div>
             <h2 style={{ fontSize: "clamp(30px,3vw,50px)", fontWeight: 800, color: "#fff", letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 20 }}>
               Got A Spreadsheet<br />Running <span style={{ color: "#C1502E" }}>Your Business?</span>
             </h2>
@@ -264,10 +248,6 @@ function CustomToolsSection() {
       </div>
 
       <style>{`
-        @keyframes toolsPulseGlow {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(193,80,46,.25); }
-          50% { box-shadow: 0 0 0 6px rgba(193,80,46,0); }
-        }
         @keyframes toolsFlowDot {
           0%, 100% { opacity: .25; transform: translateX(0); }
           50% { opacity: 1; transform: translateX(3px); }
