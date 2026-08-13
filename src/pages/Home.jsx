@@ -175,10 +175,17 @@ function ToolsScreenshotsSlider() {
   const [ref, v] = useInView();
   const [index, setIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== "undefined" ? window.innerWidth < 640 : false);
   const hoveredRef = useRef(false);
   const total = TOOL_SCREENSHOTS.length;
 
   useEffect(() => { hoveredRef.current = hovered; }, [hovered]);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -188,7 +195,18 @@ function ToolsScreenshotsSlider() {
   }, [total]);
 
   const go = (dir) => setIndex((i) => (i + dir + total) % total);
-  const current = TOOL_SCREENSHOTS[index];
+
+  // Shortest signed distance from `index` in circular space, so wraparound also animates smoothly.
+  const getDiff = (i) => {
+    let d = i - index;
+    if (d > total / 2) d -= total;
+    if (d < -total / 2) d += total;
+    return d;
+  };
+
+  const CARD_W = 560;
+  const CARD_H = 380;
+  const SPACING = 330;
 
   return (
     <section style={{ background: "#F7F7F5", padding: "0 0 110px" }}>
@@ -196,12 +214,12 @@ function ToolsScreenshotsSlider() {
         ref={ref}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        style={{ position: "relative", maxWidth: 900, margin: "0 auto", padding: "0 clamp(20px,5vw,80px)", opacity: v ? 1 : 0, transition: "opacity .7s ease" }}
+        style={{ position: "relative", maxWidth: 1100, margin: "0 auto", padding: "0 clamp(20px,5vw,80px)", opacity: v ? 1 : 0, transition: "opacity .7s ease" }}
       >
         {/* Soft ambient glow behind the active slide — faint, centered, blended */}
         <div style={{
           position: "absolute",
-          inset: "8%",
+          inset: "8% 20%",
           zIndex: 0,
           borderRadius: 24,
           background: "radial-gradient(50% 50% at 50% 50%, rgba(193,80,46,.09) 0%, rgba(193,80,46,0) 72%)",
@@ -209,22 +227,61 @@ function ToolsScreenshotsSlider() {
           pointerEvents: "none",
         }} />
 
-        {/* Active slide */}
-        <div style={{ position: "relative", zIndex: 1, borderRadius: 16, overflow: "hidden", border: "1px solid #E4E3DD", background: "#fff", boxShadow: "0 20px 60px rgba(20,18,16,.14)" }}>
-          {current.image ? (
-            <img src={current.image} alt="Custom tool screenshot" style={{ width: "100%", height: 460, objectFit: "cover", display: "block", transition: "opacity .35s ease" }} />
-          ) : (
-            <div style={{ width: "100%", height: 460, background: "repeating-linear-gradient(135deg, #F0EFEA, #F0EFEA 10px, #E9E8E2 10px, #E9E8E2 20px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.08em", textTransform: "uppercase" }}>Screenshot Coming Soon</span>
-            </div>
-          )}
+        {/* Coverflow stage */}
+        <div style={{ position: "relative", zIndex: 1, height: CARD_H, overflow: "hidden" }}>
+          {TOOL_SCREENSHOTS.map((s, i) => {
+            const diff = getDiff(i);
+            const absDiff = Math.abs(diff);
+            if (absDiff > 2) return null;
+            if (isMobile && absDiff !== 0) return null;
+
+            const isCenter = diff === 0;
+            const scale = isCenter ? 1 : absDiff === 1 ? 0.78 : 0.62;
+            const opacity = isCenter ? 1 : absDiff === 1 ? 0.55 : 0;
+            const blur = isCenter ? 0 : absDiff === 1 ? 2 : 5;
+            const translateX = isMobile ? 0 : diff * SPACING;
+
+            return (
+              <div
+                key={i}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  width: CARD_W,
+                  height: CARD_H,
+                  marginLeft: -CARD_W / 2,
+                  marginTop: -CARD_H / 2,
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  border: "1px solid #E4E3DD",
+                  background: "#fff",
+                  boxShadow: isCenter ? "0 20px 60px rgba(20,18,16,.18)" : "none",
+                  transform: `translateX(${translateX}px) scale(${scale})`,
+                  opacity,
+                  filter: `blur(${blur}px)`,
+                  zIndex: isCenter ? 3 : absDiff === 1 ? 2 : 1,
+                  pointerEvents: isCenter ? "auto" : "none",
+                  transition: "transform .45s cubic-bezier(.4,0,.2,1), opacity .45s ease, filter .45s ease",
+                }}
+              >
+                {s.image ? (
+                  <img src={s.image} alt="Custom tool screenshot" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                ) : (
+                  <div style={{ width: "100%", height: "100%", background: "repeating-linear-gradient(135deg, #F0EFEA, #F0EFEA 10px, #E9E8E2 10px, #E9E8E2 20px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.08em", textTransform: "uppercase" }}>Screenshot Coming Soon</span>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {/* Arrows — fade in on hover, like the testimonials pause behaviour */}
+        {/* Arrows */}
         <button
           onClick={() => go(-1)}
           aria-label="Previous screenshot"
-          style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 44, height: 44, borderRadius: "50%", border: "none", background: "#141210", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", opacity: hovered ? 1 : 0, transition: "opacity .25s ease, background .25s ease" }}
+          style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", zIndex: 5, width: 44, height: 44, borderRadius: "50%", border: "none", background: "#141210", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", transition: "background .25s ease" }}
           onMouseEnter={(e) => { e.currentTarget.style.background = "#C1502E"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#141210"; }}
         >
@@ -233,7 +290,7 @@ function ToolsScreenshotsSlider() {
         <button
           onClick={() => go(1)}
           aria-label="Next screenshot"
-          style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", zIndex: 2, width: 44, height: 44, borderRadius: "50%", border: "none", background: "#141210", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", opacity: hovered ? 1 : 0, transition: "opacity .25s ease, background .25s ease" }}
+          style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", zIndex: 5, width: 44, height: 44, borderRadius: "50%", border: "none", background: "#141210", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", transition: "background .25s ease" }}
           onMouseEnter={(e) => { e.currentTarget.style.background = "#C1502E"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "#141210"; }}
         >
@@ -241,7 +298,7 @@ function ToolsScreenshotsSlider() {
         </button>
 
         {/* Dots */}
-        <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 24 }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 24, position: "relative", zIndex: 5 }}>
           {TOOL_SCREENSHOTS.map((_, i) => (
             <button
               key={i}
